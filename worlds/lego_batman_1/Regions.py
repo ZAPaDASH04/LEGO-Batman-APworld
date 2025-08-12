@@ -27,7 +27,12 @@ lb1_regions = [
     "Little Fun at Big Top",
     "Flight of the Bat",
     "In the Dark Night",
-    "To the Top of the Tower"
+    "To the Top of the Tower",
+    "The Riddler Makes a Withdrawal",
+    "On the Rocks",
+    "Green Fingers",
+    "An Enterprising Theft"
+    "Breaking Blocks"
 ]
 
 
@@ -86,6 +91,21 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     to_the_top_of_the_tower = create_region("To the Top of the Tower", player, world)
     world.regions.append(to_the_top_of_the_tower)
 
+    the_riddler_makes_a_withdrawal = create_region("The Riddler Makes A Withdrawal", player, world)
+    world.regions.append(the_riddler_makes_a_withdrawal)
+
+    on_the_rocks = create_region("On The Rocks", player, world)
+    world.regions.append(on_the_rocks)
+
+    green_fingers = create_region("Green Fingers", player, world)
+    world.regions.append(green_fingers)
+
+    an_enterprising_theft = create_region("An Enterprising Theft", player, world)
+    world.regions.append(an_enterprising_theft)
+
+    breaking_blocks = create_region("Breaking Blocks", player, world)
+    world.regions.append(breaking_blocks)
+
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
     connect_regions(world, player, "Batcave", "You can Bank on Batman")
@@ -103,6 +123,12 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     connect_regions(world, player, "Batcave", "Flight of the Bat")
     connect_regions(world, player, "Batcave", "In the Dark Night")
     connect_regions(world, player, "Batcave", "To the Top of the Tower")
+    connect_regions(world, player, "Batcave", "Arkham Asylum")
+    connect_regions(world, player, "Arkham Asylum", "The Riddler Makes A Withdrawal")
+    connect_regions(world, player, "Arkham Asylum", "On The Rocks")
+    connect_regions(world, player, "Arkham Asylum", "Green Fingers")
+    connect_regions(world, player, "Arkham Asylum", "An Enterprising Theft")
+    connect_regions(world, player, "Arkham Asylum", "Breaking Blocks")
 
     for name in location_table:
         if name.startswith("You can Bank on Batman"):
@@ -135,6 +161,16 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
             create_location(in_the_dark_night, name)
         elif name.startswith("To the Top of the Tower"):
             create_location(to_the_top_of_the_tower, name)
+        elif name.startswith("The Riddler Makes a Withdrawal"):
+            create_location(the_riddler_makes_a_withdrawal, name)
+        elif name.startswith("On the Rocks"):
+            create_location(on_the_rocks, name)
+        elif name.startswith("Green Fingers"):
+            create_location(green_fingers, name)
+        elif name.startswith("An Enterprising Theft"):
+            create_location(an_enterprising_theft, name)
+        elif name.startswith("Breaking Blocks"):
+            create_location(breaking_blocks, name)
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
     source_region = world.get_region(source, player)
