@@ -5,7 +5,7 @@ class Goal(Choice):
     """
     Determine the goal for the seed
 
-    Minikits: Collect all the Minikits and beat the two bonus levels to win.
+    Minikits: Collect all the Minikits to win.
     """
     display_name = "Goal"
     option_kits = 0
@@ -14,7 +14,7 @@ class Goal(Choice):
 
 class MiniKitSanity(DefaultOnToggle):
     """
-    Puts all 300 Minikits into the pool. This setting is forced on Minikit Goal
+    Puts all 300 Minikits into the pool.
     """
     display_name = "MinikitSanity"
 
