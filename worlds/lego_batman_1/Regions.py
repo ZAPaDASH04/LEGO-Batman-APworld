@@ -33,6 +33,16 @@ lb1_regions = [
     "Green Fingers",
     "An Enterprising Theft"
     "Breaking Blocks"
+    "Rockin' the Docks",
+    "Stealing the Show",
+    "Harbouring a Grudge",
+    "A Daring Rescue",
+    "Arctic World",
+    "A Surprise for the Commissioner",
+    "Biplane Blast",
+    "The Joker's Masterpiece",
+    "The Lure of the Night",
+    "Dying of Laughter"
 ]
 
 
@@ -106,6 +116,36 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     breaking_blocks = create_region("Breaking Blocks", player, world)
     world.regions.append(breaking_blocks)
 
+    rockin_the_docks = create_region("Rockin' the Docks", player, world)
+    world.regions.append(rockin_the_docks)
+
+    stealing_the_show = create_region("Stealing the Show", player, world)
+    world.regions.append(stealing_the_show)
+
+    harbouring_a_grudge = create_region("Harbouring a Grudge", player, world)
+    world.regions.append(harbouring_a_grudge)
+
+    a_daring_rescue = create_region("A Daring Rescue", player, world)
+    world.regions.append(a_daring_rescue)
+
+    arctic_world = create_region("Arctic World", player, world)
+    world.regions.append(arctic_world)
+
+    a_surprise_for_the_commissioner = create_region("A Surprise for the Commissioner", player, world)
+    world.regions.append(a_surprise_for_the_commissioner)
+
+    biplane_blast = create_region("Biplane Blast", player, world)
+    world.regions.append(biplane_blast)
+
+    the_jokers_masterpiece = create_region("The Joker's Masterpiece", player, world)
+    world.regions.append(the_jokers_masterpiece)
+
+    the_lure_of_the_night = create_region("The Lure of the Night", player, world)
+    world.regions.append(the_lure_of_the_night)
+
+    dying_of_laughter = create_region("Dying of Laughter", player, world)
+    world.regions.append(dying_of_laughter)
+
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
     connect_regions(world, player, "Batcave", "You can Bank on Batman")
@@ -129,6 +169,16 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     connect_regions(world, player, "Arkham Asylum", "Green Fingers")
     connect_regions(world, player, "Arkham Asylum", "An Enterprising Theft")
     connect_regions(world, player, "Arkham Asylum", "Breaking Blocks")
+    connect_regions(world, player, "Arkham Asylum", "Rockin' the Docks")
+    connect_regions(world, player, "Arkham Asylum", "Stealing the Show")
+    connect_regions(world, player, "Arkham Asylum", "Harbouring a Grudge")
+    connect_regions(world, player, "Arkham Asylum", "A Daring Rescue")
+    connect_regions(world, player, "Arkham Asylum", "Arctic World")
+    connect_regions(world, player, "Arkham Asylum", "A Surprise for the Commissioner")
+    connect_regions(world, player, "Arkham Asylum", "Biplane Blast")
+    connect_regions(world, player, "Arkham Asylum", "The Joker's Masterpiece")
+    connect_regions(world, player, "Arkham Asylum", "The Lure of the Night")
+    connect_regions(world, player, "Arkham Asylum", "Dying of Laughter")
 
     for name in location_table:
         if name.startswith("You can Bank on Batman"):
@@ -171,6 +221,26 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
             create_location(an_enterprising_theft, name)
         elif name.startswith("Breaking Blocks"):
             create_location(breaking_blocks, name)
+        elif name.startswith("Rockin' the Docks"):
+            create_location(rockin_the_docks, name)
+        elif name.startswith("Stealing the Show"):
+            create_location(stealing_the_show, name)
+        elif name.startswith("Harbouring a Grudge"):
+            create_location(harbouring_a_grudge, name)
+        elif name.startswith("A Daring Rescue"):
+            create_location(a_daring_rescue, name)
+        elif name.startswith("Arctic World"):
+            create_location(arctic_world, name)
+        elif name.startswith("A Surprise for the Commissioner"):
+            create_location(a_surprise_for_the_commissioner, name)
+        elif name.startswith("Biplane Blast"):
+            create_location(biplane_blast, name)
+        elif name.startswith("The Joker's Masterpiece"):
+            create_location(the_jokers_masterpiece, name)
+        elif name.startswith("The Lure of the Night"):
+            create_location(the_lure_of_the_night, name)
+        elif name.startswith("Dying of Laughter"):
+            create_location(dying_of_laughter, name)
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
     source_region = world.get_region(source, player)
