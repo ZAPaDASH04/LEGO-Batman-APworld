@@ -277,7 +277,7 @@ minikit_location_table: dict[str, int] = {
     "Arctic World: Minikit 4 - Slalom Skiing": base_location_id + 343,
     "Arctic World: Minikit 5 - The Shark's Minikit": base_location_id + 344,
     "Arctic World: Minikit 6 - Complete the 3 Button Puzzle": base_location_id + 345,
-    "Arctic World: Minikit 7 - Slide Through the 3 Yellow Gates": base_location_id + 346,
+    "Arctic World: Minikit 7 - Slide Through the 5 Yellow Gates": base_location_id + 346,
     "Arctic World: Minikit 8 - In the Air Above the Silver Legos": base_location_id + 347,
     "Arctic World: Minikit 9 - Underwater in Final Room": base_location_id + 348,
     "Arctic World: Minikit 10 - In the Hanging Silver Cage": base_location_id + 349,
