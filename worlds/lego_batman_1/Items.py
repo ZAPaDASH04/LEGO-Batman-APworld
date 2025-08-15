@@ -8,7 +8,7 @@ class LB1Item(Item):
 
 class LB1ItemData(NamedTuple):
     code: Optional[int] = None
-    classification: ItemClassification = ItemClassification.progression_skip_balancing
+    classification: ItemClassification = ItemClassification.progression_deprioritized_skip_balancing
 
 #TODO: add in progression classification based off of win con (look at manual's implementation - need to decide win cons first)
 minikit_item_table: Dict[str, LB1ItemData] = {
@@ -386,6 +386,7 @@ event_item_table: Dict[str, LB1ItemData] = {
     # "Hush": LB1ItemData(None, classification=ItemClassification.progression),
     # "Ra Sha Guul": LB1ItemData(None, classification=ItemClassification.progression),
 }
+
 
 
 
