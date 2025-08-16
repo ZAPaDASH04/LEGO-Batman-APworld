@@ -51,100 +51,37 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     world.regions.append(menu)
 
     batcave = create_region("Batcave", player, world)
-    world.regions.append(batcave)
-
     arkham_asylum = create_region("Arkham Asylum", player, world)
-    world.regions.append(arkham_asylum)
-
     you_can_bank_on_batman = create_region("You can Bank on Batman", player, world)
-    world.regions.append(you_can_bank_on_batman)
-
     an_icy_reception = create_region("An Icy Reception", player, world)
-    world.regions.append(an_icy_reception)
-
     two_face_chase = create_region("Two-Face Chase", player, world)
-    world.regions.append(two_face_chase)
-
     a_poisonous_appointment = create_region("A Poisonous Appointment", player, world)
-    world.regions.append(a_poisonous_appointment)
-
     the_face_off = create_region("The Face-Off", player, world)
-    world.regions.append(the_face_off)
-
     there_she_goes_again = create_region("There She Goes Again", player, world)
-    world.regions.append(there_she_goes_again)
-
     batboat_battle = create_region("Batboat Battle", player, world)
-    world.regions.append(batboat_battle)
-
     under_the_city = create_region("Under the City", player, world)
-    world.regions.append(under_the_city)
-
     zoos_company = create_region("Zoo's Company", player, world)
-    world.regions.append(zoos_company)
-
     penguins_lair = create_region("Penguin's Lair", player, world)
-    world.regions.append(penguins_lair)
-
     jokers_home_turf = create_region("Joker's Home Turf", player, world)
-    world.regions.append(jokers_home_turf)
-
     little_fun_at_big_top = create_region("Little Fun at Big Top", player, world)
-    world.regions.append(little_fun_at_big_top)
-
     flight_of_the_bat = create_region("Flight of the Bat", player, world)
-    world.regions.append(flight_of_the_bat)
-
     in_the_dark_night = create_region("In the Dark Night", player, world)
-    world.regions.append(in_the_dark_night)
-
     to_the_top_of_the_tower = create_region("To the Top of the Tower", player, world)
-    world.regions.append(to_the_top_of_the_tower)
-
     the_riddler_makes_a_withdrawal = create_region("The Riddler Makes A Withdrawal", player, world)
-    world.regions.append(the_riddler_makes_a_withdrawal)
-
     on_the_rocks = create_region("On The Rocks", player, world)
-    world.regions.append(on_the_rocks)
-
     green_fingers = create_region("Green Fingers", player, world)
-    world.regions.append(green_fingers)
-
     an_enterprising_theft = create_region("An Enterprising Theft", player, world)
-    world.regions.append(an_enterprising_theft)
-
     breaking_blocks = create_region("Breaking Blocks", player, world)
-    world.regions.append(breaking_blocks)
-
     rockin_the_docks = create_region("Rockin' the Docks", player, world)
-    world.regions.append(rockin_the_docks)
-
     stealing_the_show = create_region("Stealing the Show", player, world)
-    world.regions.append(stealing_the_show)
-
     harbouring_a_grudge = create_region("Harbouring a Grudge", player, world)
-    world.regions.append(harbouring_a_grudge)
-
     a_daring_rescue = create_region("A Daring Rescue", player, world)
-    world.regions.append(a_daring_rescue)
-
     arctic_world = create_region("Arctic World", player, world)
-    world.regions.append(arctic_world)
-
     a_surprise_for_the_commissioner = create_region("A Surprise for the Commissioner", player, world)
-    world.regions.append(a_surprise_for_the_commissioner)
-
     biplane_blast = create_region("Biplane Blast", player, world)
-    world.regions.append(biplane_blast)
-
     the_jokers_masterpiece = create_region("The Joker's Masterpiece", player, world)
-    world.regions.append(the_jokers_masterpiece)
-
     the_lure_of_the_night = create_region("The Lure of the Night", player, world)
-    world.regions.append(the_lure_of_the_night)
-
     dying_of_laughter = create_region("Dying of Laughter", player, world)
-    world.regions.append(dying_of_laughter)
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
