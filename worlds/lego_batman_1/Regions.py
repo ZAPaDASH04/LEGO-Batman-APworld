@@ -42,7 +42,7 @@ lb1_regions = [
     "Biplane Blast",
     "The Joker's Masterpiece",
     "The Lure of the Night",
-    "Dying of Laughter"
+    "Dying of Laughter",
 ]
 
 
@@ -85,6 +85,7 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
+
     connect_regions(world, player, "Batcave", "You can Bank on Batman")
     connect_regions(world, player, "Batcave", "An Icy Reception")
     connect_regions(world, player, "Batcave", "Two-Face Chase")
@@ -100,7 +101,7 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     connect_regions(world, player, "Batcave", "Flight of the Bat")
     connect_regions(world, player, "Batcave", "In the Dark Night")
     connect_regions(world, player, "Batcave", "To the Top of the Tower")
-    connect_regions(world, player, "Batcave", "Arkham Asylum")
+
     connect_regions(world, player, "Arkham Asylum", "The Riddler Makes A Withdrawal")
     connect_regions(world, player, "Arkham Asylum", "On The Rocks")
     connect_regions(world, player, "Arkham Asylum", "Green Fingers")
