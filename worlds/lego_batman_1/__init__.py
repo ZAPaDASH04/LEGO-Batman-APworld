@@ -4,7 +4,7 @@ from BaseClasses import Item, ItemClassification, Tutorial, Region, MultiWorld
 from ..AutoWorld import World, WebWorld
 
 from .Items import LB1Item, item_table, item_data_table, minikit_item_table
-from .Locations import location_table, LB1Location
+from .Locations import location_table, LocationData
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region
 # from .Rules import set_rules
@@ -32,7 +32,7 @@ class LB1World(World):
     topology_present = False
 
     item_name_to_id = item_table
-    location_name_to_id = location_table
+    location_name_to_id = {name: data.id for name, data in location_table.items()}
 
     data_version = 1
     required_client_version = (0, 4, 4)

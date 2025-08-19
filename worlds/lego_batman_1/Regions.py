@@ -2,7 +2,7 @@ import typing
 
 from BaseClasses import MultiWorld, Region, Entrance, Location
 from .Options import LB1Options
-from .Locations import LB1Location, location_table, minikit_location_table
+from .Locations import LocationData, location_table, minikit_location_table
 
 
 class LB1Region(Region):
@@ -118,68 +118,6 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     connect_regions(world, player, "Arkham Asylum", "The Lure of the Night")
     connect_regions(world, player, "Arkham Asylum", "Dying of Laughter")
 
-    for name in location_table:
-        if name.startswith("You can Bank on Batman"):
-            create_location(you_can_bank_on_batman, name)
-        elif name.startswith("An Icy Reception"):
-            create_location(an_icy_reception, name)
-        elif name.startswith("Two-Face Chase"):
-            create_location(two_face_chase, name)
-        elif name.startswith("A Poisonous Appointment"):
-            create_location(a_poisonous_appointment, name)
-        elif name.startswith("The Face-Off"):
-            create_location(the_face_off, name)
-        elif name.startswith("There She Goes Again"):
-            create_location(there_she_goes_again, name)
-        elif name.startswith("Batboat Battle"):
-            create_location(batboat_battle, name)
-        elif name.startswith("Under the City"):
-            create_location(under_the_city, name)
-        elif name.startswith("Zoo's Company"):
-            create_location(zoos_company, name)
-        elif name.startswith("Penguin's Lair"):
-            create_location(penguins_lair, name)
-        elif name.startswith("Joker's Home Turf"):
-            create_location(jokers_home_turf, name)
-        elif name.startswith("Little Fun at Big Top"):
-            create_location(little_fun_at_big_top, name)
-        elif name.startswith("Flight of the Bat"):
-            create_location(flight_of_the_bat, name)
-        elif name.startswith("In the Dark Night"):
-            create_location(in_the_dark_night, name)
-        elif name.startswith("To the Top of the Tower"):
-            create_location(to_the_top_of_the_tower, name)
-        elif name.startswith("The Riddler Makes a Withdrawal"):
-            create_location(the_riddler_makes_a_withdrawal, name)
-        elif name.startswith("On the Rocks"):
-            create_location(on_the_rocks, name)
-        elif name.startswith("Green Fingers"):
-            create_location(green_fingers, name)
-        elif name.startswith("An Enterprising Theft"):
-            create_location(an_enterprising_theft, name)
-        elif name.startswith("Breaking Blocks"):
-            create_location(breaking_blocks, name)
-        elif name.startswith("Rockin' the Docks"):
-            create_location(rockin_the_docks, name)
-        elif name.startswith("Stealing the Show"):
-            create_location(stealing_the_show, name)
-        elif name.startswith("Harbouring a Grudge"):
-            create_location(harbouring_a_grudge, name)
-        elif name.startswith("A Daring Rescue"):
-            create_location(a_daring_rescue, name)
-        elif name.startswith("Arctic World"):
-            create_location(arctic_world, name)
-        elif name.startswith("A Surprise for the Commissioner"):
-            create_location(a_surprise_for_the_commissioner, name)
-        elif name.startswith("Biplane Blast"):
-            create_location(biplane_blast, name)
-        elif name.startswith("The Joker's Masterpiece"):
-            create_location(the_jokers_masterpiece, name)
-        elif name.startswith("The Lure of the Night"):
-            create_location(the_lure_of_the_night, name)
-        elif name.startswith("Dying of Laughter"):
-            create_location(dying_of_laughter, name)
-
 def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
     source_region = world.get_region(source, player)
     target_region = world.get_region(target, player)
@@ -188,9 +126,11 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str, ru
 
 def create_region(name: str, player: int, world: MultiWorld) -> LB1Region:
     region = LB1Region(name, player, world)
+
+    for (key, data) in location_table.items():
+        if data.region == name:
+            location = LocationData(player, key, data.id, region)
+            region.locations.append(location)
+
     world.regions.append(region)
     return region
-
-
-def create_location(reg: Region, *location: str):
-    reg.locations += [LB1Location(reg.player, loc_name, location_table[loc_name], reg) for loc_name in location]
