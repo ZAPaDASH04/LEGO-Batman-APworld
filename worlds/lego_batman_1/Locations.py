@@ -244,27 +244,27 @@ minikit_location_table: dict[str, LocationData] = {
         LocationData(base_location_id + 208, "Joker's Home Turf"),
     "Joker's Home Turf: Minikit behind the Silver Legos in Mad Hatter Fight":
         LocationData(base_location_id + 209, "Joker's Home Turf"),
-    #Little Fun at Big Top
-    "Little Fun at Big Top: Minikit across the Tightrope Behind the Pushable Bus":
-        LocationData(base_location_id + 210, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit carnival Target Game":
-        LocationData(base_location_id + 211, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit inside the Water Filled Pipe Above Carnival Game":
-        LocationData(base_location_id + 212, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit yellow Duck Carnival Game":
-        LocationData(base_location_id + 213, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit behind the Window Above Gumball Machine":
-        LocationData(base_location_id + 214, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit from Activating the Teacup Ride":
-        LocationData(base_location_id + 215, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit on the Spiral Slide":
-        LocationData(base_location_id + 216, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit from Storing the Toy Boats":
-        LocationData(base_location_id + 217, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit bumper Cars":
-        LocationData(base_location_id + 218, "Little Fun at Big Top"),
-    "Little Fun at Big Top: Minikit tightrope on the Other Side of the Toxic Waste":
-        LocationData(base_location_id + 219, "Little Fun at Big Top"),
+    #Little Fun at the Big Top
+    "Little Fun at the Big Top: Minikit across the Tightrope Behind the Pushable Bus":
+        LocationData(base_location_id + 210, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit carnival Target Game":
+        LocationData(base_location_id + 211, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit inside the Water Filled Pipe Above Carnival Game":
+        LocationData(base_location_id + 212, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit yellow Duck Carnival Game":
+        LocationData(base_location_id + 213, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit behind the Window Above Gumball Machine":
+        LocationData(base_location_id + 214, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit from Activating the Teacup Ride":
+        LocationData(base_location_id + 215, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit on the Spiral Slide":
+        LocationData(base_location_id + 216, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit from Storing the Toy Boats":
+        LocationData(base_location_id + 217, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit bumper Cars":
+        LocationData(base_location_id + 218, "Little Fun at the Big Top"),
+    "Little Fun at the Big Top: Minikit tightrope on the Other Side of the Toxic Waste":
+        LocationData(base_location_id + 219, "Little Fun at the Big Top"),
     #Flight of the Bat
     "Flight of the Bat: Minikit destroy the Missile Launchers":
         LocationData(base_location_id + 220, "Flight of the Bat"),
@@ -645,35 +645,35 @@ minikit_location_table: dict[str, LocationData] = {
         LocationData(base_location_id + 399, "Dying of Laughter"),
 }
 
-# hostage_location_table: dict[str, int] = {
-#"You can Bank on Batman: Hostage": base_location_id + 400,
-# "An Icy Reception: Hostage" base_location_id + 401,
-# "A Poisonous Appointment: Hostage", base_location_id + 402,
-# "The Face-Off: Hostage", base_location_id + 403,
-# "There She Goes Again: Hostage", base_location_id + 404,
-# "Under The City: Hostage", base_location_id + 405,
-# "Zoo's Company: Hostage", base_location_id + 406,
-# "Penguin's Lair: Hostage", base_location_id + 407,
-# "Joker's Home Turf: Hostage", base_location_id + 408,
-# "Little Fun at the Big Top: Hostage", base_location_id + 409,
-# "In the Dark Night: Hostage", base_location_id + 410,
-# "To the Top of the Tower: Hostage", base_location_id + 411,
-# "The Riddler Makes a Withdrawal: Hostage", base_location_id + 412,
-# "On the Rocks: Hostage", base_location_id + 413,
-# "Green Fingers: Hostage", base_location_id + 414,
-# "An Enterprising Theft: Hostage", base_location_id + 415,
-# "Breaking Blocks: Hostage", base_location_id + 416,
-# "Rockin' the Docks: Hostage", base_location_id + 417,
-# "Stealing the Show: Hostage", base_location_id + 418,
-# "A Daring Rescue: Hostage", base_location_id + 419,
-# "Arctic World: Hostage", base_location_id + 420,
-# "A Surprise for the Commissioner: Hostage", base_location_id + 421,
-# "The Joker's Masterpiece: Hostage", base_location_id + 422,
-# "The Lure of the Night: Hostage", base_location_id + 423,
-# "Dying of Laughter: Hostage", base_location_id + 424,
-# }
+hostage_location_table: dict[str, LocationData] = {
+    "You can Bank on Batman: Hostage": LocationData(base_location_id + 400, "You can Bank on Batman"),
+    "An Icy Reception: Hostage": LocationData(base_location_id + 401, "An Icy Reception"),
+    "A Poisonous Appointment: Hostage": LocationData(base_location_id + 402, "A Poisonous Appointment"),
+    "The Face-Off: Hostage": LocationData(base_location_id + 403, "The Face-Off"),
+    "There She Goes Again: Hostage": LocationData(base_location_id + 404, "There She Goes Again"),
+    "Under the City: Hostage": LocationData(base_location_id + 405, "Under the City"),
+    "Zoo's Company: Hostage": LocationData(base_location_id + 406, "Zoo's Company"),
+    "Penguin's Lair: Hostage": LocationData(base_location_id + 407, "Penguin's Lair"),
+    "Joker's Home Turf: Hostage": LocationData(base_location_id + 408, "Joker's Home Turf"),
+    "Little Fun at the Big Top: Hostage": LocationData(base_location_id + 409, "Little Fun at the Big Top"),
+    "In the Dark Night: Hostage": LocationData(base_location_id + 410, "In the Dark Night"),
+    "To the Top of the Tower: Hostage": LocationData(base_location_id + 411, "To the Top of the Tower"),
+    "The Riddler Makes a Withdrawal: Hostage": LocationData(base_location_id + 412, "The Riddler Makes a Withdrawal"),
+    "On the Rocks: Hostage": LocationData(base_location_id + 413, "On the Rocks"),
+    "Green Fingers: Hostage": LocationData(base_location_id + 414, "Green Fingers"),
+    "An Enterprising Theft: Hostage": LocationData(base_location_id + 415, "An Enterprising Theft"),
+    "Breaking Blocks: Hostage": LocationData(base_location_id + 416, "Breaking Blocks"),
+    "Rockin' the Docks: Hostage": LocationData(base_location_id + 417, "Rockin' the Docks"),
+    "Stealing the Show: Hostage": LocationData(base_location_id + 418, "Stealing the Show"),
+    "A Daring Rescue: Hostage": LocationData(base_location_id + 419, "A Daring Rescue"),
+    "Arctic World: Hostage": LocationData(base_location_id + 420, "Arctic World"),
+    "A Surprise for the Commissioner: Hostage": LocationData(base_location_id + 421, "A Surprise for the Commissioner"),
+    "The Joker's Masterpiece: Hostage": LocationData(base_location_id + 422, "The Joker's Masterpiece"),
+    "The Lure of the Night: Hostage": LocationData(base_location_id + 423, "The Lure of the Night"),
+    "Dying of Laughter: Hostage": LocationData(base_location_id + 424, "Dying of Laughter"),
+}
 
 location_table = {
     **minikit_location_table,
-    # **hostage_location_table
+    **hostage_location_table
 }

@@ -26,7 +26,7 @@ lb1_hero_regions = [
     "Zoo's Company",
     "Penguin's Lair",
     "Joker's Home Turf",
-    "Little Fun at Big Top",
+    "Little Fun at the Big Top",
     "Flight of the Bat",
     "In the Dark Night",
     "To the Top of the Tower",
