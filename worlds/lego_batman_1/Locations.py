@@ -1,8 +1,10 @@
 from BaseClasses import Location
+from dataclasses import dataclass
 
 class LB1Location(Location):
     game: str = "Lego Batman: The Videogame"
 
+@dataclass
 class LocationData(Location):
     id: int = 0
     region: str = ""
@@ -644,31 +646,31 @@ minikit_location_table: dict[str, LocationData] = {
 }
 
 # hostage_location_table: dict[str, int] = {
-    #"You can Bank on Batman: Hostage": base_location_id + 400,
-    # "An Icy Reception: Hostage" base_location_id + 401,
-    # "A Poisonous Appointment: Hostage", base_location_id + 402,
-    # "The Face-Off: Hostage", base_location_id + 403,
-    # "There She Goes Again: Hostage", base_location_id + 404,
-    # "Under The City: Hostage", base_location_id + 405,
-    # "Zoo's Company: Hostage", base_location_id + 406,
-    # "Penguin's Lair: Hostage", base_location_id + 407,
-    # "Joker's Home Turf: Hostage", base_location_id + 408,
-    # "Little Fun at the Big Top: Hostage", base_location_id + 409,
-    # "In the Dark Night: Hostage", base_location_id + 410,
-    # "To the Top of the Tower: Hostage", base_location_id + 411,
-    # "The Riddler Makes a Withdrawal: Hostage", base_location_id + 412,
-    # "On the Rocks: Hostage", base_location_id + 413,
-    # "Green Fingers: Hostage", base_location_id + 414,
-    # "An Enterprising Theft: Hostage", base_location_id + 415,
-    # "Breaking Blocks: Hostage", base_location_id + 416,
-    # "Rockin' the Docks: Hostage", base_location_id + 417,
-    # "Stealing the Show: Hostage", base_location_id + 418,
-    # "A Daring Rescue: Hostage", base_location_id + 419,
-    # "Arctic World: Hostage", base_location_id + 420,
-    # "A Surprise for the Commissioner: Hostage", base_location_id + 421,
-    # "The Joker's Masterpiece: Hostage", base_location_id + 422,
-    # "The Lure of the Night: Hostage", base_location_id + 423,
-    # "Dying of Laughter: Hostage", base_location_id + 424,
+#"You can Bank on Batman: Hostage": base_location_id + 400,
+# "An Icy Reception: Hostage" base_location_id + 401,
+# "A Poisonous Appointment: Hostage", base_location_id + 402,
+# "The Face-Off: Hostage", base_location_id + 403,
+# "There She Goes Again: Hostage", base_location_id + 404,
+# "Under The City: Hostage", base_location_id + 405,
+# "Zoo's Company: Hostage", base_location_id + 406,
+# "Penguin's Lair: Hostage", base_location_id + 407,
+# "Joker's Home Turf: Hostage", base_location_id + 408,
+# "Little Fun at the Big Top: Hostage", base_location_id + 409,
+# "In the Dark Night: Hostage", base_location_id + 410,
+# "To the Top of the Tower: Hostage", base_location_id + 411,
+# "The Riddler Makes a Withdrawal: Hostage", base_location_id + 412,
+# "On the Rocks: Hostage", base_location_id + 413,
+# "Green Fingers: Hostage", base_location_id + 414,
+# "An Enterprising Theft: Hostage", base_location_id + 415,
+# "Breaking Blocks: Hostage", base_location_id + 416,
+# "Rockin' the Docks: Hostage", base_location_id + 417,
+# "Stealing the Show: Hostage", base_location_id + 418,
+# "A Daring Rescue: Hostage", base_location_id + 419,
+# "Arctic World: Hostage", base_location_id + 420,
+# "A Surprise for the Commissioner: Hostage", base_location_id + 421,
+# "The Joker's Masterpiece: Hostage", base_location_id + 422,
+# "The Lure of the Night: Hostage", base_location_id + 423,
+# "Dying of Laughter: Hostage", base_location_id + 424,
 # }
 
 location_table = {

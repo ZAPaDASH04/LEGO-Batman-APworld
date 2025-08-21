@@ -2,7 +2,7 @@ import typing
 
 from BaseClasses import MultiWorld, Region, Entrance, Location
 from .Options import LB1Options
-from .Locations import LocationData, location_table, minikit_location_table
+from .Locations import location_table, minikit_location_table, LB1Location
 
 
 class LB1Region(Region):
@@ -67,8 +67,8 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     flight_of_the_bat = create_region("Flight of the Bat", player, world)
     in_the_dark_night = create_region("In the Dark Night", player, world)
     to_the_top_of_the_tower = create_region("To the Top of the Tower", player, world)
-    the_riddler_makes_a_withdrawal = create_region("The Riddler Makes A Withdrawal", player, world)
-    on_the_rocks = create_region("On The Rocks", player, world)
+    the_riddler_makes_a_withdrawal = create_region("The Riddler Makes a Withdrawal", player, world)
+    on_the_rocks = create_region("On the Rocks", player, world)
     green_fingers = create_region("Green Fingers", player, world)
     an_enterprising_theft = create_region("An Enterprising Theft", player, world)
     breaking_blocks = create_region("Breaking Blocks", player, world)
@@ -102,8 +102,8 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     connect_regions(world, player, "Batcave", "In the Dark Night")
     connect_regions(world, player, "Batcave", "To the Top of the Tower")
 
-    connect_regions(world, player, "Arkham Asylum", "The Riddler Makes A Withdrawal")
-    connect_regions(world, player, "Arkham Asylum", "On The Rocks")
+    connect_regions(world, player, "Arkham Asylum", "The Riddler Makes a Withdrawal")
+    connect_regions(world, player, "Arkham Asylum", "On the Rocks")
     connect_regions(world, player, "Arkham Asylum", "Green Fingers")
     connect_regions(world, player, "Arkham Asylum", "An Enterprising Theft")
     connect_regions(world, player, "Arkham Asylum", "Breaking Blocks")
@@ -124,12 +124,12 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str, ru
     return source_region.connect(target_region, rule=rule)
 
 
-def create_region(name: str, player: int, world: MultiWorld) -> LB1Region:
-    region = LB1Region(name, player, world)
+def create_region(name: str, player: int, world: MultiWorld) -> Region:
+    region = Region(name, player, world)
 
     for (key, data) in location_table.items():
         if data.region == name:
-            location = LocationData(player, key, data.id, region)
+            location = LB1Location(region.player, key, data.id, region)
             region.locations.append(location)
 
     world.regions.append(region)
