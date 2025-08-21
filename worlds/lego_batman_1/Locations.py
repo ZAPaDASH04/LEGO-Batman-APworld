@@ -290,7 +290,7 @@ minikit_location_table: dict[str, int] = {
     "A Surprise for the Commissioner: Minikit 6 - On the Roller Coaster Slope": base_location_id + 355,
     "A Surprise for the Commissioner: Minikit 7 - On the Ledge Above the Silver Lego Antenna": base_location_id + 356,
     "A Surprise for the Commissioner: Minikit 8 - Underwater in the Duck Pond": base_location_id + 357,
-    "A Surprise for the Commissioner: Minikit 9 - Park 3 Cars": base_location_id + 358,
+    "A Surprise for the Commissioner: Minikit 9 - Park 4 Trucks": base_location_id + 358,
     "A Surprise for the Commissioner: Minikit 10 - Bring Ice Cream Truck to Garage": base_location_id + 359,
 
     "Biplane Blast: Minikit 1 - Destroy 10 Brown Towers": base_location_id + 360,
