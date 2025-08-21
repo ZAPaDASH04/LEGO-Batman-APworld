@@ -555,7 +555,7 @@ minikit_location_table: dict[str, LocationData] = {
         LocationData(base_location_id + 356, "A Surprise for the Commissioner"),
     "A Surprise for the Commissioner: Minikit underwater in the Duck Pond":
         LocationData(base_location_id + 357, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit park Cars":
+    "A Surprise for the Commissioner: Minikit from Parking 4 Trucks":
         LocationData(base_location_id + 358, "A Surprise for the Commissioner"),
     "A Surprise for the Commissioner: Minikit bring Ice Cream Truck to Garage":
         LocationData(base_location_id + 359, "A Surprise for the Commissioner"),
