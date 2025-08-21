@@ -371,9 +371,43 @@ hostage_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Hostage": LB1ItemData(base_item_id + 424),
 }
 
+level_unlocked_location_table: dict[str, LB1ItemData] = {
+    "You can Bank on Batman: Level Beaten": LB1ItemData(base_item_id + 425),
+    "An Icy Reception: Level Beaten": LB1ItemData(base_item_id + 426),
+    "Two-Face Chase: Level Beaten": LB1ItemData(base_item_id + 427),
+    "A Poisonous Appointment: Level Beaten": LB1ItemData(base_item_id + 428),
+    "The Face-Off: Level Beaten": LB1ItemData(base_item_id + 429),
+    "There She Goes Again: Level Beaten": LB1ItemData(base_item_id + 430),
+    "Batboat Battle: Level Beaten": LB1ItemData(base_item_id + 431),
+    "Under the City: Level Beaten": LB1ItemData(base_item_id + 432),
+    "Zoo's Company: Level Beaten": LB1ItemData(base_item_id + 433),
+    "Penguin's Lair: Level Beaten": LB1ItemData(base_item_id + 434),
+    "Joker's Home Turf: Level Beaten": LB1ItemData(base_item_id + 435),
+    "Little Fun at the Big Top: Level Beaten": LB1ItemData(base_item_id + 436),
+    "Flight of the Bat: Level Beaten": LB1ItemData(base_item_id + 437),
+    "In the Dark Night: Level Beaten": LB1ItemData(base_item_id + 438),
+    "To the Top of the Tower: Level Beaten": LB1ItemData(base_item_id + 439),
+    "The Riddler Makes a Withdrawal: Level Beaten": LB1ItemData(base_item_id + 440),
+    "On the Rocks: Level Beaten": LB1ItemData(base_item_id + 441),
+    "Green Fingers: Level Beaten": LB1ItemData(base_item_id + 442),
+    "An Enterprising Theft: Level Beaten": LB1ItemData(base_item_id + 443),
+    "Breaking Blocks: Level Beaten": LB1ItemData(base_item_id + 444),
+    "Rockin' the Docks: Level Beaten": LB1ItemData(base_item_id + 445),
+    "Stealing the Show: Level Beaten": LB1ItemData(base_item_id + 446),
+    "Harbouring a Grudge: Level Beaten": LB1ItemData(base_item_id + 447),
+    "A Daring Rescue: Level Beaten": LB1ItemData(base_item_id + 448),
+    "Arctic World: Level Beaten": LB1ItemData(base_item_id + 449),
+    "A Surprise for the Commissioner: Level Beaten": LB1ItemData(base_item_id + 450),
+    "Biplane Blast: Level Beaten": LB1ItemData(base_item_id + 451),
+    "The Joker's Masterpiece: Level Beaten": LB1ItemData(base_item_id + 452),
+    "The Lure of the Night: Level Beaten": LB1ItemData(base_item_id + 453),
+    "Dying of Laughter: Level Beaten": LB1ItemData(base_item_id + 454),
+}
+
 item_data_table = {
     **minikit_item_table,
     **hostage_item_table,
+    **level_unlocked_location_table
 }
 
 item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}

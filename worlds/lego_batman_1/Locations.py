@@ -673,7 +673,43 @@ hostage_location_table: dict[str, LocationData] = {
     "Dying of Laughter: Hostage": LocationData(base_location_id + 424, "Dying of Laughter"),
 }
 
+level_beaten_location_table: dict[str, LocationData] = {
+    "You can Bank on Batman: Level Beaten": LocationData(base_location_id + 425, "You can Bank on Batman"),
+    "An Icy Reception: Level Beaten": LocationData(base_location_id + 426, "An Icy Reception"),
+    "Two-Face Chase: Level Beaten": LocationData(base_location_id + 427, "Two-Face Chase"),
+    "A Poisonous Appointment: Level Beaten": LocationData(base_location_id + 428, "A Poisonous Appointment"),
+    "The Face-Off: Level Beaten": LocationData(base_location_id + 429, "The Face-Off"),
+    "There She Goes Again: Level Beaten": LocationData(base_location_id + 430, "There She Goes Again"),
+    "Batboat Battle: Level Beaten": LocationData(base_location_id + 431, "Batboat Battle"),
+    "Under the City: Level Beaten": LocationData(base_location_id + 432, "Under the City"),
+    "Zoo's Company: Level Beaten": LocationData(base_location_id + 433, "Zoo's Company"),
+    "Penguin's Lair: Level Beaten": LocationData(base_location_id + 434, "Penguin's Lair"),
+    "Joker's Home Turf: Level Beaten": LocationData(base_location_id + 435, "Joker's Home Turf"),
+    "Little Fun at the Big Top: Level Beaten": LocationData(base_location_id + 436, "Little Fun at the Big Top"),
+    "Flight of the Bat: Level Beaten": LocationData(base_location_id + 437, "Flight of the Bat"),
+    "In the Dark Night: Level Beaten": LocationData(base_location_id + 438, "In the Dark Night"),
+    "To the Top of the Tower: Level Beaten": LocationData(base_location_id + 439, "To the Top of the Tower"),
+    "The Riddler Makes a Withdrawal: Level Beaten":
+        LocationData(base_location_id + 440, "The Riddler Makes a Withdrawal"),
+    "On the Rocks: Level Beaten": LocationData(base_location_id + 441, "On the Rocks"),
+    "Green Fingers: Level Beaten": LocationData(base_location_id + 442, "Green Fingers"),
+    "An Enterprising Theft: Level Beaten": LocationData(base_location_id + 443, "An Enterprising Theft"),
+    "Breaking Blocks: Level Beaten": LocationData(base_location_id + 444, "Breaking Blocks"),
+    "Rockin' the Docks: Level Beaten": LocationData(base_location_id + 445, "Rockin' the Docks"),
+    "Stealing the Show: Level Beaten": LocationData(base_location_id + 446, "Stealing the Show"),
+    "Harbouring a Grudge: Level Beaten": LocationData(base_location_id + 447, "Harbouring a Grudge"),
+    "A Daring Rescue: Level Beaten": LocationData(base_location_id + 448, "A Daring Rescue"),
+    "Arctic World: Level Beaten": LocationData(base_location_id + 449, "Arctic World"),
+    "A Surprise for the Commissioner: Level Beaten":
+        LocationData(base_location_id + 450, "A Surprise for the Commissioner"),
+    "Biplane Blast: Level Beaten": LocationData(base_location_id + 451, "Biplane Blast"),
+    "The Joker's Masterpiece: Level Beaten": LocationData(base_location_id + 452, "The Joker's Masterpiece"),
+    "The Lure of the Night: Level Beaten": LocationData(base_location_id + 453, "The Lure of the Night"),
+    "Dying of Laughter: Level Beaten": LocationData(base_location_id + 454, "Dying of Laughter"),
+}
+
 location_table = {
     **minikit_location_table,
-    **hostage_location_table
+    **hostage_location_table,
+    **level_beaten_location_table,
 }
