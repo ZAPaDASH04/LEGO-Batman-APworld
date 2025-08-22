@@ -74,10 +74,10 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
         connect_regions(world, player, "Arkham Asylum", region)
 
 
-def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
+def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
     source_region = world.get_region(source, player)
     target_region = world.get_region(target, player)
-    return source_region.connect(target_region, rule=rule)
+    return source_region.connect(target_region)
 
 
 def create_region(name: str, player: int, world: MultiWorld) -> Region:

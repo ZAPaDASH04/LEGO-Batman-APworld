@@ -7,7 +7,7 @@ from .Items import LB1Item, item_table, item_data_table, minikit_item_table
 from .Locations import location_table, LocationData
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region
-# from .Rules import set_rules
+from .Rules import set_rules
 
 class LB1Web(WebWorld):
     theme = "ocean"
@@ -29,14 +29,17 @@ class LB1World(World):
     game = "Lego Batman: The Video Game"
     options_dataclass = LB1Options
     options: LB1Options
-    topology_present = False
+    topology_present = True
 
     item_name_to_id = item_table
     location_name_to_id = {name: data.id for name, data in location_table.items()}
-
     data_version = 1
     required_client_version = (0, 4, 4)
     web = LB1Web()
+
+    def generate_early(self):
+        self.multiworld.push_precollected(self.create_item("You can Bank on Batman: Level Unlocked"))
+        self.multiworld.push_precollected(self.create_item("The Riddler Makes a Withdrawal: Level Unlocked"))
 
     def create_regions(self):
         create_regions(self.multiworld, self.options, self.player)
@@ -48,3 +51,6 @@ class LB1World(World):
 
     def create_items(self):
         self.multiworld.itempool += [self.create_item(item_name) for item_name in item_table]
+
+    def set_rules(self):
+        set_rules(self.multiworld, self.options, self.player)
