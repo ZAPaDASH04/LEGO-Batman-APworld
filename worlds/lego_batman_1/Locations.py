@@ -708,8 +708,10 @@ level_beaten_location_table: dict[str, LocationData] = {
     "Dying of Laughter: Level Beaten": LocationData(base_location_id + 454, "Dying of Laughter"),
 }
 
-location_table = {
+all_location_table = {
     **minikit_location_table,
     **hostage_location_table,
     **level_beaten_location_table,
 }
+
+location_table = {name: data.id for name, data in all_location_table.items()}

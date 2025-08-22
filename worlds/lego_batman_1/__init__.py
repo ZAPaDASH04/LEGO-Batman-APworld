@@ -32,7 +32,7 @@ class LB1World(World):
     topology_present = True
 
     item_name_to_id = item_table
-    location_name_to_id = {name: data.id for name, data in location_table.items()}
+    location_name_to_id = location_table
     data_version = 1
     required_client_version = (0, 4, 4)
     web = LB1Web()

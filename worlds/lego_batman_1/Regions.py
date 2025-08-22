@@ -2,7 +2,7 @@ import typing
 
 from BaseClasses import MultiWorld, Region, Entrance
 from .Options import LB1Options
-from .Locations import location_table, LB1Location
+from .Locations import all_location_table, LB1Location
 
 
 class LB1Region(Region):
@@ -83,7 +83,7 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str) ->
 def create_region(name: str, player: int, world: MultiWorld) -> Region:
     region = Region(name, player, world)
 
-    for (key, data) in location_table.items():
+    for (key, data) in all_location_table.items():
         if data.region == name:
             location = LB1Location(region.player, key, data.id, region)
             region.locations.append(location)
