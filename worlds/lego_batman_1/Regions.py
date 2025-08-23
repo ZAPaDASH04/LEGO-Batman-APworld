@@ -62,7 +62,7 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
     world.regions.append(menu)
 
     for region in lb1_all_regions:
-        create_region(region, player, world)
+        create_regions_and_locations(region, player, world)
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
@@ -80,7 +80,7 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str) ->
     return source_region.connect(target_region)
 
 
-def create_region(name: str, player: int, world: MultiWorld) -> Region:
+def create_regions_and_locations(name: str, player: int, world: MultiWorld) -> Region:
     region = Region(name, player, world)
 
     for (key, data) in all_location_table.items():

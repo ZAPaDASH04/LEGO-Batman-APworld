@@ -709,10 +709,46 @@ level_beaten_location_table: Dict[str, LocationData] = {
     "Dying of Laughter: Level Beaten": LocationData(base_location_id + 454, "Dying of Laughter"),
 }
 
+true_status_location_table: Dict[str, LocationData] = {
+    "You can Bank on Batman: True Status": LocationData(base_location_id + 455, "You can Bank on Batman"),
+    "An Icy Reception: True Status": LocationData(base_location_id + 456, "An Icy Reception"),
+    "Two-Face Chase: True Status": LocationData(base_location_id + 457, "Two-Face Chase"),
+    "A Poisonous Appointment: True Status": LocationData(base_location_id + 458, "A Poisonous Appointment"),
+    "The Face-Off: True Status": LocationData(base_location_id + 459, "The Face-Off"),
+    "There She Goes Again: True Status": LocationData(base_location_id + 460, "There She Goes Again"),
+    "Batboat Battle: True Status": LocationData(base_location_id + 461, "Batboat Battle"),
+    "Under the City: True Status": LocationData(base_location_id + 462, "Under the City"),
+    "Zoo's Company: True Status": LocationData(base_location_id + 463, "Zoo's Company"),
+    "Penguin's Lair: True Status": LocationData(base_location_id + 464, "Penguin's Lair"),
+    "Joker's Home Turf: True Status": LocationData(base_location_id + 465, "Joker's Home Turf"),
+    "Little Fun at the Big Top: True Status": LocationData(base_location_id + 466, "Little Fun at the Big Top"),
+    "Flight of the Bat: True Status": LocationData(base_location_id + 467, "Flight of the Bat"),
+    "In the Dark Night: True Status": LocationData(base_location_id + 468, "In the Dark Night"),
+    "To the Top of the Tower: True Status": LocationData(base_location_id + 469, "To the Top of the Tower"),
+    "The Riddler Makes a Withdrawal: True Status":
+        LocationData(base_location_id + 470, "The Riddler Makes a Withdrawal"),
+    "On the Rocks: True Status": LocationData(base_location_id + 471, "On the Rocks"),
+    "Green Fingers: True Status": LocationData(base_location_id + 472, "Green Fingers"),
+    "An Enterprising Theft: True Status": LocationData(base_location_id + 473, "An Enterprising Theft"),
+    "Breaking Blocks: True Status": LocationData(base_location_id + 474, "Breaking Blocks"),
+    "Rockin' the Docks: True Status": LocationData(base_location_id + 475, "Rockin' the Docks"),
+    "Stealing the Show: True Status": LocationData(base_location_id + 476, "Stealing the Show"),
+    "Harbouring a Grudge: True Status": LocationData(base_location_id + 477, "Harbouring a Grudge"),
+    "A Daring Rescue: True Status": LocationData(base_location_id + 478, "A Daring Rescue"),
+    "Arctic World: True Status": LocationData(base_location_id + 479, "Arctic World"),
+    "A Surprise for the Commissioner: True Status":
+        LocationData(base_location_id + 480, "A Surprise for the Commissioner"),
+    "Biplane Blast: True Status": LocationData(base_location_id + 481, "Biplane Blast"),
+    "The Joker's Masterpiece: True Status": LocationData(base_location_id + 482, "The Joker's Masterpiece"),
+    "The Lure of the Night: True Status": LocationData(base_location_id + 483, "The Lure of the Night"),
+    "Dying of Laughter: True Status": LocationData(base_location_id + 484, "Dying of Laughter"),
+}
+
 all_location_table = {
     **minikit_location_table,
     **hostage_location_table,
     **level_beaten_location_table,
+    **true_status_location_table,
 }
 
 location_table = {name: data.id for name, data in all_location_table.items()}

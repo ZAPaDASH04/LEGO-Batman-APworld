@@ -371,7 +371,7 @@ hostage_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Hostage": LB1ItemData(base_item_id + 424),
 }
 
-level_unlocked_location_table: Dict[str, LB1ItemData] = {
+level_unlocked_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Level Unlocked": LB1ItemData(base_item_id + 425, ItemClassification.progression),
     "An Icy Reception: Level Unlocked": LB1ItemData(base_item_id + 426, ItemClassification.progression),
     "Two-Face Chase: Level Unlocked": LB1ItemData(base_item_id + 427, ItemClassification.progression),
@@ -404,10 +404,44 @@ level_unlocked_location_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Level Unlocked": LB1ItemData(base_item_id + 454, ItemClassification.progression),
 }
 
+true_status_item_table: Dict[str, LB1ItemData] = {
+    "You can Bank on Batman: True Status": LB1ItemData(base_item_id + 455),
+    "An Icy Reception: True Status": LB1ItemData(base_item_id + 456),
+    "Two-Face Chase: True Status": LB1ItemData(base_item_id + 457),
+    "A Poisonous Appointment: True Status": LB1ItemData(base_item_id + 458),
+    "The Face-Off: True Status": LB1ItemData(base_item_id + 459),
+    "There She Goes Again: True Status": LB1ItemData(base_item_id + 460),
+    "Batboat Battle: True Status": LB1ItemData(base_item_id + 461),
+    "Under the City: True Status": LB1ItemData(base_item_id + 462),
+    "Zoo's Company: True Status": LB1ItemData(base_item_id + 463),
+    "Penguin's Lair: True Status": LB1ItemData(base_item_id + 464),
+    "Joker's Home Turf: True Status": LB1ItemData(base_item_id + 435),
+    "Little Fun at the Big Top: True Status": LB1ItemData(base_item_id + 466),
+    "Flight of the Bat: True Status": LB1ItemData(base_item_id + 467),
+    "In the Dark Night: True Status": LB1ItemData(base_item_id + 468),
+    "To the Top of the Tower: True Status": LB1ItemData(base_item_id + 469),
+    "The Riddler Makes a Withdrawal: True Status": LB1ItemData(base_item_id + 470),
+    "On the Rocks: True Status": LB1ItemData(base_item_id + 471),
+    "Green Fingers: True Status": LB1ItemData(base_item_id + 472),
+    "An Enterprising Theft: True Status": LB1ItemData(base_item_id + 473),
+    "Breaking Blocks: True Status": LB1ItemData(base_item_id + 474),
+    "Rockin' the Docks: True Status": LB1ItemData(base_item_id + 475),
+    "Stealing the Show: True Status": LB1ItemData(base_item_id + 476),
+    "Harbouring a Grudge: True Status": LB1ItemData(base_item_id + 477),
+    "A Daring Rescue: True Status": LB1ItemData(base_item_id + 478),
+    "Arctic World: True Status": LB1ItemData(base_item_id + 479),
+    "A Surprise for the Commissioner: True Status": LB1ItemData(base_item_id + 480),
+    "Biplane Blast: True Status": LB1ItemData(base_item_id + 481),
+    "The Joker's Masterpiece: True Status": LB1ItemData(base_item_id + 482),
+    "The Lure of the Night: True Status": LB1ItemData(base_item_id + 483),
+    "Dying of Laughter: True Status": LB1ItemData(base_item_id + 484),
+}
+
 item_data_table = {
     **minikit_item_table,
     **hostage_item_table,
-    **level_unlocked_location_table
+    **level_unlocked_item_table,
+    **true_status_item_table,
 }
 
 item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}
