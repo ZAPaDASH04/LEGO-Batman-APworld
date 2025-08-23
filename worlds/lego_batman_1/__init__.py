@@ -1,9 +1,9 @@
 from typing import List, Dict, Any
 
 from BaseClasses import Item, ItemClassification, Tutorial, Region, MultiWorld
-from ..AutoWorld import World, WebWorld
+from ..AutoWorld import World, WebWorld, CollectionState
 
-from .Items import LB1Item, item_table, item_data_table, minikit_item_table
+from .Items import LB1Item, item_table, item_data_table, minikit_item_table, minikit_names_set
 from .Locations import location_table, LocationData
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region
@@ -53,4 +53,25 @@ class LB1World(World):
         self.multiworld.itempool += [self.create_item(item_name) for item_name in item_table]
 
     def set_rules(self):
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("UNIQUE_MINIKITS", self.player, 300)
         set_rules(self.multiworld, self.options, self.player)
+
+    def collect(self, state: CollectionState, item: Item) -> bool:
+        changed = super().collect(state, item)
+        if changed:
+            name = item.name
+            if name in minikit_names_set and state.count(name, self.player) == 1:
+                # Count was 0 before super().collect().
+                # Increase unique minikit count.
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] += 1
+        return changed
+
+    def remove(self, state: CollectionState, item: Item) -> bool:
+        changed = super().remove(state, item)
+        if changed:
+            name = item.name
+            if name in minikit_names_set and state.count(name, self.player) == 0:
+                # Count was 1 before super().remove().
+                # Decrease unique minikit count.
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] -= 1
+        return changed

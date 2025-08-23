@@ -1,5 +1,6 @@
 from BaseClasses import Location
 from dataclasses import dataclass
+from typing import Dict
 
 class LB1Location(Location):
     game: str = "Lego Batman: The Videogame"
@@ -12,7 +13,7 @@ class LocationData(Location):
 
 base_location_id: int = 400000
 
-minikit_location_table: dict[str, LocationData] = {
+minikit_location_table: Dict[str, LocationData] = {
     # You can Bank on Batman
     "You can Bank on Batman: Minikit inside the Garage near Spawn":
         LocationData(base_location_id + 100, "You can Bank on Batman"),
@@ -645,7 +646,7 @@ minikit_location_table: dict[str, LocationData] = {
         LocationData(base_location_id + 399, "Dying of Laughter"),
 }
 
-hostage_location_table: dict[str, LocationData] = {
+hostage_location_table: Dict[str, LocationData] = {
     "You can Bank on Batman: Hostage": LocationData(base_location_id + 400, "You can Bank on Batman"),
     "An Icy Reception: Hostage": LocationData(base_location_id + 401, "An Icy Reception"),
     "A Poisonous Appointment: Hostage": LocationData(base_location_id + 402, "A Poisonous Appointment"),
@@ -673,7 +674,7 @@ hostage_location_table: dict[str, LocationData] = {
     "Dying of Laughter: Hostage": LocationData(base_location_id + 424, "Dying of Laughter"),
 }
 
-level_beaten_location_table: dict[str, LocationData] = {
+level_beaten_location_table: Dict[str, LocationData] = {
     "You can Bank on Batman: Level Beaten": LocationData(base_location_id + 425, "You can Bank on Batman"),
     "An Icy Reception: Level Beaten": LocationData(base_location_id + 426, "An Icy Reception"),
     "Two-Face Chase: Level Beaten": LocationData(base_location_id + 427, "Two-Face Chase"),

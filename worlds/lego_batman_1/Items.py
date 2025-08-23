@@ -371,7 +371,7 @@ hostage_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Hostage": LB1ItemData(base_item_id + 424),
 }
 
-level_unlocked_location_table: dict[str, LB1ItemData] = {
+level_unlocked_location_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Level Unlocked": LB1ItemData(base_item_id + 425, ItemClassification.progression),
     "An Icy Reception: Level Unlocked": LB1ItemData(base_item_id + 426, ItemClassification.progression),
     "Two-Face Chase: Level Unlocked": LB1ItemData(base_item_id + 427, ItemClassification.progression),
@@ -411,12 +411,13 @@ item_data_table = {
 }
 
 item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}
+minikit_names_set = set(minikit_item_table.keys())
 
 event_item_table: Dict[str, LB1ItemData] = {
     # "Completed Wayne Manor": LB1ItemData(None, classification=ItemClassification.progression),
     # "Completed Arkham Asylum": LB1ItemData(None, classification=ItemClassification.progression),
     # "Completed All Levels": LB1ItemData(None, classification=ItemClassification.progression),
-    "Obtain All Minikits": LB1ItemData(None, classification=ItemClassification.progression),
+    "Obtain Minikit Goal": LB1ItemData(None, classification=ItemClassification.progression),
     # "Hush": LB1ItemData(None, classification=ItemClassification.progression),
     # "Ra Sha Guul": LB1ItemData(None, classification=ItemClassification.progression),
 }
