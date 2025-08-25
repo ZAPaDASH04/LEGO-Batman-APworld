@@ -74,3 +74,9 @@ class LB1World(World):
                 # Decrease unique minikit count.
                 state.prog_items[self.player]["UNIQUE_MINIKITS"] -= 1
         return changed
+
+    def fill_slot_data(self):
+        return {
+            "EndGoal": self.options.EndGoal.value,
+            "MinikitsToWin": self.options.minikits_to_win.value
+        }
