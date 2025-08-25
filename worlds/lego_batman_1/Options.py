@@ -8,7 +8,7 @@ class EndGoal(Choice):
     Minikits: Collect all the Minikits to win.
     """
     display_name = "Goal"
-    option_Minikits = 0
+    option_minikits = 0
     default = 0
 
 
