@@ -1,10 +1,10 @@
 from worlds.AutoWorld import CollectionState
 from BaseClasses import MultiWorld, Region, Entrance
 from worlds.generic.Rules import add_rule, set_rule
-from worlds.lego_batman_1 import LB1Options
+from .Options import EndGoal, MinikitsToWin
 
 
-def set_rules(world, options: LB1Options, player: int):
+def set_rules(world, options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has("You can Bank on Batman: Level Unlocked", player))
     add_rule(world.get_entrance("Batcave -> An Icy Reception", player),
@@ -65,3 +65,6 @@ def set_rules(world, options: LB1Options, player: int):
              lambda state: state.has("The Lure of the Night: Level Unlocked", player))
     add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has("Dying of Laughter: Level Unlocked", player))
+
+    if options.EndGoal == EndGoal.option_Minikits:
+        world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)

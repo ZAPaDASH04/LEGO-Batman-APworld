@@ -53,7 +53,6 @@ class LB1World(World):
         self.multiworld.itempool += [self.create_item(item_name) for item_name in item_table]
 
     def set_rules(self):
-        self.multiworld.completion_condition[self.player] = lambda state: state.has("UNIQUE_MINIKITS", self.player, 300)
         set_rules(self.multiworld, self.options, self.player)
 
     def collect(self, state: CollectionState, item: Item) -> bool:
