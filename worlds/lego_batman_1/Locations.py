@@ -784,7 +784,7 @@ red_brick_purchase_table = {
     "More Batarang Targets Purchased": LocationData(base_location_id + 517, "Shop"),
     "Flaming Batarang Purchased": LocationData(base_location_id + 518, "Shop"),
     "Slam Purchased": LocationData(base_location_id + 519, "Shop"),
-    "more Detonators Purchased": LocationData(base_location_id + 520, "Shop"),
+    "More Detonators Purchased": LocationData(base_location_id + 520, "Shop"),
     "Amour Plating Purchased": LocationData(base_location_id + 521, "Shop"),
     "Sonic Pain Purchased": LocationData(base_location_id + 522, "Shop"),
     "Area Effect Purchased": LocationData(base_location_id + 523, "Shop"),

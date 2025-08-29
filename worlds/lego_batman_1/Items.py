@@ -478,7 +478,7 @@ red_brick_unlocked_table = {
     "More Batarang Targets Unlocked": LB1ItemData(base_item_id + 517, ItemClassification.useful),
     "Flaming Batarang Unlocked": LB1ItemData(base_item_id + 518, ItemClassification.useful),
     "Slam Unlocked": LB1ItemData(base_item_id + 519, ItemClassification.useful),
-    "more Detonators Unlocked": LB1ItemData(base_item_id + 520, ItemClassification.useful),
+    "More Detonators Unlocked": LB1ItemData(base_item_id + 520, ItemClassification.useful),
     "Amour Plating Unlocked": LB1ItemData(base_item_id + 521, ItemClassification.useful),
     "Sonic Pain Unlocked": LB1ItemData(base_item_id + 522, ItemClassification.useful),
     "Area Effect Unlocked": LB1ItemData(base_item_id + 523, ItemClassification.useful),
