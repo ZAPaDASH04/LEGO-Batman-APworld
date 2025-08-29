@@ -12,6 +12,7 @@ class LB1Region(Region):
 lb1_hub_regions = [
     "Batcave",
     "Arkham Asylum",
+    "Shop"
 ]
 
 lb1_hero_regions = [
@@ -66,6 +67,7 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int):
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
+    connect_regions(world, player, "Batcave", "Shop")
 
     for region in lb1_hero_regions:
         connect_regions(world, player, "Batcave", region)

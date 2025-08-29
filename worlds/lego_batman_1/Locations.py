@@ -296,7 +296,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 232, "In the Dark Night"),
     "In the Dark Night: Minikit in the Fish Tank":
         LocationData(base_location_id + 233, "In the Dark Night"),
-    "In the Dark Night: Minikit from Flying the Helicopter into Lights":
+    "In the Dark Night: Minikit from Flying the Helicopter into the 10 Lights":
         LocationData(base_location_id + 234, "In the Dark Night"),
     "In the Dark Night: Minikit in the Silver Lego Behind the Garbage Truck":
         LocationData(base_location_id + 235, "In the Dark Night"),
@@ -744,11 +744,80 @@ true_status_location_table: Dict[str, LocationData] = {
     "Dying of Laughter: True Status": LocationData(base_location_id + 484, "Dying of Laughter"),
 }
 
+red_brick_location_table = {
+    "You can Bank on Batman: Red Brick": LocationData(base_location_id + 485, "You can Bank on Batman"),
+    "An Icy Reception: Red Brick": LocationData(base_location_id + 486, "An Icy Reception"),
+    "Two-Face Chase: Red Brick": LocationData(base_location_id + 487, "Two-Face Chase"),
+    "A Poisonous Appointment: Red Brick": LocationData(base_location_id + 488, "A Poisonous Appointment"),
+    "The Face-Off: Red Brick": LocationData(base_location_id + 489, "The Face-Off"),
+    "There She Goes Again: Red Brick": LocationData(base_location_id + 490, "There She Goes Again"),
+    "Batboat Battle: Red Brick": LocationData(base_location_id + 491, "Batboat Battle"),
+    "Under the City: Red Brick": LocationData(base_location_id + 492, "Under the City"),
+    "Zoo's Company: Red Brick": LocationData(base_location_id + 493, "Zoo's Company"),
+    "Penguin's Lair: Red Brick": LocationData(base_location_id + 494, "Penguin's Lair"),
+    "Joker's Home Turf: Red Brick": LocationData(base_location_id + 495, "Joker's Home Turf"),
+    "Little Fun at the Big Top: Red Brick": LocationData(base_location_id + 496, "Little Fun at the Big Top"),
+    "Flight of the Bat: Red Brick": LocationData(base_location_id + 497, "Flight of the Bat"),
+    "In the Dark Night: Red Brick": LocationData(base_location_id + 498, "In the Dark Night"),
+    "To the Top of the Tower: Red Brick": LocationData(base_location_id + 499, "To the Top of the Tower"),
+    "The Riddler Makes a Withdrawal: Red Brick": LocationData(base_location_id + 500, "The Riddler Makes a Withdrawal"),
+    "On the Rocks: Red Brick": LocationData(base_location_id + 501, "On the Rocks"),
+    "Green Fingers: Red Brick": LocationData(base_location_id + 502, "Green Fingers"),
+    "An Enterprising Theft: Red Brick": LocationData(base_location_id + 503, "An Enterprising Theft"),
+    "Breaking Blocks: Red Brick": LocationData(base_location_id + 504, "Breaking Blocks"),
+    "Rockin' the Docks: Red Brick": LocationData(base_location_id + 505, "Rockin' the Docks"),
+    "Stealing the Show: Red Brick": LocationData(base_location_id + 506, "Stealing the Show"),
+    "Harbouring a Grudge: Red Brick": LocationData(base_location_id + 507, "Harbouring a Grudge"),
+    "A Daring Rescue: Red Brick": LocationData(base_location_id + 508, "A Daring Rescue"),
+    "Arctic World: Red Brick": LocationData(base_location_id + 509, "Arctic World"),
+    "A Surprise for the Commissioner: Red Brick":
+        LocationData(base_location_id + 510, "A Surprise for the Commissioner"),
+    "Biplane Blast: Red Brick": LocationData(base_location_id + 511, "Biplane Blast"),
+    "The Joker's Masterpiece: Red Brick": LocationData(base_location_id + 512, "The Joker's Masterpiece"),
+    "The Lure of the Night: Red Brick": LocationData(base_location_id + 513, "The Lure of the Night"),
+    "Dying of Laughter: Red Brick": LocationData(base_location_id + 514, "Dying of Laughter"),
+}
+
+red_brick_purchase_table = {
+    "Fast Grapple Purchased": LocationData(base_location_id + 515, "Shop"),
+    "Fast Batarangs Purchased": LocationData(base_location_id + 516, "Shop"),
+    "More Batarang Targets Purchased": LocationData(base_location_id + 517, "Shop"),
+    "Flaming Batarang Purchased": LocationData(base_location_id + 518, "Shop"),
+    "Slam Purchased": LocationData(base_location_id + 519, "Shop"),
+    "more Detonators Purchased": LocationData(base_location_id + 520, "Shop"),
+    "Amour Plating Purchased": LocationData(base_location_id + 521, "Shop"),
+    "Sonic Pain Purchased": LocationData(base_location_id + 522, "Shop"),
+    "Area Effect Purchased": LocationData(base_location_id + 523, "Shop"),
+    "Bats Purchased": LocationData(base_location_id + 524, "Shop"),
+    "Freeze Batarang Purchased": LocationData(base_location_id + 525, "Shop"),
+    "Decoy Purchased": LocationData(base_location_id + 526, "Shop"),
+    "Fast Walk Purchased": LocationData(base_location_id + 527, "Shop"),
+    "Faster Pieces Purchased": LocationData(base_location_id + 528, "Shop"),
+    "Piece Detector Purchased": LocationData(base_location_id + 529, "Shop"),
+    "Score x2 Purchased": LocationData(base_location_id + 530, "Shop"),
+    "Score x4 Purchased": LocationData(base_location_id + 531, "Shop"),
+    "Score x6 Purchased": LocationData(base_location_id + 532, "Shop"),
+    "Score x8 Purchased": LocationData(base_location_id + 533, "Shop"),
+    "Score x10 Purchased": LocationData(base_location_id + 534, "Shop"),
+    "Stud Magnet Purchased": LocationData(base_location_id + 535, "Shop"),
+    "Character Studs Purchased": LocationData(base_location_id + 536, "Shop"),
+    "Minikit Detector Purchased": LocationData(base_location_id + 537, "Shop"),
+    "Power Brick Detector Purchased": LocationData(base_location_id + 538, "Shop"),
+    "Always Score Multiply Purchased": LocationData(base_location_id + 539, "Shop"),
+    "Fast Build Purchased": LocationData(base_location_id + 540, "Shop"),
+    "Immune to Freeze Purchased": LocationData(base_location_id + 541, "Shop"),
+    "Regenerate Hearts Purchased": LocationData(base_location_id + 542, "Shop"),
+    "Extra Hearts Purchased": LocationData(base_location_id + 543, "Shop"),
+    "Invincibility Purchased": LocationData(base_location_id + 544, "Shop"),
+}
+
 all_location_table = {
     **minikit_location_table,
     **hostage_location_table,
     **level_beaten_location_table,
     **true_status_location_table,
+    **red_brick_location_table,
+    **red_brick_purchase_table
 }
 
 location_table = {name: data.id for name, data in all_location_table.items()}
