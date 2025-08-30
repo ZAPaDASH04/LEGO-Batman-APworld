@@ -59,7 +59,7 @@ class TrueStatusSanity(DefaultOnToggle):
 @dataclass
 class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
-    kit_sanity: MiniKitSanity
+    minikit_sanity: MiniKitSanity
     minikits_to_win: MinikitsToWin
     levels_to_win: LevelsToWin
     true_status_sanity: TrueStatusSanity

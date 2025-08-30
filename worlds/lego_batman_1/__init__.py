@@ -34,7 +34,7 @@ class LB1World(World):
     item_name_to_id = item_table
     location_name_to_id = location_table
     data_version = 1
-    required_client_version = (0, 4, 4)
+    required_client_version = (0, 6, 3)
     web = LB1Web()
 
     def generate_early(self):
@@ -78,6 +78,8 @@ class LB1World(World):
     def fill_slot_data(self):
         return {
             "EndGoal": self.options.EndGoal.value,
+            "MinikitSanity": self.options.minikit_sanity.value,
             "MinikitsToWin": self.options.minikits_to_win.value,
-            "LevelsToWin": self.options.levels_to_win.value
+            "LevelsToWin": self.options.levels_to_win.value,
+            "TrueStatusSanity": self.options.true_status_sanity.value,
         }
