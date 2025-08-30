@@ -59,7 +59,7 @@ class LB1World(World):
         changed = super().collect(state, item)
         if changed:
             name = item.name
-            if name in minikit_names_set and state.count(name, self.player) == 1:
+            if name in minikit_names_set and state.count(name, self.player) == 1 and self.options.EndGoal.value == 0:
                 # Count was 0 before super().collect().
                 # Increase unique minikit count.
                 state.prog_items[self.player]["UNIQUE_MINIKITS"] += 1
@@ -69,7 +69,7 @@ class LB1World(World):
         changed = super().remove(state, item)
         if changed:
             name = item.name
-            if name in minikit_names_set and state.count(name, self.player) == 0:
+            if name in minikit_names_set and state.count(name, self.player) == 0 and self.options.EndGoal.value == 0:
                 # Count was 1 before super().remove().
                 # Decrease unique minikit count.
                 state.prog_items[self.player]["UNIQUE_MINIKITS"] -= 1
@@ -78,5 +78,6 @@ class LB1World(World):
     def fill_slot_data(self):
         return {
             "EndGoal": self.options.EndGoal.value,
-            "MinikitsToWin": self.options.minikits_to_win.value
+            "MinikitsToWin": self.options.minikits_to_win.value,
+            "LevelsToWin": self.options.levels_to_win.value
         }

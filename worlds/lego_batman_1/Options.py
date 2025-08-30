@@ -1,14 +1,16 @@
 from dataclasses import dataclass
-from Options import Toggle, DefaultOnToggle, Range, Choice, PerGameCommonOptions
+from Options import DefaultOnToggle, Range, Choice, PerGameCommonOptions
 
 class EndGoal(Choice):
     """
     Determine the goal for the seed
 
-    Minikits: Collect all the Minikits to win.
+    Minikits: Collect Minikits to win.
+    Levels Beaten: Beat Levels to win.
     """
     display_name = "Goal"
     option_minikits = 0
+    option_levels_beaten = 1
     default = 0
 
 
@@ -16,7 +18,7 @@ class MiniKitSanity(DefaultOnToggle):
     """
     Puts all 300 Minikits into the pool.
     """
-    display_name = "MinikitSanity"
+    display_name = "Minikit Sanity"
 
 
 class MinikitsToWin(Range):
@@ -26,7 +28,24 @@ class MinikitsToWin(Range):
     display_name = "Total Minikits"
     range_start = 50
     range_end = 300
-    default = 250
+    default = 200
+
+
+class LevelsToWin(Range):
+    """
+    Number of Levels needed to win. Please note that starting levels do not count towards win total.
+    """
+    display_name = "Total Levels"
+    range_start = 5
+    range_end = 30
+    default = 20
+
+
+class TrueStatusSanity(DefaultOnToggle):
+    """
+    Shuffles the true status of each level.
+    """
+    display_name = "True Status Sanity"
 
 
 # class HostageSanity(Toggle):
@@ -42,3 +61,6 @@ class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
     kit_sanity: MiniKitSanity
     minikits_to_win: MinikitsToWin
+    levels_to_win: LevelsToWin
+    true_status_sanity: TrueStatusSanity
+    # hostage_sanity: HostageSanity
