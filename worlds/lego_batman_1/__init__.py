@@ -6,7 +6,7 @@ from ..AutoWorld import World, WebWorld, CollectionState
 from .Items import LB1Item, item_table, item_data_table, minikit_item_table, minikit_names_set
 from .Locations import location_table, LocationData
 from .Options import LB1Options
-from .Regions import create_regions, connect_regions, LB1Region
+from .Regions import create_regions, connect_regions, LB1Region, create_events
 from .Rules import set_rules
 
 class LB1Web(WebWorld):
@@ -43,6 +43,7 @@ class LB1World(World):
 
     def create_regions(self):
         create_regions(self.multiworld, self.options, self.player)
+        create_events(self.multiworld, self.player)
 
     def create_item(self, name: str) -> Item:
         data = item_data_table[name]

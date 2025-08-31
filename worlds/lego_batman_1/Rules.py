@@ -1,8 +1,8 @@
 from worlds.AutoWorld import CollectionState
-from BaseClasses import MultiWorld, Region, Entrance
+from BaseClasses import MultiWorld, Region, Entrance, Location
 from worlds.generic.Rules import add_rule, set_rule
-from .Options import LB1Options, EndGoal
-from .Locations import red_brick_purchase_table
+from .Options import LB1Options, EndGoal, LevelsToWin
+from .Locations import level_beaten_event_location_table
 
 
 def set_rules(world, options: LB1Options, player: int):
@@ -133,3 +133,10 @@ def set_rules(world, options: LB1Options, player: int):
 
     if options.EndGoal == EndGoal.option_minikits:
         world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)
+    elif options.EndGoal == EndGoal.option_levels_beaten:
+        world.completion_condition[player] = lambda state: state.has("Level Beaten", player, options.levels_to_win)
+
+def set_event_rules(world: MultiWorld, player: int):
+    for (name, data) in level_beaten_event_location_table.items():
+        event: Location = world.get_location(name, player)
+        add_rule(event, world.get_location(name, player).access_rule)

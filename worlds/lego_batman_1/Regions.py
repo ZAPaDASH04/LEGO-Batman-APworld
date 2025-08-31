@@ -1,8 +1,9 @@
 import typing
 
-from BaseClasses import MultiWorld, Region, Entrance
+from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassification
 from .Options import LB1Options
-from .Locations import all_location_table, LB1Location
+from .Locations import all_location_table, LB1Location, level_beaten_event_location_table
+from .Items import LB1Item
 
 
 class LB1Region(Region):
@@ -87,8 +88,25 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld) -> R
 
     for (key, data) in all_location_table.items():
         if data.region == name:
-            location = LB1Location(region.player, key, data.id, region)
+            location = LB1Location(player, key, data.id, region)
             region.locations.append(location)
 
     world.regions.append(region)
     return region
+
+def create_events(world: MultiWorld, player: int) -> int:
+    count = 0
+
+    for (name, data) in level_beaten_event_location_table.items():
+        item_name = "Level Beaten"
+        event: Location = create_event(name, item_name, world.get_region(data.region, player), world, player)
+        event.show_in_spoiler = True
+        count += 1
+
+    return count
+
+def create_event(name: str, item_name: str, region: Region, world: MultiWorld, player: int) -> Location:
+    event = LB1Location(player, name, None, region)
+    region.locations.append(event)
+    event.place_locked_item(LB1Item(item_name, ItemClassification.progression, None, player))
+    return event
