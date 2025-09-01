@@ -287,7 +287,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 228, "Flight of the Bat"),
     "Flight of the Bat: Minikit near the Yellow Barrels on the Rooftop":
         LocationData(base_location_id + 229, "Flight of the Bat"),
-    #in the Dark Night
+    #In the Dark Night
     "In the Dark Night: Break the Glass Behind the Strength Door Minikit":
         LocationData(base_location_id + 230, "In the Dark Night"),
     "In the Dark Night: Minikit back Left Corner of the Rooftop Reached by Grapple":
