@@ -415,7 +415,7 @@ true_status_item_table: Dict[str, LB1ItemData] = {
     "Under the City: True Status": LB1ItemData(base_item_id + 462),
     "Zoo's Company: True Status": LB1ItemData(base_item_id + 463),
     "Penguin's Lair: True Status": LB1ItemData(base_item_id + 464),
-    "Joker's Home Turf: True Status": LB1ItemData(base_item_id + 435),
+    "Joker's Home Turf: True Status": LB1ItemData(base_item_id + 465),
     "Little Fun at the Big Top: True Status": LB1ItemData(base_item_id + 466),
     "Flight of the Bat: True Status": LB1ItemData(base_item_id + 467),
     "In the Dark Night: True Status": LB1ItemData(base_item_id + 468),
