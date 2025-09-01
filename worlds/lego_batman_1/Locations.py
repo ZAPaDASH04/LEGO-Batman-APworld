@@ -21,7 +21,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 101, "You can Bank on Batman"),
     "You can Bank on Batman: Minikit behind Glass Window near Spawn":
         LocationData(base_location_id + 102, "You can Bank on Batman"),
-    "You can Bank on Batman: Mind Control Behind Van in Toxic Waste Minikit":
+    "You can Bank on Batman: Minikit in the Bar behind the Broken Down Van":
         LocationData(base_location_id + 103, "You can Bank on Batman"),
     "You can Bank on Batman: Minikit in the Sewer Grate":
         LocationData(base_location_id + 104, "You can Bank on Batman"),
@@ -29,11 +29,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 105, "You can Bank on Batman"),
     "You can Bank on Batman: Minikit on a Balcony Behind Heavy Item near Downward Slope":
         LocationData(base_location_id + 106, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit from Using the Recycler":
+    "You can Bank on Batman: Recycler Minikit":
         LocationData(base_location_id + 107, "You can Bank on Batman"),
-    "You can Bank on Batman: Park Two Cars Minikit":
+    "You can Bank on Batman: Park 2 Cars Minikit":
         LocationData(base_location_id + 108, "You can Bank on Batman"),
-    "You can Bank on Batman: Destroy Five Phone Booths Minikit":
+    "You can Bank on Batman: Destroy 5 Phone Booths Minikit":
         LocationData(base_location_id + 109, "You can Bank on Batman"),
     # An Icy Reception
     "An Icy Reception: Minikit on a Ledge near Spawn":
@@ -57,13 +57,13 @@ minikit_location_table: Dict[str, LocationData] = {
     "An Icy Reception: Minikit in the Hypnosis Room":
         LocationData(base_location_id + 119, "An Icy Reception"),
     # Two-Face Chase
-    "Two-Face Chase: Destroy Three Dumpsters Minikit":
+    "Two-Face Chase: Destroy 3 Dumpsters Minikit":
         LocationData(base_location_id + 120, "Two-Face Chase"),
     "Two-Face Chase: Minikit in the Manhole Cover":
         LocationData(base_location_id + 121, "Two-Face Chase"),
     "Two-Face Chase: Destroy the Southwest Trash Dumpster Minikit":
         LocationData(base_location_id + 122, "Two-Face Chase"),
-    "Two-Face Chase: Destroy Three Cars Minikit":
+    "Two-Face Chase: Destroy 3 Cars Minikit":
         LocationData(base_location_id + 123, "Two-Face Chase"),
     "Two-Face Chase: Destroy the North Supports Minikit":
         LocationData(base_location_id + 124, "Two-Face Chase"),
@@ -75,7 +75,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 127, "Two-Face Chase"),
     "Two-Face Chase: Minikit in the Telephone Booth":
         LocationData(base_location_id + 128, "Two-Face Chase"),
-    "Two-Face Chase: Destroy Three Food Carts Minikit":
+    "Two-Face Chase: Destroy 3 Food Carts Minikit":
         LocationData(base_location_id + 129, "Two-Face Chase"),
     # A Poisonous Appointment
     "A Poisonous Appointment: Farm the Carrots Minikit":
@@ -92,14 +92,14 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 135, "A Poisonous Appointment"),
     "A Poisonous Appointment: Minikit in a Vat near the Second Pitcher Plant":
         LocationData(base_location_id + 136, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Destroy three Carrots Minikit":
+    "A Poisonous Appointment: Destroy 3 Carrots Minikit":
         LocationData(base_location_id + 137, "A Poisonous Appointment"),
     "A Poisonous Appointment: Minikit above the Heated Pipes":
         LocationData(base_location_id + 138, "A Poisonous Appointment"),
     "A Poisonous Appointment: Minikit in the Toxic Waste Room Above Ledge":
         LocationData(base_location_id + 139, "A Poisonous Appointment"),
     # The Face-Off
-    "The Face-Off: Jump on Poles Minikit":
+    "The Face-Off: Jump on the 5 Poles Minikit":
         LocationData(base_location_id + 140, "The Face-Off"),
     "The Face-Off: Minikit above Grapple Point to the Right of Spawn":
         LocationData(base_location_id + 141, "The Face-Off"),
@@ -111,13 +111,13 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 144, "The Face-Off"),
     "The Face-Off: Minikit in the Toxic Waste Room Pipe":
         LocationData(base_location_id + 145, "The Face-Off"),
-    "The Face-Off: Underneath the Three Platform Bridge Minikit":
+    "The Face-Off: Underneath the 3 Platform Bridge Minikit":
         LocationData(base_location_id + 146, "The Face-Off"),
     "The Face-Off: Minikit on the Right Side of Toxic Waste Room":
         LocationData(base_location_id + 147, "The Face-Off"),
     "The Face-Off: Minikit on the Right Side of Vault Room":
         LocationData(base_location_id + 148, "The Face-Off"),
-    "The Face-Off: Destroy Five Chests Minikit":
+    "The Face-Off: Destroy 5 Chests Minikit":
         LocationData(base_location_id + 149, "The Face-Off"),
     #There She Goes Again
     "There She Goes Again: Minikit in the Female Locked Room":
@@ -126,11 +126,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 151, "There She Goes Again"),
     "There She Goes Again: Minikit locked Underwater Behind the Fence":
         LocationData(base_location_id + 152, "There She Goes Again"),
-    "There She Goes Again: Destroy three Carrots Minikit":
+    "There She Goes Again: Destroy 3 Carrots Minikit":
         LocationData(base_location_id + 153, "There She Goes Again"),
     "There She Goes Again: Minikit locked Underwater by the Blue Pump":
         LocationData(base_location_id + 154, "There She Goes Again"),
-    "There She Goes Again: Minikit from Using the Lawnmower on the Flowers":
+    "There She Goes Again: Lawnmow the Flowers Minikit":
         LocationData(base_location_id + 155, "There She Goes Again"),
     "There She Goes Again: Minikit behind the Window Above Dumpster":
         LocationData(base_location_id + 156, "There She Goes Again"),
@@ -155,11 +155,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 165, "Batboat Battle"),
     "Batboat Battle: Destroy Silver Legos Around Pipe Minikit":
         LocationData(base_location_id + 166, "Batboat Battle"),
-    "Batboat Battle: Destroy Buoys Minikit":
+    "Batboat Battle: Destroy 3 Buoys Minikit":
         LocationData(base_location_id + 167, "Batboat Battle"),
     "Batboat Battle: Minikit in the Corner Surrounded by Ice":
         LocationData(base_location_id + 168, "Batboat Battle"),
-    "Batboat Battle: Destroy Silver Lego Boxes in Toxic Water Minikit":
+    "Batboat Battle: Destroy 3 Silver Lego Boxes in Toxic Water Minikit":
         LocationData(base_location_id + 169, "Batboat Battle"),
     #Under the City
     "Under the City: Minikit on Top of the Rafters":
@@ -170,7 +170,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 172, "Under the City"),
     "Under the City: Minikit on the Pipes Above the Robin Suit Swapper":
         LocationData(base_location_id + 173, "Under the City"),
-    "Under the City: Minikit destroy Markers with the Boat Built from the Recycler":
+    "Under the City: Minikit from Destroying 5 Markers with the Boat Built from the Recycler":
         LocationData(base_location_id + 174, "Under the City"),
     "Under the City: Minikit above the Ladder Across the Toxic Waste":
         LocationData(base_location_id + 175, "Under the City"),
@@ -183,15 +183,15 @@ minikit_location_table: Dict[str, LocationData] = {
     "Under the City: Minikit on Top of the Pillar by the Generator":
         LocationData(base_location_id + 179, "Under the City"),
     # Zoo's Company
-    "Zoo's Company: Minikit from hitting Buoys with Boat in the Female Locked Room":
+    "Zoo's Company: Hit Buoys with Boat in the Female Locked Room Minikit":
         LocationData(base_location_id + 180, "Zoo's Company"),
     "Zoo's Company: Minikit in the Air on Other Side of Toxic Waste Behind the Barred Door":
         LocationData(base_location_id + 181, "Zoo's Company"),
-    "Zoo's Company: Minikit from Using the Recycler":
+    "Zoo's Company: Recycler Minikit":
         LocationData(base_location_id + 182, "Zoo's Company"),
-    "Zoo's Company: Destroy the Silver Legos Above Recycler Minikit":
+    "Zoo's Company: Minikit from Destroying the Silver Legos Above the Recycler":
         LocationData(base_location_id + 183, "Zoo's Company"),
-    "Zoo's Company: Minikit in the Air After Building Totem":
+    "Zoo's Company: Build the Totem Minikit":
         LocationData(base_location_id + 184, "Zoo's Company"),
     "Zoo's Company: Destroy the Silver Legos in Lion Enclosure Minikit":
         LocationData(base_location_id + 185, "Zoo's Company"),
@@ -210,7 +210,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 191, "Penguin's Lair"),
     "Penguin's Lair: Minikit on the Roof Above the Robin Suit Swapper":
         LocationData(base_location_id + 192, "Penguin's Lair"),
-    "Penguin's Lair: Minikit from Growing Carrots":
+    "Penguin's Lair: Grow 3 Carrots Minikits":
         LocationData(base_location_id + 193, "Penguin's Lair"),
     "Penguin's Lair: Minikit on the Icy Ledge":
         LocationData(base_location_id + 194, "Penguin's Lair"),
@@ -222,14 +222,14 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 197, "Penguin's Lair"),
     "Penguin's Lair: Destroy Capacitors with Batarang Minikit":
         LocationData(base_location_id + 198, "Penguin's Lair"),
-    "Penguin's Lair: Minikit from Building Heated Objects":
+    "Penguin's Lair: Build the Heated Objects Minikit":
         LocationData(base_location_id + 199, "Penguin's Lair"),
     #Joker's Home Turf
     "Joker's Home Turf: Minikit above the Fan Built from Silver Legos":
         LocationData(base_location_id + 200, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit from Cleaning up the Toxic Waste":
+    "Joker's Home Turf: Clean up the Toxic Waste Minikit":
         LocationData(base_location_id + 201, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit from Completing the Puzzle Behind the Mind Control Door":
+    "Joker's Home Turf: Puzzle Behind the Mind Control Door Minikit":
         LocationData(base_location_id + 202, "Joker's Home Turf"),
     "Joker's Home Turf: Minikit above the Ledge Accessed by Joker's Ladder":
         LocationData(base_location_id + 203, "Joker's Home Turf"),
@@ -239,7 +239,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 205, "Joker's Home Turf"),
     "Joker's Home Turf: Minikit high Up in Alcove Behind the Strength Gate":
         LocationData(base_location_id + 206, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit from crossing the Toxic Waste Water":
+    "Joker's Home Turf: Cross the Toxic Waste Water Minikit":
         LocationData(base_location_id + 207, "Joker's Home Turf"),
     "Joker's Home Turf: Minikit in the Pool of Toxic Waste Drained by Generator":
         LocationData(base_location_id + 208, "Joker's Home Turf"),
@@ -256,20 +256,20 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 213, "Little Fun at the Big Top"),
     "Little Fun at the Big Top: Minikit behind the Window Above Gumball Machine":
         LocationData(base_location_id + 214, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Minikit from Activating the Teacup Ride":
+    "Little Fun at the Big Top: Teacup Ride Minikit":
         LocationData(base_location_id + 215, "Little Fun at the Big Top"),
     "Little Fun at the Big Top: Minikit on the Spiral Slide":
         LocationData(base_location_id + 216, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Minikit from Storing the Toy Boats":
+    "Little Fun at the Big Top: Store the Toy Boats Minikit":
         LocationData(base_location_id + 217, "Little Fun at the Big Top"),
     "Little Fun at the Big Top: Bumper Cars Minikit":
         LocationData(base_location_id + 218, "Little Fun at the Big Top"),
     "Little Fun at the Big Top: Tightrope on the Other Side of the Toxic Waste Minikit":
         LocationData(base_location_id + 219, "Little Fun at the Big Top"),
     #Flight of the Bat
-    "Flight of the Bat: Destroy the Missile Launchers Minikit":
+    "Flight of the Bat: Destroy the 6 Missile Launchers Minikit":
         LocationData(base_location_id + 220, "Flight of the Bat"),
-    "Flight of the Bat: Minikit floating by Turrets":
+    "Flight of the Bat: Minikit floating by the Last 2 Turrets":
         LocationData(base_location_id + 221, "Flight of the Bat"),
     "Flight of the Bat: Minikit on the Railway":
         LocationData(base_location_id + 222, "Flight of the Bat"),
@@ -277,26 +277,26 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 223, "Flight of the Bat"),
     "Flight of the Bat: Destroy the Gray Pipe Minikit":
         LocationData(base_location_id + 224, "Flight of the Bat"),
-    "Flight of the Bat: Minikit from Blowing up the Silver Lego Valves":
+    "Flight of the Bat: Blow up the Silver Lego Valves Minikit":
         LocationData(base_location_id + 225, "Flight of the Bat"),
-    "Flight of the Bat: Destroy Gargoyles Minikit":
+    "Flight of the Bat: Destroy 3 Gargoyles Minikit":
         LocationData(base_location_id + 226, "Flight of the Bat"),
-    "Flight of the Bat: Minikit from Completing the Barrel Puzzle":
+    "Flight of the Bat: Barrel Puzzle Minikit":
         LocationData(base_location_id + 227, "Flight of the Bat"),
     "Flight of the Bat: Minikit on platform near the Helicopter Pad":
         LocationData(base_location_id + 228, "Flight of the Bat"),
     "Flight of the Bat: Minikit near the Yellow Barrels on the Rooftop":
         LocationData(base_location_id + 229, "Flight of the Bat"),
     #in the Dark Night
-    "In the Dark Night: Minikit from Breaking the Glass Behind the Strength Door":
+    "In the Dark Night: Break the Glass Behind the Strength Door Minikit":
         LocationData(base_location_id + 230, "In the Dark Night"),
     "In the Dark Night: Minikit back Left Corner of the Rooftop Reached by Grapple":
         LocationData(base_location_id + 231, "In the Dark Night"),
-    "In the Dark Night: Destroy Objects to Find Cakes Minikit":
+    "In the Dark Night: Find 3 Cakes Minikit":
         LocationData(base_location_id + 232, "In the Dark Night"),
     "In the Dark Night: Minikit in the Fish Tank":
         LocationData(base_location_id + 233, "In the Dark Night"),
-    "In the Dark Night: Minikit from Flying the Helicopter into the 10 Lights":
+    "In the Dark Night: Fly the Helicopter into the 10 Lights Minikit":
         LocationData(base_location_id + 234, "In the Dark Night"),
     "In the Dark Night: Minikit in the Silver Lego Behind the Garbage Truck":
         LocationData(base_location_id + 235, "In the Dark Night"),
@@ -304,18 +304,18 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 236, "In the Dark Night"),
     "In the Dark Night: Minikit inside the Silver Lego Manhole Cover":
         LocationData(base_location_id + 237, "In the Dark Night"),
-    "In the Dark Night: Minikit from Exploding the Generator in the Boss Room":
+    "In the Dark Night: Explode the Generator in the Boss Room Minikit":
         LocationData(base_location_id + 238, "In the Dark Night"),
     "In the Dark Night: Minikit in Glass Above Joker's Generator":
         LocationData(base_location_id + 239, "In the Dark Night"),
     #To the Top of the Tower
-    "To the Top of the Tower: Destroy Silver Lego Gargoyles Minikit":
+    "To the Top of the Tower: Destroy 3 Silver Lego Gargoyles Minikit":
         LocationData(base_location_id + 240, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit from using the Buttons on the Ledge Above the Flowerbed":
+    "To the Top of the Tower: Buttons on the Ledge Above the Flowerbed Minikit":
         LocationData(base_location_id + 241, "To the Top of the Tower"),
     "To the Top of the Tower: Minikit behind the Glass Filled Arch":
         LocationData(base_location_id + 242, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit in the Destroyed Wall From Using the Recycler":
+    "To the Top of the Tower: Minikit in the Recycler Destroyed Wall":
         LocationData(base_location_id + 243, "To the Top of the Tower"),
     "To the Top of the Tower: Minikit floating on the Right Side of the Cathedral":
         LocationData(base_location_id + 244, "To the Top of the Tower"),
@@ -325,7 +325,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 246, "To the Top of the Tower"),
     "To the Top of the Tower: Minikit hidden to the Right of the Lever":
         LocationData(base_location_id + 247, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit from using the Orange Buttons on Left Side of Bell Tower":
+    "To the Top of the Tower: Use the Orange Buttons on Left Side of Bell Tower Minikit":
         LocationData(base_location_id + 248, "To the Top of the Tower"),
     "To the Top of the Tower: Minikit in the Silver Lego Crate next to Statue Path":
         LocationData(base_location_id + 249, "To the Top of the Tower"),
@@ -334,7 +334,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 250, "The Riddler Makes a Withdrawal"),
     "The Riddler Makes a Withdrawal: Minikit above the Parking Lot":
         LocationData(base_location_id + 251, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit from Smashing the Blue Booth":
+    "The Riddler Makes a Withdrawal: Smash the Blue Booth Minikit":
         LocationData(base_location_id + 252, "The Riddler Makes a Withdrawal"),
     "The Riddler Makes a Withdrawal: Minikit behind the Silver Lego Gate":
         LocationData(base_location_id + 253, "The Riddler Makes a Withdrawal"),
@@ -353,7 +353,7 @@ minikit_location_table: Dict[str, LocationData] = {
     # On the Rocks
     "On the Rocks: Minikit from park the Ice Cream Van":
         LocationData(base_location_id + 260, "On the Rocks"),
-    "On the Rocks: Minikit destroy Snowmen":
+    "On the Rocks: Minikit destroy 3 Snowmen":
         LocationData(base_location_id + 261, "On the Rocks"),
     "On the Rocks: Minikit behind the Window near the Snowman Billboard":
         LocationData(base_location_id + 262, "On the Rocks"),
@@ -363,7 +363,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 264, "On the Rocks"),
     "On the Rocks: Minikit floating below Rails off the Edge":
         LocationData(base_location_id + 265, "On the Rocks"),
-    "On the Rocks: Minikit from Using the Recycler":
+    "On the Rocks: Recycler Minikit":
         LocationData(base_location_id + 266, "On the Rocks"),
     "On the Rocks: Minikit in the Silver Lego Crate by Hypnotised Man":
         LocationData(base_location_id + 267, "On the Rocks"),
@@ -380,11 +380,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 272, "Green Fingers"),
     "Green Fingers: Complete the Block Puzzle Minikit":
         LocationData(base_location_id + 273, "Green Fingers"),
-    "Green Fingers: Minikit in the Air After Turning on the Fountain":
+    "Green Fingers: Turn on the Fountain Minikit":
         LocationData(base_location_id + 274, "Green Fingers"),
     "Green Fingers: Minikit near the Pipe Above the Toxic Waste":
         LocationData(base_location_id + 275, "Green Fingers"),
-    "Green Fingers: Minikit from breaking Machine Behind the Silver Lego Door":
+    "Green Fingers: Break the Machine Behind the Silver Lego Door Minikit":
         LocationData(base_location_id + 276, "Green Fingers"),
     "Green Fingers: Minikit in the Hole Above the Heated Pipe":
         LocationData(base_location_id + 277, "Green Fingers"),
@@ -395,19 +395,19 @@ minikit_location_table: Dict[str, LocationData] = {
     #An Enterprising Theft
     "An Enterprising Theft: Minikit above the Display Case":
         LocationData(base_location_id + 280, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit from Completing the Car Maze":
+    "An Enterprising Theft: Car Maze Minikit":
         LocationData(base_location_id + 281, "An Enterprising Theft"),
     "An Enterprising Theft: Minikit inside the Elevator":
         LocationData(base_location_id + 282, "An Enterprising Theft"),
     "An Enterprising Theft: Minikit behind the Glass Window":
         LocationData(base_location_id + 283, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit from flying the Helicopter in the Toxic Waste Room":
+    "An Enterprising Theft: Fly the Helicopter in the Toxic Waste Room Minikit":
         LocationData(base_location_id + 284, "An Enterprising Theft"),
     "An Enterprising Theft: Minikit in the Metal Pipe that the Hypnotized Man Opens":
         LocationData(base_location_id + 285, "An Enterprising Theft"),
     "An Enterprising Theft: Minikit behind the Silver Lego Grate":
         LocationData(base_location_id + 286, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit from Putting the Weight on the Scale":
+    "An Enterprising Theft: Put the Weight on the Scale Minikit":
         LocationData(base_location_id + 287, "An Enterprising Theft"),
     "An Enterprising Theft: Minikit above the Heated Pipe of the Silver Lego Gate":
         LocationData(base_location_id + 288, "An Enterprising Theft"),
@@ -418,7 +418,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 290, "Breaking Blocks"),
     "Breaking Blocks: Minikit destroy Security Cameras":
         LocationData(base_location_id + 291, "Breaking Blocks"),
-    "Breaking Blocks: Minikit behind the Painting":
+    "Breaking Blocks: Minikit behind the 3rd Painting":
         LocationData(base_location_id + 292, "Breaking Blocks"),
     "Breaking Blocks: Minikit on a Ledge Above the Recycler":
         LocationData(base_location_id + 293, "Breaking Blocks"),
@@ -426,11 +426,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 294, "Breaking Blocks"),
     "Breaking Blocks: Minikit in the Silver Lego Cage near Hostage":
         LocationData(base_location_id + 295, "Breaking Blocks"),
-    "Breaking Blocks: Destroy Golden Piggy Banks Minikit":
+    "Breaking Blocks: Destroy 4 Golden Piggy Banks Minikit":
         LocationData(base_location_id + 296, "Breaking Blocks"),
     "Breaking Blocks: Minikit in the Silver Lego Cage near the Lasers":
         LocationData(base_location_id + 297, "Breaking Blocks"),
-    "Breaking Blocks: Minikit from pushing the Metal Legos off the Edge":
+    "Breaking Blocks: Push the Metal Legos off the Edge Minikit":
         LocationData(base_location_id + 298, "Breaking Blocks"),
     "Breaking Blocks: Minikit behind the Silver Lego Vault Door":
         LocationData(base_location_id + 299, "Breaking Blocks"),
@@ -441,17 +441,17 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 301, "Rockin' the Docks"),
     "Rockin' the Docks: Minikit inside the Boat":
         LocationData(base_location_id + 302, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit from parking the Trucks on the Buttons":
+    "Rockin' the Docks: Park the Trucks on the Buttons Minikit":
         LocationData(base_location_id + 303, "Rockin' the Docks"),
     "Rockin' the Docks: Minikit on the Ledge reached from the Plant Ladder":
         LocationData(base_location_id + 304, "Rockin' the Docks"),
-    "Rockin' the Docks: Destroy Water Cannons on Docks Minikit":
+    "Rockin' the Docks: Destroy 5 Water Cannons on Docks Minikit":
         LocationData(base_location_id + 305, "Rockin' the Docks"),
     "Rockin' the Docks: Joker's Pirate Ship Race Minikit":
         LocationData(base_location_id + 306, "Rockin' the Docks"),
     "Rockin' the Docks: Minikit beneath the Lily Pads":
         LocationData(base_location_id + 307, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit use the Recycler in the Female Locked Room":
+    "Rockin' the Docks: Recycler Minikit in the Female Locked Room":
         LocationData(base_location_id + 308, "Rockin' the Docks"),
     "Rockin' the Docks: Minikit on the Narrow Ledge to the Left After Riding the Elevator":
         LocationData(base_location_id + 309, "Rockin' the Docks"),
@@ -479,11 +479,11 @@ minikit_location_table: Dict[str, LocationData] = {
     #Harbouring a Grudge
     "Harbouring a Grudge: Minikit inside the Toxic Waste Barrel":
         LocationData(base_location_id + 320, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit destroy Mini Oil Rigs":
+    "Harbouring a Grudge: Minikit destroy 3 Mini Oil Rigs":
         LocationData(base_location_id + 321, "Harbouring a Grudge"),
     "Harbouring a Grudge: Minikit behind Silver Lego Locked Gate":
         LocationData(base_location_id + 322, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Destroy five Buoys Minikit":
+    "Harbouring a Grudge: Destroy 5 Buoys Minikit":
         LocationData(base_location_id + 323, "Harbouring a Grudge"),
     "Harbouring a Grudge: Destroy the Docked Boat Minikit":
         LocationData(base_location_id + 324, "Harbouring a Grudge"),
@@ -504,11 +504,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 331, "A Daring Rescue"),
     "A Daring Rescue: Minikit complete the Water Pressure Puzzle":
         LocationData(base_location_id + 332, "A Daring Rescue"),
-    "A Daring Rescue: Destroy TVs Minikit":
+    "A Daring Rescue: Destroy 5 TVs Minikit":
         LocationData(base_location_id + 333, "A Daring Rescue"),
-    "A Daring Rescue: Minikit from Using the Recycler":
+    "A Daring Rescue: Recycler Minikit":
         LocationData(base_location_id + 334, "A Daring Rescue"),
-    "A Daring Rescue: Minikit from parking Police Vehicles":
+    "A Daring Rescue: Park 3 Police Vehicles Minikit":
         LocationData(base_location_id + 335, "A Daring Rescue"),
     "A Daring Rescue: Minikit up the Stairs after Pulling the Glass Locked Switch":
         LocationData(base_location_id + 336, "A Daring Rescue"),
@@ -516,7 +516,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 337, "A Daring Rescue"),
     "A Daring Rescue: Minikit in the Case Above Magnet Wall":
         LocationData(base_location_id + 338, "A Daring Rescue"),
-    "A Daring Rescue: Minikit locked in Final Room Holding Cell":
+    "A Daring Rescue: Holding Cell Minikit":
         LocationData(base_location_id + 339, "A Daring Rescue"),
     # Arctic World
     "Arctic World: Minikit inside the Ice Cream Shop":
@@ -525,13 +525,13 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 341, "Arctic World"),
     "Arctic World: Minikit in the Cave Blocked by Glass":
         LocationData(base_location_id + 342, "Arctic World"),
-    "Arctic World: Minikit slalom Skiing":
+    "Arctic World: Slalom Skiing Minikit":
         LocationData(base_location_id + 343, "Arctic World"),
     "Arctic World: Minikit the Shark's Minikit":
         LocationData(base_location_id + 344, "Arctic World"),
-    "Arctic World: Minikit complete the Button Puzzle":
+    "Arctic World: Minikit complete the 3 Button Puzzle":
         LocationData(base_location_id + 345, "Arctic World"),
-    "Arctic World: Minikit slide Through the Yellow Gates":
+    "Arctic World: Minikit slide Through the 5 Yellow Gates":
         LocationData(base_location_id + 346, "Arctic World"),
     "Arctic World: Minikit in the Air Above the Silver Legos":
         LocationData(base_location_id + 347, "Arctic World"),
@@ -544,7 +544,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 350, "A Surprise for the Commissioner"),
     "A Surprise for the Commissioner: Minikit behind the Glass Window":
         LocationData(base_location_id + 351, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit freeze Ice Cream Cones":
+    "A Surprise for the Commissioner: Freeze 3 Ice Cream Cones Minikits":
         LocationData(base_location_id + 352, "A Surprise for the Commissioner"),
     "A Surprise for the Commissioner: Minikit inside the Vending Machine In Hostage Room":
         LocationData(base_location_id + 353, "A Surprise for the Commissioner"),
@@ -556,20 +556,20 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 356, "A Surprise for the Commissioner"),
     "A Surprise for the Commissioner: Minikit underwater in the Duck Pond":
         LocationData(base_location_id + 357, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit from Parking 4 Trucks":
+    "A Surprise for the Commissioner: Park 4 Trucks Minikit":
         LocationData(base_location_id + 358, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit from driving the Ice Cream Truck to Garage":
+    "A Surprise for the Commissioner: Drive the Ice Cream Truck to Garage Minikit":
         LocationData(base_location_id + 359, "A Surprise for the Commissioner"),
     #Biplane Blast
-    "Biplane Blast: Destroy Brown Towers Minikit":
+    "Biplane Blast: Destroy Brown 10 Towers Minikit":
         LocationData(base_location_id + 360, "Biplane Blast"),
     "Biplane Blast: Minikit in the Chapel Tower":
         LocationData(base_location_id + 361, "Biplane Blast"),
     "Biplane Blast: Activate the Signal Tower Minikit":
         LocationData(base_location_id + 362, "Biplane Blast"),
-    "Biplane Blast: Shooting the Joker Balloons Minikit":
+    "Biplane Blast: Shoot the 3 Joker Balloons Minikit":
         LocationData(base_location_id + 363, "Biplane Blast"),
-    "Biplane Blast: Destroy Cages from the Joker Shield Minikit":
+    "Biplane Blast: Destroy 3 Cages from the Joker Shield Minikit":
         LocationData(base_location_id + 364, "Biplane Blast"),
     "Biplane Blast: Minikit inside the Silver Air Conditioner":
         LocationData(base_location_id + 365, "Biplane Blast"),
@@ -582,13 +582,13 @@ minikit_location_table: Dict[str, LocationData] = {
     "Biplane Blast: Minikit inside Silver Lego Cage by Bat Symbol":
         LocationData(base_location_id + 369, "Biplane Blast"),
     #The Joker's Masterpiece
-    "The Joker's Masterpiece: Minikit from smashing Containers":
+    "The Joker's Masterpiece: Smash 3 Containers Minikit":
         LocationData(base_location_id + 370, "The Joker's Masterpiece"),
     "The Joker's Masterpiece: Minikit behind the Laser Grid":
         LocationData(base_location_id + 371, "The Joker's Masterpiece"),
     "The Joker's Masterpiece: Minikit drop the Statue off the Ledge":
         LocationData(base_location_id + 372, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit open the Painting Behind the Pillars":
+    "The Joker's Masterpiece: Minikit behind the Pillars Painting":
         LocationData(base_location_id + 373, "The Joker's Masterpiece"),
     "The Joker's Masterpiece: Minikit in Glass Display Case in Gas Room":
         LocationData(base_location_id + 374, "The Joker's Masterpiece"),
@@ -600,7 +600,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 377, "The Joker's Masterpiece"),
     "The Joker's Masterpiece: Minikit in the Vent":
         LocationData(base_location_id + 378, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit from using the Generator Twice":
+    "The Joker's Masterpiece: Use the Generator Twice Minikit":
         LocationData(base_location_id + 379, "The Joker's Masterpiece"),
     # The Lure of the Night
     "The Lure of the Night: Minikit inside the Silver Lego Box Dropped by Hypnotized Man":
@@ -615,7 +615,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 384, "The Lure of the Night"),
     "The Lure of the Night: Minikit behind Silver Lego Door":
         LocationData(base_location_id + 385, "The Lure of the Night"),
-    "The Lure of the Night: Destroy Fire Hydrants Minikit":
+    "The Lure of the Night: Destroy 5 Fire Hydrants Minikit":
         LocationData(base_location_id + 386, "The Lure of the Night"),
     "The Lure of the Night: Minikit behind the Purple and Green Climbing Set in Playground":
         LocationData(base_location_id + 387, "The Lure of the Night"),
@@ -638,11 +638,11 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 395, "Dying of Laughter"),
     "Dying of Laughter: Minikit on the Platform Across from the Wooden Box":
         LocationData(base_location_id + 396, "Dying of Laughter"),
-    "Dying of Laughter: Build and Destroy the three Ice Sculpture Minikit":
+    "Dying of Laughter: Build and Destroy the 3 Ice Sculpture Minikit":
         LocationData(base_location_id + 397, "Dying of Laughter"),
     "Dying of Laughter: Ring the Left Bell Minikit":
         LocationData(base_location_id + 398, "Dying of Laughter"),
-    "Dying of Laughter: Minikit from ringing Both front Bells with the Turret":
+    "Dying of Laughter: Ring Both Front Bells with the Turret Minikit":
         LocationData(base_location_id + 399, "Dying of Laughter"),
 }
 
