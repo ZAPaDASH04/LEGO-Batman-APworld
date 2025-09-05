@@ -473,11 +473,11 @@ red_brick_item_table = {
 }
 
 red_brick_unlocked_table = {
-    "Silhouettes Purchased": LB1ItemData(base_item_id + 515, ItemClassification.useful),
-    "Beep Beep Purchased": LB1ItemData(base_item_id + 516, ItemClassification.useful),
-    "Ice Rink Purchased": LB1ItemData(base_item_id + 517, ItemClassification.useful),
-    "Disguise Purchased": LB1ItemData(base_item_id + 518, ItemClassification.useful),
-    "Extra Toggle Purchased": LB1ItemData(base_item_id + 519, ItemClassification.useful),
+    "Silhouettes Unlocked": LB1ItemData(base_item_id + 515, ItemClassification.useful),
+    "Beep Beep Unlocked": LB1ItemData(base_item_id + 516, ItemClassification.useful),
+    "Ice Rink Unlocked": LB1ItemData(base_item_id + 517, ItemClassification.useful),
+    "Disguise Unlocked": LB1ItemData(base_item_id + 518, ItemClassification.useful),
+    "Extra Toggle Unlocked": LB1ItemData(base_item_id + 519, ItemClassification.useful),
     "Score x2 Unlocked": LB1ItemData(base_item_id + 520, ItemClassification.useful),
     "Score x4 Unlocked": LB1ItemData(base_item_id + 521, ItemClassification.useful),
     "Score x6 Unlocked": LB1ItemData(base_item_id + 522, ItemClassification.useful),
