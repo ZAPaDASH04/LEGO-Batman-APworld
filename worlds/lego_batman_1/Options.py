@@ -33,7 +33,7 @@ class MinikitsToWin(Range):
 
 class LevelsToWin(Range):
     """
-    Number of Levels needed to win. Please note that starting levels do not count towards win total.
+    Number of Levels Beaten needed to win.
     """
     display_name = "Total Levels"
     range_start = 5
