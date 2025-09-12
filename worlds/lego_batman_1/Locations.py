@@ -100,7 +100,7 @@ minikit_location_table: Dict[str, LocationData] = {
     # The Face-Off
     "The Face-Off: Jump on the 5 Poles Minikit":
         LocationData(base_location_id + 140, "The Face-Off"),
-    "The Face-Off: Minikit above Grapple Point to the Right of Spawn":
+    "The Face-Off: Minikit above Grapple Point to the Right of the Bank":
         LocationData(base_location_id + 141, "The Face-Off"),
     "The Face-Off: Build the Dollar Sign Minikit":
         LocationData(base_location_id + 142, "The Face-Off"),
@@ -182,7 +182,7 @@ minikit_location_table: Dict[str, LocationData] = {
     "Under the City: Minikit on Top of the Pillar by the Generator":
         LocationData(base_location_id + 179, "Under the City"),
     # Zoo's Company
-    "Zoo's Company: Hit Buoys with Boat in the Female Locked Room Minikit":
+    "Zoo's Company: Hit Buoys with a Boat Minikit":
         LocationData(base_location_id + 180, "Zoo's Company"),
     "Zoo's Company: Minikit in the Air on Other Side of Toxic Waste Behind the Barred Door":
         LocationData(base_location_id + 181, "Zoo's Company"),
@@ -329,7 +329,7 @@ minikit_location_table: Dict[str, LocationData] = {
     "To the Top of the Tower: Minikit in the Silver Lego Crate next to Statue Path":
         LocationData(base_location_id + 249, "To the Top of the Tower"),
     #The Riddler Makes a Withdrawal
-    "The Riddler Makes a Withdrawal: Minikit behind the Garbage Truck":
+    "The Riddler Makes a Withdrawal: Minikit behind the Dumpster":
         LocationData(base_location_id + 250, "The Riddler Makes a Withdrawal"),
     "The Riddler Makes a Withdrawal: Minikit above the Parking Lot":
         LocationData(base_location_id + 251, "The Riddler Makes a Withdrawal"),
