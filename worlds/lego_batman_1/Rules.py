@@ -70,36 +70,6 @@ def set_rules(world, options: LB1Options, player: int):
 
     # #Shop Rules
     # # TODO: Add multiplier as logic for purchases
-    add_rule(world.get_location("Fast Grapple Purchased", player),
-             lambda state: state.has("You can Bank on Batman: Red Brick Collected", player))
-    add_rule(world.get_location("Fast Batarangs Purchased", player),
-            lambda state: state.has("An Icy Reception: Red Brick Collected", player))
-    add_rule(world.get_location("More Batarang Targets Purchased", player),
-            lambda state: state.has("Two-Face Chase: Red Brick Collected", player))
-    add_rule(world.get_location("Flaming Batarang Purchased", player),
-            lambda state: state.has("A Poisonous Appointment: Red Brick Collected", player))
-    add_rule(world.get_location("Slam Purchased", player),
-            lambda state: state.has("The Face-Off: Red Brick Collected", player))
-    add_rule(world.get_location("More Detonators Purchased", player),
-            lambda state: state.has("There She Goes Again: Red Brick Collected", player))
-    add_rule(world.get_location("Amour Plating Purchased", player),
-            lambda state: state.has("Batboat Battle: Red Brick Collected", player))
-    add_rule(world.get_location("Sonic Pain Purchased", player),
-            lambda state: state.has("Under the City: Red Brick Collected", player))
-    add_rule(world.get_location("Area Effect Purchased", player),
-            lambda state: state.has("Zoo's Company: Red Brick Collected", player))
-    add_rule(world.get_location("Bats Purchased", player),
-            lambda state: state.has("Penguin's Lair: Red Brick Collected", player))
-    add_rule(world.get_location("Freeze Batarang Purchased", player),
-            lambda state: state.has("Joker's Home Turf: Red Brick Collected", player))
-    add_rule(world.get_location("Decoy Purchased", player),
-            lambda state: state.has("Little Fun at the Big Top: Red Brick Collected", player))
-    add_rule(world.get_location("Fast Walk Purchased", player),
-            lambda state: state.has("Flight of the Bat: Red Brick Collected", player))
-    add_rule(world.get_location("Faster Pieces Purchased", player),
-            lambda state: state.has("In the Dark Night: Red Brick Collected", player))
-    add_rule(world.get_location("Piece Detector Purchased", player),
-            lambda state: state.has("To the Top of the Tower: Red Brick Collected", player))
     add_rule(world.get_location("Score x2 Purchased", player),
             lambda state: state.has("The Riddler Makes a Withdrawal: Red Brick Collected", player))
     add_rule(world.get_location("Score x4 Purchased", player),
@@ -130,6 +100,37 @@ def set_rules(world, options: LB1Options, player: int):
             lambda state: state.has("The Lure of the Night: Red Brick Collected", player))
     add_rule(world.get_location("Invincibility Purchased", player),
             lambda state: state.has("Dying of Laughter: Red Brick Collected", player))
+    add_rule(world.get_location("Fast Grapple (All Suits) Purchased", player),
+             lambda state: state.has("You can Bank on Batman: Red Brick Collected", player))
+    add_rule(world.get_location("Fast Batarangs (All Suits) Purchased", player),
+             lambda state: state.has("An Icy Reception: Red Brick Collected", player))
+    add_rule(world.get_location("More Batarang Targets (All Suits) Purchased", player),
+             lambda state: state.has("Two-Face Chase: Red Brick Collected", player))
+    add_rule(world.get_location("Flaming Batarang (Heat Protection Suit) Purchased", player),
+             lambda state: state.has("A Poisonous Appointment: Red Brick Collected", player))
+    add_rule(world.get_location("Slam (Glide Suit) Purchased", player),
+             lambda state: state.has("The Face-Off: Red Brick Collected", player))
+    add_rule(world.get_location("More Detonators (Demolition Suit) Purchased", player),
+             lambda state: state.has("There She Goes Again: Red Brick Collected", player))
+    add_rule(world.get_location("Amour Plating (Demolition Suit) Purchased", player),
+             lambda state: state.has("Batboat Battle: Red Brick Collected", player))
+    add_rule(world.get_location("Sonic Pain (Sonic Suit) Purchased", player),
+             lambda state: state.has("Under the City: Red Brick Collected", player))
+    add_rule(world.get_location("Area Effect (Sonic Suit) Purchased", player),
+             lambda state: state.has("Zoo's Company: Red Brick Collected", player))
+    add_rule(world.get_location("Bats (Sonic Suit) Purchased", player),
+             lambda state: state.has("Penguin's Lair: Red Brick Collected", player))
+    add_rule(world.get_location("Freeze Batarang (Water Suit) Purchased", player),
+             lambda state: state.has("Joker's Home Turf: Red Brick Collected", player))
+    add_rule(world.get_location("Decoy (Technology Suit) Purchased", player),
+             lambda state: state.has("Little Fun at the Big Top: Red Brick Collected", player))
+    add_rule(world.get_location("Fast Walk (Magnet Suit) Purchased", player),
+             lambda state: state.has("Flight of the Bat: Red Brick Collected", player))
+    add_rule(world.get_location("Faster Pieces (Attract Suit) Purchased", player),
+             lambda state: state.has("In the Dark Night: Red Brick Collected", player))
+    add_rule(world.get_location("Piece Detector (Attract Suit) Purchased", player),
+             lambda state: state.has("To the Top of the Tower: Red Brick Collected", player))
+
 
     if options.EndGoal == EndGoal.option_minikits:
         world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)
