@@ -83,4 +83,5 @@ class LB1World(World):
             "MinikitsToWin": self.options.minikits_to_win.value,
             "LevelsToWin": self.options.levels_to_win.value,
             "TrueStatusSanity": self.options.true_status_sanity.value,
+            "FreeplayOrStory": self.options.freeplay_or_story.value,
         }

@@ -54,6 +54,13 @@ class TrueStatusSanity(DefaultOnToggle):
 #     """
 #     display_name = "HostageSanity"
 
+class FreeplayOrStoryUnlocked(DefaultOnToggle):
+    """
+    Determines if the level unlocked item gives you Story Mode or Story Mode & Freeplay.
+    If turned off, Freeplay is unlocked by completing Story Mode.
+    """
+    display_name = "Unlock Story or Story and Freeplay"
+
 #TODO: look into what option groups are
 
 @dataclass
@@ -63,4 +70,5 @@ class LB1Options(PerGameCommonOptions):
     minikits_to_win: MinikitsToWin
     levels_to_win: LevelsToWin
     true_status_sanity: TrueStatusSanity
+    freeplay_or_story: FreeplayOrStoryUnlocked
     # hostage_sanity: HostageSanity
