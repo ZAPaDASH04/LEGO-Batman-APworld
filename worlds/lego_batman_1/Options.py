@@ -23,7 +23,7 @@ class MiniKitSanity(DefaultOnToggle):
 
 class MinikitsToWin(Range):
     """
-    Number of Minikits needed to win.
+    Number of Minikits needed to win. Only applicable if win con is set to Minikits Collected.
     """
     display_name = "Total Minikits"
     range_start = 50
@@ -33,7 +33,7 @@ class MinikitsToWin(Range):
 
 class LevelsToWin(Range):
     """
-    Number of Levels Beaten needed to win.
+    Number of Levels Beaten needed to win. Only applicable if win con is set to Levels Beaten.
     """
     display_name = "Total Levels"
     range_start = 5

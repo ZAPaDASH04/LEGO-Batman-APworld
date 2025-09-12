@@ -1,12 +1,11 @@
 from BaseClasses import Location
-from dataclasses import dataclass
-from typing import Dict
+from typing import Dict, NamedTuple
 
 class LB1Location(Location):
     game: str = "Lego Batman: The Videogame"
 
-@dataclass
-class LocationData(Location):
+
+class LocationData(NamedTuple):
     id: int = 0
     region: str = ""
 
