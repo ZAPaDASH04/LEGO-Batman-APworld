@@ -2,6 +2,7 @@ from typing import List, Dict, Any
 
 from BaseClasses import Item, ItemClassification, Tutorial, Region, MultiWorld
 from ..AutoWorld import World, WebWorld, CollectionState
+from Options import OptionError
 
 from .Items import LB1Item, item_table, item_data_table, minikit_item_table, minikit_names_set
 from .Locations import location_table, LocationData
@@ -38,8 +39,13 @@ class LB1World(World):
     web = LB1Web()
 
     def generate_early(self):
+        self.validate_yaml()
         self.multiworld.push_precollected(self.create_item("You can Bank on Batman: Level Unlocked"))
         self.multiworld.push_precollected(self.create_item("The Riddler Makes a Withdrawal: Level Unlocked"))
+
+    def validate_yaml(self):
+        if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
+            raise OptionError("Minikit Win Con Requires Minikit Sanity to be enabled.")
 
     def create_regions(self):
         create_regions(self.multiworld, self.options, self.player)
