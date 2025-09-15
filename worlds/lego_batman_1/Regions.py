@@ -1,8 +1,7 @@
 import typing
 
 from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassification
-from .Options import LB1Options
-from .Locations import all_location_table, LB1Location, level_beaten_event_location_table
+from .Locations import LB1Location, level_beaten_event_location_table
 from .Items import LB1Item
 
 
@@ -59,12 +58,12 @@ lb1_all_regions = [
 ]
 
 
-def create_regions(world: MultiWorld, options: LB1Options, player: int):
+def create_regions(world: MultiWorld, player: int, seed_locations):
     menu = Region("Menu", player, world)
     world.regions.append(menu)
 
     for region in lb1_all_regions:
-        create_regions_and_locations(region, player, world)
+        create_regions_and_locations(region, player, world, seed_locations)
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
@@ -83,10 +82,10 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str) ->
     return source_region.connect(target_region)
 
 
-def create_regions_and_locations(name: str, player: int, world: MultiWorld) -> Region:
+def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed_locations) -> Region:
     region = Region(name, player, world)
 
-    for (key, data) in all_location_table.items():
+    for (key, data) in seed_locations.items():
         if data.region == name:
             location = LB1Location(player, key, data.id, region)
             region.locations.append(location)
@@ -99,13 +98,13 @@ def create_events(world: MultiWorld, player: int) -> int:
 
     for (name, data) in level_beaten_event_location_table.items():
         item_name = "Level Beaten"
-        event: Location = create_event(name, item_name, world.get_region(data.region, player), world, player)
+        event: Location = create_event(name, item_name, world.get_region(data.region, player), player)
         event.show_in_spoiler = True
         count += 1
 
     return count
 
-def create_event(name: str, item_name: str, region: Region, world: MultiWorld, player: int) -> Location:
+def create_event(name: str, item_name: str, region: Region, player: int) -> Location:
     event = LB1Location(player, name, None, region)
     region.locations.append(event)
     event.place_locked_item(LB1Item(item_name, ItemClassification.progression, None, player))

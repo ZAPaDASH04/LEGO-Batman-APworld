@@ -1,14 +1,14 @@
-from typing import List, Dict, Any
+from typing import Dict
 
-from BaseClasses import Item, ItemClassification, Tutorial, Region, MultiWorld
-from ..AutoWorld import World, WebWorld, CollectionState
+from BaseClasses import Item, Tutorial
 from Options import OptionError
-
-from .Items import LB1Item, item_table, item_data_table, minikit_item_table, minikit_names_set
-from .Locations import location_table, LocationData
+from .Items import LB1Item, item_table, item_data_table, minikit_names_set, setup_items
+from .Locations import location_table, LocationData, setup_locations
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
 from .Rules import set_rules
+from ..AutoWorld import World, WebWorld, CollectionState
+
 
 class LB1Web(WebWorld):
     theme = "ocean"
@@ -34,6 +34,10 @@ class LB1World(World):
 
     item_name_to_id = item_table
     location_name_to_id = location_table
+
+    seed_location_table: Dict[str, int]
+    seed_item_table: Dict[str, int]
+
     data_version = 1
     required_client_version = (0, 5, 1)
     web = LB1Web()
@@ -48,7 +52,8 @@ class LB1World(World):
             raise OptionError("Minikit Win Con Requires Minikit Sanity to be enabled.")
 
     def create_regions(self):
-        create_regions(self.multiworld, self.options, self.player)
+        self.seed_location_table = setup_locations(self.options)
+        create_regions(self.multiworld, self.player, self.seed_location_table)
         create_events(self.multiworld, self.player)
 
     def create_item(self, name: str) -> Item:
@@ -57,7 +62,8 @@ class LB1World(World):
         return item
 
     def create_items(self):
-        self.multiworld.itempool += [self.create_item(item_name) for item_name in item_table]
+        self.seed_item_table = setup_items(self.options)
+        self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
 
     def set_rules(self):
         set_rules(self.multiworld, self.options, self.player)

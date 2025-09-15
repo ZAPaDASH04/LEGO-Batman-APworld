@@ -1,5 +1,7 @@
-from BaseClasses import Item, ItemClassification
 from typing import NamedTuple, Optional, Dict
+
+from BaseClasses import Item, ItemClassification
+from .Options import LB1Options
 
 base_item_id: int = 400000
 
@@ -532,6 +534,14 @@ event_item_table: Dict[str, LB1ItemData] = {
     # "Ra Sha Guul": LB1ItemData(None, classification=ItemClassification.progression),
 }
 
-
-
-
+def setup_items(options: LB1Options):
+    temp_item_table = {}
+    if options.minikit_sanity == 1:
+        temp_item_table.update({**minikit_item_table})
+    if options.true_status_sanity == 1:
+        temp_item_table.update({**true_status_item_table})
+    temp_item_table.update({**hostage_item_table})
+    temp_item_table.update({**level_unlocked_item_table})
+    temp_item_table.update({**red_brick_item_table})
+    temp_item_table.update({**red_brick_unlocked_table})
+    return temp_item_table

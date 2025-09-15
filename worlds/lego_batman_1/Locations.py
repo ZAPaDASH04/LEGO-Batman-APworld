@@ -1,5 +1,8 @@
-from BaseClasses import Location
 from typing import Dict, NamedTuple
+
+from BaseClasses import Location
+from .Options import LB1Options
+
 
 class LB1Location(Location):
     game: str = "Lego Batman: The Videogame"
@@ -858,3 +861,15 @@ all_location_table = {
 }
 
 location_table = {name: data.id for name, data in all_location_table.items()}
+
+def setup_locations(options: LB1Options):
+    temp_location_table = {}
+    if options.minikit_sanity == 1:
+        temp_location_table.update({**minikit_location_table})
+    if options.true_status_sanity == 1:
+        temp_location_table.update({**true_status_location_table})
+    temp_location_table.update({**hostage_location_table})
+    temp_location_table.update({**level_beaten_location_table})
+    temp_location_table.update({**red_brick_location_table})
+    temp_location_table.update({**red_brick_purchase_table})
+    return temp_location_table
