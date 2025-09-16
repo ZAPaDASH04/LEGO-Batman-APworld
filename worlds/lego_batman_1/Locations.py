@@ -860,8 +860,6 @@ all_location_table = {
     **red_brick_purchase_table
 }
 
-location_table = {name: data.id for name, data in all_location_table.items()}
-
 def setup_locations(options: LB1Options):
     temp_location_table = {}
     if options.minikit_sanity == 1:

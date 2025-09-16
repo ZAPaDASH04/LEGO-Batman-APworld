@@ -3,7 +3,7 @@ from typing import Dict
 from BaseClasses import Item, Tutorial
 from Options import OptionError
 from .Items import LB1Item, item_table, item_data_table, minikit_names_set, setup_items, item_group_table
-from .Locations import all_location_table, location_table, LocationData, setup_locations
+from .Locations import all_location_table, LocationData, setup_locations
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
 from .Rules import set_rules
@@ -33,7 +33,7 @@ class LB1World(World):
     topology_present = True
 
     item_name_to_id = item_table
-    location_name_to_id = location_table
+    location_name_to_id = {name: data.id for name, data in all_location_table.items()}
 
     seed_location_table: Dict[str, int]
     seed_item_table: Dict[str, int]
