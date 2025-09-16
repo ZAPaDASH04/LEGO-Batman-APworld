@@ -440,7 +440,7 @@ true_status_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: True Status": LB1ItemData(base_item_id + 484, ItemClassification.filler),
 }
 
-red_brick_item_table = {
+red_brick_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Red Brick Collected": LB1ItemData(base_item_id + 485, ItemClassification.progression),
     "An Icy Reception: Red Brick Collected": LB1ItemData(base_item_id + 486, ItemClassification.progression),
     "Two-Face Chase: Red Brick Collected": LB1ItemData(base_item_id + 487, ItemClassification.progression),
@@ -475,7 +475,7 @@ red_brick_item_table = {
     "Dying of Laughter: Red Brick Collected": LB1ItemData(base_item_id + 514, ItemClassification.progression),
 }
 
-red_brick_unlocked_table = {
+red_brick_unlocked_table: Dict[str, LB1ItemData]  = {
     "Silhouettes Unlocked": LB1ItemData(base_item_id + 515, ItemClassification.filler),
     "Beep Beep Unlocked": LB1ItemData(base_item_id + 516, ItemClassification.filler),
     "Ice Rink Unlocked": LB1ItemData(base_item_id + 517, ItemClassification.filler),
@@ -520,6 +520,15 @@ item_data_table = {
     **true_status_item_table,
     **red_brick_item_table,
     **red_brick_unlocked_table,
+}
+
+item_group_table: Dict[str, Dict[str, LB1ItemData]] = {
+    "minikit": minikit_item_table,
+    "hostage": hostage_item_table,
+    "level": level_unlocked_item_table,
+    "true status": true_status_item_table,
+    "red brick collected": red_brick_item_table,
+    "red brick unlocked": red_brick_unlocked_table,
 }
 
 item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}

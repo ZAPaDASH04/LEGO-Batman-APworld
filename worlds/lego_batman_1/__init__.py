@@ -2,8 +2,8 @@ from typing import Dict
 
 from BaseClasses import Item, Tutorial
 from Options import OptionError
-from .Items import LB1Item, item_table, item_data_table, minikit_names_set, setup_items
-from .Locations import location_table, LocationData, setup_locations
+from .Items import LB1Item, item_table, item_data_table, minikit_names_set, setup_items, item_group_table
+from .Locations import all_location_table, location_table, LocationData, setup_locations
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
 from .Rules import set_rules
@@ -41,6 +41,59 @@ class LB1World(World):
     data_version = 1
     required_client_version = (0, 5, 1)
     web = LB1Web()
+
+    item_name_groups = {
+        "Minikit": item_group_table["minikit"],
+        "Hostage": item_group_table["hostage"],
+        "Level": item_group_table["level"],
+        "True Status": item_group_table["true status"],
+        "Red Brick Collected": item_group_table["red brick collected"],
+        "Red Brick Unlocked": item_group_table["red brick unlocked"],
+    }
+
+    location_name_groups = {
+        "You can Bank on Batman": {name for name, data in all_location_table.items()
+                                   if data.region == "You can Bank on Batman"},
+        "An Icy Reception": {name for name, data in all_location_table.items() if data.region == "An Icy Reception"},
+        "Two-Face Chase": {name for name, data in all_location_table.items() if data.region == "Two-Face Chase"},
+        "A Poisonous Appointment": {name for name, data in all_location_table.items()
+                                    if data.region == "A Poisonous Appointment"},
+        "The Face-Off": {name for name, data in all_location_table.items() if data.region == "The Face-Off"},
+        "There She Goes Again": {name for name, data in all_location_table.items()
+                                 if data.region == "There She Goes Again"},
+        "Batboat Battle": {name for name, data in all_location_table.items() if data.region == "Batboat Battle"},
+        "Under the City": {name for name, data in all_location_table.items() if data.region == "Under the City"},
+        "Zoo's Company": {name for name, data in all_location_table.items() if data.region == "Zoo's Company"},
+        "Penguin's Lair": {name for name, data in all_location_table.items() if data.region == "Penguin's Lair"},
+        "Joker's Home Turf": {name for name, data in all_location_table.items() if data.region == "Joker's Home Turf"},
+        "Little Fun at the Big Top": {name for name, data in all_location_table.items()
+                                      if data.region == "Little Fun at the Big Top"},
+        "Flight of the Bat": {name for name, data in all_location_table.items() if data.region == "Flight of the Bat"},
+        "In the Dark Night": {name for name, data in all_location_table.items() if data.region == "In the Dark Night"},
+        "To the Top of the Tower": {name for name, data in all_location_table.items()
+                                    if data.region == "To the Top of the Tower"},
+        "The Riddler Makes a Withdrawal": {name for name, data in all_location_table.items()
+                                           if data.region == "The Riddler Makes a Withdrawal"},
+        "On the Rocks": {name for name, data in all_location_table.items() if data.region == "On the Rocks"},
+        "Green Fingers": {name for name, data in all_location_table.items() if data.region == "Green Fingers"},
+        "An Enterprising Theft": {name for name, data in all_location_table.items()
+                                  if data.region == "An Enterprising Theft"},
+        "Breaking Blocks": {name for name, data in all_location_table.items() if data.region == "Breaking Blocks"},
+        "Rockin' the Docks": {name for name, data in all_location_table.items() if data.region == "Rockin' the Docks"},
+        "Stealing the Show": {name for name, data in all_location_table.items() if data.region == "Stealing the Show"},
+        "Harbouring a Grudge": {name for name, data in all_location_table.items()
+                                if data.region == "Harbouring a Grudge"},
+        "A Daring Rescue": {name for name, data in all_location_table.items() if data.region == "A Daring Rescue"},
+        "Arctic World": {name for name, data in all_location_table.items() if data.region == "Arctic World"},
+        "A Surprise for the Commissioner": {name for name, data in all_location_table.items()
+                                            if data.region == "A Surprise for the Commissioner"},
+        "Biplane Blast": {name for name, data in all_location_table.items() if data.region == "Biplane Blast"},
+        "The Joker's Masterpiece": {name for name, data in all_location_table.items()
+                                    if data.region == "The Joker's Masterpiece"},
+        "The Lure of the Night": {name for name, data in all_location_table.items()
+                                  if data.region == "The Lure of the Night"},
+        "Dying of Laughter": {name for name, data in all_location_table.items() if data.region == "Dying of Laughter"},
+    }
 
     def generate_early(self):
         self.validate_yaml()
