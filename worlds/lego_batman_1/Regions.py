@@ -93,6 +93,7 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed
     world.regions.append(region)
     return region
 
+
 def create_events(world: MultiWorld, player: int) -> int:
     count = 0
 
@@ -103,6 +104,7 @@ def create_events(world: MultiWorld, player: int) -> int:
         count += 1
 
     return count
+
 
 def create_event(name: str, item_name: str, region: Region, player: int) -> Location:
     event = LB1Location(player, name, None, region)

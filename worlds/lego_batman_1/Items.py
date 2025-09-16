@@ -5,6 +5,7 @@ from .Options import LB1Options
 
 base_item_id: int = 400000
 
+
 class LB1Item(Item):
     game: str = "Lego Batman: The Video Game"
 
@@ -13,7 +14,8 @@ class LB1ItemData(NamedTuple):
     code: Optional[int] = None
     classification: ItemClassification = ItemClassification.progression_deprioritized_skip_balancing
 
-#TODO: add in progression classification based off of win con (look at manual's implementation - need to decide win cons first)
+
+# TODO: add in progression classification based off of win con
 minikit_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Minikit 1": LB1ItemData(base_item_id + 100),
     "You can Bank on Batman: Minikit 2": LB1ItemData(base_item_id + 101),
@@ -25,7 +27,7 @@ minikit_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Minikit 8": LB1ItemData(base_item_id + 107),
     "You can Bank on Batman: Minikit 9": LB1ItemData(base_item_id + 108),
     "You can Bank on Batman: Minikit 10": LB1ItemData(base_item_id + 109),
-    
+
     "An Icy Reception: Minikit 1": LB1ItemData(base_item_id + 110),
     "An Icy Reception: Minikit 2": LB1ItemData(base_item_id + 111),
     "An Icy Reception: Minikit 3": LB1ItemData(base_item_id + 112),
@@ -475,7 +477,7 @@ red_brick_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Red Brick Collected": LB1ItemData(base_item_id + 514, ItemClassification.progression),
 }
 
-red_brick_unlocked_table: Dict[str, LB1ItemData]  = {
+red_brick_unlocked_table: Dict[str, LB1ItemData] = {
     "Silhouettes Unlocked": LB1ItemData(base_item_id + 515, ItemClassification.filler),
     "Beep Beep Unlocked": LB1ItemData(base_item_id + 516, ItemClassification.filler),
     "Ice Rink Unlocked": LB1ItemData(base_item_id + 517, ItemClassification.filler),
@@ -542,6 +544,7 @@ event_item_table: Dict[str, LB1ItemData] = {
     # "Hush": LB1ItemData(None, classification=ItemClassification.progression),
     # "Ra Sha Guul": LB1ItemData(None, classification=ItemClassification.progression),
 }
+
 
 def setup_items(options: LB1Options):
     temp_item_table = {}

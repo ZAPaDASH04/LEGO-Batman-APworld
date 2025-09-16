@@ -24,9 +24,9 @@ class LB1Web(WebWorld):
 
 class LB1World(World):
     """
-     When all the villains in Arkham Asylum team up and break loose, only the dynamic duo is bold enough to take them on to save Gotham City. 
-     The fun of LEGO, the drama of Batman and the uniqueness of the combination makes for a comical and exciting adventure in LEGO Batman: The Videogame. 
-    """ #Lazy Import
+     When all the villains in Arkham Asylum team up and break loose, only the dynamic duo is bold enough to take them on to save Gotham City.
+     The fun of LEGO, the drama of Batman and the uniqueness of the combination makes for a comical and exciting adventure in LEGO Batman: The Videogame.
+    """
     game = "Lego Batman: The Video Game"
     options_dataclass = LB1Options
     options: LB1Options

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from Options import DefaultOnToggle, Range, Choice, PerGameCommonOptions
 
+
 class EndGoal(Choice):
     """
     Determine the goal for the seed
@@ -61,7 +62,8 @@ class FreeplayOrStoryUnlocked(DefaultOnToggle):
     """
     display_name = "Unlock Story or Story and Freeplay"
 
-#TODO: look into what option groups are
+
+# TODO: look into what option groups are
 
 @dataclass
 class LB1Options(PerGameCommonOptions):

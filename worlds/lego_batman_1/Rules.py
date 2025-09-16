@@ -5,7 +5,7 @@ from .Options import LB1Options, EndGoal
 
 
 def set_rules(world, options: LB1Options, player: int):
-    #Entrance Rules
+    # Entrance Rules
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has("You can Bank on Batman: Level Unlocked", player))
     add_rule(world.get_entrance("Batcave -> An Icy Reception", player),
