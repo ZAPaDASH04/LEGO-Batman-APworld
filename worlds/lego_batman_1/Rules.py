@@ -2,6 +2,14 @@ from BaseClasses import MultiWorld, Location
 from worlds.generic.Rules import add_rule
 from .Locations import level_beaten_event_location_table
 from .Options import LB1Options, EndGoal
+from worlds.AutoWorld import CollectionState
+
+
+def character_can_cross_toxic(state: CollectionState, player: int):
+    return (state.has("Mr. Freeze Unlocked", player) or state.has("Poison Ivy Unlocked", player)
+            or state.has("Two-Face Unlocked", player) or state.has("Bane Unlocked", player)
+            or state.has("Killer Croc Unlocked", player) or state.has("The Joker Unlocked", player)
+            or state.has("The Joker (Tropical) Unlocked", player))
 
 
 def set_rules(world, options: LB1Options, player: int):
@@ -129,11 +137,14 @@ def set_rules(world, options: LB1Options, player: int):
              lambda state: state.has("In the Dark Night: Red Brick Collected", player))
     add_rule(world.get_location("Piece Detector (Attract Suit) Purchased", player),
              lambda state: state.has("To the Top of the Tower: Red Brick Collected", player))
-
+    # Set End Goal
     if options.EndGoal == EndGoal.option_minikits:
         world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)
     elif options.EndGoal == EndGoal.option_levels_beaten:
         world.completion_condition[player] = lambda state: state.has("Level Beaten", player, options.levels_to_win)
+    # Minikit Logic
+    add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
+             lambda state: character_can_cross_toxic(state, player))
 
 
 def set_event_rules(world: MultiWorld, player: int):
