@@ -15,101 +15,106 @@ class LocationData(NamedTuple):
 
 base_location_id: int = 400000
 
-# character_location_table: Dict[str, LocationData] = {
-#         0x00, // Batman
-#     0x01, // Robin
-#     0x18, // Bruce Wayne
-#     0x13, // Alfred
-#     0x02, // Batgirl
-#     0x11, // Nightwing
-#     0x1B, // Commissioner Gordon
-#     0x40, // Police Officer
-#     0xCB, // Fishmonger
-#     0x32, // Military Policeman
-#     0x30, // Security Guard
-#     0x42, // Swat
-#     0x2B, // Scientist
-#     0x2D, // Sailor
-#     0x43, // Police Marksman
-#     0x0F, // Clayface
-#     0x16, // Mr. Freeze
-#     0x15, // Poison Ivy
-#     0x07, // Two-Face
-#     0x0D, // The Riddler
-#     0x19, // Bane
-#     0x04, // Catwoman
-#     0x05, // Catwoman (Classic)
-#     0x0E, // Killer Croc
-#     0x10, // Man-Bat
-#     0x0C, // The Penguin
-#     0x0B, // Harley Quinn
-#     0x14, // The Scarecrow
-#     0x1A, // Killer Moth
-#     0x21, // Mad Hatter
-#     0x09, // The Joker
-#     0x0A, // The Joker (Tropical)
-#     0x44, // Poison Ivy Goon
-#     0x46, // Zoo Sweeper
-#     0x3B, // Freeze Girl
-#     0x3D, // Yeti
-#     0x39, // Riddler Goon
-#     0x3A, // Riddler Henchman
-#     0x33, // Penguin Goon
-#     0x34, // Penguin Henchman
-#     0x29, // Penguin Minion
-#     0x36, // Joker Goon
-#     0x37, // Joker Henchman
-#     0x38, // Clown Goon
-#     0x08, // Hush
-#     0x12, // Rā's al Ghūl
-#     0x49, // Hero 1
-#     0x4A, // Hero 2
-#
-#     // landcraft
-#
-#     0x81, // batmobile
-#     0x82, // batcycle
-#     0x119,// police car
-#     0x11A,// police bike
-#
-#     0x11F,// police van
-#     0x121,// bat-tank
-#     0x110,// catwoman's motorcycle
-#     0xC6, // two-face's armoured truck
-#
-#     0xD2, // mr. freeze's kart
-#     0xCD, // harley quinn's hammer truck
-#     0x116,// the joker's van
-#     0x11B,// garbage truck
-#
-#     // watercraft
-#
-#     0x84, // Batboat
-#     0xBD, // Robin's Watercraft
-#     0x10D,// Robin's Submarine
-#     0xD1, // Police Watercraft
-#     0x9E, // Police Boat
-#
-#     0xCE, // Penguin's Submarine
-#     0xBA, // Killer Croc's Swamp Rider
-#     0xC0, // Penguin Goon Submarine
-#     0x11D,// Mr. Freeze's Iceberg
-#     0x11E,// Mad Hatter's Steamboat
-#
-#     // aircraft
-#
-#     0x83, // Batwing
-#     0xC4, // Batcopter
-#     0x101,// Harbour Helicopter
-#     0x112,// Police Helicopter
-#     0x10F,// Bruce Wayne's Private Jet
-#
-#     0xC1, // The Joker's Helicopter
-#     0xD0, // The Scarecrow's Biplane
-#     0x118,// Goon Helicopter
-#     0x11C,// "Riddler's jet
-#     "Mad Hatter's Glider
-# }
+character_location_table: Dict[str, LocationData] = {
+    # characters
+    "Batman Unlocked": LocationData(base_location_id + 0, "Batcave"),
+    "Robin Unlocked": LocationData(base_location_id + 1, "Batcave"),
+    "Bruce Wayne Unlocked": LocationData(base_location_id + 2, "The Face-Off"),
+    "Alfred Unlocked": LocationData(base_location_id + 3, "The Face-Off"),
+    "Batgirl Unlocked": LocationData(base_location_id + 4, "The Face-Off"),
+    "Nightwing Unlocked": LocationData(base_location_id + 5, "The Face-Off"),
+    "Commissioner Gordon Unlocked": LocationData(base_location_id + 6, "A Surprise for the Commissioner"),
+    "Police Officer Unlocked": LocationData(base_location_id + 7, "The Face-Off"),
+    "Fishmonger Unlocked": LocationData(base_location_id + 8, "There She Goes Again"),
+    "Military Policeman Unlocked": LocationData(base_location_id + 9, "The Face-Off"),
+    "Security Guard Unlocked": LocationData(base_location_id + 10, "The Face-Off"),
+    "S.W.A.T Unlocked": LocationData(base_location_id + 11, "Breaking Blocks"),
+    "Scientist Unlocked": LocationData(base_location_id + 12, "An Enterprising Theft"),
+    "Sailor Unlocked": LocationData(base_location_id + 13, "Rockin' the Docks"),
+    "Police Marksman Unlocked": LocationData(base_location_id + 14, "Dying of Laughter"),
+    "Clayface Unlocked": LocationData(base_location_id + 15, "The Riddler Makes a Withdrawal"),
+    "Mr. Freeze Unlocked": LocationData(base_location_id + 16, "On the Rocks"),
+    "Poison Ivy Unlocked": LocationData(base_location_id + 17, "Green Fingers"),
+    "Two-Face Unlocked": LocationData(base_location_id + 18, "An Enterprising Theft"),  # check about Breaking Blocks
+    "The Riddler Unlocked": LocationData(base_location_id + 19, "Arkham Asylum"),
+    "Bane Unlocked": LocationData(base_location_id + 20, "Rockin' the Docks"),
+    "Catwoman Unlocked": LocationData(base_location_id + 21, "Stealing the Show"),  # check about Arctic World
+    "Catwoman (Classic) Unlocked": LocationData(base_location_id + 22, "Stealing the Show"),
+    "Killer Croc Unlocked": LocationData(base_location_id + 23, "A Daring Rescue"),
+    "Man-Bat Unlocked": LocationData(base_location_id + 24, "Penguin's Lair"),
+    "The Penguin Unlocked": LocationData(base_location_id + 25, "Arkham Asylum"),
+    "Harley Quinn Unlocked": LocationData(base_location_id + 26, "A Surprise for the Commissioner"),  # check about Dying of Laughter
+    "The Scarecrow Unlocked": LocationData(base_location_id + 27, "The Joker's Masterpiece"),
+    "Killer Moth Unlocked": LocationData(base_location_id + 28, "The Lure of the Night"),
+    "Mad Hatter Unlocked": LocationData(base_location_id + 29, "Joker's Home Turf"),
+    "The Joker Unlocked": LocationData(base_location_id + 30, "Arkham Asylum"),
+    "The Joker (Tropical) Unlocked": LocationData(base_location_id + 31, "Dying of Laughter"),
+    "Poison Ivy Goon Unlocked": LocationData(base_location_id + 32, "A Poisonous Appointment"),
+    "Zoo Sweeper Unlocked": LocationData(base_location_id + 33, "Zoo's Company"),
+    "Freeze Girl Unlocked": LocationData(base_location_id + 34, "An Icy Reception"),
+    "Yeti Unlocked": LocationData(base_location_id + 35, "Penguin's Lair"),
+    "Riddler Goon Unlocked": LocationData(base_location_id + 36, "You can Bank on Batman"),
+    "Riddler Henchman Unlocked": LocationData(base_location_id + 37, "You can Bank on Batman"),
+    "Penguin Goon Unlocked": LocationData(base_location_id + 38, "There She Goes Again"),
+    "Penguin Henchman Unlocked": LocationData(base_location_id + 39, "There She Goes Again"),
+    "Penguin Minion Unlocked": LocationData(base_location_id + 40, "Penguin's Lair"),
+    "Joker Goon Unlocked": LocationData(base_location_id + 41, "Joker's Home Turf"),
+    "Joker Henchman Unlocked": LocationData(base_location_id + 42, "Joker's Home Turf"),
+    "Clown Goon Unlocked": LocationData(base_location_id + 43, "Little Fun at the Big Top"),
+    "Hush Unlocked": LocationData(base_location_id + 44, "Shop"),
+    "Rā's al Ghūl Unlocked": LocationData(base_location_id + 45, "Shop"),
+    "Hero 1 Unlocked": LocationData(base_location_id + 46, "Batcave"),
+    "Hero 2 Unlocked": LocationData(base_location_id + 47, "Batcave"),
+    # landcraft
+    "Batmobile Unlocked": LocationData(base_location_id + 48, "Two-Face Chase"),
+    "Batcycle Unlocked": LocationData(base_location_id + 49, "Two-Face Chase"),
+    "Police Car Unlocked": LocationData(base_location_id + 50, "Two-Face Chase"),
+    "Police Bike Unlocked": LocationData(base_location_id + 51, "Two-Face Chase"),
+    "Police Van Unlocked": LocationData(base_location_id + 52, "Two-Face Chase"),
+    "Bat-Tank Unlocked": LocationData(base_location_id + 53, "To the Top of the Tower"),
+    "Catwoman's Motorcycle Unlocked": LocationData(base_location_id + 54, "Stealing the Show"),
+    "Two-Face's Armoured Truck Unlocked": LocationData(base_location_id + 55, "An Enterprising Theft"),
+    "Mr. Freeze's Kart Unlocked": LocationData(base_location_id + 56, "On the Rocks"),
+    "Harley Quinn's Hammer Truck Unlocked": LocationData(base_location_id + 57, "A Surprise for the Commissioner"),
+    "The Joker's Van Unlocked": LocationData(base_location_id + 58, "Two-Face Chase"),
+    "Garbage Truck Unlocked": LocationData(base_location_id + 59, "The Lure of the Night"),
+    # watercraft
+    "Batboat Unlocked": LocationData(base_location_id + 60, "Batboat Battle"),
+    "Robin's Watercraft Unlocked": LocationData(base_location_id + 61, "Batboat Battle"),
+    "Robin's Submarine Unlocked": LocationData(base_location_id + 62, "Batboat Battle"),
+    "Police Watercraft Unlocked": LocationData(base_location_id + 63, "Harbouring a Grudge"),
+    "Police Boat Unlocked": LocationData(base_location_id + 64, "Harbouring a Grudge"),
+    "Penguin's Submarine Unlocked": LocationData(base_location_id + 65, "Harbouring a Grudge"),
+    "Killer Croc's Swamp Rider Unlocked": LocationData(base_location_id + 66, "Harbouring a Grudge"),
+    "Penguin Goon Submarine Unlocked": LocationData(base_location_id + 67, "Batboat Battle"),
+    "Mr. Freeze's Iceberg Unlocked": LocationData(base_location_id + 68, "On the Rocks"),
+    "Mad Hatter's Steamboat Unlocked": LocationData(base_location_id + 69, "Joker's Home Turf"),
+    # aircraft
+    "Batwing Unlocked": LocationData(base_location_id + 70, "Flight of the Bat"),
+    "Batcopter Unlocked": LocationData(base_location_id + 71, "Flight of the Bat"),
+    "Harbour Helicopter Unlocked": LocationData(base_location_id + 72, "Batboat Battle"),
+    "Police Helicopter Unlocked": LocationData(base_location_id + 73, "Biplane Blast"),
+    "Bruce Wayne's Private Jet Unlocked": LocationData(base_location_id + 74, "Flight of the Bat"),
+    "The Joker's Helicopter Unlocked": LocationData(base_location_id + 75, "Biplane Blast"),
+    "The Scarecrow's Biplane Unlocked": LocationData(base_location_id + 76, "Biplane Blast"),
+    "Goon Helicopter Unlocked": LocationData(base_location_id + 77, "Biplane Blast"),
+    "Riddler's jet Unlocked": LocationData(base_location_id + 78, "Breaking Blocks"),
+    "Mad Hatter's Glider Unlocked": LocationData(base_location_id + 79, "Joker's Home Turf"),
+}
+
+# Currently stored in Batcave because it is sounding like they can be unlocked in multiple levels
+suit_location_table: Dict[str, LocationData] = {
+    "Batsuit": LocationData(base_location_id + 80, "Batcave"),
+    "Heatsuit": LocationData(base_location_id + 81, "Batcave"),
+    "Glidesuit": LocationData(base_location_id + 82, "Batcave"),
+    "Demosuit": LocationData(base_location_id + 83, "Batcave"),
+    "Sonarsuit": LocationData(base_location_id + 84, "Batcave"),
+    "Robinsuit": LocationData(base_location_id + 85, "Batcave"),
+    "Divesuit": LocationData(base_location_id + 86, "Batcave"),
+    "Techsuit": LocationData(base_location_id + 87, "Batcave"),
+    "Magnetsuit": LocationData(base_location_id + 88, "Batcave"),
+    "Attractosuit": LocationData(base_location_id + 89, "Batcave"),
+}
 
 minikit_location_table: Dict[str, LocationData] = {
     # You can Bank on Batman
@@ -948,6 +953,8 @@ level_beaten_event_location_table = {
 }
 
 all_location_table = {
+    **character_location_table,
+    **suit_location_table,
     **minikit_location_table,
     **hostage_location_table,
     **level_beaten_location_table,
@@ -963,6 +970,8 @@ def setup_locations(options: LB1Options):
         temp_location_table.update({**minikit_location_table})
     if options.true_status_sanity == 1:
         temp_location_table.update({**true_status_location_table})
+    temp_location_table.update({**character_location_table})
+    temp_location_table.update({**suit_location_table})
     temp_location_table.update({**hostage_location_table})
     temp_location_table.update({**level_beaten_location_table})
     temp_location_table.update({**red_brick_location_table})
