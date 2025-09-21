@@ -2,7 +2,7 @@ from typing import Dict
 
 from BaseClasses import Item, Tutorial
 from Options import OptionError
-from .Items import LB1Item, item_table, item_data_table, minikit_names_set, setup_items, item_group_table
+from .Items import LB1Item, item_data_table, minikit_names_set, setup_items, item_group_table
 from .Locations import all_location_table, LocationData, setup_locations
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
@@ -32,7 +32,7 @@ class LB1World(World):
     options: LB1Options
     topology_present = True
 
-    item_name_to_id = item_table
+    item_name_to_id = {name: data.code for name, data in item_data_table.items() if data.code is not None}
     location_name_to_id = {name: data.id for name, data in all_location_table.items()}
 
     seed_location_table: Dict[str, int]

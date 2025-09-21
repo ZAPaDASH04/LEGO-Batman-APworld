@@ -533,7 +533,6 @@ item_group_table: Dict[str, Dict[str, LB1ItemData]] = {
     "red brick unlocked": red_brick_unlocked_table,
 }
 
-item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}
 minikit_names_set = set(minikit_item_table.keys())
 
 event_item_table: Dict[str, LB1ItemData] = {
