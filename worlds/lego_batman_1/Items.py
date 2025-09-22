@@ -16,22 +16,21 @@ class LB1ItemData(NamedTuple):
 
 
 character_item_table: Dict[str, LB1ItemData] = {
-    # characters
     "Batman Unlocked": LB1ItemData(base_item_id + 0, ItemClassification.progression),
     "Robin Unlocked": LB1ItemData(base_item_id + 1, ItemClassification.progression),
-    "Bruce Wayne Unlocked": LB1ItemData(base_item_id + 2, ItemClassification.progression),
-    "Alfred Unlocked": LB1ItemData(base_item_id + 3, ItemClassification.progression),
+    "Bruce Wayne Unlocked": LB1ItemData(base_item_id + 2, ItemClassification.filler),
+    "Alfred Unlocked": LB1ItemData(base_item_id + 3, ItemClassification.filler),
     "Batgirl Unlocked": LB1ItemData(base_item_id + 4, ItemClassification.progression),
     "Nightwing Unlocked": LB1ItemData(base_item_id + 5, ItemClassification.progression),
-    "Commissioner Gordon Unlocked": LB1ItemData(base_item_id + 6, ItemClassification.progression),
-    "Police Officer Unlocked": LB1ItemData(base_item_id + 7, ItemClassification.progression),
-    "Fishmonger Unlocked": LB1ItemData(base_item_id + 8, ItemClassification.progression),
-    "Military Policeman Unlocked": LB1ItemData(base_item_id + 9, ItemClassification.progression),
-    "Security Guard Unlocked": LB1ItemData(base_item_id + 10, ItemClassification.progression),
-    "S.W.A.T Unlocked": LB1ItemData(base_item_id + 11, ItemClassification.progression),
+    "Commissioner Gordon Unlocked": LB1ItemData(base_item_id + 6, ItemClassification.filler),
+    "Police Officer Unlocked": LB1ItemData(base_item_id + 7, ItemClassification.filler),
+    "Fishmonger Unlocked": LB1ItemData(base_item_id + 8, ItemClassification.filler),
+    "Military Policeman Unlocked": LB1ItemData(base_item_id + 9, ItemClassification.filler),
+    "Security Guard Unlocked": LB1ItemData(base_item_id + 10, ItemClassification.filler),
+    "S.W.A.T Unlocked": LB1ItemData(base_item_id + 11, ItemClassification.filler),
     "Scientist Unlocked": LB1ItemData(base_item_id + 12, ItemClassification.progression),
-    "Sailor Unlocked": LB1ItemData(base_item_id + 13, ItemClassification.progression),
-    "Police Marksman Unlocked": LB1ItemData(base_item_id + 14, ItemClassification.progression),
+    "Sailor Unlocked": LB1ItemData(base_item_id + 13, ItemClassification.filler),
+    "Police Marksman Unlocked": LB1ItemData(base_item_id + 14, ItemClassification.filler),
     "Clayface Unlocked": LB1ItemData(base_item_id + 15, ItemClassification.progression),
     "Mr. Freeze Unlocked": LB1ItemData(base_item_id + 16, ItemClassification.progression),
     "Poison Ivy Unlocked": LB1ItemData(base_item_id + 17, ItemClassification.progression),
@@ -49,23 +48,26 @@ character_item_table: Dict[str, LB1ItemData] = {
     "Mad Hatter Unlocked": LB1ItemData(base_item_id + 29, ItemClassification.progression),
     "The Joker Unlocked": LB1ItemData(base_item_id + 30, ItemClassification.progression),
     "The Joker (Tropical) Unlocked": LB1ItemData(base_item_id + 31, ItemClassification.progression),
-    "Poison Ivy Goon Unlocked": LB1ItemData(base_item_id + 32, ItemClassification.progression),
-    "Zoo Sweeper Unlocked": LB1ItemData(base_item_id + 33, ItemClassification.progression),
-    "Freeze Girl Unlocked": LB1ItemData(base_item_id + 34, ItemClassification.progression),
-    "Yeti Unlocked": LB1ItemData(base_item_id + 35, ItemClassification.progression),
-    "Riddler Goon Unlocked": LB1ItemData(base_item_id + 36, ItemClassification.progression),
-    "Riddler Henchman Unlocked": LB1ItemData(base_item_id + 37, ItemClassification.progression),
-    "Penguin Goon Unlocked": LB1ItemData(base_item_id + 38, ItemClassification.progression),
-    "Penguin Henchman Unlocked": LB1ItemData(base_item_id + 39, ItemClassification.progression),
-    "Penguin Minion Unlocked": LB1ItemData(base_item_id + 40, ItemClassification.progression),
-    "Joker Goon Unlocked": LB1ItemData(base_item_id + 41, ItemClassification.progression),
-    "Joker Henchman Unlocked": LB1ItemData(base_item_id + 42, ItemClassification.progression),
-    "Clown Goon Unlocked": LB1ItemData(base_item_id + 43, ItemClassification.progression),
-    "Hush Unlocked": LB1ItemData(base_item_id + 44, ItemClassification.useful),
-    "Rā's al Ghūl Unlocked": LB1ItemData(base_item_id + 45, ItemClassification.useful),
-    "Hero 1 Unlocked": LB1ItemData(base_item_id + 46, ItemClassification.filler),
-    "Hero 2 Unlocked": LB1ItemData(base_item_id + 47, ItemClassification.filler),
-    # landcraft
+    "Poison Ivy Goon Unlocked": LB1ItemData(base_item_id + 32, ItemClassification.filler),
+    "Zoo Sweeper Unlocked": LB1ItemData(base_item_id + 33, ItemClassification.filler),
+    "Freeze Girl Unlocked": LB1ItemData(base_item_id + 34, ItemClassification.filler),
+    "Yeti Unlocked": LB1ItemData(base_item_id + 35, ItemClassification.filler),
+    "Riddler Goon Unlocked": LB1ItemData(base_item_id + 36, ItemClassification.filler),
+    "Riddler Henchman Unlocked": LB1ItemData(base_item_id + 37, ItemClassification.filler),
+    "Penguin Goon Unlocked": LB1ItemData(base_item_id + 38, ItemClassification.filler),
+    "Penguin Henchman Unlocked": LB1ItemData(base_item_id + 39, ItemClassification.filler),
+    "Penguin Minion Unlocked": LB1ItemData(base_item_id + 40, ItemClassification.filler),
+    "Joker Goon Unlocked": LB1ItemData(base_item_id + 41, ItemClassification.filler),
+    "Joker Henchman Unlocked": LB1ItemData(base_item_id + 42, ItemClassification.filler),
+    "Clown Goon Unlocked": LB1ItemData(base_item_id + 43, ItemClassification.filler),
+}
+hard_character_item_table: Dict[str, LB1ItemData] = {
+    "Hush Unlocked": LB1ItemData(base_item_id + 44, ItemClassification.filler),
+    "Rā's al Ghūl Unlocked": LB1ItemData(base_item_id + 45, ItemClassification.filler),
+    # "Hero 1 Unlocked": LB1ItemData(base_item_id + 46, ItemClassification.filler),
+    # "Hero 2 Unlocked": LB1ItemData(base_item_id + 47, ItemClassification.filler),
+}
+automobile_item_table: Dict[str, LB1ItemData] = {
     "Batmobile Unlocked": LB1ItemData(base_item_id + 48, ItemClassification.progression),
     "Batcycle Unlocked": LB1ItemData(base_item_id + 49, ItemClassification.progression),
     "Police Car Unlocked": LB1ItemData(base_item_id + 50, ItemClassification.progression),
@@ -78,7 +80,8 @@ character_item_table: Dict[str, LB1ItemData] = {
     "Harley Quinn's Hammer Truck Unlocked": LB1ItemData(base_item_id + 57, ItemClassification.progression),
     "The Joker's Van Unlocked": LB1ItemData(base_item_id + 58, ItemClassification.progression),
     "Garbage Truck Unlocked": LB1ItemData(base_item_id + 59, ItemClassification.progression),
-    # watercraft
+}
+watercraft_item_table: Dict[str, LB1ItemData] = {
     "Batboat Unlocked": LB1ItemData(base_item_id + 60, ItemClassification.progression),
     "Robin's Watercraft Unlocked": LB1ItemData(base_item_id + 61, ItemClassification.progression),
     "Robin's Submarine Unlocked": LB1ItemData(base_item_id + 62, ItemClassification.progression),
@@ -88,18 +91,19 @@ character_item_table: Dict[str, LB1ItemData] = {
     "Killer Croc's Swamp Rider Unlocked": LB1ItemData(base_item_id + 66, ItemClassification.progression),
     "Penguin Goon Submarine Unlocked": LB1ItemData(base_item_id + 67, ItemClassification.progression),
     "Mr. Freeze's Iceberg Unlocked": LB1ItemData(base_item_id + 68, ItemClassification.progression),
-    "Mad Hatter's Steamboat Unlocked": LB1ItemData(base_item_id + 69, ItemClassification.progression),
-    # aircraft
+    "Mad Hatter's Steamboat Unlocked": LB1ItemData(base_item_id + 69, ItemClassification.filler),
+}
+aircraft_item_table: Dict[str, LB1ItemData] = {
     "Batwing Unlocked": LB1ItemData(base_item_id + 70, ItemClassification.progression),
     "Batcopter Unlocked": LB1ItemData(base_item_id + 71, ItemClassification.progression),
     "Harbour Helicopter Unlocked": LB1ItemData(base_item_id + 72, ItemClassification.progression),
     "Police Helicopter Unlocked": LB1ItemData(base_item_id + 73, ItemClassification.progression),
-    "Bruce Wayne's Private Jet Unlocked": LB1ItemData(base_item_id + 74, ItemClassification.progression),
+    "Bruce Wayne's Private Jet Unlocked": LB1ItemData(base_item_id + 74, ItemClassification.filler),
     "The Joker's Helicopter Unlocked": LB1ItemData(base_item_id + 75, ItemClassification.progression),
     "The Scarecrow's Biplane Unlocked": LB1ItemData(base_item_id + 76, ItemClassification.progression),
     "Goon Helicopter Unlocked": LB1ItemData(base_item_id + 77, ItemClassification.progression),
-    "Riddler's jet Unlocked": LB1ItemData(base_item_id + 78, ItemClassification.progression),
-    "Mad Hatter's Glider Unlocked": LB1ItemData(base_item_id + 79, ItemClassification.progression),
+    "Riddler's Jet Unlocked": LB1ItemData(base_item_id + 78, ItemClassification.progression),
+    "Mad Hatter's Glider Unlocked": LB1ItemData(base_item_id + 79, ItemClassification.filler),
 }
 
 # Currently stored in Batcave because it is sounding like they can be unlocked in multiple levels
@@ -618,6 +622,10 @@ red_brick_unlocked_table: Dict[str, LB1ItemData] = {
 
 item_data_table = {
     **character_item_table,
+    **hard_character_item_table,
+    **automobile_item_table,
+    **watercraft_item_table,
+    **aircraft_item_table,
     **suit_item_table,
     **minikit_item_table,
     **hostage_item_table,
@@ -629,6 +637,10 @@ item_data_table = {
 
 item_group_table: Dict[str, Dict[str, LB1ItemData]] = {
     "character": character_item_table,
+    "hard character": hard_character_item_table,
+    "automobile": automobile_item_table,
+    "watercraft": watercraft_item_table,
+    "aircraft": aircraft_item_table,
     "suit": suit_item_table,
     "minikit": minikit_item_table,
     "hostage": hostage_item_table,
@@ -657,6 +669,10 @@ def setup_items(options: LB1Options):
     if options.true_status_sanity == 1:
         temp_item_table.update({**true_status_item_table})
     temp_item_table.update({**character_item_table})
+    temp_item_table.update({**hard_character_item_table})
+    temp_item_table.update({**automobile_item_table})
+    temp_item_table.update({**watercraft_item_table})
+    temp_item_table.update({**aircraft_item_table})
     temp_item_table.update({**suit_item_table})
     temp_item_table.update({**hostage_item_table})
     temp_item_table.update({**level_unlocked_item_table})

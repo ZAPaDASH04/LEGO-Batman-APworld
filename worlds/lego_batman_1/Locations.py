@@ -16,7 +16,6 @@ class LocationData(NamedTuple):
 base_location_id: int = 400000
 
 character_location_table: Dict[str, LocationData] = {
-    # characters
     "Batman Collected": LocationData(base_location_id + 0, "Batcave"),
     "Robin Collected": LocationData(base_location_id + 1, "Batcave"),
     "Bruce Wayne Collected": LocationData(base_location_id + 2, "The Face-Off"),
@@ -61,11 +60,16 @@ character_location_table: Dict[str, LocationData] = {
     "Joker Goon Collected": LocationData(base_location_id + 41, "Joker's Home Turf"),
     "Joker Henchman Collected": LocationData(base_location_id + 42, "Joker's Home Turf"),
     "Clown Goon Collected": LocationData(base_location_id + 43, "Little Fun at the Big Top"),
+}
+
+hard_character_location_table: Dict[str, LocationData] = {
     "Hush Collected": LocationData(base_location_id + 44, "Shop"),
     "Rā's al Ghūl Collected": LocationData(base_location_id + 45, "Shop"),
-    "Hero 1 Collected": LocationData(base_location_id + 46, "Batcave"),
-    "Hero 2 Collected": LocationData(base_location_id + 47, "Batcave"),
-    # landcraft
+    # "Hero 1 Collected": LocationData(base_location_id + 46, "Batcave"),
+    # "Hero 2 Collected": LocationData(base_location_id + 47, "Batcave"),
+}
+
+automobile_location_table: Dict[str, LocationData] = {
     "Batmobile Collected": LocationData(base_location_id + 48, "Two-Face Chase"),
     "Batcycle Collected": LocationData(base_location_id + 49, "Two-Face Chase"),
     "Police Car Collected": LocationData(base_location_id + 50, "Two-Face Chase"),
@@ -78,7 +82,9 @@ character_location_table: Dict[str, LocationData] = {
     "Harley Quinn's Hammer Truck Collected": LocationData(base_location_id + 57, "A Surprise for the Commissioner"),
     "The Joker's Van Collected": LocationData(base_location_id + 58, "Two-Face Chase"),
     "Garbage Truck Collected": LocationData(base_location_id + 59, "The Lure of the Night"),
-    # watercraft
+}
+
+watercraft_location_table: Dict[str, LocationData] = {
     "Batboat Collected": LocationData(base_location_id + 60, "Batboat Battle"),
     "Robin's Watercraft Collected": LocationData(base_location_id + 61, "Batboat Battle"),
     "Robin's Submarine Collected": LocationData(base_location_id + 62, "Batboat Battle"),
@@ -89,7 +95,9 @@ character_location_table: Dict[str, LocationData] = {
     "Penguin Goon Submarine Collected": LocationData(base_location_id + 67, "Batboat Battle"),
     "Mr. Freeze's Iceberg Collected": LocationData(base_location_id + 68, "On the Rocks"),
     "Mad Hatter's Steamboat Collected": LocationData(base_location_id + 69, "Joker's Home Turf"),
-    # aircraft
+}
+
+aircraft_location_table: Dict[str, LocationData] = {
     "Batwing Collected": LocationData(base_location_id + 70, "Flight of the Bat"),
     "Batcopter Collected": LocationData(base_location_id + 71, "Flight of the Bat"),
     "Harbour Helicopter Collected": LocationData(base_location_id + 72, "Batboat Battle"),
@@ -954,6 +962,10 @@ level_beaten_event_location_table = {
 
 all_location_table = {
     **character_location_table,
+    **hard_character_location_table,
+    **automobile_location_table,
+    **watercraft_location_table,
+    **aircraft_location_table,
     **suit_location_table,
     **minikit_location_table,
     **hostage_location_table,
@@ -971,6 +983,10 @@ def setup_locations(options: LB1Options):
     if options.true_status_sanity == 1:
         temp_location_table.update({**true_status_location_table})
     temp_location_table.update({**character_location_table})
+    temp_location_table.update({**hard_character_location_table})
+    temp_location_table.update({**automobile_location_table})
+    temp_location_table.update({**watercraft_location_table})
+    temp_location_table.update({**aircraft_location_table})
     temp_location_table.update({**suit_location_table})
     temp_location_table.update({**hostage_location_table})
     temp_location_table.update({**level_beaten_location_table})
