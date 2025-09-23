@@ -116,8 +116,8 @@ suit_item_table: Dict[str, LB1ItemData] = {
     # "Robinsuit": LB1ItemData(base_item_id + 85, ItemClassification.progression),
     "Water Suit Unlocked": LB1ItemData(base_item_id + 86, ItemClassification.progression),
     "Technology Suit Unlocked": LB1ItemData(base_item_id + 87, ItemClassification.progression),
-    "Magnet Suit": LB1ItemData(base_item_id + 88, ItemClassification.progression),
-    "Attract Suit": LB1ItemData(base_item_id + 89, ItemClassification.progression),
+    "Magnet Suit Unlocked": LB1ItemData(base_item_id + 88, ItemClassification.progression),
+    "Attract Suit Unlocked": LB1ItemData(base_item_id + 89, ItemClassification.progression),
 }
 
 # TODO: add in progression classification based off of win con
