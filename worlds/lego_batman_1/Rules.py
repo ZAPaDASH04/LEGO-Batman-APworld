@@ -51,6 +51,10 @@ def character_can_explode(state: CollectionState, player: int):
     return state.has("Demolition Suit Unlocked", player) or state.has("The Penguin Unlocked", player)
 
 
+def character_can_techno(state: CollectionState, player: int):
+    return state.has("Technology Suit Unlocked", player) or state.has("Scientists Unlocked", player)
+
+
 def auto_has_cable(state: CollectionState, player: int):
     return (state.has("Batmobile Unlocked", player) or state.has("Batcycle Unlocked", player)
             or state.has("Bat-Tank Unlocked", player) or state.has("Catwoman's Motorcycle Unlocked", player))
@@ -106,8 +110,107 @@ def air_can_cross_toxic(state: CollectionState, player: int):
             or state.has("The Scarecrow's Biplane Unlocked", player) or state.has("Goon Helicopter Unlocked", player))
 
 
-def set_rules(world, options: LB1Options, player: int):
-    # Entrance Rules
+def can_beat_ycbob(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Demolition Suit Unlocked", player) and state.has("Technology Suit Unlocked", player)
+    else:
+        return character_can_explode(state, player) and character_can_techno(state, player)
+
+
+def can_beat_air(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Magnet Suit Unlocked", player) and state.has("Glide Suit Unlocked", player)
+    else:
+        return state.has("Magnet Suit Unlocked", player) and character_can_glide(state, player)
+
+
+def can_beat_apa(state: CollectionState, player: int):
+    return (state.has("Attract Suit Unlocked", player) and state.has("Sonic Suit Unlocked", player)
+            and state.has("Heat Protection Suit Unlocked", player))
+
+
+def can_beat_tfo(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Attract Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Attract Suit Unlocked", player))
+
+
+def can_beat_tsga(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player))
+
+
+def can_beat_utc(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Water Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and character_can_sink(state, player) and character_can_explode(state, player))
+
+
+def can_beat_zc(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Technology Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and character_can_techno(state, player) and character_can_explode(state, player)
+                and state.has("Sonic Suit Unlocked", player))
+
+
+def can_beat_pl(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Glide Suit Unlocked", player) and state.has("Water Suit Unlocked", player)
+    else:
+        return character_can_glide(state, player) and character_can_sink(state, player)
+
+
+def can_beat_jht(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Attract Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Attract Suit Unlocked", player))
+
+
+def can_beat_lfabt(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Demolition Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player) and state.has("Attract Suit Unlocked", player))
+    else:
+        return (character_can_explode(state, player) and state.has("Magnet Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player) and state.has("Attract Suit Unlocked", player))
+
+
+def can_beat_itdn(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Magnet Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+                and state.has("Technology Suit Unlocked", player))
+    else:
+        return (state.has("Magnet Suit Unlocked", player) and character_can_explode(state, player)
+                and character_can_techno(state, player))
+
+
+def can_beat_tttott(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Magnet Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+                and state.has("Glide Suit Unlocked", player))
+    else:
+        return (state.has("Magnet Suit Unlocked", player) and character_can_explode(state, player)
+                and character_can_glide(state, player))
+
+
+def set_entrance_rules(world, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has("You can Bank on Batman: Level Unlocked", player))
     add_rule(world.get_entrance("Batcave -> An Icy Reception", player),
@@ -168,12 +271,45 @@ def set_rules(world, options: LB1Options, player: int):
              lambda state: state.has("The Lure of the Night: Level Unlocked", player))
     add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has("Dying of Laughter: Level Unlocked", player))
-    # Minikit Logic
+
+
+def set_minikit_rules(world, player: int):
     add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
              lambda state: character_can_cross_toxic(state, player))
 
-    # #Shop Rules
-    # # TODO: Add multiplier as logic for purchases
+
+def set_level_beaten_rules(world, options: LB1Options, player: int):
+    add_rule(world.get_location("You can Bank on Batman: Level Beaten", player),
+             lambda state: can_beat_ycbob(state, options, player))
+    add_rule(world.get_location("An Icy Reception: Level Beaten", player),
+             lambda state: can_beat_air(state, options, player))
+    # Two-Face Chase can be beaten in story
+    add_rule(world.get_location("A Poisonous Appointment: Level Beaten", player),
+             lambda state: can_beat_apa(state, player))
+    add_rule(world.get_location("The Face-Off: Level Beaten", player),
+             lambda state: can_beat_tfo(state, options, player))
+    add_rule(world.get_location("There She Goes Again: Level Beaten", player),
+             lambda state: can_beat_tsga(state, options, player))
+    # Batboat Battle can be beaten in story
+    add_rule(world.get_location("Under the City: Level Beaten", player),
+             lambda state: can_beat_utc(state, options, player))
+    add_rule(world.get_location("Zoo's Company: Level Beaten", player),
+             lambda state: can_beat_zc(state, options, player))
+    add_rule(world.get_location("Penguin's Lair: Level Beaten", player),
+             lambda state: can_beat_pl(state, options, player))
+    add_rule(world.get_location("Joker's Home Turf: Level Beaten", player),
+             lambda state: can_beat_jht(state, options, player))
+    add_rule(world.get_location("Little Fun at the Big Top: Level Beaten", player),
+             lambda state: can_beat_lfabt(state, options, player))
+    # Flight of the Bat can be beaten in story
+    add_rule(world.get_location("In the Dark Night: Level Beaten", player),
+             lambda state: can_beat_itdn(state, options, player))
+    add_rule(world.get_location("To the Top of the Tower: Level Beaten", player),
+             lambda state: can_beat_tttott(state, options, player))
+    # All Villain Levels can be beaten in story
+
+
+def set_red_brick_purchase_rules(world, player: int):
     add_rule(world.get_location("Score x2 Purchased", player),
              lambda state: state.has("The Riddler Makes a Withdrawal: Red Brick Collected", player))
     add_rule(world.get_location("Score x4 Purchased", player),
@@ -234,6 +370,25 @@ def set_rules(world, options: LB1Options, player: int):
              lambda state: state.has("In the Dark Night: Red Brick Collected", player))
     add_rule(world.get_location("Piece Detector (Attract Suit) Purchased", player),
              lambda state: state.has("To the Top of the Tower: Red Brick Collected", player))
+
+
+def set_rules(world, options: LB1Options, player: int):
+    set_entrance_rules(world, player)
+    # Character rules
+    # Hard Character Rules
+    # Automobile Rules
+    # Watercraft Rules
+    # aircraft Rules
+    # Suit Rules
+    if options.minikit_sanity == 1:
+        set_minikit_rules(world, player)
+    # Hostage Rules
+    set_level_beaten_rules(world, options, player)
+    # True Status Rules
+    # Red Brick Rules
+    # Red Brick Purchase Rules
+    set_red_brick_purchase_rules(world, player)
+
     # Set End Goal
     if options.EndGoal == EndGoal.option_minikits:
         world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)
@@ -244,4 +399,5 @@ def set_rules(world, options: LB1Options, player: int):
 def set_event_rules(world: MultiWorld, player: int):
     for (name, data) in level_beaten_event_location_table.items():
         event: Location = world.get_location(name, player)
-        add_rule(event, world.get_location(name, player).access_rule)
+        level_beaten_name = name.removesuffix(" Event")
+        add_rule(event, world.get_location(level_beaten_name, player).access_rule)

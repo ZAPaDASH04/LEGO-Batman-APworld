@@ -6,7 +6,7 @@ from .Items import LB1Item, item_data_table, minikit_names_set, setup_items, ite
 from .Locations import all_location_table, LocationData, setup_locations
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
-from .Rules import set_rules
+from .Rules import set_rules, set_event_rules
 from ..AutoWorld import World, WebWorld, CollectionState
 
 
@@ -131,6 +131,7 @@ class LB1World(World):
 
     def set_rules(self):
         set_rules(self.multiworld, self.options, self.player)
+        set_event_rules(self.multiworld, self.player)
 
     def collect(self, state: CollectionState, item: Item) -> bool:
         changed = super().collect(state, item)
