@@ -135,8 +135,8 @@ def set_rules(world, options: LB1Options, player: int):
     elif options.EndGoal == EndGoal.option_levels_beaten:
         world.completion_condition[player] = lambda state: state.has("Level Beaten", player, options.levels_to_win)
 
-
-def set_event_rules(world: MultiWorld, player: int):
-    for (name, data) in level_beaten_event_location_table.items():
-        event: Location = world.get_location(name, player)
-        add_rule(event, world.get_location(name, player).access_rule)
+# Not needed until v0.3 since events are placed in the region and logic assumes you can beat the level once unlocked
+# def set_event_rules(world: MultiWorld, player: int):
+#     for (name, data) in level_beaten_event_location_table.items():
+#         event: Location = world.get_location(name, player)
+#         add_rule(event, world.get_location(name, player).access_rule)
