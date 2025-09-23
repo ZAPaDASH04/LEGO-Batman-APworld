@@ -108,6 +108,8 @@ class LB1World(World):
         self.validate_yaml()
         self.multiworld.push_precollected(self.create_item("You can Bank on Batman: Level Unlocked"))
         self.multiworld.push_precollected(self.create_item("The Riddler Makes a Withdrawal: Level Unlocked"))
+        self.multiworld.push_precollected(self.create_item("Batman Unlocked"))
+        self.multiworld.push_precollected(self.create_item("Robin Unlocked"))
 
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
