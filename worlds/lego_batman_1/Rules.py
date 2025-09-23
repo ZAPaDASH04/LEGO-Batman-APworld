@@ -12,6 +12,100 @@ def character_can_cross_toxic(state: CollectionState, player: int):
             or state.has("The Joker (Tropical) Unlocked", player))
 
 
+def character_can_double_jump(state: CollectionState, player: int):
+    return (state.has("Clayface Unlocked", player) or state.has("Poison Ivy Unlocked", player)
+            or state.has("Catwoman Unlocked", player) or state.has("Catwoman (Classic) Unlocked", player)
+            or state.has("Harley Quinn Unlocked", player) or state.has("Mad Hatter Unlocked", player))
+
+
+def character_can_access_female_room(state: CollectionState, player: int):
+    return (state.has("Poison Ivy Unlocked", player) or state.has("Harley Quinn Unlocked", player)
+            or state.has("Catwoman Unlocked", player) or state.has("Catwoman (Classic) Unlocked", player))
+
+
+def character_can_hypno(state: CollectionState, player: int):
+    return (state.has("The Riddler Unlocked", player) or state.has("The Scarecrow Unlocked", player)
+            or state.has("The Mad Hatter Unlocked", player))
+
+
+def character_joker(state: CollectionState, player: int):
+    return state.has("The Joker Unlocked", player) or state.has("The Joker (Tropical) Unlocked", player)
+
+
+def character_is_strong(state: CollectionState, player: int):
+    return (state.has("Clayface Unlocked", player) or state.has("Mr. Freeze Unlocked", player)
+            or state.has("Bane Unlocked", player) or state.has("Killer Croc Unlocked", player)
+            or state.has("Man-Bat Unlocked", player))
+
+
+def character_can_glide(state: CollectionState, player: int):
+    return (state.has("Glide Suit Unlocked", player) or state.has("Man-Bat Unlocked", player)
+            or state.has("The Penguin Unlocked", player) or state.has("Killer Mother Unlocked", player))
+
+
+def character_can_sink(state: CollectionState, player: int):
+    return state.has("Water Suit Unlocked", player) or state.has("Killer Croc Unlocked", player)
+
+
+def character_can_explode(state: CollectionState, player: int):
+    return state.has("Demolition Suit Unlocked", player) or state.has("The Penguin Unlocked", player)
+
+
+def auto_has_cable(state: CollectionState, player: int):
+    return (state.has("Batmobile Unlocked", player) or state.has("Batcycle Unlocked", player)
+            or state.has("Bat-Tank Unlocked", player) or state.has("Catwoman's Motorcycle Unlocked", player))
+
+
+def auto_can_explode(state: CollectionState, player: int):
+    return (state.has("Police Car Unlocked", player) or state.has("Police Van Unlocked", player)
+            or state.has("Harley Quinn's Hammer Truck Unlocked", player)
+            or state.has("The Joker's Van Unlocked", player) or state.has("Garbage Truck Unlocked", player))
+
+
+def auto_can_shoot(state: CollectionState, player: int):
+    return (state.has("Batmobile Unlocked", player) or state.has("Batcycle Unlocked", player)
+            or state.has("Police Bike Unlocked", player) or state.has("Bat-Tank Unlocked", player)
+            or state.has("Catwoman's Motorcycle Unlocked", player)
+            or state.has("Two-Face's Armoured Truck Unlocked", player)
+            or state.has("Harley Quinn's Hammer Truck Unlocked", player)
+            or state.has("The Joker's Van Unlocked", player))
+
+
+def water_has_torpedo(state: CollectionState, player: int):
+    return state.has("Robin's Watercraft Unlocked", player) or state.has("Penguin's Submarine Unlocked", player)
+
+
+def water_can_sink(state: CollectionState, player: int):
+    return (state.has("Robin's Submarine Unlocked", player) or state.has("Penguin's Submarine Unlocked", player)
+            or state.has("Penguin Goon Submarine Unlocked", player))
+
+
+def water_can_cross_toxic(state: CollectionState, player: int):
+    return (state.has("Police Watercraft Unlocked", player) or state.has("Killer Croc's Swamp Rider Unlocked", player)
+            or state.has("Mr. Freeze's Iceberg Unlocked", player))
+
+
+def water_can_boost(state: CollectionState, player: int):
+    return state.has("Batboat Unlocked", player) or state.has("Killer Croc's Swamp Rider Unlocked", player)
+
+
+def air_has_cable(state: CollectionState, player: int):
+    return (state.has("Batcopter Unlocked", player) or state.has("Harbour Helicopter Unlocked", player)
+            or state.has("Police Helicopter Unlocked", player) or state.has("The Joker's Helicopter Unlocked", player)
+            or state.has("Goon Helicopter Unlocked", player))
+
+
+def air_has_torpedo(state: CollectionState, player: int):
+    return (state.has("Batwing Unlocked", player) or state.has("The Scarecrow's Biplane Unlocked", player)
+            or state.has("Riddler's Jet Unlocked", player))
+
+
+def air_can_cross_toxic(state: CollectionState, player: int):
+    return (state.has("Harbour Helicopter Unlocked", player) or state.has("Police Helicopter Unlocked", player)
+            or state.has("The Joker's Helicopter Unlocked", player)
+            or state.has("The Scarecrow's Biplane Unlocked", player) or state.has("Goon Helicopter Unlocked", player))
+
+
 def set_rules(world, options: LB1Options, player: int):
     # Entrance Rules
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
@@ -74,6 +168,9 @@ def set_rules(world, options: LB1Options, player: int):
              lambda state: state.has("The Lure of the Night: Level Unlocked", player))
     add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has("Dying of Laughter: Level Unlocked", player))
+    # Minikit Logic
+    add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
+             lambda state: character_can_cross_toxic(state, player))
 
     # #Shop Rules
     # # TODO: Add multiplier as logic for purchases
@@ -142,9 +239,6 @@ def set_rules(world, options: LB1Options, player: int):
         world.completion_condition[player] = lambda state: state.has("UNIQUE_MINIKITS", player, options.minikits_to_win)
     elif options.EndGoal == EndGoal.option_levels_beaten:
         world.completion_condition[player] = lambda state: state.has("Level Beaten", player, options.levels_to_win)
-    # Minikit Logic
-    add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
-             lambda state: character_can_cross_toxic(state, player))
 
 
 def set_event_rules(world: MultiWorld, player: int):
