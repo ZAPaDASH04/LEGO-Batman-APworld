@@ -475,6 +475,39 @@ def set_hostage_rules(world, options: LB1Options, player: int):
              lambda state: can_dol_hostage(state, player))
 
 
+# Current logic implementation is that multiplier/can beat level. In separate function since always score multiply \
+# is a starting item
+def set_true_status_rules(world, options: LB1Options, player: int):
+    add_rule(world.get_location("You can Bank on Batman: True Status", player),
+             lambda state: can_beat_ycbob(state, options, player))
+    add_rule(world.get_location("An Icy Reception: True Status", player),
+             lambda state: can_beat_air(state, options, player))
+    # Two-Face Chase can be beaten in story
+    add_rule(world.get_location("A Poisonous Appointment: True Status", player),
+             lambda state: can_beat_apa(state, player))
+    add_rule(world.get_location("The Face-Off: True Status", player),
+             lambda state: can_beat_tfo(state, options, player))
+    add_rule(world.get_location("There She Goes Again: True Status", player),
+             lambda state: can_beat_tsga(state, options, player))
+    # Batboat Battle can be beaten in story
+    add_rule(world.get_location("Under the City: True Status", player),
+             lambda state: can_beat_utc(state, options, player))
+    add_rule(world.get_location("Zoo's Company: True Status", player),
+             lambda state: can_beat_zc(state, options, player))
+    add_rule(world.get_location("Penguin's Lair: True Status", player),
+             lambda state: can_beat_pl(state, options, player))
+    add_rule(world.get_location("Joker's Home Turf: True Status", player),
+             lambda state: can_beat_jht(state, options, player))
+    add_rule(world.get_location("Little Fun at the Big Top: True Status", player),
+             lambda state: can_beat_lfatbt(state, options, player))
+    # Flight of the Bat can be beaten in story
+    add_rule(world.get_location("In the Dark Night: True Status", player),
+             lambda state: can_beat_itdn(state, options, player))
+    add_rule(world.get_location("To the Top of the Tower: True Status", player),
+             lambda state: can_beat_tttott(state, options, player))
+    # All Villain Levels can be beaten in story
+
+
 def set_red_brick_purchase_rules(world, player: int):
     add_rule(world.get_location("Score x2 Purchased", player),
              lambda state: state.has("The Riddler Makes a Withdrawal: Red Brick Collected", player))
@@ -550,7 +583,7 @@ def set_rules(world, options: LB1Options, player: int):
     if options.minikit_sanity == 1:
         set_minikit_rules(world, player)
     set_hostage_rules(world, options, player)
-    # True Status Rules
+    set_true_status_rules(world, options, player)
     # Red Brick Rules
     # Red Brick Purchase Rules
     set_red_brick_purchase_rules(world, player)
