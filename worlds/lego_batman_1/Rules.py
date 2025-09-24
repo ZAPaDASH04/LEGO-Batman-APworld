@@ -183,7 +183,7 @@ def can_beat_jht(state: CollectionState, options: LB1Options, player: int):
                 and state.has("Attract Suit Unlocked", player))
 
 
-def can_beat_lfabt(state: CollectionState, options: LB1Options, player: int):
+def can_beat_lfatbt(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (state.has("Demolition Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
                 and state.has("Sonic Suit Unlocked", player) and state.has("Attract Suit Unlocked", player))
@@ -208,6 +208,124 @@ def can_beat_tttott(state: CollectionState, options: LB1Options, player: int):
     else:
         return (state.has("Magnet Suit Unlocked", player) and character_can_explode(state, player)
                 and character_can_glide(state, player))
+
+
+def can_air_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return can_beat_air(state, options, player) and character_can_hypno(state, player)
+    else:
+        return character_can_hypno(state, player)
+
+
+def can_tfo_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (can_beat_tfo(state, options, player) and character_can_glide(state, player)
+                and state.has("Attract Suit Unlocked", player) and character_can_double_jump(state, player))
+    else:
+        return (character_can_glide(state, player) and state.has("Attract Suit Unlocked", player)
+                and character_can_double_jump(state, player))
+
+
+def can_tsga_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
+    else:
+        return character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+
+
+def can_utc_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Magnet Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+    else:
+        return character_can_explode(state, player)
+
+
+def can_zc_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Magnet Suit Unlocked", player) and state.has("Glide Suit Unlocked", player)
+                and state.has("Technology Suit Unlocked", player))
+    else:
+        return ((character_can_explode(state, player)
+                 or (state.has("Magnet Suit Unlocked", player) and state.has("Glide Suit Unlocked", player)))
+                and (state.has("Sonic Suit Unlocked", player) or state.has("Technology Suit Unlocked", player)))
+
+
+def can_pl_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Glide Suit Unlocked", player) and state.has("Water Suit Unlocked", player)
+    else:
+        return character_can_glide(state, player) and character_can_sink(state, player)
+
+
+# JHT hostage has same requirements as beat level plus has joker
+def can_jht_hostage(state: CollectionState, options: LB1Options, player: int):
+    return can_beat_jht(state, options, player) and character_joker(state, player)
+
+
+def can_lfatbt_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Magnet Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+                and state.has("Sonic Suit Unlocked", player))
+    else:
+        return (state.has("Magnet Suit Unlocked", player) and character_can_explode(state, player)
+                and state.has("Sonic Suit Unlocked", player))
+
+
+def can_itdn_hostage(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (state.has("Glide Suit Unlocked", player) and state.has("Demolition Suit Unlocked", player)
+                and state.has("Technology Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player))
+    else:
+        return (character_can_glide(state, player) and character_can_explode(state, player)
+                and state.has("Magnet Suit Unlocked", player) and character_can_techno(state, player))
+
+
+# TRMAW hostage requires sonic suit (only freeplay) and story characters aren't usable in freeplay unless unlocked
+def can_trmaw_hostage(state: CollectionState, player: int):
+    return (state.has("Sonic Suit Unlocked", player) and character_can_hypno(state, player)
+            and character_is_strong(state, player))
+
+
+# OTR hostage requires explosives (freeplay only) and story characters aren't usable in freeplay unless unlocked
+def can_otr_hostage(state: CollectionState, player: int):
+    return (character_is_strong(state, player) and character_can_explode(state, player)
+            and state.has("Mr. Freeze Unlocked", player))
+
+
+def can_gf_hostage(state: CollectionState, player: int):
+    return character_can_explode(state, player) and state.has("Poison Ivy Unlocked", player)
+
+
+def can_bb_hostage(state: CollectionState, player: int):
+    return ((state.has("Sonic Suit Unlocked", player) or character_can_hypno(state, player))
+            and character_can_explode(state, player))
+
+
+def can_rtd_hostage(state: CollectionState, player: int):
+    return (character_can_explode(state, player) and character_is_strong(state, player)
+            and state.has("Sonic Suit Unlocked", player))
+
+
+def can_sts_hostage(state: CollectionState, player: int):
+    return state.has("Magnet Suit Unlocked", player) and character_is_strong(state, player)
+
+
+def can_adr_hostage(state: CollectionState, player: int):
+    return character_is_strong(state, player) and character_joker(state, player)
+
+
+def can_asftc_hostage(state: CollectionState, player: int):
+    return character_can_double_jump(state, player) and character_can_explode(state, player)
+
+
+def can_tjm_hostage(state: CollectionState, player: int):
+    return (character_joker(state, player) and character_can_explode(state, player)
+            and state.has("Heat Protection Suit Unlocked", player))
+
+
+def can_dol_hostage(state: CollectionState, player: int):
+    return (character_joker(state, player) and character_can_double_jump(state, player)
+            and character_can_glide(state, player))
 
 
 def set_entrance_rules(world, player: int):
@@ -300,13 +418,61 @@ def set_level_beaten_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location("Joker's Home Turf: Level Beaten", player),
              lambda state: can_beat_jht(state, options, player))
     add_rule(world.get_location("Little Fun at the Big Top: Level Beaten", player),
-             lambda state: can_beat_lfabt(state, options, player))
+             lambda state: can_beat_lfatbt(state, options, player))
     # Flight of the Bat can be beaten in story
     add_rule(world.get_location("In the Dark Night: Level Beaten", player),
              lambda state: can_beat_itdn(state, options, player))
     add_rule(world.get_location("To the Top of the Tower: Level Beaten", player),
              lambda state: can_beat_tttott(state, options, player))
     # All Villain Levels can be beaten in story
+
+
+def set_hostage_rules(world, options: LB1Options, player: int):
+    # You Can Bank of Batman Hostage can be obtained during story and for free
+    add_rule(world.get_location("An Icy Reception: Hostage", player),
+             lambda state: can_air_hostage(state, options, player))
+    # Two-Face Chase does not have hostage
+    add_rule(world.get_location("A Poisonous Appointment: Hostage", player),
+             lambda state: state.has("Sonic Suit Unlocked", player))
+    add_rule(world.get_location("The Face-Off: Hostage", player), lambda state: can_tfo_hostage(state, options, player))
+    add_rule(world.get_location("There She Goes Again: Hostage", player),
+             lambda state: can_tsga_hostage(state, options, player))
+    # Batboat Battle does not have hostage
+    add_rule(world.get_location("Under the City: Hostage", player),
+             lambda state: can_utc_hostage(state, options, player))
+    add_rule(world.get_location("Zoo's Company: Hostage", player), lambda state: can_zc_hostage(state, options, player))
+    add_rule(world.get_location("Penguin's Lair: Hostage", player),
+             lambda state: can_pl_hostage(state, options, player))
+    add_rule(world.get_location("Joker's Home Turf: Hostage", player),
+             lambda state: can_jht_hostage(state, options, player))
+    add_rule(world.get_location("Little Fun at the Big Top: Hostage", player),
+             lambda state: can_lfatbt_hostage(state, options, player))
+    # Flight of the Bat does not have hostage
+    add_rule(world.get_location("In the Dark Night: Hostage", player),
+             lambda state: can_itdn_hostage(state, options, player))
+    # To the Top of the Tower Hostage can be obtained during story and for free
+    add_rule(world.get_location("The Riddler Makes a Withdrawal: Hostage", player),
+             lambda state: can_trmaw_hostage(state, player))
+    add_rule(world.get_location("On the Rocks: Hostage", player), lambda state: can_otr_hostage(state, player))
+    add_rule(world.get_location("Green Fingers: Hostage", player), lambda state: can_gf_hostage(state, player))
+    add_rule(world.get_location("An Enterprising Theft: Hostage", player),
+             lambda state: state.has("Sonic Suit Unlocked", player))
+    add_rule(world.get_location("Breaking Blocks: Hostage", player), lambda state: can_bb_hostage(state, player))
+    add_rule(world.get_location("Rockin' the Docks: Hostage", player), lambda state: can_rtd_hostage(state, player))
+    add_rule(world.get_location("Stealing the Show: Hostage", player), lambda state: can_sts_hostage(state, player))
+    # Harbouring a Grudge does not have hostage
+    add_rule(world.get_location("A Daring Rescue: Hostage", player), lambda state: can_adr_hostage(state, player))
+    add_rule(world.get_location("Arctic World: Hostage", player),
+             lambda state: character_can_cross_toxic(state, player))
+    add_rule(world.get_location("A Surprise for the Commissioner: Hostage", player),
+             lambda state: can_asftc_hostage(state, player))
+    # Biplane Blast does not have hostage
+    add_rule(world.get_location("The Joker's Masterpiece: Hostage", player),
+             lambda state: can_tjm_hostage(state, player))
+    add_rule(world.get_location("The Lure of the Night: Hostage", player),
+             lambda state: character_can_double_jump(state, player))
+    add_rule(world.get_location("Dying of Laughter: Hostage", player),
+             lambda state: can_dol_hostage(state, player))
 
 
 def set_red_brick_purchase_rules(world, player: int):
@@ -374,6 +540,7 @@ def set_red_brick_purchase_rules(world, player: int):
 
 def set_rules(world, options: LB1Options, player: int):
     set_entrance_rules(world, player)
+    set_level_beaten_rules(world, options, player)
     # Character rules
     # Hard Character Rules
     # Automobile Rules
@@ -382,8 +549,7 @@ def set_rules(world, options: LB1Options, player: int):
     # Suit Rules
     if options.minikit_sanity == 1:
         set_minikit_rules(world, player)
-    # Hostage Rules
-    set_level_beaten_rules(world, options, player)
+    set_hostage_rules(world, options, player)
     # True Status Rules
     # Red Brick Rules
     # Red Brick Purchase Rules
@@ -396,6 +562,7 @@ def set_rules(world, options: LB1Options, player: int):
         world.completion_condition[player] = lambda state: state.has("Level Beaten", player, options.levels_to_win)
 
 
+# TODO: can probably clean this up a bit
 def set_event_rules(world: MultiWorld, player: int):
     for (name, data) in level_beaten_event_location_table.items():
         event: Location = world.get_location(name, player)
