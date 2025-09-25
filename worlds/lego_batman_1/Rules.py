@@ -210,6 +210,18 @@ def can_beat_tttott(state: CollectionState, options: LB1Options, player: int):
                 and character_can_glide(state, player))
 
 
+def can_trmaw_min4(state: CollectionState, player: int):
+    return (character_can_explode(state, player) and character_can_hypno(state, player)
+            and character_is_strong(state, player))
+
+
+def can_trmaw_min6_and_9(state: CollectionState, player: int):
+    return ((character_can_explode(state, player) and character_can_hypno(state, player)
+            and character_is_strong(state, player) and state.has("Sonic Suit Unlocked", player))
+            or (character_can_double_jump(state, player) and character_can_hypno(state, player)
+            and character_is_strong(state, player) and state.has("Sonic Suit Unlocked", player)))
+
+
 def can_air_hostage(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return can_beat_air(state, options, player) and character_can_hypno(state, player)
@@ -361,6 +373,11 @@ def can_tsga_rb(state: CollectionState, options: LB1Options, player: int):
     return can_beat_tsga(state, options, player) and state.has("Sonic Suit Unlocked", player)
 
 
+def can_trmaw_rb(state: CollectionState, player: int):
+    return (character_can_double_jump(state, player) and character_can_hypno(state, player)
+            and character_is_strong(state, player) and state.has("Sonic Suit Unlocked", player))
+
+
 def set_entrance_rules(world, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has("You can Bank on Batman: Level Unlocked", player))
@@ -424,11 +441,6 @@ def set_entrance_rules(world, player: int):
              lambda state: state.has("Dying of Laughter: Level Unlocked", player))
 
 
-def set_minikit_rules(world, player: int):
-    add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
-             lambda state: character_can_cross_toxic(state, player))
-
-
 def set_level_beaten_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location("You can Bank on Batman: Level Beaten", player),
              lambda state: can_beat_ycbob(state, options, player))
@@ -458,6 +470,18 @@ def set_level_beaten_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location("To the Top of the Tower: Level Beaten", player),
              lambda state: can_beat_tttott(state, options, player))
     # All Villain Levels can be beaten in story
+
+
+def set_minikit_rules(world, player: int):
+    add_rule(world.get_location("You can Bank on Batman: Minikit in the Bar behind the Broken Down Van", player),
+             lambda state: character_can_cross_toxic(state, player))
+    # TRMAW Minikits 1-3, 5, 7, 8, 10 can all be done in story
+    add_rule(world.get_location("The Riddler Makes a Withdrawal: Minikit behind the Silver Lego Gate", player),
+             lambda state: can_trmaw_min4(state, player))
+    add_rule(world.get_location("The Riddler Makes a Withdrawal: Minikit inside the Glass House", player),
+             lambda state: can_trmaw_min6_and_9(state, player))
+    add_rule(world.get_location("The Riddler Makes a Withdrawal: Minikit behind the Glass Window", player),
+             lambda state: can_trmaw_min6_and_9(state, player))
 
 
 def set_hostage_rules(world, options: LB1Options, player: int):
@@ -543,7 +567,7 @@ def set_true_status_rules(world, options: LB1Options, player: int):
 
 def set_red_brick_location_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location("You can Bank on Batman: Red Brick", player),
-             lambda state: can_ycbob_rb(world, options, player))
+             lambda state: can_ycbob_rb(state, options, player))
     add_rule(world.get_location("An Icy Reception: Red Brick", player),
              lambda state: can_air_rb(state, options, player))
     # Two-Face Chase Red Brick can be obtained in story
@@ -553,6 +577,8 @@ def set_red_brick_location_rules(world, options: LB1Options, player: int):
              lambda state: can_tfo_rb(state, options, player))
     add_rule(world.get_location("There She Goes Again: Red Brick", player),
              lambda state: can_tsga_rb(state, options, player))
+    add_rule(world.get_location("The Riddler Makes a Withdrawal: Red Brick", player),
+             lambda state: can_trmaw_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world, player: int):
@@ -630,8 +656,9 @@ def set_rules(world, options: LB1Options, player: int):
     if options.minikit_sanity == 1:
         set_minikit_rules(world, player)
     set_hostage_rules(world, options, player)
-    set_true_status_rules(world, options, player)
-    # Red Brick Rules
+    if options.true_status_sanity == 1:
+        set_true_status_rules(world, options, player)
+    set_red_brick_location_rules(world, options, player)
     set_red_brick_purchase_rules(world, player)
 
     # Set End Goal
