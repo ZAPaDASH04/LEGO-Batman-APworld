@@ -98,7 +98,7 @@ def create_events(world: MultiWorld, player: int) -> int:
     count = 0
 
     for (name, data) in level_beaten_event_location_table.items():
-        item_name = "Level Beaten"
+        item_name = "Level Beaten Token"
         event: Location = create_event(name, item_name, world.get_region(data.region, player), player)
         event.show_in_spoiler = True
         count += 1

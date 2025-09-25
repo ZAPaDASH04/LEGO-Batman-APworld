@@ -4,6 +4,7 @@ from BaseClasses import Item, Tutorial
 from Options import OptionError
 from .Items import LB1Item, item_data_table, minikit_names_set, setup_items, item_group_table
 from .Locations import all_location_table, LocationData, setup_locations
+from .Names import ItemName
 from .Options import LB1Options
 from .Regions import create_regions, connect_regions, LB1Region, create_events
 from .Rules import set_rules, set_event_rules
@@ -106,10 +107,10 @@ class LB1World(World):
 
     def generate_early(self):
         self.validate_yaml()
-        self.multiworld.push_precollected(self.create_item("You can Bank on Batman: Level Unlocked"))
-        self.multiworld.push_precollected(self.create_item("The Riddler Makes a Withdrawal: Level Unlocked"))
-        self.multiworld.push_precollected(self.create_item("Batman Unlocked"))
-        self.multiworld.push_precollected(self.create_item("Robin Unlocked"))
+        self.multiworld.push_precollected(self.create_item(ItemName.ycbob_lvl))
+        self.multiworld.push_precollected(self.create_item(ItemName.trmaw_lvl))
+        self.multiworld.push_precollected(self.create_item(ItemName.batman_unlocked))
+        self.multiworld.push_precollected(self.create_item(ItemName.robin_unlocked))
 
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
