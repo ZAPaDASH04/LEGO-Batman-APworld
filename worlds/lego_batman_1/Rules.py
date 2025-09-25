@@ -141,10 +141,10 @@ def can_beat_tfo(state: CollectionState, options: LB1Options, player: int):
 def can_beat_tsga(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (state.has("Glide Suit Unlocked", player) and state.has("Magnet Suit Unlocked", player)
-                and state.has("Sonic Suit Unlocked", player))
+                and state.has("Demolition Suit Unlocked", player) and state.has("Technology Suit Unlocked", player))
     else:
         return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
-                and state.has("Sonic Suit Unlocked", player))
+                and character_can_explode(state, player) and character_can_techno(state, player))
 
 
 def can_beat_utc(state: CollectionState, options: LB1Options, player: int):
@@ -328,6 +328,39 @@ def can_dol_hostage(state: CollectionState, player: int):
             and character_can_glide(state, player))
 
 
+def can_ycbob_rb(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return state.has("Demolition Suit Unlocked", player) and state.has("Technology Suit Unlocked", player)
+    else:
+        return character_can_explode(state, player) and character_can_techno(state, player)
+
+
+def can_air_rb(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return can_beat_air(state, options, player) and character_is_strong(state, player)
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and character_is_strong(state, player))
+
+
+# Requires freeplay & Sonic/Heat/Attract all of which are covered in can beat level
+def can_apa_rb(state: CollectionState, player: int):
+    return can_beat_apa(state, player) and character_can_explode(state, player) and character_joker(state, player)
+
+
+def can_tfo_rb(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return can_beat_tfo(state, options, player) and character_can_cross_toxic(state, player)
+    else:
+        return (character_can_glide(state, player) and state.has("Magnet Suit Unlocked", player)
+                and character_can_cross_toxic(state, player))
+
+
+# Red Brick at end of level behind a sonic suit location
+def can_tsga_rb(state: CollectionState, options: LB1Options, player: int):
+    return can_beat_tsga(state, options, player) and state.has("Sonic Suit Unlocked", player)
+
+
 def set_entrance_rules(world, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has("You can Bank on Batman: Level Unlocked", player))
@@ -508,6 +541,20 @@ def set_true_status_rules(world, options: LB1Options, player: int):
     # All Villain Levels can be beaten in story
 
 
+def set_red_brick_location_rules(world, options: LB1Options, player: int):
+    add_rule(world.get_location("You can Bank on Batman: Red Brick", player),
+             lambda state: can_ycbob_rb(world, options, player))
+    add_rule(world.get_location("An Icy Reception: Red Brick", player),
+             lambda state: can_air_rb(state, options, player))
+    # Two-Face Chase Red Brick can be obtained in story
+    add_rule(world.get_location("A Poisonous Appointment: Red Brick", player),
+             lambda state: can_apa_rb(state, player))
+    add_rule(world.get_location("The Face-Off: Red Brick", player),
+             lambda state: can_tfo_rb(state, options, player))
+    add_rule(world.get_location("There She Goes Again: Red Brick", player),
+             lambda state: can_tsga_rb(state, options, player))
+
+
 def set_red_brick_purchase_rules(world, player: int):
     add_rule(world.get_location("Score x2 Purchased", player),
              lambda state: state.has("The Riddler Makes a Withdrawal: Red Brick Collected", player))
@@ -585,7 +632,6 @@ def set_rules(world, options: LB1Options, player: int):
     set_hostage_rules(world, options, player)
     set_true_status_rules(world, options, player)
     # Red Brick Rules
-    # Red Brick Purchase Rules
     set_red_brick_purchase_rules(world, player)
 
     # Set End Goal
