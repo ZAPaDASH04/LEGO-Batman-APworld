@@ -1,12 +1,6 @@
-import typing
-
 from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassification
 from .Locations import LB1Location, level_beaten_event_location_table
 from .Items import LB1Item
-
-
-class LB1Region(Region):
-    subregions: typing.List[Region] = []
 
 
 lb1_hub_regions = [
