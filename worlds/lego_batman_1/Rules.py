@@ -232,15 +232,11 @@ def can_beat_tfo(state: CollectionState, options: LB1Options, player: int):
 def can_beat_tsga(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
-                state.has(ItemName.glidesuit, player) and
-                state.has(ItemName.magsuit, player) and
                 state.has(ItemName.demolitionsuit, player) and
                 state.has(ItemName.techsuit, player)
         )
     else:
         return (
-                char_can_glide(state, player) and
-                state.has(ItemName.magsuit, player) and
                 char_can_explode(state, player) and
                 char_can_techno(state, player)
         )
@@ -357,30 +353,178 @@ def can_beat_tttot(state: CollectionState, options: LB1Options, player: int):
         )
 
 
-def can_trmaw_min4(state: CollectionState, player: int):
+# Free Access functions are needed for moving about in freeplay (moves story characters have)
+def free_access_tsga(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                state.has(ItemName.magsuit, player) and
+                state.has(ItemName.glidesuit, player)
+        )
+    else:
+        return (
+                char_can_glide(state, player) and
+                state.has(ItemName.magsuit, player)
+        )
+
+
+def free_access_trmaw(state: CollectionState, player: int):
     return (
             char_can_explode(state, player) and
-            char_can_hypno(state, player) and
             char_is_strong(state, player)
+    )
+
+
+def free_access_otr(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.mrfreeze_unlocked, player)
+    )
+
+
+def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_ycbob(state, options, player) and
+                char_can_cross_toxic(state, player) and
+                char_is_strong(state, player) and
+                char_can_hypno(state, player)
+        )
+    else:
+        return (
+                char_can_cross_toxic(state, player) and
+                char_is_strong(state, player) and
+                char_can_hypno(state, player)
+        )
+
+
+def can_tsga_min1(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                state.has(ItemName.magsuit, player) and
+                char_can_access_female_room(state, player)
+        )
+    else:
+        return (
+                state.has(ItemName.magsuit, player) and
+                char_can_access_female_room(state, player)
+        )
+
+
+def can_tsga_min2(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_is_strong(state, player) and
+                char_can_double_jump(state, player)
+        )
+    else:
+        return (
+                char_is_strong(state, player) and
+                char_can_double_jump(state, player)
+        )
+
+
+def can_tsga_min3(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_can_sink(state, player)
+                # Explosives checked for as part of can beat tsga
+        )
+    else:
+        return (
+                char_can_sink(state, player) and
+                char_can_explode(state, player)
+        )
+
+
+def can_tsga_min4(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_is_strong(state, player)
+                # Explosives checked for as part of can beat tsga
+        )
+    else:
+        return (
+                char_is_strong(state, player) and
+                char_can_explode(state, player)
+        )
+
+
+def can_tsga_min5(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_can_sink(state, player) and
+                char_can_cross_toxic(state, player)
+        )
+    else:
+        return (
+                char_can_sink(state, player) and
+                char_can_cross_toxic(state, player)
+        )
+
+
+def can_tsga_min7(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_is_strong(state, player)
+        )
+    else:
+        return (
+                char_is_strong(state, player)
+        )
+
+
+def can_tsga_min8(state: CollectionState, options: LB1Options, player: int):
+    if options.freeplay_or_story == 0:
+        return (
+                can_beat_tsga(state, options, player) and
+                char_is_strong(state, player) and
+                char_can_double_jump(state, player)
+                # Explosives checked for as part of can beat tsga
+        )
+    else:
+        return (
+                char_is_strong(state, player) and
+                char_can_double_jump(state, player) and
+                char_can_explode(state, player)
+        )
+
+
+def can_tsga_min9(state: CollectionState, options: LB1Options, player: int):
+    return (
+            can_beat_tsga(state, options, player) and
+            state.has(ItemName.sonicsuit, player)
+            # Explosives checked for as part of can beat tsga
+            # Techno checked for as part of can beat tsga
+    )
+
+
+def can_tsga_min10(state: CollectionState, options: LB1Options, player: int):
+    return (
+            can_beat_tsga(state, options, player) and
+            char_can_sink(state, player) and
+            state.has(ItemName.sonicsuit, player)
+            # Explosives checked for as part of can beat tsga
+            # Techno checked for as part of can beat tsga
+    )
+
+
+def can_trmaw_min4(state: CollectionState, player: int):
+    return (
+            char_can_explode(state, player)
     )
 
 
 def can_trmaw_min6_and_9(state: CollectionState, player: int):
     return (
             (char_can_explode(state, player) and
-             char_can_hypno(state, player) and
-             char_is_strong(state, player) and
              state.has(ItemName.sonicsuit, player)) or
             (char_can_double_jump(state, player) and
-             char_can_hypno(state, player) and
-             char_is_strong(state, player) and
              state.has(ItemName.sonicsuit, player))
-    )
-
-
-def free_access_back_otr(state: CollectionState, player: int):
-    return (
-            state.has(ItemName.mrfreeze_unlocked, player)
     )
 
 
@@ -446,19 +590,6 @@ def can_tfo_host(state: CollectionState, options: LB1Options, player: int):
                 char_can_glide(state, player) and
                 state.has(ItemName.attractsuit, player) and
                 char_can_double_jump(state, player)
-        )
-
-
-def can_tsga_host(state: CollectionState, options: LB1Options, player: int):
-    if options.freeplay_or_story == 0:
-        return (
-                state.has(ItemName.glidesuit, player) and
-                state.has(ItemName.magsuit, player)
-        )
-    else:
-        return (
-                char_can_glide(state, player) and
-                state.has(ItemName.magsuit, player)
         )
 
 
@@ -537,9 +668,7 @@ def can_itdn_host(state: CollectionState, options: LB1Options, player: int):
 
 def can_trmaw_host(state: CollectionState, player: int):
     return (
-            state.has(ItemName.sonicsuit, player) and
-            char_can_hypno(state, player) and
-            char_is_strong(state, player)
+            state.has(ItemName.sonicsuit, player)
     )
 
 
@@ -553,6 +682,12 @@ def can_gf_host(state: CollectionState, player: int):
     return (
             char_can_explode(state, player) and
             state.has(ItemName.poisonivy_unlocked, player)
+    )
+
+
+def can_aet_host(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.sonicsuit, player)
     )
 
 
@@ -585,6 +720,12 @@ def can_adr_host(state: CollectionState, player: int):
     )
 
 
+def can_aw_host(state: CollectionState, player: int):
+    return (
+            char_can_cross_toxic(state, player)
+    )
+
+
 def can_asftc_host(state: CollectionState, player: int):
     return (
             char_can_double_jump(state, player) and
@@ -597,6 +738,12 @@ def can_tjm_host(state: CollectionState, player: int):
             char_joker(state, player) and
             char_can_explode(state, player) and
             state.has(ItemName.heatprotectsuit, player)
+    )
+
+
+def can_tlotn_host(state: CollectionState, player: int):
+    return (
+            char_can_double_jump(state, player)
     )
 
 
@@ -652,14 +799,14 @@ def can_tsga_rb(state: CollectionState, options: LB1Options, player: int):
     return (
             can_beat_tsga(state, options, player) and
             state.has(ItemName.sonicsuit, player)
+            # Explosives checked for as part of can beat tsga
+            # Techno checked for as part of can beat tsga
     )
 
 
 def can_trmaw_rb(state: CollectionState, player: int):
     return (
             char_can_double_jump(state, player) and
-            char_can_hypno(state, player) and
-            char_is_strong(state, player) and
             state.has(ItemName.sonicsuit, player)
     )
 
@@ -670,7 +817,7 @@ def can_otr_rb(state: CollectionState, player: int):
     )
 
 
-def set_entrance_rules(world, player: int):
+def set_entrance_rules(world, options: LB1Options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
     add_rule(world.get_entrance("Batcave -> An Icy Reception", player),
@@ -731,8 +878,13 @@ def set_entrance_rules(world, player: int):
              lambda state: state.has(ItemName.tlotn_lvl, player))
     add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has(ItemName.dol_lvl, player))
-    add_rule(world.get_entrance("On the Rocks -> On the Rocks: Inside", player),
-             lambda state: free_access_back_otr(state, player))
+
+    add_rule(world.get_entrance("There She Goes Again -> There She Goes Again: Freeplay", player),
+             lambda state: free_access_tsga(state, options, player))
+    add_rule(world.get_entrance("The Riddler Makes a Withdrawal -> The Riddler Makes a Withdrawal: Freeplay", player),
+             lambda state: free_access_trmaw(state, player))
+    add_rule(world.get_entrance("On the Rocks -> On the Rocks: Freeplay", player),
+             lambda state: free_access_otr(state, player))
 
 
 def set_level_beaten_rules(world, options: LB1Options, player: int):
@@ -754,9 +906,18 @@ def set_level_beaten_rules(world, options: LB1Options, player: int):
     # All Villain Levels can be beaten in story
 
 
-def set_minikit_rules(world, player: int):
-    add_rule(world.get_location(LocationName.ycbob_min4, player),
-             lambda state: char_can_cross_toxic(state, player))
+def set_minikit_rules(world, options, player: int):
+    add_rule(world.get_location(LocationName.ycbob_min4, player), lambda state: can_ycbob_min4(state, options, player))
+    # TSGA Minikit 6 can be done in story (with Glide/Magnet which is region access logic)
+    add_rule(world.get_location(LocationName.tsga_min1, player), lambda state: can_tsga_min1(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min2, player), lambda state: can_tsga_min2(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min3, player), lambda state: can_tsga_min3(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min4, player), lambda state: can_tsga_min4(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min5, player), lambda state: can_tsga_min5(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min7, player), lambda state: can_tsga_min7(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min8, player), lambda state: can_tsga_min8(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min9, player), lambda state: can_tsga_min9(state, options, player))
+    add_rule(world.get_location(LocationName.tsga_min10, player), lambda state: can_tsga_min10(state, options, player))
     # TRMAW Minikits 1-3, 5, 7, 8, 10 can all be done in story
     add_rule(world.get_location(LocationName.trmaw_min4, player), lambda state: can_trmaw_min4(state, player))
     add_rule(world.get_location(LocationName.trmaw_min6, player), lambda state: can_trmaw_min6_and_9(state, player))
@@ -776,7 +937,7 @@ def set_host_rules(world, options: LB1Options, player: int):
     # Two-Face Chase does not have host
     add_rule(world.get_location(LocationName.apa_host, player), lambda state: state.has(ItemName.sonicsuit, player))
     add_rule(world.get_location(LocationName.tfo_host, player), lambda state: can_tfo_host(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_host, player), lambda state: can_tsga_host(state, options, player))
+    # There She Goes Again host can be obtained with Region Access
     # Batboat Battle does not have host
     add_rule(world.get_location(LocationName.utc_host, player), lambda state: can_utc_host(state, options, player))
     add_rule(world.get_location(LocationName.zc_host, player), lambda state: can_zc_host(state, options, player))
@@ -789,17 +950,17 @@ def set_host_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.trmaw_host, player), lambda state: can_trmaw_host(state, player))
     add_rule(world.get_location(LocationName.otr_host, player), lambda state: can_otr_host(state, player))
     add_rule(world.get_location(LocationName.gf_host, player), lambda state: can_gf_host(state, player))
-    add_rule(world.get_location(LocationName.aet_host, player), lambda state: state.has(ItemName.sonicsuit, player))
+    add_rule(world.get_location(LocationName.aet_host, player), lambda state: can_aet_host(state, player))
     add_rule(world.get_location(LocationName.bb_host, player), lambda state: can_bb_host(state, player))
     add_rule(world.get_location(LocationName.rtd_host, player), lambda state: can_rtd_host(state, player))
     add_rule(world.get_location(LocationName.sts_host, player), lambda state: can_sts_host(state, player))
     # Harbouring a Grudge does not have host
     add_rule(world.get_location(LocationName.adr_host, player), lambda state: can_adr_host(state, player))
-    add_rule(world.get_location(LocationName.aw_host, player), lambda state: char_can_cross_toxic(state, player))
+    add_rule(world.get_location(LocationName.aw_host, player), lambda state: can_aw_host(state, player))
     add_rule(world.get_location(LocationName.asftc_host, player), lambda state: can_asftc_host(state, player))
     # Biplane Blast does not have host
     add_rule(world.get_location(LocationName.tjm_host, player), lambda state: can_tjm_host(state, player))
-    add_rule(world.get_location(LocationName.tlotn_host, player), lambda state: char_can_double_jump(state, player))
+    add_rule(world.get_location(LocationName.tlotn_host, player), lambda state: can_tlotn_host(state, player))
     add_rule(world.get_location(LocationName.dol_host, player), lambda state: can_dol_host(state, player))
 
 
@@ -869,7 +1030,7 @@ def set_red_brick_purchase_rules(world, player: int):
 
 
 def set_rules(world, options: LB1Options, player: int):
-    set_entrance_rules(world, player)
+    set_entrance_rules(world, options, player)
     set_level_beaten_rules(world, options, player)
     # char rules
     # Hard char Rules
@@ -878,7 +1039,7 @@ def set_rules(world, options: LB1Options, player: int):
     # aircraft Rules
     # Suit Rules
     if options.minikit_sanity == 1:
-        set_minikit_rules(world, player)
+        set_minikit_rules(world, options, player)
     set_host_rules(world, options, player)
     if options.true_status_sanity == 1:
         set_true_status_rules(world, options, player)

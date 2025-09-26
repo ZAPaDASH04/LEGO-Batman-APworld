@@ -1,5 +1,3 @@
-import typing
-
 from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassification
 from .Locations import LB1Location, level_beaten_event_location_table
 from .Items import LB1Item
@@ -48,7 +46,9 @@ lb1_villain_regions = [
 ]
 
 lb1_villain_subregions = [
-    "On the Rocks: Inside"
+    "There She Goes Again: Freeplay",
+    "The Riddler Makes a Withdrawal: Freeplay",
+    "On the Rocks: Freeplay",
 ]
 
 lb1_all_regions = [
@@ -76,7 +76,9 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     for region in lb1_villain_regions:
         connect_regions(world, player, "Arkham Asylum", region)
 
-    connect_regions(world, player, "On the Rocks", "On the Rocks: Inside")
+    connect_regions(world, player, "There She Goes Again", "There She Goes Again: Freeplay")
+    connect_regions(world, player, "The Riddler Makes a Withdrawal", "The Riddler Makes a Withdrawal: Freeplay")
+    connect_regions(world, player, "On the Rocks", "On the Rocks: Freeplay")
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
