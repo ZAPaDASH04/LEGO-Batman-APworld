@@ -1,18 +1,15 @@
-import typing
-
-from BaseClasses import MultiWorld, Region, Entrance, Location
-from .Options import LB1Options
-from .Locations import LB1Location, location_table, minikit_location_table
+from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassification
+from .Locations import LB1Location, level_beaten_event_location_table
+from .Items import LB1Item
 
 
-class LB1Region(Region):
-    subregions: typing.List[Region] = []
-
-
-lb1_regions = [
-    "Menu",
+lb1_hub_regions = [
     "Batcave",
     "Arkham Asylum",
+    "Shop"
+]
+
+lb1_hero_regions = [
     "You can Bank on Batman",
     "An Icy Reception",
     "Two-Face Chase",
@@ -24,15 +21,18 @@ lb1_regions = [
     "Zoo's Company",
     "Penguin's Lair",
     "Joker's Home Turf",
-    "Little Fun at Big Top",
+    "Little Fun at the Big Top",
     "Flight of the Bat",
     "In the Dark Night",
     "To the Top of the Tower",
+]
+
+lb1_villain_regions = [
     "The Riddler Makes a Withdrawal",
     "On the Rocks",
     "Green Fingers",
-    "An Enterprising Theft"
-    "Breaking Blocks"
+    "An Enterprising Theft",
+    "Breaking Blocks",
     "Rockin' the Docks",
     "Stealing the Show",
     "Harbouring a Grudge",
@@ -42,153 +42,66 @@ lb1_regions = [
     "Biplane Blast",
     "The Joker's Masterpiece",
     "The Lure of the Night",
-    "Dying of Laughter"
+    "Dying of Laughter",
+]
+
+lb1_all_regions = [
+    *lb1_hub_regions,
+    *lb1_hero_regions,
+    *lb1_villain_regions,
 ]
 
 
-def create_regions(world: MultiWorld, options: LB1Options, player: int):
+def create_regions(world: MultiWorld, player: int, seed_locations):
     menu = Region("Menu", player, world)
     world.regions.append(menu)
 
-    batcave = create_region("Batcave", player, world)
-    arkham_asylum = create_region("Arkham Asylum", player, world)
-    you_can_bank_on_batman = create_region("You can Bank on Batman", player, world)
-    an_icy_reception = create_region("An Icy Reception", player, world)
-    two_face_chase = create_region("Two-Face Chase", player, world)
-    a_poisonous_appointment = create_region("A Poisonous Appointment", player, world)
-    the_face_off = create_region("The Face-Off", player, world)
-    there_she_goes_again = create_region("There She Goes Again", player, world)
-    batboat_battle = create_region("Batboat Battle", player, world)
-    under_the_city = create_region("Under the City", player, world)
-    zoos_company = create_region("Zoo's Company", player, world)
-    penguins_lair = create_region("Penguin's Lair", player, world)
-    jokers_home_turf = create_region("Joker's Home Turf", player, world)
-    little_fun_at_big_top = create_region("Little Fun at Big Top", player, world)
-    flight_of_the_bat = create_region("Flight of the Bat", player, world)
-    in_the_dark_night = create_region("In the Dark Night", player, world)
-    to_the_top_of_the_tower = create_region("To the Top of the Tower", player, world)
-    the_riddler_makes_a_withdrawal = create_region("The Riddler Makes A Withdrawal", player, world)
-    on_the_rocks = create_region("On The Rocks", player, world)
-    green_fingers = create_region("Green Fingers", player, world)
-    an_enterprising_theft = create_region("An Enterprising Theft", player, world)
-    breaking_blocks = create_region("Breaking Blocks", player, world)
-    rockin_the_docks = create_region("Rockin' the Docks", player, world)
-    stealing_the_show = create_region("Stealing the Show", player, world)
-    harbouring_a_grudge = create_region("Harbouring a Grudge", player, world)
-    a_daring_rescue = create_region("A Daring Rescue", player, world)
-    arctic_world = create_region("Arctic World", player, world)
-    a_surprise_for_the_commissioner = create_region("A Surprise for the Commissioner", player, world)
-    biplane_blast = create_region("Biplane Blast", player, world)
-    the_jokers_masterpiece = create_region("The Joker's Masterpiece", player, world)
-    the_lure_of_the_night = create_region("The Lure of the Night", player, world)
-    dying_of_laughter = create_region("Dying of Laughter", player, world)
+    for region in lb1_all_regions:
+        create_regions_and_locations(region, player, world, seed_locations)
 
     connect_regions(world, player, "Menu", "Batcave")
     connect_regions(world, player, "Batcave", "Arkham Asylum")
-    connect_regions(world, player, "Batcave", "You can Bank on Batman")
-    connect_regions(world, player, "Batcave", "An Icy Reception")
-    connect_regions(world, player, "Batcave", "Two-Face Chase")
-    connect_regions(world, player, "Batcave", "A Poisonous Appointment")
-    connect_regions(world, player, "Batcave", "The Face-Off")
-    connect_regions(world, player, "Batcave", "There She Goes Again")
-    connect_regions(world, player, "Batcave", "Batboat Battle")
-    connect_regions(world, player, "Batcave", "Under the City")
-    connect_regions(world, player, "Batcave", "Zoo's Company")
-    connect_regions(world, player, "Batcave", "Penguin's Lair")
-    connect_regions(world, player, "Batcave", "Joker's Home Turf")
-    connect_regions(world, player, "Batcave", "Little Fun at Big Top")
-    connect_regions(world, player, "Batcave", "Flight of the Bat")
-    connect_regions(world, player, "Batcave", "In the Dark Night")
-    connect_regions(world, player, "Batcave", "To the Top of the Tower")
-    connect_regions(world, player, "Arkham Asylum", "The Riddler Makes A Withdrawal")
-    connect_regions(world, player, "Arkham Asylum", "On The Rocks")
-    connect_regions(world, player, "Arkham Asylum", "Green Fingers")
-    connect_regions(world, player, "Arkham Asylum", "An Enterprising Theft")
-    connect_regions(world, player, "Arkham Asylum", "Breaking Blocks")
-    connect_regions(world, player, "Arkham Asylum", "Rockin' the Docks")
-    connect_regions(world, player, "Arkham Asylum", "Stealing the Show")
-    connect_regions(world, player, "Arkham Asylum", "Harbouring a Grudge")
-    connect_regions(world, player, "Arkham Asylum", "A Daring Rescue")
-    connect_regions(world, player, "Arkham Asylum", "Arctic World")
-    connect_regions(world, player, "Arkham Asylum", "A Surprise for the Commissioner")
-    connect_regions(world, player, "Arkham Asylum", "Biplane Blast")
-    connect_regions(world, player, "Arkham Asylum", "The Joker's Masterpiece")
-    connect_regions(world, player, "Arkham Asylum", "The Lure of the Night")
-    connect_regions(world, player, "Arkham Asylum", "Dying of Laughter")
+    connect_regions(world, player, "Batcave", "Shop")
 
-    for name in location_table:
-        if name.startswith("You can Bank on Batman"):
-            create_location(you_can_bank_on_batman, name)
-        elif name.startswith("An Icy Reception"):
-            create_location(an_icy_reception, name)
-        elif name.startswith("Two-Face Chase"):
-            create_location(two_face_chase, name)
-        elif name.startswith("A Poisonous Appointment"):
-            create_location(a_poisonous_appointment, name)
-        elif name.startswith("The Face-Off"):
-            create_location(the_face_off, name)
-        elif name.startswith("There She Goes Again"):
-            create_location(there_she_goes_again, name)
-        elif name.startswith("Batboat Battle"):
-            create_location(batboat_battle, name)
-        elif name.startswith("Under the City"):
-            create_location(under_the_city, name)
-        elif name.startswith("Zoo's Company"):
-            create_location(zoos_company, name)
-        elif name.startswith("Penguin's Lair"):
-            create_location(penguins_lair, name)
-        elif name.startswith("Joker's Home Turf"):
-            create_location(jokers_home_turf, name)
-        elif name.startswith("Little Fun at Big Top"):
-            create_location(little_fun_at_big_top, name)
-        elif name.startswith("Flight of the Bat"):
-            create_location(flight_of_the_bat, name)
-        elif name.startswith("In the Dark Night"):
-            create_location(in_the_dark_night, name)
-        elif name.startswith("To the Top of the Tower"):
-            create_location(to_the_top_of_the_tower, name)
-        elif name.startswith("The Riddler Makes a Withdrawal"):
-            create_location(the_riddler_makes_a_withdrawal, name)
-        elif name.startswith("On the Rocks"):
-            create_location(on_the_rocks, name)
-        elif name.startswith("Green Fingers"):
-            create_location(green_fingers, name)
-        elif name.startswith("An Enterprising Theft"):
-            create_location(an_enterprising_theft, name)
-        elif name.startswith("Breaking Blocks"):
-            create_location(breaking_blocks, name)
-        elif name.startswith("Rockin' the Docks"):
-            create_location(rockin_the_docks, name)
-        elif name.startswith("Stealing the Show"):
-            create_location(stealing_the_show, name)
-        elif name.startswith("Harbouring a Grudge"):
-            create_location(harbouring_a_grudge, name)
-        elif name.startswith("A Daring Rescue"):
-            create_location(a_daring_rescue, name)
-        elif name.startswith("Arctic World"):
-            create_location(arctic_world, name)
-        elif name.startswith("A Surprise for the Commissioner"):
-            create_location(a_surprise_for_the_commissioner, name)
-        elif name.startswith("Biplane Blast"):
-            create_location(biplane_blast, name)
-        elif name.startswith("The Joker's Masterpiece"):
-            create_location(the_jokers_masterpiece, name)
-        elif name.startswith("The Lure of the Night"):
-            create_location(the_lure_of_the_night, name)
-        elif name.startswith("Dying of Laughter"):
-            create_location(dying_of_laughter, name)
+    for region in lb1_hero_regions:
+        connect_regions(world, player, "Batcave", region)
 
-def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
+    for region in lb1_villain_regions:
+        connect_regions(world, player, "Arkham Asylum", region)
+
+
+def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
     source_region = world.get_region(source, player)
     target_region = world.get_region(target, player)
-    return source_region.connect(target_region, rule=rule)
+    return source_region.connect(target_region)
 
 
-def create_region(name: str, player: int, world: MultiWorld) -> LB1Region:
-    region = LB1Region(name, player, world)
+def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed_locations) -> Region:
+    region = Region(name, player, world)
+
+    for (key, data) in seed_locations.items():
+        if data.region == name:
+            location = LB1Location(player, key, data.id, region)
+            region.locations.append(location)
+
     world.regions.append(region)
     return region
 
 
-def create_location(reg: Region, *location: str):
-    reg.locations += [LB1Location(reg.player, loc_name, location_table[loc_name], reg) for loc_name in location]
+def create_events(world: MultiWorld, player: int) -> int:
+    count = 0
+
+    for (name, data) in level_beaten_event_location_table.items():
+        item_name = "Level Beaten"
+        event: Location = create_event(name, item_name, world.get_region(data.region, player), player)
+        event.show_in_spoiler = True
+        count += 1
+
+    return count
+
+
+def create_event(name: str, item_name: str, region: Region, player: int) -> Location:
+    event = LB1Location(player, name, None, region)
+    region.locations.append(event)
+    event.place_locked_item(LB1Item(item_name, ItemClassification.progression, None, player))
+    return event

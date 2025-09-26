@@ -1,16 +1,21 @@
-from BaseClasses import Item, ItemClassification
 from typing import NamedTuple, Optional, Dict
 
+from BaseClasses import Item, ItemClassification
+from .Options import LB1Options
+
 base_item_id: int = 400000
+
 
 class LB1Item(Item):
     game: str = "Lego Batman: The Video Game"
 
+
 class LB1ItemData(NamedTuple):
     code: Optional[int] = None
-    classification: ItemClassification = ItemClassification.progression_skip_balancing
+    classification: ItemClassification = ItemClassification.progression_deprioritized_skip_balancing
 
-#TODO: add in progression classification based off of win con (look at manual's implementation - need to decide win cons first)
+
+# TODO: add in progression classification based off of win con
 minikit_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Minikit 1": LB1ItemData(base_item_id + 100),
     "You can Bank on Batman: Minikit 2": LB1ItemData(base_item_id + 101),
@@ -22,7 +27,7 @@ minikit_item_table: Dict[str, LB1ItemData] = {
     "You can Bank on Batman: Minikit 8": LB1ItemData(base_item_id + 107),
     "You can Bank on Batman: Minikit 9": LB1ItemData(base_item_id + 108),
     "You can Bank on Batman: Minikit 10": LB1ItemData(base_item_id + 109),
-    
+
     "An Icy Reception: Minikit 1": LB1ItemData(base_item_id + 110),
     "An Icy Reception: Minikit 2": LB1ItemData(base_item_id + 111),
     "An Icy Reception: Minikit 3": LB1ItemData(base_item_id + 112),
@@ -133,16 +138,16 @@ minikit_item_table: Dict[str, LB1ItemData] = {
     "Joker's Home Turf: Minikit 9": LB1ItemData(base_item_id + 208),
     "Joker's Home Turf: Minikit 10": LB1ItemData(base_item_id + 209),
 
-    "Little Fun at Big Top: Minikit 1": LB1ItemData(base_item_id + 210),
-    "Little Fun at Big Top: Minikit 2": LB1ItemData(base_item_id + 211),
-    "Little Fun at Big Top: Minikit 3": LB1ItemData(base_item_id + 212),
-    "Little Fun at Big Top: Minikit 4": LB1ItemData(base_item_id + 213),
-    "Little Fun at Big Top: Minikit 5": LB1ItemData(base_item_id + 214),
-    "Little Fun at Big Top: Minikit 6": LB1ItemData(base_item_id + 215),
-    "Little Fun at Big Top: Minikit 7": LB1ItemData(base_item_id + 216),
-    "Little Fun at Big Top: Minikit 8": LB1ItemData(base_item_id + 217),
-    "Little Fun at Big Top: Minikit 9": LB1ItemData(base_item_id + 218),
-    "Little Fun at Big Top: Minikit 10": LB1ItemData(base_item_id + 219),
+    "Little Fun at the Big Top: Minikit 1": LB1ItemData(base_item_id + 210),
+    "Little Fun at the Big Top: Minikit 2": LB1ItemData(base_item_id + 211),
+    "Little Fun at the Big Top: Minikit 3": LB1ItemData(base_item_id + 212),
+    "Little Fun at the Big Top: Minikit 4": LB1ItemData(base_item_id + 213),
+    "Little Fun at the Big Top: Minikit 5": LB1ItemData(base_item_id + 214),
+    "Little Fun at the Big Top: Minikit 6": LB1ItemData(base_item_id + 215),
+    "Little Fun at the Big Top: Minikit 7": LB1ItemData(base_item_id + 216),
+    "Little Fun at the Big Top: Minikit 8": LB1ItemData(base_item_id + 217),
+    "Little Fun at the Big Top: Minikit 9": LB1ItemData(base_item_id + 218),
+    "Little Fun at the Big Top: Minikit 10": LB1ItemData(base_item_id + 219),
 
     "Flight of the Bat: Minikit 1": LB1ItemData(base_item_id + 220),
     "Flight of the Bat: Minikit 2": LB1ItemData(base_item_id + 221),
@@ -343,49 +348,211 @@ minikit_item_table: Dict[str, LB1ItemData] = {
     "Dying of Laughter: Minikit 10": LB1ItemData(base_item_id + 399),
 }
 
-# hostage_item_table: Dict[str, LB1ItemData] = {
-#     "You Can Bank On Batman: Hostage": LB1ItemData(base_item_id + 400),
-#     # "An Icy Reception: Hostage": LB1ItemData(base_item_id + 401),
-#     # "A Poisonous Appointment: Hostage": LB1ItemData(base_item_id + 402),
-#     # "The Face-Off: Hostage": LB1ItemData(base_item_id + 403),
-#     # "There She Goes Again: Hostage": LB1ItemData(base_item_id + 404),
-#     # "Under The City: Hostage": LB1ItemData(base_item_id + 405),
-#     # "Zoo's Company: Hostage": LB1ItemData(base_item_id + 406),
-#     # "Penguin's Lair: Hostage": LB1ItemData(base_item_id + 407),
-#     # "Joker's Home Turf: Hostage": LB1ItemData(base_item_id + 408),
-#     # "Little Fun at the Big Top: Hostage": LB1ItemData(base_item_id + 409),
-#     # "In the Dark Night: Hostage": LB1ItemData(base_item_id + 410),
-#     # "To the Top of the Tower: Hostage": LB1ItemData(base_item_id + 411),
-#     # "The Riddler Makes a Withdrawal: Hostage": LB1ItemData(base_item_id + 412),
-#     # "On the Rocks: Hostage": LB1ItemData(base_item_id + 413),
-#     # "Green Fingers: Hostage": LB1ItemData(base_item_id + 414),
-#     # "An Enterprising Theft: Hostage": LB1ItemData(base_item_id + 415),
-#     # "Breaking Blocks: Hostage": LB1ItemData(base_item_id + 416),
-#     # "Rockin' the Docks: Hostage": LB1ItemData(base_item_id + 417),
-#     # "Stealing the Show: Hostage": LB1ItemData(base_item_id + 418),
-#     # "A Daring Rescue: Hostage": LB1ItemData(base_item_id + 419),
-#     # "Arctic World: Hostage": LB1ItemData(base_item_id + 420),
-#     # "A Surprise for the Commissioner: Hostage": LB1ItemData(base_item_id + 421),
-#     # "The Joker's Masterpiece: Hostage": LB1ItemData(base_item_id + 422),
-#     # "The Lure of the Night: Hostage": LB1ItemData(base_item_id + 423),
-#     # "Dying of Laughter: Hostage": LB1ItemData(base_item_id + 424),
-# }
+hostage_item_table: Dict[str, LB1ItemData] = {
+    "You Can Bank On Batman: Hostage": LB1ItemData(base_item_id + 400, ItemClassification.filler),
+    "An Icy Reception: Hostage": LB1ItemData(base_item_id + 401, ItemClassification.filler),
+    "A Poisonous Appointment: Hostage": LB1ItemData(base_item_id + 402, ItemClassification.filler),
+    "The Face-Off: Hostage": LB1ItemData(base_item_id + 403, ItemClassification.filler),
+    "There She Goes Again: Hostage": LB1ItemData(base_item_id + 404, ItemClassification.filler),
+    "Under the City: Hostage": LB1ItemData(base_item_id + 405, ItemClassification.filler),
+    "Zoo's Company: Hostage": LB1ItemData(base_item_id + 406, ItemClassification.filler),
+    "Penguin's Lair: Hostage": LB1ItemData(base_item_id + 407, ItemClassification.filler),
+    "Joker's Home Turf: Hostage": LB1ItemData(base_item_id + 408, ItemClassification.filler),
+    "Little Fun at the Big Top: Hostage": LB1ItemData(base_item_id + 409, ItemClassification.filler),
+    "In the Dark Night: Hostage": LB1ItemData(base_item_id + 410, ItemClassification.filler),
+    "To the Top of the Tower: Hostage": LB1ItemData(base_item_id + 411, ItemClassification.filler),
+    "The Riddler Makes a Withdrawal: Hostage": LB1ItemData(base_item_id + 412, ItemClassification.filler),
+    "On the Rocks: Hostage": LB1ItemData(base_item_id + 413, ItemClassification.filler),
+    "Green Fingers: Hostage": LB1ItemData(base_item_id + 414, ItemClassification.filler),
+    "An Enterprising Theft: Hostage": LB1ItemData(base_item_id + 415, ItemClassification.filler),
+    "Breaking Blocks: Hostage": LB1ItemData(base_item_id + 416, ItemClassification.filler),
+    "Rockin' the Docks: Hostage": LB1ItemData(base_item_id + 417, ItemClassification.filler),
+    "Stealing the Show: Hostage": LB1ItemData(base_item_id + 418, ItemClassification.filler),
+    "A Daring Rescue: Hostage": LB1ItemData(base_item_id + 419, ItemClassification.filler),
+    "Arctic World: Hostage": LB1ItemData(base_item_id + 420, ItemClassification.filler),
+    "A Surprise for the Commissioner: Hostage": LB1ItemData(base_item_id + 421, ItemClassification.filler),
+    "The Joker's Masterpiece: Hostage": LB1ItemData(base_item_id + 422, ItemClassification.filler),
+    "The Lure of the Night: Hostage": LB1ItemData(base_item_id + 423, ItemClassification.filler),
+    "Dying of Laughter: Hostage": LB1ItemData(base_item_id + 424, ItemClassification.filler),
+}
+
+level_unlocked_item_table: Dict[str, LB1ItemData] = {
+    "You can Bank on Batman: Level Unlocked": LB1ItemData(base_item_id + 425, ItemClassification.progression),
+    "An Icy Reception: Level Unlocked": LB1ItemData(base_item_id + 426, ItemClassification.progression),
+    "Two-Face Chase: Level Unlocked": LB1ItemData(base_item_id + 427, ItemClassification.progression),
+    "A Poisonous Appointment: Level Unlocked": LB1ItemData(base_item_id + 428, ItemClassification.progression),
+    "The Face-Off: Level Unlocked": LB1ItemData(base_item_id + 429, ItemClassification.progression),
+    "There She Goes Again: Level Unlocked": LB1ItemData(base_item_id + 430, ItemClassification.progression),
+    "Batboat Battle: Level Unlocked": LB1ItemData(base_item_id + 431, ItemClassification.progression),
+    "Under the City: Level Unlocked": LB1ItemData(base_item_id + 432, ItemClassification.progression),
+    "Zoo's Company: Level Unlocked": LB1ItemData(base_item_id + 433, ItemClassification.progression),
+    "Penguin's Lair: Level Unlocked": LB1ItemData(base_item_id + 434, ItemClassification.progression),
+    "Joker's Home Turf: Level Unlocked": LB1ItemData(base_item_id + 435, ItemClassification.progression),
+    "Little Fun at the Big Top: Level Unlocked": LB1ItemData(base_item_id + 436, ItemClassification.progression),
+    "Flight of the Bat: Level Unlocked": LB1ItemData(base_item_id + 437, ItemClassification.progression),
+    "In the Dark Night: Level Unlocked": LB1ItemData(base_item_id + 438, ItemClassification.progression),
+    "To the Top of the Tower: Level Unlocked": LB1ItemData(base_item_id + 439, ItemClassification.progression),
+    "The Riddler Makes a Withdrawal: Level Unlocked": LB1ItemData(base_item_id + 440, ItemClassification.progression),
+    "On the Rocks: Level Unlocked": LB1ItemData(base_item_id + 441, ItemClassification.progression),
+    "Green Fingers: Level Unlocked": LB1ItemData(base_item_id + 442, ItemClassification.progression),
+    "An Enterprising Theft: Level Unlocked": LB1ItemData(base_item_id + 443, ItemClassification.progression),
+    "Breaking Blocks: Level Unlocked": LB1ItemData(base_item_id + 444, ItemClassification.progression),
+    "Rockin' the Docks: Level Unlocked": LB1ItemData(base_item_id + 445, ItemClassification.progression),
+    "Stealing the Show: Level Unlocked": LB1ItemData(base_item_id + 446, ItemClassification.progression),
+    "Harbouring a Grudge: Level Unlocked": LB1ItemData(base_item_id + 447, ItemClassification.progression),
+    "A Daring Rescue: Level Unlocked": LB1ItemData(base_item_id + 448, ItemClassification.progression),
+    "Arctic World: Level Unlocked": LB1ItemData(base_item_id + 449, ItemClassification.progression),
+    "A Surprise for the Commissioner: Level Unlocked": LB1ItemData(base_item_id + 450, ItemClassification.progression),
+    "Biplane Blast: Level Unlocked": LB1ItemData(base_item_id + 451, ItemClassification.progression),
+    "The Joker's Masterpiece: Level Unlocked": LB1ItemData(base_item_id + 452, ItemClassification.progression),
+    "The Lure of the Night: Level Unlocked": LB1ItemData(base_item_id + 453, ItemClassification.progression),
+    "Dying of Laughter: Level Unlocked": LB1ItemData(base_item_id + 454, ItemClassification.progression),
+}
+
+true_status_item_table: Dict[str, LB1ItemData] = {
+    "You can Bank on Batman: True Status": LB1ItemData(base_item_id + 455, ItemClassification.filler),
+    "An Icy Reception: True Status": LB1ItemData(base_item_id + 456, ItemClassification.filler),
+    "Two-Face Chase: True Status": LB1ItemData(base_item_id + 457, ItemClassification.filler),
+    "A Poisonous Appointment: True Status": LB1ItemData(base_item_id + 458, ItemClassification.filler),
+    "The Face-Off: True Status": LB1ItemData(base_item_id + 459, ItemClassification.filler),
+    "There She Goes Again: True Status": LB1ItemData(base_item_id + 460, ItemClassification.filler),
+    "Batboat Battle: True Status": LB1ItemData(base_item_id + 461, ItemClassification.filler),
+    "Under the City: True Status": LB1ItemData(base_item_id + 462, ItemClassification.filler),
+    "Zoo's Company: True Status": LB1ItemData(base_item_id + 463, ItemClassification.filler),
+    "Penguin's Lair: True Status": LB1ItemData(base_item_id + 464, ItemClassification.filler),
+    "Joker's Home Turf: True Status": LB1ItemData(base_item_id + 465, ItemClassification.filler),
+    "Little Fun at the Big Top: True Status": LB1ItemData(base_item_id + 466, ItemClassification.filler),
+    "Flight of the Bat: True Status": LB1ItemData(base_item_id + 467, ItemClassification.filler),
+    "In the Dark Night: True Status": LB1ItemData(base_item_id + 468, ItemClassification.filler),
+    "To the Top of the Tower: True Status": LB1ItemData(base_item_id + 469, ItemClassification.filler),
+    "The Riddler Makes a Withdrawal: True Status": LB1ItemData(base_item_id + 470, ItemClassification.filler),
+    "On the Rocks: True Status": LB1ItemData(base_item_id + 471, ItemClassification.filler),
+    "Green Fingers: True Status": LB1ItemData(base_item_id + 472, ItemClassification.filler),
+    "An Enterprising Theft: True Status": LB1ItemData(base_item_id + 473, ItemClassification.filler),
+    "Breaking Blocks: True Status": LB1ItemData(base_item_id + 474, ItemClassification.filler),
+    "Rockin' the Docks: True Status": LB1ItemData(base_item_id + 475, ItemClassification.filler),
+    "Stealing the Show: True Status": LB1ItemData(base_item_id + 476, ItemClassification.filler),
+    "Harbouring a Grudge: True Status": LB1ItemData(base_item_id + 477, ItemClassification.filler),
+    "A Daring Rescue: True Status": LB1ItemData(base_item_id + 478, ItemClassification.filler),
+    "Arctic World: True Status": LB1ItemData(base_item_id + 479, ItemClassification.filler),
+    "A Surprise for the Commissioner: True Status": LB1ItemData(base_item_id + 480, ItemClassification.filler),
+    "Biplane Blast: True Status": LB1ItemData(base_item_id + 481, ItemClassification.filler),
+    "The Joker's Masterpiece: True Status": LB1ItemData(base_item_id + 482, ItemClassification.filler),
+    "The Lure of the Night: True Status": LB1ItemData(base_item_id + 483, ItemClassification.filler),
+    "Dying of Laughter: True Status": LB1ItemData(base_item_id + 484, ItemClassification.filler),
+}
+
+red_brick_item_table: Dict[str, LB1ItemData] = {
+    "You can Bank on Batman: Red Brick Collected": LB1ItemData(base_item_id + 485, ItemClassification.progression),
+    "An Icy Reception: Red Brick Collected": LB1ItemData(base_item_id + 486, ItemClassification.progression),
+    "Two-Face Chase: Red Brick Collected": LB1ItemData(base_item_id + 487, ItemClassification.progression),
+    "A Poisonous Appointment: Red Brick Collected": LB1ItemData(base_item_id + 488, ItemClassification.progression),
+    "The Face-Off: Red Brick Collected": LB1ItemData(base_item_id + 489, ItemClassification.progression),
+    "There She Goes Again: Red Brick Collected": LB1ItemData(base_item_id + 490, ItemClassification.progression),
+    "Batboat Battle: Red Brick Collected": LB1ItemData(base_item_id + 491, ItemClassification.progression),
+    "Under the City: Red Brick Collected": LB1ItemData(base_item_id + 492, ItemClassification.progression),
+    "Zoo's Company: Red Brick Collected": LB1ItemData(base_item_id + 493, ItemClassification.progression),
+    "Penguin's Lair: Red Brick Collected": LB1ItemData(base_item_id + 494, ItemClassification.progression),
+    "Joker's Home Turf: Red Brick Collected": LB1ItemData(base_item_id + 495, ItemClassification.progression),
+    "Little Fun at the Big Top: Red Brick Collected": LB1ItemData(base_item_id + 496, ItemClassification.progression),
+    "Flight of the Bat: Red Brick Collected": LB1ItemData(base_item_id + 497, ItemClassification.progression),
+    "In the Dark Night: Red Brick Collected": LB1ItemData(base_item_id + 498, ItemClassification.progression),
+    "To the Top of the Tower: Red Brick Collected": LB1ItemData(base_item_id + 499, ItemClassification.progression),
+    "The Riddler Makes a Withdrawal: Red Brick Collected":
+        LB1ItemData(base_item_id + 500, ItemClassification.progression),
+    "On the Rocks: Red Brick Collected": LB1ItemData(base_item_id + 501, ItemClassification.progression),
+    "Green Fingers: Red Brick Collected": LB1ItemData(base_item_id + 502, ItemClassification.progression),
+    "An Enterprising Theft: Red Brick Collected": LB1ItemData(base_item_id + 503, ItemClassification.progression),
+    "Breaking Blocks: Red Brick Collected": LB1ItemData(base_item_id + 504, ItemClassification.progression),
+    "Rockin' the Docks: Red Brick Collected": LB1ItemData(base_item_id + 505, ItemClassification.progression),
+    "Stealing the Show: Red Brick Collected": LB1ItemData(base_item_id + 506, ItemClassification.progression),
+    "Harbouring a Grudge: Red Brick Collected": LB1ItemData(base_item_id + 507, ItemClassification.progression),
+    "A Daring Rescue: Red Brick Collected": LB1ItemData(base_item_id + 508, ItemClassification.progression),
+    "Arctic World: Red Brick Collected": LB1ItemData(base_item_id + 509, ItemClassification.progression),
+    "A Surprise for the Commissioner: Red Brick Collected":
+        LB1ItemData(base_item_id + 510, ItemClassification.progression),
+    "Biplane Blast: Red Brick Collected": LB1ItemData(base_item_id + 511, ItemClassification.progression),
+    "The Joker's Masterpiece: Red Brick Collected": LB1ItemData(base_item_id + 512, ItemClassification.progression),
+    "The Lure of the Night: Red Brick Collected": LB1ItemData(base_item_id + 513, ItemClassification.progression),
+    "Dying of Laughter: Red Brick Collected": LB1ItemData(base_item_id + 514, ItemClassification.progression),
+}
+
+red_brick_unlocked_table: Dict[str, LB1ItemData] = {
+    "Silhouettes Unlocked": LB1ItemData(base_item_id + 515, ItemClassification.filler),
+    "Beep Beep Unlocked": LB1ItemData(base_item_id + 516, ItemClassification.filler),
+    "Ice Rink Unlocked": LB1ItemData(base_item_id + 517, ItemClassification.filler),
+    "Disguise Unlocked": LB1ItemData(base_item_id + 518, ItemClassification.filler),
+    "Extra Toggle Unlocked": LB1ItemData(base_item_id + 519, ItemClassification.filler),
+    "Score x2 Unlocked": LB1ItemData(base_item_id + 520, ItemClassification.useful),
+    "Score x4 Unlocked": LB1ItemData(base_item_id + 521, ItemClassification.useful),
+    "Score x6 Unlocked": LB1ItemData(base_item_id + 522, ItemClassification.useful),
+    "Score x8 Unlocked": LB1ItemData(base_item_id + 523, ItemClassification.useful),
+    "Score x10 Unlocked": LB1ItemData(base_item_id + 524, ItemClassification.useful),
+    "Stud Magnet Unlocked": LB1ItemData(base_item_id + 525, ItemClassification.useful),
+    "Character Studs Unlocked": LB1ItemData(base_item_id + 526, ItemClassification.useful),
+    "Minikit Detector Unlocked": LB1ItemData(base_item_id + 527, ItemClassification.useful),
+    "Power Brick Detector Unlocked": LB1ItemData(base_item_id + 528, ItemClassification.useful),
+    "Always Score Multiply Unlocked": LB1ItemData(base_item_id + 529, ItemClassification.useful),
+    "Fast Build Unlocked": LB1ItemData(base_item_id + 530, ItemClassification.useful),
+    "Immune to Freeze Unlocked": LB1ItemData(base_item_id + 531, ItemClassification.useful),
+    "Regenerate Hearts Unlocked": LB1ItemData(base_item_id + 532, ItemClassification.useful),
+    "Extra Hearts Unlocked": LB1ItemData(base_item_id + 533, ItemClassification.useful),
+    "Invincibility Unlocked": LB1ItemData(base_item_id + 534, ItemClassification.useful),
+    "Fast Grapple (All Suits) Unlocked": LB1ItemData(base_item_id + 535, ItemClassification.useful),
+    "Fast Batarangs (All Suits) Unlocked": LB1ItemData(base_item_id + 536, ItemClassification.useful),
+    "More Batarang Targets (All Suits) Unlocked": LB1ItemData(base_item_id + 537, ItemClassification.useful),
+    "Flaming Batarang (Heat Protection Suit) Unlocked": LB1ItemData(base_item_id + 538, ItemClassification.useful),
+    "Slam (Glide Suit) Unlocked": LB1ItemData(base_item_id + 539, ItemClassification.useful),
+    "More Detonators (Demolition Suit) Unlocked": LB1ItemData(base_item_id + 540, ItemClassification.useful),
+    "Amour Plating (Demolition Suit) Unlocked": LB1ItemData(base_item_id + 541, ItemClassification.useful),
+    "Sonic Pain (Sonic Suit) Unlocked": LB1ItemData(base_item_id + 542, ItemClassification.useful),
+    "Area Effect (Sonic Suit) Unlocked": LB1ItemData(base_item_id + 543, ItemClassification.useful),
+    "Bats (Sonic Suit) Unlocked": LB1ItemData(base_item_id + 544, ItemClassification.filler),
+    "Freeze Batarang (Water Suit) Unlocked": LB1ItemData(base_item_id + 545, ItemClassification.useful),
+    "Decoy (Technology Suit) Unlocked": LB1ItemData(base_item_id + 546, ItemClassification.useful),
+    "Fast Walk (Magnet Suit) Unlocked": LB1ItemData(base_item_id + 547, ItemClassification.useful),
+    "Faster Pieces (Attract Suit) Unlocked": LB1ItemData(base_item_id + 548, ItemClassification.useful),
+    "Piece Detector (Attract Suit) Unlocked": LB1ItemData(base_item_id + 549, ItemClassification.useful),
+}
 
 item_data_table = {
     **minikit_item_table,
-    # **hostage_item_table,
+    **hostage_item_table,
+    **level_unlocked_item_table,
+    **true_status_item_table,
+    **red_brick_item_table,
+    **red_brick_unlocked_table,
 }
 
-item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}
+item_group_table: Dict[str, Dict[str, LB1ItemData]] = {
+    "minikit": minikit_item_table,
+    "hostage": hostage_item_table,
+    "level": level_unlocked_item_table,
+    "true status": true_status_item_table,
+    "red brick collected": red_brick_item_table,
+    "red brick unlocked": red_brick_unlocked_table,
+}
+
+minikit_names_set = set(minikit_item_table.keys())
 
 event_item_table: Dict[str, LB1ItemData] = {
     # "Completed Wayne Manor": LB1ItemData(None, classification=ItemClassification.progression),
     # "Completed Arkham Asylum": LB1ItemData(None, classification=ItemClassification.progression),
     # "Completed All Levels": LB1ItemData(None, classification=ItemClassification.progression),
-    "Obtain All Minikits": LB1ItemData(None, classification=ItemClassification.progression),
+    "Obtain Minikit Goal": LB1ItemData(None, classification=ItemClassification.progression),
     # "Hush": LB1ItemData(None, classification=ItemClassification.progression),
     # "Ra Sha Guul": LB1ItemData(None, classification=ItemClassification.progression),
 }
 
 
-
+def setup_items(options: LB1Options):
+    temp_item_table = {}
+    if options.minikit_sanity == 1:
+        temp_item_table.update({**minikit_item_table})
+    if options.true_status_sanity == 1:
+        temp_item_table.update({**true_status_item_table})
+    temp_item_table.update({**hostage_item_table})
+    temp_item_table.update({**level_unlocked_item_table})
+    temp_item_table.update({**red_brick_item_table})
+    temp_item_table.update({**red_brick_unlocked_table})
+    return temp_item_table
