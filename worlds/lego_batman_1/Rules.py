@@ -20,46 +20,46 @@ def char_can_cross_toxic(state: CollectionState, player: int):
 
 def char_can_double_jump(state: CollectionState, player: int):
     return (
-        state.has(ItemName.clayface_unlocked, player) or
-        state.has(ItemName.poisonivy_unlocked, player) or
-        state.has(ItemName.catwoman_unlocked, player) or
-        state.has(ItemName.catwomanclassic_unlocked, player) or
-        state.has(ItemName.harleyquinn_unlocked, player) or
-        state.has(ItemName.madhatter_unlocked, player)
+            state.has(ItemName.clayface_unlocked, player) or
+            state.has(ItemName.poisonivy_unlocked, player) or
+            state.has(ItemName.catwoman_unlocked, player) or
+            state.has(ItemName.catwomanclassic_unlocked, player) or
+            state.has(ItemName.harleyquinn_unlocked, player) or
+            state.has(ItemName.madhatter_unlocked, player)
     )
 
 
 def char_can_access_female_room(state: CollectionState, player: int):
     return (
-        state.has(ItemName.poisonivy_unlocked, player) or
-        state.has(ItemName.harleyquinn_unlocked, player) or
-        state.has(ItemName.catwoman_unlocked, player) or
-        state.has(ItemName.catwomanclassic_unlocked, player)
+            state.has(ItemName.poisonivy_unlocked, player) or
+            state.has(ItemName.harleyquinn_unlocked, player) or
+            state.has(ItemName.catwoman_unlocked, player) or
+            state.has(ItemName.catwomanclassic_unlocked, player)
     )
 
 
 def char_can_hypno(state: CollectionState, player: int):
     return (
-        state.has(ItemName.riddler_unlocked, player) or
-        state.has(ItemName.scarecrow_unlocked, player) or
-        state.has(ItemName.madhatter_unlocked, player)
+            state.has(ItemName.riddler_unlocked, player) or
+            state.has(ItemName.scarecrow_unlocked, player) or
+            state.has(ItemName.madhatter_unlocked, player)
     )
 
 
 def char_joker(state: CollectionState, player: int):
     return (
-        state.has(ItemName.joker_unlocked, player) or
-        state.has(ItemName.jokertropical_unlocked, player)
+            state.has(ItemName.joker_unlocked, player) or
+            state.has(ItemName.jokertropical_unlocked, player)
     )
 
 
 def char_is_strong(state: CollectionState, player: int):
     return (
-        state.has(ItemName.clayface_unlocked, player) or
-        state.has(ItemName.mrfreeze_unlocked, player) or
-        state.has(ItemName.bane_unlocked, player) or
-        state.has(ItemName.killercroc_unlocked, player) or
-        state.has(ItemName.manbat_unlocked, player)
+            state.has(ItemName.clayface_unlocked, player) or
+            state.has(ItemName.mrfreeze_unlocked, player) or
+            state.has(ItemName.bane_unlocked, player) or
+            state.has(ItemName.killercroc_unlocked, player) or
+            state.has(ItemName.manbat_unlocked, player)
     )
 
 
@@ -95,91 +95,91 @@ def char_can_techno(state: CollectionState, player: int):
 
 def auto_has_cable(state: CollectionState, player: int):
     return (
-        state.has(ItemName.batmobile_unlocked, player) or
-        state.has(ItemName.batcycle_unlocked, player) or
-        state.has(ItemName.battank_unlocked, player) or
-        state.has(ItemName.catmotorcycle_unlocked, player)
+            state.has(ItemName.batmobile_unlocked, player) or
+            state.has(ItemName.batcycle_unlocked, player) or
+            state.has(ItemName.battank_unlocked, player) or
+            state.has(ItemName.catmotorcycle_unlocked, player)
     )
 
 
 def auto_can_explode(state: CollectionState, player: int):
     return (
-        state.has(ItemName.policecar_unlocked, player) or
-        state.has(ItemName.policevan_unlocked, player) or
-        state.has(ItemName.hammertruck_unlocked, player) or
-        state.has(ItemName.jokervan_unlocked, player) or
-        state.has(ItemName.garbagetruck_unlocked, player)
+            state.has(ItemName.policecar_unlocked, player) or
+            state.has(ItemName.policevan_unlocked, player) or
+            state.has(ItemName.hammertruck_unlocked, player) or
+            state.has(ItemName.jokervan_unlocked, player) or
+            state.has(ItemName.garbagetruck_unlocked, player)
     )
 
 
 def auto_can_shoot(state: CollectionState, player: int):
     return (
-        state.has(ItemName.batmobile_unlocked, player) or
-        state.has(ItemName.batcycle_unlocked, player) or
-        state.has(ItemName.policebike_unlocked, player) or
-        state.has(ItemName.battank_unlocked, player) or
-        state.has(ItemName.catmotorcycle_unlocked, player) or
-        state.has(ItemName.armouredtruck_unlocked, player) or
-        state.has(ItemName.hammertruck_unlocked, player) or
-        state.has(ItemName.jokervan_unlocked, player)
+            state.has(ItemName.batmobile_unlocked, player) or
+            state.has(ItemName.batcycle_unlocked, player) or
+            state.has(ItemName.policebike_unlocked, player) or
+            state.has(ItemName.battank_unlocked, player) or
+            state.has(ItemName.catmotorcycle_unlocked, player) or
+            state.has(ItemName.armouredtruck_unlocked, player) or
+            state.has(ItemName.hammertruck_unlocked, player) or
+            state.has(ItemName.jokervan_unlocked, player)
     )
 
 
 def water_has_torpedo(state: CollectionState, player: int):
     return (
-        state.has(ItemName.robinswatercraft_unlocked, player) or
-        state.has(ItemName.penguinsubmarine_unlocked, player)
+            state.has(ItemName.robinswatercraft_unlocked, player) or
+            state.has(ItemName.penguinsubmarine_unlocked, player)
     )
 
 
 def water_can_sink(state: CollectionState, player: int):
     return (
-        state.has(ItemName.robinssubmarine_unlocked, player) or
-        state.has(ItemName.penguinsubmarine_unlocked, player) or
-        state.has(ItemName.penguingoonsub_unlocked, player)
+            state.has(ItemName.robinssubmarine_unlocked, player) or
+            state.has(ItemName.penguinsubmarine_unlocked, player) or
+            state.has(ItemName.penguingoonsub_unlocked, player)
     )
 
 
 def water_can_cross_toxic(state: CollectionState, player: int):
     return (
-        state.has(ItemName.policewatercraft_unlocked, player) or
-        state.has(ItemName.swamprider_unlocked, player) or
-        state.has(ItemName.iceberg_unlocked, player)
+            state.has(ItemName.policewatercraft_unlocked, player) or
+            state.has(ItemName.swamprider_unlocked, player) or
+            state.has(ItemName.iceberg_unlocked, player)
     )
 
 
 def water_can_boost(state: CollectionState, player: int):
     return (
-        state.has(ItemName.batboat_unlocked, player) or
-        state.has(ItemName.swamprider_unlocked, player)
+            state.has(ItemName.batboat_unlocked, player) or
+            state.has(ItemName.swamprider_unlocked, player)
     )
 
 
 def air_has_cable(state: CollectionState, player: int):
     return (
-        state.has(ItemName.batcopter_unlocked, player) or
-        state.has(ItemName.harbourhelicopter_unlocked, player) or
-        state.has(ItemName.policehelicopter_unlocked, player) or
-        state.has(ItemName.jokerhelicopter_unlocked, player) or
-        state.has(ItemName.goonhelicopter_unlocked, player)
+            state.has(ItemName.batcopter_unlocked, player) or
+            state.has(ItemName.harbourhelicopter_unlocked, player) or
+            state.has(ItemName.policehelicopter_unlocked, player) or
+            state.has(ItemName.jokerhelicopter_unlocked, player) or
+            state.has(ItemName.goonhelicopter_unlocked, player)
     )
 
 
 def air_has_torpedo(state: CollectionState, player: int):
     return (
-        state.has(ItemName.batwing_unlocked, player) or
-        state.has(ItemName.scarecrowbiplane_unlocked, player) or
-        state.has(ItemName.riddlerjet_unlocked, player)
+            state.has(ItemName.batwing_unlocked, player) or
+            state.has(ItemName.scarecrowbiplane_unlocked, player) or
+            state.has(ItemName.riddlerjet_unlocked, player)
     )
 
 
 def air_can_cross_toxic(state: CollectionState, player: int):
     return (
-        state.has(ItemName.harbourhelicopter_unlocked, player) or
-        state.has(ItemName.policehelicopter_unlocked, player) or
-        state.has(ItemName.jokerhelicopter_unlocked, player) or
-        state.has(ItemName.scarecrowbiplane_unlocked, player) or
-        state.has(ItemName.goonhelicopter_unlocked, player)
+            state.has(ItemName.harbourhelicopter_unlocked, player) or
+            state.has(ItemName.policehelicopter_unlocked, player) or
+            state.has(ItemName.jokerhelicopter_unlocked, player) or
+            state.has(ItemName.scarecrowbiplane_unlocked, player) or
+            state.has(ItemName.goonhelicopter_unlocked, player)
     )
 
 
@@ -290,8 +290,8 @@ def can_beat_pl(state: CollectionState, options: LB1Options, player: int):
         )
     else:
         return (
-            char_can_glide(state, player) and
-            char_can_sink(state, player)
+                char_can_glide(state, player) and
+                char_can_sink(state, player)
         )
 
 
@@ -359,9 +359,9 @@ def can_beat_tttot(state: CollectionState, options: LB1Options, player: int):
 
 def can_trmaw_min4(state: CollectionState, player: int):
     return (
-        char_can_explode(state, player) and
-        char_can_hypno(state, player) and
-        char_is_strong(state, player)
+            char_can_explode(state, player) and
+            char_can_hypno(state, player) and
+            char_is_strong(state, player)
     )
 
 
@@ -375,6 +375,54 @@ def can_trmaw_min6_and_9(state: CollectionState, player: int):
              char_can_hypno(state, player) and
              char_is_strong(state, player) and
              state.has(ItemName.sonicsuit, player))
+    )
+
+
+def free_access_back_otr(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.mrfreeze_unlocked, player)
+    )
+
+
+def can_otr_min2(state: CollectionState, player: int):
+    return (
+            char_is_strong(state, player) and
+            char_can_hypno(state, player) and
+            state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_otr_min4(state: CollectionState, player: int):
+    return (
+            char_can_explode(state, player)
+    )
+
+
+def can_otr_min5(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.magsuit, player)
+    )
+
+
+def can_otr_min7(state: CollectionState, player: int):
+    return (
+            char_can_hypno(state, player) and
+            state.has(ItemName.attractsuit, player)
+    )
+
+
+def can_otr_min8(state: CollectionState, player: int):
+    return (
+            char_can_hypno(state, player) and
+            char_can_explode(state, player)
+    )
+
+
+def can_otr_min9(state: CollectionState, player: int):
+    return (
+            char_can_hypno(state, player) and
+            state.has(ItemName.magsuit, player) and
+            char_can_glide(state, player)
     )
 
 
@@ -409,8 +457,8 @@ def can_tsga_host(state: CollectionState, options: LB1Options, player: int):
         )
     else:
         return (
-            char_can_glide(state, player) and
-            state.has(ItemName.magsuit, player)
+                char_can_glide(state, player) and
+                state.has(ItemName.magsuit, player)
         )
 
 
@@ -497,16 +545,14 @@ def can_trmaw_host(state: CollectionState, player: int):
 
 def can_otr_host(state: CollectionState, player: int):
     return (
-        char_is_strong(state, player) and
-        char_can_explode(state, player) and
-        state.has(ItemName.mrfreeze_unlocked, player)
+            char_can_explode(state, player)
     )
 
 
 def can_gf_host(state: CollectionState, player: int):
     return (
-        char_can_explode(state, player) and
-        state.has(ItemName.poisonivy_unlocked, player)
+            char_can_explode(state, player) and
+            state.has(ItemName.poisonivy_unlocked, player)
     )
 
 
@@ -519,9 +565,9 @@ def can_bb_host(state: CollectionState, player: int):
 
 def can_rtd_host(state: CollectionState, player: int):
     return (
-        char_can_explode(state, player) and
-        char_is_strong(state, player) and
-        state.has(ItemName.sonicsuit, player)
+            char_can_explode(state, player) and
+            char_is_strong(state, player) and
+            state.has(ItemName.sonicsuit, player)
     )
 
 
@@ -534,31 +580,31 @@ def can_sts_host(state: CollectionState, player: int):
 
 def can_adr_host(state: CollectionState, player: int):
     return (
-        char_is_strong(state, player) and
-        char_joker(state, player)
+            char_is_strong(state, player) and
+            char_joker(state, player)
     )
 
 
 def can_asftc_host(state: CollectionState, player: int):
     return (
-        char_can_double_jump(state, player) and
-        char_can_explode(state, player)
+            char_can_double_jump(state, player) and
+            char_can_explode(state, player)
     )
 
 
 def can_tjm_host(state: CollectionState, player: int):
     return (
-        char_joker(state, player) and
-        char_can_explode(state, player) and
-        state.has(ItemName.heatprotectsuit, player)
+            char_joker(state, player) and
+            char_can_explode(state, player) and
+            state.has(ItemName.heatprotectsuit, player)
     )
 
 
 def can_dol_host(state: CollectionState, player: int):
     return (
-        char_joker(state, player) and
-        char_can_double_jump(state, player) and
-        char_can_glide(state, player)
+            char_joker(state, player) and
+            char_can_double_jump(state, player) and
+            char_can_glide(state, player)
     )
 
 
@@ -585,9 +631,9 @@ def can_air_rb(state: CollectionState, options: LB1Options, player: int):
 
 def can_apa_rb(state: CollectionState, player: int):
     return (
-        can_beat_apa(state, player) and
-        char_can_explode(state, player) and
-        char_joker(state, player)
+            can_beat_apa(state, player) and
+            char_can_explode(state, player) and
+            char_joker(state, player)
     )
 
 
@@ -604,17 +650,23 @@ def can_tfo_rb(state: CollectionState, options: LB1Options, player: int):
 
 def can_tsga_rb(state: CollectionState, options: LB1Options, player: int):
     return (
-        can_beat_tsga(state, options, player) and
-        state.has(ItemName.sonicsuit, player)
+            can_beat_tsga(state, options, player) and
+            state.has(ItemName.sonicsuit, player)
     )
 
 
 def can_trmaw_rb(state: CollectionState, player: int):
     return (
-        char_can_double_jump(state, player) and
-        char_can_hypno(state, player) and
-        char_is_strong(state, player) and
-        state.has(ItemName.sonicsuit, player)
+            char_can_double_jump(state, player) and
+            char_can_hypno(state, player) and
+            char_is_strong(state, player) and
+            state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_otr_rb(state: CollectionState, player: int):
+    return (
+            char_can_explode(state, player)
     )
 
 
@@ -679,6 +731,8 @@ def set_entrance_rules(world, player: int):
              lambda state: state.has(ItemName.tlotn_lvl, player))
     add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has(ItemName.dol_lvl, player))
+    add_rule(world.get_entrance("On the Rocks -> On the Rocks: Inside", player),
+             lambda state: free_access_back_otr(state, player))
 
 
 def set_level_beaten_rules(world, options: LB1Options, player: int):
@@ -707,6 +761,13 @@ def set_minikit_rules(world, player: int):
     add_rule(world.get_location(LocationName.trmaw_min4, player), lambda state: can_trmaw_min4(state, player))
     add_rule(world.get_location(LocationName.trmaw_min6, player), lambda state: can_trmaw_min6_and_9(state, player))
     add_rule(world.get_location(LocationName.trmaw_min9, player), lambda state: can_trmaw_min6_and_9(state, player))
+    # OTR Minikits 1, 3, 6, 10 can all be done in story
+    add_rule(world.get_location(LocationName.otr_min2, player), lambda state: can_otr_min2(state, player))
+    add_rule(world.get_location(LocationName.otr_min4, player), lambda state: can_otr_min4(state, player))
+    add_rule(world.get_location(LocationName.otr_min5, player), lambda state: can_otr_min5(state, player))
+    add_rule(world.get_location(LocationName.otr_min7, player), lambda state: can_otr_min7(state, player))
+    add_rule(world.get_location(LocationName.otr_min8, player), lambda state: can_otr_min8(state, player))
+    add_rule(world.get_location(LocationName.otr_min9, player), lambda state: can_otr_min9(state, player))
 
 
 def set_host_rules(world, options: LB1Options, player: int):
@@ -771,6 +832,7 @@ def set_red_brick_location_rules(world, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.tfo_rb, player), lambda state: can_tfo_rb(state, options, player))
     add_rule(world.get_location(LocationName.tsga_rb, player), lambda state: can_tsga_rb(state, options, player))
     add_rule(world.get_location(LocationName.trmaw_rb, player), lambda state: can_trmaw_rb(state, player))
+    add_rule(world.get_location(LocationName.otr_rb, player), lambda state: can_otr_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world, player: int):

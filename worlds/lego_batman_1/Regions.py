@@ -5,10 +5,6 @@ from .Locations import LB1Location, level_beaten_event_location_table
 from .Items import LB1Item
 
 
-class LB1Region(Region):
-    subregions: typing.List[Region] = []
-
-
 lb1_hub_regions = [
     "Batcave",
     "Arkham Asylum",
@@ -51,10 +47,15 @@ lb1_villain_regions = [
     "Dying of Laughter",
 ]
 
+lb1_villain_subregions = [
+    "On the Rocks: Inside"
+]
+
 lb1_all_regions = [
     *lb1_hub_regions,
     *lb1_hero_regions,
     *lb1_villain_regions,
+    *lb1_villain_subregions,
 ]
 
 
@@ -74,6 +75,8 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
 
     for region in lb1_villain_regions:
         connect_regions(world, player, "Arkham Asylum", region)
+
+    connect_regions(world, player, "On the Rocks", "On the Rocks: Inside")
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
