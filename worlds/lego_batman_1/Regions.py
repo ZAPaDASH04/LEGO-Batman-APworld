@@ -49,6 +49,7 @@ lb1_villain_subregions = [
     "There She Goes Again: Freeplay",
     "The Riddler Makes a Withdrawal: Freeplay",
     "On the Rocks: Freeplay",
+    "Green Fingers: Freeplay",
 ]
 
 lb1_all_regions = [
@@ -79,6 +80,7 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     connect_regions(world, player, "There She Goes Again", "There She Goes Again: Freeplay")
     connect_regions(world, player, "The Riddler Makes a Withdrawal", "The Riddler Makes a Withdrawal: Freeplay")
     connect_regions(world, player, "On the Rocks", "On the Rocks: Freeplay")
+    connect_regions(world, player, "Green Fingers", "Green Fingers: Freeplay")
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
