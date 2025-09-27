@@ -629,6 +629,56 @@ def can_gf_min10(state: CollectionState, player: int):
     )
 
 
+def can_aet_min1(state: CollectionState, player: int):
+    return (
+        char_can_double_jump(state, player)
+        and state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_aet_min2(state: CollectionState, player: int):
+    return (
+        char_can_techno(state, player)
+        and state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_aet_min3(state: CollectionState, player: int):
+    return char_can_explode(state, player)
+
+
+def can_aet_min4(state: CollectionState, player: int):
+    return state.has(ItemName.sonicsuit, player)
+
+
+def can_aet_min5(state: CollectionState, player: int):
+    return (
+        char_can_explode(state, player)
+        and char_can_techno(state, player)
+    )
+
+
+def can_aet_min7(state: CollectionState, player: int):
+    return (
+        char_can_double_jump(state, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
+def can_aet_min8(state: CollectionState, player: int):
+    return (
+        state.has(ItemName.sonicsuit, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
+def can_aet_min9(state: CollectionState, player: int):
+    return (
+        state.has(ItemName.heatprotectsuit, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -891,6 +941,13 @@ def can_gf_rb(state: CollectionState, player: int):
     )
 
 
+def can_aet_rb(state: CollectionState, player: int):
+    return (
+        char_can_explode(state, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
@@ -1015,6 +1072,15 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.gf_min8, player), lambda state: can_gf_min8(state, player))
     add_rule(world.get_location(LocationName.gf_min9, player), lambda state: can_gf_min9(state, player))
     add_rule(world.get_location(LocationName.gf_min10, player), lambda state: can_gf_min10(state, player))
+    # AET Minikits 6 & 10 can be done in story
+    add_rule(world.get_location(LocationName.aet_min1, player), lambda state: can_aet_min1(state, player))
+    add_rule(world.get_location(LocationName.aet_min2, player), lambda state: can_aet_min2(state, player))
+    add_rule(world.get_location(LocationName.aet_min3, player), lambda state: can_aet_min3(state, player))
+    add_rule(world.get_location(LocationName.aet_min4, player), lambda state: can_aet_min4(state, player))
+    add_rule(world.get_location(LocationName.aet_min5, player), lambda state: can_aet_min5(state, player))
+    add_rule(world.get_location(LocationName.aet_min7, player), lambda state: can_aet_min7(state, player))
+    add_rule(world.get_location(LocationName.aet_min8, player), lambda state: can_aet_min8(state, player))
+    add_rule(world.get_location(LocationName.aet_min9, player), lambda state: can_aet_min9(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1081,6 +1147,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     add_rule(world.get_location(LocationName.trmaw_rb, player), lambda state: can_trmaw_rb(state, player))
     add_rule(world.get_location(LocationName.otr_rb, player), lambda state: can_otr_rb(state, player))
     add_rule(world.get_location(LocationName.gf_rb, player), lambda state: can_gf_rb(state, player))
+    add_rule(world.get_location(LocationName.aet_rb, player), lambda state: can_aet_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
