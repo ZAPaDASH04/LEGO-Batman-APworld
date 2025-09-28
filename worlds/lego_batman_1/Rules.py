@@ -386,6 +386,10 @@ def free_access_gf(state: CollectionState, player: int):
     return char_can_hypno(state, player)
 
 
+def free_access_bb(state: CollectionState, player: int):
+    return char_can_hypno(state, player)
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -631,15 +635,15 @@ def can_gf_min10(state: CollectionState, player: int):
 
 def can_aet_min1(state: CollectionState, player: int):
     return (
-        char_can_double_jump(state, player)
-        and state.has(ItemName.sonicsuit, player)
+            char_can_double_jump(state, player)
+            and state.has(ItemName.sonicsuit, player)
     )
 
 
 def can_aet_min2(state: CollectionState, player: int):
     return (
-        char_can_techno(state, player)
-        and state.has(ItemName.sonicsuit, player)
+            char_can_techno(state, player)
+            and state.has(ItemName.sonicsuit, player)
     )
 
 
@@ -653,28 +657,77 @@ def can_aet_min4(state: CollectionState, player: int):
 
 def can_aet_min5(state: CollectionState, player: int):
     return (
-        char_can_explode(state, player)
-        and char_can_techno(state, player)
+            char_can_explode(state, player)
+            and char_can_techno(state, player)
     )
 
 
 def can_aet_min7(state: CollectionState, player: int):
     return (
-        char_can_double_jump(state, player)
-        and char_can_cross_toxic(state, player)
+            char_can_double_jump(state, player)
+            and char_can_cross_toxic(state, player)
     )
 
 
 def can_aet_min8(state: CollectionState, player: int):
     return (
-        state.has(ItemName.sonicsuit, player)
-        and char_can_cross_toxic(state, player)
+            state.has(ItemName.sonicsuit, player)
+            and char_can_cross_toxic(state, player)
     )
 
 
 def can_aet_min9(state: CollectionState, player: int):
     return (
-        state.has(ItemName.heatprotectsuit, player)
+            state.has(ItemName.heatprotectsuit, player)
+            and char_can_cross_toxic(state, player)
+    )
+
+
+def can_bb_min2(state: CollectionState, player: int):
+    return char_can_double_jump(state, player)
+
+
+def can_bb_min4(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.sonicsuit, player)
+            and state.has(ItemName.attractsuit, player)
+            and state.has(ItemName.magsuit, player)
+    )
+
+
+def can_bb_min5(state: CollectionState, player: int):
+    return char_is_strong(state, player)
+
+
+def can_bb_min6(state: CollectionState, player: int):
+    return char_can_explode(state, player)
+
+
+def can_bb_min7(state: CollectionState, player: int):
+    return (
+        char_can_double_jump(state, player)
+        and char_joker(state, player)
+    )
+
+
+def can_bb_min8(state: CollectionState, player: int):
+    return (
+        char_can_explode(state, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
+def can_bb_min9(state: CollectionState, player: int):
+    return (
+        state.has(ItemName.sonicsuit, player)
+        and state.has(ItemName.magsuit, player)
+        and char_can_cross_toxic(state, player)
+    )
+
+
+def can_bb_min10(state: CollectionState, player: int):
+    return (
+        char_can_explode(state, player)
         and char_can_cross_toxic(state, player)
     )
 
@@ -804,10 +857,7 @@ def can_aet_host(state: CollectionState, player: int):
 
 
 def can_bb_host(state: CollectionState, player: int):
-    return (
-            (state.has(ItemName.sonicsuit, player) or char_can_hypno(state, player))
-            and char_can_explode(state, player)
-    )
+    return char_can_explode(state, player)
 
 
 def can_rtd_host(state: CollectionState, player: int):
@@ -943,8 +993,15 @@ def can_gf_rb(state: CollectionState, player: int):
 
 def can_aet_rb(state: CollectionState, player: int):
     return (
-        char_can_explode(state, player)
-        and char_can_cross_toxic(state, player)
+            char_can_explode(state, player)
+            and char_can_cross_toxic(state, player)
+    )
+
+
+def can_bb_rb(state: CollectionState, player: int):
+    return (
+            char_can_explode(state, player)
+            and state.has(ItemName.sonicsuit, player)
     )
 
 
@@ -1018,6 +1075,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_otr(state, player))
     add_rule(world.get_entrance("Green Fingers -> Green Fingers: Freeplay", player),
              lambda state: free_access_gf(state, player))
+    add_rule(world.get_entrance("Breaking Blocks -> Breaking Blocks: Freeplay", player),
+             lambda state: free_access_bb(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1081,6 +1140,15 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.aet_min7, player), lambda state: can_aet_min7(state, player))
     add_rule(world.get_location(LocationName.aet_min8, player), lambda state: can_aet_min8(state, player))
     add_rule(world.get_location(LocationName.aet_min9, player), lambda state: can_aet_min9(state, player))
+    # BB Minikit 1 can be done in story & 3 can be done in freeplay with batman
+    add_rule(world.get_location(LocationName.bb_min2, player), lambda state: can_bb_min2(state, player))
+    add_rule(world.get_location(LocationName.bb_min4, player), lambda state: can_bb_min4(state, player))
+    add_rule(world.get_location(LocationName.bb_min5, player), lambda state: can_bb_min5(state, player))
+    add_rule(world.get_location(LocationName.bb_min6, player), lambda state: can_bb_min6(state, player))
+    add_rule(world.get_location(LocationName.bb_min7, player), lambda state: can_bb_min7(state, player))
+    add_rule(world.get_location(LocationName.bb_min8, player), lambda state: can_bb_min8(state, player))
+    add_rule(world.get_location(LocationName.bb_min9, player), lambda state: can_bb_min9(state, player))
+    add_rule(world.get_location(LocationName.bb_min10, player), lambda state: can_bb_min10(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1148,6 +1216,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     add_rule(world.get_location(LocationName.otr_rb, player), lambda state: can_otr_rb(state, player))
     add_rule(world.get_location(LocationName.gf_rb, player), lambda state: can_gf_rb(state, player))
     add_rule(world.get_location(LocationName.aet_rb, player), lambda state: can_aet_rb(state, player))
+    add_rule(world.get_location(LocationName.bb_rb, player), lambda state: can_bb_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
