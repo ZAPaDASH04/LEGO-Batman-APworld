@@ -262,7 +262,7 @@ trmaw_min8 = "The Riddler Makes a Withdrawal: Minikit in the Barrels next to the
 trmaw_min9 = "The Riddler Makes a Withdrawal: Minikit behind the Glass Window"
 trmaw_min10 = "The Riddler Makes a Withdrawal: Minikit in the Car Show Room"
 otr_min1 = "On the Rocks: Minikit from park the Ice Cream Van"
-otr_min2 = "On the Rocks: Minikit destroy 3 Snowmen"
+otr_min2 = "On the Rocks: Minikit Do you Wanna Build 3 Snowmen"
 otr_min3 = "On the Rocks: Minikit behind the Window near the Snowman Billboard"
 otr_min4 = "On the Rocks: Minikit behind the Ice Wall"
 otr_min5 = "On the Rocks: Minikit on the Ledge Accessed by the Magnet Wall"
@@ -398,7 +398,7 @@ dol_min4 = "Dying of Laughter: Minikit above the Ladder Built from Destroying Si
 dol_min5 = "Dying of Laughter: Minikit above the Magnet Wall after Second Double Button"
 dol_min6 = "Dying of Laughter: Minikit inside the Wooden Box next to the Elevator"
 dol_min7 = "Dying of Laughter: Minikit on the Platform Across from the Wooden Box"
-dol_min8 = "Dying of Laughter: Build and Destroy the 3 Ice Sculpture Minikit"
+dol_min8 = "Dying of Laughter: Build and Destroy the Ice Sculpture Minikit"
 dol_min9 = "Dying of Laughter: Ring the Left Bell Minikit"
 dol_min10 = "Dying of Laughter: Ring Both Front Bells with the Turret Minikit"
 
