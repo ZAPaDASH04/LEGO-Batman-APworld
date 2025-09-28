@@ -355,7 +355,7 @@ minikit_location_table: Dict[str, LocationData] = {
     # On the Rocks
     "On the Rocks: Minikit from park the Ice Cream Van":
         LocationData(base_location_id + 260, "On the Rocks"),
-    "On the Rocks: Minikit destroy 3 Snowmen":
+    "On the Rocks: Minikit Build 3 Snowmen":
         LocationData(base_location_id + 261, "On the Rocks"),
     "On the Rocks: Minikit behind the Window near the Snowman Billboard":
         LocationData(base_location_id + 262, "On the Rocks"),
@@ -640,7 +640,7 @@ minikit_location_table: Dict[str, LocationData] = {
         LocationData(base_location_id + 395, "Dying of Laughter"),
     "Dying of Laughter: Minikit on the Platform Across from the Wooden Box":
         LocationData(base_location_id + 396, "Dying of Laughter"),
-    "Dying of Laughter: Build and Destroy the 3 Ice Sculpture Minikit":
+    "Dying of Laughter: Build and Destroy the Ice Sculpture Minikit":
         LocationData(base_location_id + 397, "Dying of Laughter"),
     "Dying of Laughter: Ring the Left Bell Minikit":
         LocationData(base_location_id + 398, "Dying of Laughter"),
