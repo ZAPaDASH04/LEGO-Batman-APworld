@@ -408,6 +408,14 @@ def free_access_hag(state: CollectionState, player: int):
     return water_has_torpedo(state, player)
 
 
+def free_access_adr(state: CollectionState, player: int):
+    return (
+            char_is_strong(state, player)
+            and char_can_cross_toxic(state, player)
+            and (char_can_double_jump(state, player) or char_can_glide(state, player))
+    )
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -832,6 +840,40 @@ def can_hag_min10(state: CollectionState, player: int):
     return state.has(ItemName.robinswatercraft_unlocked, player)
 
 
+def can_adr_min2(state: CollectionState, player: int):
+    return char_joker(state, player)
+
+
+def can_adr_min3(state: CollectionState, player: int):
+    return state.has(ItemName.heatprotectsuit, player)
+
+
+def can_adr_min5(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.attractsuit, player)
+            and state.has(ItemName.penguin_unlocked, player)
+    )
+
+
+def can_adr_min6(state: CollectionState, player: int):
+    return (
+            char_can_hypno(state, player)
+            and state.has(ItemName.mrfreeze_unlocked, player)
+            and state.has(ItemName.penguin_unlocked, player)
+    )
+
+
+def can_adr_min7(state: CollectionState, player: int):
+    return state.has(ItemName.sonicsuit, player)
+
+
+def can_adr_min9(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.magsuit, player)
+            and state.has(ItemName.penguin_unlocked, player)
+    )
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -972,10 +1014,7 @@ def can_sts_host(state: CollectionState, player: int):
 
 
 def can_adr_host(state: CollectionState, player: int):
-    return (
-            char_is_strong(state, player)
-            and char_joker(state, player)
-    )
+    return char_joker(state, player)
 
 
 def can_aw_host(state: CollectionState, player: int):
@@ -1122,6 +1161,14 @@ def can_hag_rb(state: CollectionState, player: int):
     return state.has(ItemName.robinswatercraft_unlocked, player)
 
 
+def can_adr_rb(state: CollectionState, player: int):
+    return (
+            char_can_techno(state, player)
+            and state.has(ItemName.penguin_unlocked, player)
+            and state.has(ItemName.sonicsuit, player)
+    )
+
+
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
@@ -1200,6 +1247,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_sts(state, player))
     add_rule(world.get_entrance("Harbouring a Grudge -> Harbouring a Grudge: Freeplay", player),
              lambda state: free_access_hag(state, player))
+    add_rule(world.get_entrance("A Daring Rescue -> A Daring Rescue: Freeplay", player),
+             lambda state: free_access_adr(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1289,6 +1338,13 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.hag_min3, player), lambda state: can_hag_min3(state, player))
     add_rule(world.get_location(LocationName.hag_min8, player), lambda state: can_hag_min8(state, player))
     add_rule(world.get_location(LocationName.hag_min10, player), lambda state: can_hag_min10(state, player))
+    # ADR Minikits1, 4, 8, 10 can be done in story
+    add_rule(world.get_location(LocationName.adr_min2, player), lambda state: can_adr_min2(state, player))
+    add_rule(world.get_location(LocationName.adr_min3, player), lambda state: can_adr_min3(state, player))
+    add_rule(world.get_location(LocationName.adr_min5, player), lambda state: can_adr_min5(state, player))
+    add_rule(world.get_location(LocationName.adr_min6, player), lambda state: can_adr_min6(state, player))
+    add_rule(world.get_location(LocationName.adr_min7, player), lambda state: can_adr_min7(state, player))
+    add_rule(world.get_location(LocationName.adr_min9, player), lambda state: can_adr_min9(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1360,6 +1416,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     add_rule(world.get_location(LocationName.rtd_rb, player), lambda state: can_rtd_rb(state, player))
     add_rule(world.get_location(LocationName.sts_rb, player), lambda state: can_sts_rb(state, player))
     add_rule(world.get_location(LocationName.hag_rb, player), lambda state: can_hag_rb(state, player))
+    add_rule(world.get_location(LocationName.adr_rb, player), lambda state: can_adr_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
