@@ -404,6 +404,10 @@ def free_access_sts(state: CollectionState, player: int):
     )
 
 
+def free_access_hag(state: CollectionState, player: int):
+    return water_has_torpedo(state, player)
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -816,6 +820,18 @@ def can_sts_min10(state: CollectionState, player: int):
     )
 
 
+def can_hag_min3(state: CollectionState, player: int):
+    return state.has(ItemName.batboat_unlocked, player)
+
+
+def can_hag_min8(state: CollectionState, player: int):
+    return state.has(ItemName.batboat_unlocked, player)
+
+
+def can_hag_min10(state: CollectionState, player: int):
+    return state.has(ItemName.robinswatercraft_unlocked, player)
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1102,6 +1118,10 @@ def can_sts_rb(state: CollectionState, player: int):
     )
 
 
+def can_hag_rb(state: CollectionState, player: int):
+    return state.has(ItemName.robinswatercraft_unlocked, player)
+
+
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
@@ -1178,6 +1198,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_rtd(state, player))
     add_rule(world.get_entrance("Stealing the Show -> Stealing the Show: Freeplay", player),
              lambda state: free_access_sts(state, player))
+    add_rule(world.get_entrance("Harbouring a Grudge -> Harbouring a Grudge: Freeplay", player),
+             lambda state: free_access_hag(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1263,6 +1285,10 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.sts_min7, player), lambda state: can_sts_min7(state, player))
     add_rule(world.get_location(LocationName.sts_min9, player), lambda state: can_sts_min9(state, player))
     add_rule(world.get_location(LocationName.sts_min10, player), lambda state: can_sts_min10(state, player))
+    # HAG Minikits 1, 2, 4-7, 9 can be done in story
+    add_rule(world.get_location(LocationName.hag_min3, player), lambda state: can_hag_min3(state, player))
+    add_rule(world.get_location(LocationName.hag_min8, player), lambda state: can_hag_min8(state, player))
+    add_rule(world.get_location(LocationName.hag_min10, player), lambda state: can_hag_min10(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1333,6 +1359,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     add_rule(world.get_location(LocationName.bb_rb, player), lambda state: can_bb_rb(state, player))
     add_rule(world.get_location(LocationName.rtd_rb, player), lambda state: can_rtd_rb(state, player))
     add_rule(world.get_location(LocationName.sts_rb, player), lambda state: can_sts_rb(state, player))
+    add_rule(world.get_location(LocationName.hag_rb, player), lambda state: can_hag_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
