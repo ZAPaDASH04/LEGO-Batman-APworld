@@ -397,6 +397,13 @@ def free_access_rtd(state: CollectionState, player: int):
     )
 
 
+def free_access_sts(state: CollectionState, player: int):
+    return (
+            char_can_glide(state, player)
+            and char_can_access_female_room(state, player)
+    )
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -770,6 +777,45 @@ def can_rtd_min9(state: CollectionState, player: int):
     )
 
 
+def can_sts_min1(state: CollectionState, player: int):
+    return (
+            char_is_strong(state, player)
+            and state.has(ItemName.magsuit, player)
+    )
+
+
+def can_sts_min3(state: CollectionState, player: int):
+    return (
+            char_can_glide(state, player)
+            and state.has(ItemName.poisonivy_unlocked, player)
+    )
+
+
+def can_sts_min6(state: CollectionState, player: int):
+    return state.has(ItemName.magsuit, player)
+
+
+def can_sts_min7(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.sonicsuit, player)
+            and char_is_strong(state, player)
+    )
+
+
+def can_sts_min9(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.sonicsuit, player)
+            and state.has(ItemName.penguin_unlocked, player)
+    )
+
+
+def can_sts_min10(state: CollectionState, player: int):
+    return (
+            char_is_strong(state, player)
+            and state.has(ItemName.penguin_unlocked, player)
+    )
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1047,6 +1093,15 @@ def can_rtd_rb(state: CollectionState, player: int):
     )
 
 
+def can_sts_rb(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.attractsuit, player)
+            and char_can_techno(state, player)
+            and state.has(ItemName.penguin_unlocked, player)
+            and char_can_explode(state, player)
+    )
+
+
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
@@ -1121,6 +1176,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_bb(state, player))
     add_rule(world.get_entrance("Rockin' the Docks -> Rockin' the Docks: Freeplay", player),
              lambda state: free_access_rtd(state, player))
+    add_rule(world.get_entrance("Stealing the Show -> Stealing the Show: Freeplay", player),
+             lambda state: free_access_sts(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1154,11 +1211,11 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.tsga_min8, player), lambda state: can_tsga_min8(state, options, player))
     add_rule(world.get_location(LocationName.tsga_min9, player), lambda state: can_tsga_min9(state, options, player))
     add_rule(world.get_location(LocationName.tsga_min10, player), lambda state: can_tsga_min10(state, options, player))
-    # TRMAW Minikits 1-3, 5, 7, 8, 10 can all be done in story
+    # TRMAW Minikits 1-3, 5, 7, 8, 10 can be done in story
     add_rule(world.get_location(LocationName.trmaw_min4, player), lambda state: can_trmaw_min4(state, player))
     add_rule(world.get_location(LocationName.trmaw_min6, player), lambda state: can_trmaw_min6_and_9(state, player))
     add_rule(world.get_location(LocationName.trmaw_min9, player), lambda state: can_trmaw_min6_and_9(state, player))
-    # OTR Minikits 1, 3, 6, 10 can all be done in story
+    # OTR Minikits 1, 3, 6, 10 can be done in story
     add_rule(world.get_location(LocationName.otr_min2, player), lambda state: can_otr_min2(state, player))
     add_rule(world.get_location(LocationName.otr_min4, player), lambda state: can_otr_min4(state, player))
     add_rule(world.get_location(LocationName.otr_min5, player), lambda state: can_otr_min5(state, player))
@@ -1193,12 +1250,19 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     add_rule(world.get_location(LocationName.bb_min8, player), lambda state: can_bb_min8(state, player))
     add_rule(world.get_location(LocationName.bb_min9, player), lambda state: can_bb_min9(state, player))
     add_rule(world.get_location(LocationName.bb_min10, player), lambda state: can_bb_min10(state, player))
-    # RTD Minikits 3, 4, 6, 8, 10 can all be done in story
+    # RTD Minikits 3, 4, 6, 8, 10 can be done in story
     add_rule(world.get_location(LocationName.rtd_min1, player), lambda state: can_rtd_min1(state, player))
     add_rule(world.get_location(LocationName.rtd_min2, player), lambda state: can_rtd_min2(state, player))
     add_rule(world.get_location(LocationName.rtd_min5, player), lambda state: can_rtd_min5(state, player))
     add_rule(world.get_location(LocationName.rtd_min7, player), lambda state: can_rtd_min7(state, player))
     add_rule(world.get_location(LocationName.rtd_min9, player), lambda state: can_rtd_min9(state, player))
+    # STS Minikits 2, 4, 5, 8 can be done in story
+    add_rule(world.get_location(LocationName.sts_min1, player), lambda state: can_sts_min1(state, player))
+    add_rule(world.get_location(LocationName.sts_min3, player), lambda state: can_sts_min3(state, player))
+    add_rule(world.get_location(LocationName.sts_min6, player), lambda state: can_sts_min6(state, player))
+    add_rule(world.get_location(LocationName.sts_min7, player), lambda state: can_sts_min7(state, player))
+    add_rule(world.get_location(LocationName.sts_min9, player), lambda state: can_sts_min9(state, player))
+    add_rule(world.get_location(LocationName.sts_min10, player), lambda state: can_sts_min10(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1268,6 +1332,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     add_rule(world.get_location(LocationName.aet_rb, player), lambda state: can_aet_rb(state, player))
     add_rule(world.get_location(LocationName.bb_rb, player), lambda state: can_bb_rb(state, player))
     add_rule(world.get_location(LocationName.rtd_rb, player), lambda state: can_rtd_rb(state, player))
+    add_rule(world.get_location(LocationName.sts_rb, player), lambda state: can_sts_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
