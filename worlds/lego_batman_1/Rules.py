@@ -1,5 +1,5 @@
 from BaseClasses import MultiWorld, Location
-from worlds.generic.Rules import add_rule
+from worlds.generic.Rules import add_rule, set_rule
 from worlds.AutoWorld import CollectionState
 
 from .Locations import level_beaten_event_location_table
@@ -1170,286 +1170,286 @@ def can_adr_rb(state: CollectionState, player: int):
 
 
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
-    add_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
+    set_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
-    add_rule(world.get_entrance("Batcave -> An Icy Reception", player),
+    set_rule(world.get_entrance("Batcave -> An Icy Reception", player),
              lambda state: state.has(ItemName.air_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Two-Face Chase", player),
+    set_rule(world.get_entrance("Batcave -> Two-Face Chase", player),
              lambda state: state.has(ItemName.tfc_lvl, player))
-    add_rule(world.get_entrance("Batcave -> A Poisonous Appointment", player),
+    set_rule(world.get_entrance("Batcave -> A Poisonous Appointment", player),
              lambda state: state.has(ItemName.apa_lvl, player))
-    add_rule(world.get_entrance("Batcave -> The Face-Off", player),
+    set_rule(world.get_entrance("Batcave -> The Face-Off", player),
              lambda state: state.has(ItemName.tfo_lvl, player))
-    add_rule(world.get_entrance("Batcave -> There She Goes Again", player),
+    set_rule(world.get_entrance("Batcave -> There She Goes Again", player),
              lambda state: state.has(ItemName.tsga_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Batboat Battle", player),
+    set_rule(world.get_entrance("Batcave -> Batboat Battle", player),
              lambda state: state.has(ItemName.bbb_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Under the City", player),
+    set_rule(world.get_entrance("Batcave -> Under the City", player),
              lambda state: state.has(ItemName.utc_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Zoo's Company", player),
+    set_rule(world.get_entrance("Batcave -> Zoo's Company", player),
              lambda state: state.has(ItemName.zc_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Penguin's Lair", player),
+    set_rule(world.get_entrance("Batcave -> Penguin's Lair", player),
              lambda state: state.has(ItemName.pl_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Joker's Home Turf", player),
+    set_rule(world.get_entrance("Batcave -> Joker's Home Turf", player),
              lambda state: state.has(ItemName.jht_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Little Fun at the Big Top", player),
+    set_rule(world.get_entrance("Batcave -> Little Fun at the Big Top", player),
              lambda state: state.has(ItemName.lfabt_lvl, player))
-    add_rule(world.get_entrance("Batcave -> Flight of the Bat", player),
+    set_rule(world.get_entrance("Batcave -> Flight of the Bat", player),
              lambda state: state.has(ItemName.fotb_lvl, player))
-    add_rule(world.get_entrance("Batcave -> In the Dark Night", player),
+    set_rule(world.get_entrance("Batcave -> In the Dark Night", player),
              lambda state: state.has(ItemName.itdn_lvl, player))
-    add_rule(world.get_entrance("Batcave -> To the Top of the Tower", player),
+    set_rule(world.get_entrance("Batcave -> To the Top of the Tower", player),
              lambda state: state.has(ItemName.tttot_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> The Riddler Makes a Withdrawal", player),
+    set_rule(world.get_entrance("Arkham Asylum -> The Riddler Makes a Withdrawal", player),
              lambda state: state.has(ItemName.trmaw_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> On the Rocks", player),
+    set_rule(world.get_entrance("Arkham Asylum -> On the Rocks", player),
              lambda state: state.has(ItemName.otr_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Green Fingers", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Green Fingers", player),
              lambda state: state.has(ItemName.gf_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> An Enterprising Theft", player),
+    set_rule(world.get_entrance("Arkham Asylum -> An Enterprising Theft", player),
              lambda state: state.has(ItemName.aet_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Breaking Blocks", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Breaking Blocks", player),
              lambda state: state.has(ItemName.bb_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Rockin' the Docks", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Rockin' the Docks", player),
              lambda state: state.has(ItemName.rtd_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Stealing the Show", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Stealing the Show", player),
              lambda state: state.has(ItemName.sts_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Harbouring a Grudge", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Harbouring a Grudge", player),
              lambda state: state.has(ItemName.hag_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> A Daring Rescue", player),
+    set_rule(world.get_entrance("Arkham Asylum -> A Daring Rescue", player),
              lambda state: state.has(ItemName.adr_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Arctic World", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Arctic World", player),
              lambda state: state.has(ItemName.aw_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> A Surprise for the Commissioner", player),
+    set_rule(world.get_entrance("Arkham Asylum -> A Surprise for the Commissioner", player),
              lambda state: state.has(ItemName.asftc_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Biplane Blast", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Biplane Blast", player),
              lambda state: state.has(ItemName.bbpl_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> The Joker's Masterpiece", player),
+    set_rule(world.get_entrance("Arkham Asylum -> The Joker's Masterpiece", player),
              lambda state: state.has(ItemName.tjm_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> The Lure of the Night", player),
+    set_rule(world.get_entrance("Arkham Asylum -> The Lure of the Night", player),
              lambda state: state.has(ItemName.tlotn_lvl, player))
-    add_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
+    set_rule(world.get_entrance("Arkham Asylum -> Dying of Laughter", player),
              lambda state: state.has(ItemName.dol_lvl, player))
     # Sub Regions
-    add_rule(world.get_entrance("There She Goes Again -> There She Goes Again: Freeplay", player),
+    set_rule(world.get_entrance("There She Goes Again -> There She Goes Again: Freeplay", player),
              lambda state: free_access_tsga(state, options, player))
-    add_rule(world.get_entrance("The Riddler Makes a Withdrawal -> The Riddler Makes a Withdrawal: Freeplay", player),
+    set_rule(world.get_entrance("The Riddler Makes a Withdrawal -> The Riddler Makes a Withdrawal: Freeplay", player),
              lambda state: free_access_trmaw(state, player))
-    add_rule(world.get_entrance("On the Rocks -> On the Rocks: Freeplay", player),
+    set_rule(world.get_entrance("On the Rocks -> On the Rocks: Freeplay", player),
              lambda state: free_access_otr(state, player))
-    add_rule(world.get_entrance("Green Fingers -> Green Fingers: Freeplay", player),
+    set_rule(world.get_entrance("Green Fingers -> Green Fingers: Freeplay", player),
              lambda state: free_access_gf(state, player))
-    add_rule(world.get_entrance("Breaking Blocks -> Breaking Blocks: Freeplay", player),
+    set_rule(world.get_entrance("Breaking Blocks -> Breaking Blocks: Freeplay", player),
              lambda state: free_access_bb(state, player))
-    add_rule(world.get_entrance("Rockin' the Docks -> Rockin' the Docks: Freeplay", player),
+    set_rule(world.get_entrance("Rockin' the Docks -> Rockin' the Docks: Freeplay", player),
              lambda state: free_access_rtd(state, player))
-    add_rule(world.get_entrance("Stealing the Show -> Stealing the Show: Freeplay", player),
+    set_rule(world.get_entrance("Stealing the Show -> Stealing the Show: Freeplay", player),
              lambda state: free_access_sts(state, player))
-    add_rule(world.get_entrance("Harbouring a Grudge -> Harbouring a Grudge: Freeplay", player),
+    set_rule(world.get_entrance("Harbouring a Grudge -> Harbouring a Grudge: Freeplay", player),
              lambda state: free_access_hag(state, player))
-    add_rule(world.get_entrance("A Daring Rescue -> A Daring Rescue: Freeplay", player),
+    set_rule(world.get_entrance("A Daring Rescue -> A Daring Rescue: Freeplay", player),
              lambda state: free_access_adr(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
-    add_rule(world.get_location(LocationName.ycbob_beat, player), lambda state: can_beat_ycbob(state, options, player))
-    add_rule(world.get_location(LocationName.air_beat, player), lambda state: can_beat_air(state, options, player))
+    set_rule(world.get_location(LocationName.ycbob_beat, player), lambda state: can_beat_ycbob(state, options, player))
+    set_rule(world.get_location(LocationName.air_beat, player), lambda state: can_beat_air(state, options, player))
     # Two-Face Chase can be beaten in story
-    add_rule(world.get_location(LocationName.apa_beat, player), lambda state: can_beat_apa(state, player))
-    add_rule(world.get_location(LocationName.tfo_beat, player), lambda state: can_beat_tfo(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_beat, player), lambda state: can_beat_tsga(state, options, player))
+    set_rule(world.get_location(LocationName.apa_beat, player), lambda state: can_beat_apa(state, player))
+    set_rule(world.get_location(LocationName.tfo_beat, player), lambda state: can_beat_tfo(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_beat, player), lambda state: can_beat_tsga(state, options, player))
     # Batboat Battle can be beaten in story
-    add_rule(world.get_location(LocationName.utc_beat, player), lambda state: can_beat_utc(state, options, player))
-    add_rule(world.get_location(LocationName.zc_beat, player), lambda state: can_beat_zc(state, options, player))
-    add_rule(world.get_location(LocationName.pl_beat, player), lambda state: can_beat_pl(state, options, player))
-    add_rule(world.get_location(LocationName.jht_beat, player), lambda state: can_beat_jht(state, options, player))
-    add_rule(world.get_location(LocationName.lfabt_beat, player), lambda state: can_beat_lfabt(state, options, player))
+    set_rule(world.get_location(LocationName.utc_beat, player), lambda state: can_beat_utc(state, options, player))
+    set_rule(world.get_location(LocationName.zc_beat, player), lambda state: can_beat_zc(state, options, player))
+    set_rule(world.get_location(LocationName.pl_beat, player), lambda state: can_beat_pl(state, options, player))
+    set_rule(world.get_location(LocationName.jht_beat, player), lambda state: can_beat_jht(state, options, player))
+    set_rule(world.get_location(LocationName.lfabt_beat, player), lambda state: can_beat_lfabt(state, options, player))
     # Flight of the Bat can be beaten in story
-    add_rule(world.get_location(LocationName.itdn_beat, player), lambda state: can_beat_itdn(state, options, player))
-    add_rule(world.get_location(LocationName.tttot_beat, player), lambda state: can_beat_tttot(state, options, player))
+    set_rule(world.get_location(LocationName.itdn_beat, player), lambda state: can_beat_itdn(state, options, player))
+    set_rule(world.get_location(LocationName.tttot_beat, player), lambda state: can_beat_tttot(state, options, player))
     # All Villain Levels can be beaten in story
 
 
 def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
-    add_rule(world.get_location(LocationName.ycbob_min4, player), lambda state: can_ycbob_min4(state, options, player))
+    set_rule(world.get_location(LocationName.ycbob_min4, player), lambda state: can_ycbob_min4(state, options, player))
     # TSGA Minikit 6 can be done in story (with Glide/Magnet which is region access logic)
-    add_rule(world.get_location(LocationName.tsga_min1, player), lambda state: can_tsga_min1(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min2, player), lambda state: can_tsga_min2(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min3, player), lambda state: can_tsga_min3(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min4, player), lambda state: can_tsga_min4(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min5, player), lambda state: can_tsga_min5(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min7, player), lambda state: can_tsga_min7(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min8, player), lambda state: can_tsga_min8(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min9, player), lambda state: can_tsga_min9(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_min10, player), lambda state: can_tsga_min10(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min1, player), lambda state: can_tsga_min1(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min2, player), lambda state: can_tsga_min2(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min3, player), lambda state: can_tsga_min3(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min4, player), lambda state: can_tsga_min4(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min5, player), lambda state: can_tsga_min5(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min7, player), lambda state: can_tsga_min7(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min8, player), lambda state: can_tsga_min8(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min9, player), lambda state: can_tsga_min9(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_min10, player), lambda state: can_tsga_min10(state, options, player))
     # TRMAW Minikits 1-3, 5, 7, 8, 10 can be done in story
-    add_rule(world.get_location(LocationName.trmaw_min4, player), lambda state: can_trmaw_min4(state, player))
-    add_rule(world.get_location(LocationName.trmaw_min6, player), lambda state: can_trmaw_min6_and_9(state, player))
-    add_rule(world.get_location(LocationName.trmaw_min9, player), lambda state: can_trmaw_min6_and_9(state, player))
+    set_rule(world.get_location(LocationName.trmaw_min4, player), lambda state: can_trmaw_min4(state, player))
+    set_rule(world.get_location(LocationName.trmaw_min6, player), lambda state: can_trmaw_min6_and_9(state, player))
+    set_rule(world.get_location(LocationName.trmaw_min9, player), lambda state: can_trmaw_min6_and_9(state, player))
     # OTR Minikits 1, 3, 6, 10 can be done in story
-    add_rule(world.get_location(LocationName.otr_min2, player), lambda state: can_otr_min2(state, player))
-    add_rule(world.get_location(LocationName.otr_min4, player), lambda state: can_otr_min4(state, player))
-    add_rule(world.get_location(LocationName.otr_min5, player), lambda state: can_otr_min5(state, player))
-    add_rule(world.get_location(LocationName.otr_min7, player), lambda state: can_otr_min7(state, player))
-    add_rule(world.get_location(LocationName.otr_min8, player), lambda state: can_otr_min8(state, player))
-    add_rule(world.get_location(LocationName.otr_min9, player), lambda state: can_otr_min9(state, player))
+    set_rule(world.get_location(LocationName.otr_min2, player), lambda state: can_otr_min2(state, player))
+    set_rule(world.get_location(LocationName.otr_min4, player), lambda state: can_otr_min4(state, player))
+    set_rule(world.get_location(LocationName.otr_min5, player), lambda state: can_otr_min5(state, player))
+    set_rule(world.get_location(LocationName.otr_min7, player), lambda state: can_otr_min7(state, player))
+    set_rule(world.get_location(LocationName.otr_min8, player), lambda state: can_otr_min8(state, player))
+    set_rule(world.get_location(LocationName.otr_min9, player), lambda state: can_otr_min9(state, player))
     # GF Minikit 3 can be done in story
-    add_rule(world.get_location(LocationName.gf_min1, player), lambda state: can_gf_min1(state, player))
-    add_rule(world.get_location(LocationName.gf_min2, player), lambda state: can_gf_min2(state, player))
-    add_rule(world.get_location(LocationName.gf_min4, player), lambda state: can_gf_min4(state, player))
-    add_rule(world.get_location(LocationName.gf_min5, player), lambda state: can_gf_min5(state, player))
-    add_rule(world.get_location(LocationName.gf_min6, player), lambda state: can_gf_min6(state, player))
-    add_rule(world.get_location(LocationName.gf_min7, player), lambda state: can_gf_min7(state, player))
-    add_rule(world.get_location(LocationName.gf_min8, player), lambda state: can_gf_min8(state, player))
-    add_rule(world.get_location(LocationName.gf_min9, player), lambda state: can_gf_min9(state, player))
-    add_rule(world.get_location(LocationName.gf_min10, player), lambda state: can_gf_min10(state, player))
+    set_rule(world.get_location(LocationName.gf_min1, player), lambda state: can_gf_min1(state, player))
+    set_rule(world.get_location(LocationName.gf_min2, player), lambda state: can_gf_min2(state, player))
+    set_rule(world.get_location(LocationName.gf_min4, player), lambda state: can_gf_min4(state, player))
+    set_rule(world.get_location(LocationName.gf_min5, player), lambda state: can_gf_min5(state, player))
+    set_rule(world.get_location(LocationName.gf_min6, player), lambda state: can_gf_min6(state, player))
+    set_rule(world.get_location(LocationName.gf_min7, player), lambda state: can_gf_min7(state, player))
+    set_rule(world.get_location(LocationName.gf_min8, player), lambda state: can_gf_min8(state, player))
+    set_rule(world.get_location(LocationName.gf_min9, player), lambda state: can_gf_min9(state, player))
+    set_rule(world.get_location(LocationName.gf_min10, player), lambda state: can_gf_min10(state, player))
     # AET Minikits 6 & 10 can be done in story
-    add_rule(world.get_location(LocationName.aet_min1, player), lambda state: can_aet_min1(state, player))
-    add_rule(world.get_location(LocationName.aet_min2, player), lambda state: can_aet_min2(state, player))
-    add_rule(world.get_location(LocationName.aet_min3, player), lambda state: can_aet_min3(state, player))
-    add_rule(world.get_location(LocationName.aet_min4, player), lambda state: can_aet_min4(state, player))
-    add_rule(world.get_location(LocationName.aet_min5, player), lambda state: can_aet_min5(state, player))
-    add_rule(world.get_location(LocationName.aet_min7, player), lambda state: can_aet_min7(state, player))
-    add_rule(world.get_location(LocationName.aet_min8, player), lambda state: can_aet_min8(state, player))
-    add_rule(world.get_location(LocationName.aet_min9, player), lambda state: can_aet_min9(state, player))
+    set_rule(world.get_location(LocationName.aet_min1, player), lambda state: can_aet_min1(state, player))
+    set_rule(world.get_location(LocationName.aet_min2, player), lambda state: can_aet_min2(state, player))
+    set_rule(world.get_location(LocationName.aet_min3, player), lambda state: can_aet_min3(state, player))
+    set_rule(world.get_location(LocationName.aet_min4, player), lambda state: can_aet_min4(state, player))
+    set_rule(world.get_location(LocationName.aet_min5, player), lambda state: can_aet_min5(state, player))
+    set_rule(world.get_location(LocationName.aet_min7, player), lambda state: can_aet_min7(state, player))
+    set_rule(world.get_location(LocationName.aet_min8, player), lambda state: can_aet_min8(state, player))
+    set_rule(world.get_location(LocationName.aet_min9, player), lambda state: can_aet_min9(state, player))
     # BB Minikit 1 can be done in story & 3 can be done in freeplay with batman & region access
-    add_rule(world.get_location(LocationName.bb_min2, player), lambda state: can_bb_min2(state, player))
-    add_rule(world.get_location(LocationName.bb_min4, player), lambda state: can_bb_min4(state, player))
-    add_rule(world.get_location(LocationName.bb_min5, player), lambda state: can_bb_min5(state, player))
-    add_rule(world.get_location(LocationName.bb_min6, player), lambda state: can_bb_min6(state, player))
-    add_rule(world.get_location(LocationName.bb_min7, player), lambda state: can_bb_min7(state, player))
-    add_rule(world.get_location(LocationName.bb_min8, player), lambda state: can_bb_min8(state, player))
-    add_rule(world.get_location(LocationName.bb_min9, player), lambda state: can_bb_min9(state, player))
-    add_rule(world.get_location(LocationName.bb_min10, player), lambda state: can_bb_min10(state, player))
+    set_rule(world.get_location(LocationName.bb_min2, player), lambda state: can_bb_min2(state, player))
+    set_rule(world.get_location(LocationName.bb_min4, player), lambda state: can_bb_min4(state, player))
+    set_rule(world.get_location(LocationName.bb_min5, player), lambda state: can_bb_min5(state, player))
+    set_rule(world.get_location(LocationName.bb_min6, player), lambda state: can_bb_min6(state, player))
+    set_rule(world.get_location(LocationName.bb_min7, player), lambda state: can_bb_min7(state, player))
+    set_rule(world.get_location(LocationName.bb_min8, player), lambda state: can_bb_min8(state, player))
+    set_rule(world.get_location(LocationName.bb_min9, player), lambda state: can_bb_min9(state, player))
+    set_rule(world.get_location(LocationName.bb_min10, player), lambda state: can_bb_min10(state, player))
     # RTD Minikits 3, 4, 6, 8, 10 can be done in story
-    add_rule(world.get_location(LocationName.rtd_min1, player), lambda state: can_rtd_min1(state, player))
-    add_rule(world.get_location(LocationName.rtd_min2, player), lambda state: can_rtd_min2(state, player))
-    add_rule(world.get_location(LocationName.rtd_min5, player), lambda state: can_rtd_min5(state, player))
-    add_rule(world.get_location(LocationName.rtd_min7, player), lambda state: can_rtd_min7(state, player))
-    add_rule(world.get_location(LocationName.rtd_min9, player), lambda state: can_rtd_min9(state, player))
+    set_rule(world.get_location(LocationName.rtd_min1, player), lambda state: can_rtd_min1(state, player))
+    set_rule(world.get_location(LocationName.rtd_min2, player), lambda state: can_rtd_min2(state, player))
+    set_rule(world.get_location(LocationName.rtd_min5, player), lambda state: can_rtd_min5(state, player))
+    set_rule(world.get_location(LocationName.rtd_min7, player), lambda state: can_rtd_min7(state, player))
+    set_rule(world.get_location(LocationName.rtd_min9, player), lambda state: can_rtd_min9(state, player))
     # STS Minikits 2, 4, 5, 8 can be done in story
-    add_rule(world.get_location(LocationName.sts_min1, player), lambda state: can_sts_min1(state, player))
-    add_rule(world.get_location(LocationName.sts_min3, player), lambda state: can_sts_min3(state, player))
-    add_rule(world.get_location(LocationName.sts_min6, player), lambda state: can_sts_min6(state, player))
-    add_rule(world.get_location(LocationName.sts_min7, player), lambda state: can_sts_min7(state, player))
-    add_rule(world.get_location(LocationName.sts_min9, player), lambda state: can_sts_min9(state, player))
-    add_rule(world.get_location(LocationName.sts_min10, player), lambda state: can_sts_min10(state, player))
+    set_rule(world.get_location(LocationName.sts_min1, player), lambda state: can_sts_min1(state, player))
+    set_rule(world.get_location(LocationName.sts_min3, player), lambda state: can_sts_min3(state, player))
+    set_rule(world.get_location(LocationName.sts_min6, player), lambda state: can_sts_min6(state, player))
+    set_rule(world.get_location(LocationName.sts_min7, player), lambda state: can_sts_min7(state, player))
+    set_rule(world.get_location(LocationName.sts_min9, player), lambda state: can_sts_min9(state, player))
+    set_rule(world.get_location(LocationName.sts_min10, player), lambda state: can_sts_min10(state, player))
     # HAG Minikits 1, 2, 4-7, 9 can be done in story
-    add_rule(world.get_location(LocationName.hag_min3, player), lambda state: can_hag_min3(state, player))
-    add_rule(world.get_location(LocationName.hag_min8, player), lambda state: can_hag_min8(state, player))
-    add_rule(world.get_location(LocationName.hag_min10, player), lambda state: can_hag_min10(state, player))
+    set_rule(world.get_location(LocationName.hag_min3, player), lambda state: can_hag_min3(state, player))
+    set_rule(world.get_location(LocationName.hag_min8, player), lambda state: can_hag_min8(state, player))
+    set_rule(world.get_location(LocationName.hag_min10, player), lambda state: can_hag_min10(state, player))
     # ADR Minikits1, 4, 8, 10 can be done in story
-    add_rule(world.get_location(LocationName.adr_min2, player), lambda state: can_adr_min2(state, player))
-    add_rule(world.get_location(LocationName.adr_min3, player), lambda state: can_adr_min3(state, player))
-    add_rule(world.get_location(LocationName.adr_min5, player), lambda state: can_adr_min5(state, player))
-    add_rule(world.get_location(LocationName.adr_min6, player), lambda state: can_adr_min6(state, player))
-    add_rule(world.get_location(LocationName.adr_min7, player), lambda state: can_adr_min7(state, player))
-    add_rule(world.get_location(LocationName.adr_min9, player), lambda state: can_adr_min9(state, player))
+    set_rule(world.get_location(LocationName.adr_min2, player), lambda state: can_adr_min2(state, player))
+    set_rule(world.get_location(LocationName.adr_min3, player), lambda state: can_adr_min3(state, player))
+    set_rule(world.get_location(LocationName.adr_min5, player), lambda state: can_adr_min5(state, player))
+    set_rule(world.get_location(LocationName.adr_min6, player), lambda state: can_adr_min6(state, player))
+    set_rule(world.get_location(LocationName.adr_min7, player), lambda state: can_adr_min7(state, player))
+    set_rule(world.get_location(LocationName.adr_min9, player), lambda state: can_adr_min9(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
     # You Can Bank of Batman host can be obtained during story and for free
-    add_rule(world.get_location(LocationName.air_host, player), lambda state: can_air_host(state, options, player))
+    set_rule(world.get_location(LocationName.air_host, player), lambda state: can_air_host(state, options, player))
     # Two-Face Chase does not have host
-    add_rule(world.get_location(LocationName.apa_host, player), lambda state: state.has(ItemName.sonicsuit, player))
-    add_rule(world.get_location(LocationName.tfo_host, player), lambda state: can_tfo_host(state, options, player))
+    set_rule(world.get_location(LocationName.apa_host, player), lambda state: state.has(ItemName.sonicsuit, player))
+    set_rule(world.get_location(LocationName.tfo_host, player), lambda state: can_tfo_host(state, options, player))
     # There She Goes Again host can be obtained with Region Access
     # Batboat Battle does not have host
-    add_rule(world.get_location(LocationName.utc_host, player), lambda state: can_utc_host(state, options, player))
-    add_rule(world.get_location(LocationName.zc_host, player), lambda state: can_zc_host(state, options, player))
-    add_rule(world.get_location(LocationName.pl_host, player), lambda state: can_pl_host(state, options, player))
-    add_rule(world.get_location(LocationName.jht_host, player), lambda state: can_jht_host(state, options, player))
-    add_rule(world.get_location(LocationName.lfabt_host, player), lambda state: can_lfabt_host(state, options, player))
+    set_rule(world.get_location(LocationName.utc_host, player), lambda state: can_utc_host(state, options, player))
+    set_rule(world.get_location(LocationName.zc_host, player), lambda state: can_zc_host(state, options, player))
+    set_rule(world.get_location(LocationName.pl_host, player), lambda state: can_pl_host(state, options, player))
+    set_rule(world.get_location(LocationName.jht_host, player), lambda state: can_jht_host(state, options, player))
+    set_rule(world.get_location(LocationName.lfabt_host, player), lambda state: can_lfabt_host(state, options, player))
     # Flight of the Bat does not have host
-    add_rule(world.get_location(LocationName.itdn_host, player), lambda state: can_itdn_host(state, options, player))
+    set_rule(world.get_location(LocationName.itdn_host, player), lambda state: can_itdn_host(state, options, player))
     # To the Top of the Tower host can be obtained during story and for free
-    add_rule(world.get_location(LocationName.trmaw_host, player), lambda state: can_trmaw_host(state, player))
-    add_rule(world.get_location(LocationName.otr_host, player), lambda state: can_otr_host(state, player))
-    add_rule(world.get_location(LocationName.gf_host, player), lambda state: can_gf_host(state, player))
-    add_rule(world.get_location(LocationName.aet_host, player), lambda state: can_aet_host(state, player))
-    add_rule(world.get_location(LocationName.bb_host, player), lambda state: can_bb_host(state, player))
-    add_rule(world.get_location(LocationName.rtd_host, player), lambda state: can_rtd_host(state, player))
-    add_rule(world.get_location(LocationName.sts_host, player), lambda state: can_sts_host(state, player))
+    set_rule(world.get_location(LocationName.trmaw_host, player), lambda state: can_trmaw_host(state, player))
+    set_rule(world.get_location(LocationName.otr_host, player), lambda state: can_otr_host(state, player))
+    set_rule(world.get_location(LocationName.gf_host, player), lambda state: can_gf_host(state, player))
+    set_rule(world.get_location(LocationName.aet_host, player), lambda state: can_aet_host(state, player))
+    set_rule(world.get_location(LocationName.bb_host, player), lambda state: can_bb_host(state, player))
+    set_rule(world.get_location(LocationName.rtd_host, player), lambda state: can_rtd_host(state, player))
+    set_rule(world.get_location(LocationName.sts_host, player), lambda state: can_sts_host(state, player))
     # Harbouring a Grudge does not have host
-    add_rule(world.get_location(LocationName.adr_host, player), lambda state: can_adr_host(state, player))
-    add_rule(world.get_location(LocationName.aw_host, player), lambda state: can_aw_host(state, player))
-    add_rule(world.get_location(LocationName.asftc_host, player), lambda state: can_asftc_host(state, player))
+    set_rule(world.get_location(LocationName.adr_host, player), lambda state: can_adr_host(state, player))
+    set_rule(world.get_location(LocationName.aw_host, player), lambda state: can_aw_host(state, player))
+    set_rule(world.get_location(LocationName.asftc_host, player), lambda state: can_asftc_host(state, player))
     # Biplane Blast does not have host
-    add_rule(world.get_location(LocationName.tjm_host, player), lambda state: can_tjm_host(state, player))
-    add_rule(world.get_location(LocationName.tlotn_host, player), lambda state: can_tlotn_host(state, player))
-    add_rule(world.get_location(LocationName.dol_host, player), lambda state: can_dol_host(state, player))
+    set_rule(world.get_location(LocationName.tjm_host, player), lambda state: can_tjm_host(state, player))
+    set_rule(world.get_location(LocationName.tlotn_host, player), lambda state: can_tlotn_host(state, player))
+    set_rule(world.get_location(LocationName.dol_host, player), lambda state: can_dol_host(state, player))
 
 
 # Current logic implementation is that multiplier/can beat level. In separate function since always score multiply \
 # is a starting item
 def set_true_status_rules(world: MultiWorld, options: LB1Options, player: int):
-    add_rule(world.get_location(LocationName.ycbob_ts, player), lambda state: can_beat_ycbob(state, options, player))
-    add_rule(world.get_location(LocationName.air_ts, player), lambda state: can_beat_air(state, options, player))
+    set_rule(world.get_location(LocationName.ycbob_ts, player), lambda state: can_beat_ycbob(state, options, player))
+    set_rule(world.get_location(LocationName.air_ts, player), lambda state: can_beat_air(state, options, player))
     # Two-Face Chase can be beaten in story
-    add_rule(world.get_location(LocationName.apa_ts, player), lambda state: can_beat_apa(state, player))
-    add_rule(world.get_location(LocationName.tfo_ts, player), lambda state: can_beat_tfo(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_ts, player), lambda state: can_beat_tsga(state, options, player))
+    set_rule(world.get_location(LocationName.apa_ts, player), lambda state: can_beat_apa(state, player))
+    set_rule(world.get_location(LocationName.tfo_ts, player), lambda state: can_beat_tfo(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_ts, player), lambda state: can_beat_tsga(state, options, player))
     # Batboat Battle can be beaten in story
-    add_rule(world.get_location(LocationName.utc_ts, player), lambda state: can_beat_utc(state, options, player))
-    add_rule(world.get_location(LocationName.zc_ts, player), lambda state: can_beat_zc(state, options, player))
-    add_rule(world.get_location(LocationName.pl_ts, player), lambda state: can_beat_pl(state, options, player))
-    add_rule(world.get_location(LocationName.jht_ts, player), lambda state: can_beat_jht(state, options, player))
-    add_rule(world.get_location(LocationName.lfabt_ts, player), lambda state: can_beat_lfabt(state, options, player))
+    set_rule(world.get_location(LocationName.utc_ts, player), lambda state: can_beat_utc(state, options, player))
+    set_rule(world.get_location(LocationName.zc_ts, player), lambda state: can_beat_zc(state, options, player))
+    set_rule(world.get_location(LocationName.pl_ts, player), lambda state: can_beat_pl(state, options, player))
+    set_rule(world.get_location(LocationName.jht_ts, player), lambda state: can_beat_jht(state, options, player))
+    set_rule(world.get_location(LocationName.lfabt_ts, player), lambda state: can_beat_lfabt(state, options, player))
     # Flight of the Bat can be beaten in story
-    add_rule(world.get_location(LocationName.itdn_ts, player), lambda state: can_beat_itdn(state, options, player))
-    add_rule(world.get_location(LocationName.tttot_ts, player), lambda state: can_beat_tttot(state, options, player))
+    set_rule(world.get_location(LocationName.itdn_ts, player), lambda state: can_beat_itdn(state, options, player))
+    set_rule(world.get_location(LocationName.tttot_ts, player), lambda state: can_beat_tttot(state, options, player))
     # All Villain Levels can be beaten in story
 
 
 def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player: int):
-    add_rule(world.get_location(LocationName.ycbob_rb, player), lambda state: can_ycbob_rb(state, options, player))
-    add_rule(world.get_location(LocationName.air_rb, player), lambda state: can_air_rb(state, options, player))
+    set_rule(world.get_location(LocationName.ycbob_rb, player), lambda state: can_ycbob_rb(state, options, player))
+    set_rule(world.get_location(LocationName.air_rb, player), lambda state: can_air_rb(state, options, player))
     # Two-Face Chase Red Brick can be obtained in story
-    add_rule(world.get_location(LocationName.apa_rb, player), lambda state: can_apa_rb(state, player))
-    add_rule(world.get_location(LocationName.tfo_rb, player), lambda state: can_tfo_rb(state, options, player))
-    add_rule(world.get_location(LocationName.tsga_rb, player), lambda state: can_tsga_rb(state, options, player))
-    add_rule(world.get_location(LocationName.trmaw_rb, player), lambda state: can_trmaw_rb(state, player))
-    add_rule(world.get_location(LocationName.otr_rb, player), lambda state: can_otr_rb(state, player))
-    add_rule(world.get_location(LocationName.gf_rb, player), lambda state: can_gf_rb(state, player))
-    add_rule(world.get_location(LocationName.aet_rb, player), lambda state: can_aet_rb(state, player))
-    add_rule(world.get_location(LocationName.bb_rb, player), lambda state: can_bb_rb(state, player))
-    add_rule(world.get_location(LocationName.rtd_rb, player), lambda state: can_rtd_rb(state, player))
-    add_rule(world.get_location(LocationName.sts_rb, player), lambda state: can_sts_rb(state, player))
-    add_rule(world.get_location(LocationName.hag_rb, player), lambda state: can_hag_rb(state, player))
-    add_rule(world.get_location(LocationName.adr_rb, player), lambda state: can_adr_rb(state, player))
+    set_rule(world.get_location(LocationName.apa_rb, player), lambda state: can_apa_rb(state, player))
+    set_rule(world.get_location(LocationName.tfo_rb, player), lambda state: can_tfo_rb(state, options, player))
+    set_rule(world.get_location(LocationName.tsga_rb, player), lambda state: can_tsga_rb(state, options, player))
+    set_rule(world.get_location(LocationName.trmaw_rb, player), lambda state: can_trmaw_rb(state, player))
+    set_rule(world.get_location(LocationName.otr_rb, player), lambda state: can_otr_rb(state, player))
+    set_rule(world.get_location(LocationName.gf_rb, player), lambda state: can_gf_rb(state, player))
+    set_rule(world.get_location(LocationName.aet_rb, player), lambda state: can_aet_rb(state, player))
+    set_rule(world.get_location(LocationName.bb_rb, player), lambda state: can_bb_rb(state, player))
+    set_rule(world.get_location(LocationName.rtd_rb, player), lambda state: can_rtd_rb(state, player))
+    set_rule(world.get_location(LocationName.sts_rb, player), lambda state: can_sts_rb(state, player))
+    set_rule(world.get_location(LocationName.hag_rb, player), lambda state: can_hag_rb(state, player))
+    set_rule(world.get_location(LocationName.adr_rb, player), lambda state: can_adr_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
-    add_rule(world.get_location(LocationName.scorex2, player), lambda state: state.has(ItemName.trmaw_rbc, player))
-    add_rule(world.get_location(LocationName.scorex4, player), lambda state: state.has(ItemName.otr_rbc, player))
-    add_rule(world.get_location(LocationName.scorex6, player), lambda state: state.has(ItemName.gf_rbc, player))
-    add_rule(world.get_location(LocationName.scorex8, player), lambda state: state.has(ItemName.aet_rbc, player))
-    add_rule(world.get_location(LocationName.scorex10, player), lambda state: state.has(ItemName.bb_rbc, player))
-    add_rule(world.get_location(LocationName.studmagnet, player), lambda state: state.has(ItemName.rtd_rbc, player))
-    add_rule(world.get_location(LocationName.charstuds, player), lambda state: state.has(ItemName.sts_rbc, player))
-    add_rule(world.get_location(LocationName.minikitdetect, player), lambda state: state.has(ItemName.hag_rbc, player))
-    add_rule(world.get_location(LocationName.pwrbrickdetect, player), lambda state: state.has(ItemName.adr_rbc, player))
-    add_rule(world.get_location(LocationName.alwaysscore, player), lambda state: state.has(ItemName.aw_rbc, player))
-    add_rule(world.get_location(LocationName.fastbuild, player), lambda state: state.has(ItemName.asftc_rbc, player))
-    add_rule(world.get_location(LocationName.immunefreeze, player), lambda state: state.has(ItemName.bbpl_rbc, player))
-    add_rule(world.get_location(LocationName.regenhearts, player), lambda state: state.has(ItemName.tjm_rbc, player))
-    add_rule(world.get_location(LocationName.extrahearts, player), lambda state: state.has(ItemName.tlotn_rbc, player))
-    add_rule(world.get_location(LocationName.invincibility, player), lambda state: state.has(ItemName.dol_rbc, player))
-    add_rule(world.get_location(LocationName.fastgrapple, player), lambda state: state.has(ItemName.ycbob_rbc, player))
-    add_rule(world.get_location(LocationName.fastbatarang, player), lambda state: state.has(ItemName.air_rbc, player))
-    add_rule(world.get_location(LocationName.moretargets, player), lambda state: state.has(ItemName.tfc_rbc, player))
-    add_rule(world.get_location(LocationName.flamingbata, player), lambda state: state.has(ItemName.apa_rbc, player))
-    add_rule(world.get_location(LocationName.slam, player), lambda state: state.has(ItemName.tfo_rbc, player))
-    add_rule(world.get_location(LocationName.moredet, player), lambda state: state.has(ItemName.tsga_rbc, player))
-    add_rule(world.get_location(LocationName.armorplating, player), lambda state: state.has(ItemName.bbb_rbc, player))
-    add_rule(world.get_location(LocationName.sonicpain, player), lambda state: state.has(ItemName.utc_rbc, player))
-    add_rule(world.get_location(LocationName.areaeffect, player), lambda state: state.has(ItemName.zc_rbc, player))
-    add_rule(world.get_location(LocationName.bats, player), lambda state: state.has(ItemName.pl_rbc, player))
-    add_rule(world.get_location(LocationName.freezebatarang, player), lambda state: state.has(ItemName.jht_rbc, player))
-    add_rule(world.get_location(LocationName.decoy, player), lambda state: state.has(ItemName.lfabt_rbc, player))
-    add_rule(world.get_location(LocationName.fastwalk, player), lambda state: state.has(ItemName.fotb_rbc, player))
-    add_rule(world.get_location(LocationName.fasterpieces, player), lambda state: state.has(ItemName.itdn_rbc, player))
-    add_rule(world.get_location(LocationName.piecedetect, player), lambda state: state.has(ItemName.tttot_rbc, player))
+    set_rule(world.get_location(LocationName.scorex2, player), lambda state: state.has(ItemName.trmaw_rbc, player))
+    set_rule(world.get_location(LocationName.scorex4, player), lambda state: state.has(ItemName.otr_rbc, player))
+    set_rule(world.get_location(LocationName.scorex6, player), lambda state: state.has(ItemName.gf_rbc, player))
+    set_rule(world.get_location(LocationName.scorex8, player), lambda state: state.has(ItemName.aet_rbc, player))
+    set_rule(world.get_location(LocationName.scorex10, player), lambda state: state.has(ItemName.bb_rbc, player))
+    set_rule(world.get_location(LocationName.studmagnet, player), lambda state: state.has(ItemName.rtd_rbc, player))
+    set_rule(world.get_location(LocationName.charstuds, player), lambda state: state.has(ItemName.sts_rbc, player))
+    set_rule(world.get_location(LocationName.minikitdetect, player), lambda state: state.has(ItemName.hag_rbc, player))
+    set_rule(world.get_location(LocationName.pwrbrickdetect, player), lambda state: state.has(ItemName.adr_rbc, player))
+    set_rule(world.get_location(LocationName.alwaysscore, player), lambda state: state.has(ItemName.aw_rbc, player))
+    set_rule(world.get_location(LocationName.fastbuild, player), lambda state: state.has(ItemName.asftc_rbc, player))
+    set_rule(world.get_location(LocationName.immunefreeze, player), lambda state: state.has(ItemName.bbpl_rbc, player))
+    set_rule(world.get_location(LocationName.regenhearts, player), lambda state: state.has(ItemName.tjm_rbc, player))
+    set_rule(world.get_location(LocationName.extrahearts, player), lambda state: state.has(ItemName.tlotn_rbc, player))
+    set_rule(world.get_location(LocationName.invincibility, player), lambda state: state.has(ItemName.dol_rbc, player))
+    set_rule(world.get_location(LocationName.fastgrapple, player), lambda state: state.has(ItemName.ycbob_rbc, player))
+    set_rule(world.get_location(LocationName.fastbatarang, player), lambda state: state.has(ItemName.air_rbc, player))
+    set_rule(world.get_location(LocationName.moretargets, player), lambda state: state.has(ItemName.tfc_rbc, player))
+    set_rule(world.get_location(LocationName.flamingbata, player), lambda state: state.has(ItemName.apa_rbc, player))
+    set_rule(world.get_location(LocationName.slam, player), lambda state: state.has(ItemName.tfo_rbc, player))
+    set_rule(world.get_location(LocationName.moredet, player), lambda state: state.has(ItemName.tsga_rbc, player))
+    set_rule(world.get_location(LocationName.armorplating, player), lambda state: state.has(ItemName.bbb_rbc, player))
+    set_rule(world.get_location(LocationName.sonicpain, player), lambda state: state.has(ItemName.utc_rbc, player))
+    set_rule(world.get_location(LocationName.areaeffect, player), lambda state: state.has(ItemName.zc_rbc, player))
+    set_rule(world.get_location(LocationName.bats, player), lambda state: state.has(ItemName.pl_rbc, player))
+    set_rule(world.get_location(LocationName.freezebatarang, player), lambda state: state.has(ItemName.jht_rbc, player))
+    set_rule(world.get_location(LocationName.decoy, player), lambda state: state.has(ItemName.lfabt_rbc, player))
+    set_rule(world.get_location(LocationName.fastwalk, player), lambda state: state.has(ItemName.fotb_rbc, player))
+    set_rule(world.get_location(LocationName.fasterpieces, player), lambda state: state.has(ItemName.itdn_rbc, player))
+    set_rule(world.get_location(LocationName.piecedetect, player), lambda state: state.has(ItemName.tttot_rbc, player))
 
 
 def set_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1482,4 +1482,4 @@ def set_event_rules(world: MultiWorld, player: int):
     for (name, data) in level_beaten_event_location_table.items():
         event: Location = world.get_location(name, player)
         level_beaten_name = name.removesuffix(" Event")
-        add_rule(event, world.get_location(level_beaten_name, player).access_rule)
+        set_rule(event, world.get_location(level_beaten_name, player).access_rule)
