@@ -427,6 +427,13 @@ def free_access_asftc(state: CollectionState, player: int):
     return char_can_double_jump(state, player)
 
 
+def free_access_bbpl(state: CollectionState, player: int):
+    return (
+            air_has_cable(state, player)
+            and state.has(ItemName.batwing_unlocked, player)
+    )
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1380,6 +1387,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_aw(state, player))
     set_rule(world.get_entrance("A Surprise for the Commissioner -> A Surprise for the Commissioner: Freeplay", player),
              lambda state: free_access_aw(state, player))
+    set_rule(world.get_entrance("Biplane Blast -> Biplane Blast: Freeplay", player),
+             lambda state: free_access_bbpl(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1495,6 +1504,7 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     set_rule(world.get_location(LocationName.asftc_min7, player), lambda state: can_asftc_min7(state, player))
     set_rule(world.get_location(LocationName.asftc_min8, player), lambda state: can_asftc_min8(state, player))
     set_rule(world.get_location(LocationName.asftc_min9, player), lambda state: can_asftc_min9(state, player))
+    # BBPL Minikits can be done in story or with freeplay region access
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1569,6 +1579,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     set_rule(world.get_location(LocationName.adr_rb, player), lambda state: can_adr_rb(state, player))
     set_rule(world.get_location(LocationName.aw_rb, player), lambda state: can_aw_rb(state, player))
     set_rule(world.get_location(LocationName.asftc_rb, player), lambda state: can_asftc_rb(state, player))
+    # BBPL Red Brick can be obtained in story
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):

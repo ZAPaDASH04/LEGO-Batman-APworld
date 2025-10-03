@@ -57,6 +57,7 @@ lb1_villain_subregions = [
     "A Daring Rescue: Freeplay",
     "Arctic World: Freeplay",
     "A Surprise for the Commissioner: Freeplay",
+    "Biplane Blast: Freeplay",
 ]
 
 lb1_all_regions = [
@@ -95,6 +96,7 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     connect_regions(world, player, "A Daring Rescue", "A Daring Rescue: Freeplay")
     connect_regions(world, player, "Arctic World", "Arctic World: Freeplay")
     connect_regions(world, player, "A Surprise for the Commissioner", "A Surprise for the Commissioner: Freeplay")
+    connect_regions(world, player, "Biplane Blast", "Biplane Blast: Freeplay")
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
