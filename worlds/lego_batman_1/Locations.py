@@ -437,15 +437,15 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.tjm_min10: LocationData(base_location_id + 379, "The Joker's Masterpiece"),
     # The Lure of the Night
     LocationName.tlotn_min1: LocationData(base_location_id + 380, "The Lure of the Night"),
-    LocationName.tlotn_min2: LocationData(base_location_id + 381, "The Lure of the Night"),
-    LocationName.tlotn_min3: LocationData(base_location_id + 382, "The Lure of the Night"),
-    LocationName.tlotn_min4: LocationData(base_location_id + 383, "The Lure of the Night"),
-    LocationName.tlotn_min5: LocationData(base_location_id + 384, "The Lure of the Night"),
+    LocationName.tlotn_min2: LocationData(base_location_id + 381, "The Lure of the Night: Freeplay"),
+    LocationName.tlotn_min3: LocationData(base_location_id + 382, "The Lure of the Night: Freeplay"),
+    LocationName.tlotn_min4: LocationData(base_location_id + 383, "The Lure of the Night: Freeplay"),
+    LocationName.tlotn_min5: LocationData(base_location_id + 384, "The Lure of the Night: Freeplay"),
     LocationName.tlotn_min6: LocationData(base_location_id + 385, "The Lure of the Night"),
     LocationName.tlotn_min7: LocationData(base_location_id + 386, "The Lure of the Night"),
     LocationName.tlotn_min8: LocationData(base_location_id + 387, "The Lure of the Night"),
-    LocationName.tlotn_min9: LocationData(base_location_id + 388, "The Lure of the Night"),
-    LocationName.tlotn_min10: LocationData(base_location_id + 389, "The Lure of the Night"),
+    LocationName.tlotn_min9: LocationData(base_location_id + 388, "The Lure of the Night: Freeplay"),
+    LocationName.tlotn_min10: LocationData(base_location_id + 389, "The Lure of the Night: Freeplay"),
     # Dying of Laughter
     LocationName.dol_min1: LocationData(base_location_id + 390, "Dying of Laughter"),
     LocationName.dol_min2: LocationData(base_location_id + 391, "Dying of Laughter"),
@@ -483,7 +483,7 @@ hostage_location_table: Dict[str, LocationData] = {
     LocationName.aw_host: LocationData(base_location_id + 420, "Arctic World"),
     LocationName.asftc_host: LocationData(base_location_id + 421, "A Surprise for the Commissioner: Freeplay"),
     LocationName.tjm_host: LocationData(base_location_id + 422, "The Joker's Masterpiece"),
-    LocationName.tlotn_host: LocationData(base_location_id + 423, "The Lure of the Night"),
+    LocationName.tlotn_host: LocationData(base_location_id + 423, "The Lure of the Night: Freeplay"),
     LocationName.dol_host: LocationData(base_location_id + 424, "Dying of Laughter"),
 }
 
@@ -582,7 +582,7 @@ red_brick_location_table = {
     LocationName.asftc_rb: LocationData(base_location_id + 510, "A Surprise for the Commissioner: Freeplay"),
     LocationName.bbpl_rb: LocationData(base_location_id + 511, "Biplane Blast"),
     LocationName.tjm_rb: LocationData(base_location_id + 512, "The Joker's Masterpiece"),
-    LocationName.tlotn_rb: LocationData(base_location_id + 513, "The Lure of the Night"),
+    LocationName.tlotn_rb: LocationData(base_location_id + 513, "The Lure of the Night: Freeplay"),
     LocationName.dol_rb: LocationData(base_location_id + 514, "Dying of Laughter"),
 }
 

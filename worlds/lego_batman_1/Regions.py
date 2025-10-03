@@ -59,6 +59,7 @@ lb1_villain_subregions = [
     "A Surprise for the Commissioner: Freeplay",
     "Biplane Blast: Freeplay",
     "The Joker's Masterpiece: Freeplay",
+    "The Lure of the Night: Freeplay",
 ]
 
 lb1_all_regions = [
@@ -99,6 +100,7 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     connect_regions(world, player, "A Surprise for the Commissioner", "A Surprise for the Commissioner: Freeplay")
     connect_regions(world, player, "Biplane Blast", "Biplane Blast: Freeplay")
     connect_regions(world, player, "The Joker's Masterpiece", "The Joker's Masterpiece: Freeplay")
+    connect_regions(world, player, "The Lure of the Night", "The Lure of the Night: Freeplay")
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
