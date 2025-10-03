@@ -434,6 +434,13 @@ def free_access_bbpl(state: CollectionState, player: int):
     )
 
 
+def free_access_tjm(state: CollectionState, player: int):
+    return (
+            char_joker(state, player)
+            and char_can_hypno(state, player)
+    )
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -999,6 +1006,38 @@ def can_asftc_min9(state: CollectionState, player: int):
     )
 
 
+def can_tjm_min3(state: CollectionState, player: int):
+    return char_can_double_jump(state, player)
+
+
+def can_tjm_min4(state: CollectionState, player: int):
+    return char_can_double_jump(state, player)
+
+
+def can_tjm_min5(state: CollectionState, player: int):
+    return state.has(ItemName.sonicsuit, player)
+
+
+def can_tjm_min6(state: CollectionState, player: int):
+    return char_is_strong(state, player)
+
+
+def can_tjm_min7(state: CollectionState, player: int):
+    return (
+            state.has(ItemName.heatprotectsuit, player)
+            and char_can_explode(state, player)
+            and state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_tjm_min8(state: CollectionState, player: int):
+    return char_can_double_jump(state, player)
+
+
+def can_tjm_min9(state: CollectionState, player: int):
+    return char_can_double_jump(state, player)
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1303,6 +1342,14 @@ def can_asftc_rb(state: CollectionState, player: int):
     )
 
 
+def can_tjm_rb(state: CollectionState, player: int):
+    return (
+            char_joker(state, player)
+            and char_can_explode(state, player)
+            and state.has(ItemName.heatprotectsuit, player)
+    )
+
+
 def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
     set_rule(world.get_entrance("Batcave -> You can Bank on Batman", player),
              lambda state: state.has(ItemName.ycbob_lvl, player))
@@ -1389,6 +1436,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_aw(state, player))
     set_rule(world.get_entrance("Biplane Blast -> Biplane Blast: Freeplay", player),
              lambda state: free_access_bbpl(state, player))
+    set_rule(world.get_entrance("The Joker's Masterpiece -> The Joker's Masterpiece: Freeplay", player),
+             lambda state: free_access_tjm(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1505,6 +1554,14 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     set_rule(world.get_location(LocationName.asftc_min8, player), lambda state: can_asftc_min8(state, player))
     set_rule(world.get_location(LocationName.asftc_min9, player), lambda state: can_asftc_min9(state, player))
     # BBPL Minikits can be done in story or with freeplay region access
+    # TJM Minikits 1, 2, and 10 can be done in story
+    set_rule(world.get_location(LocationName.tjm_min3, player), lambda state: can_tjm_min3(state, player))
+    set_rule(world.get_location(LocationName.tjm_min4, player), lambda state: can_tjm_min4(state, player))
+    set_rule(world.get_location(LocationName.tjm_min5, player), lambda state: can_tjm_min5(state, player))
+    set_rule(world.get_location(LocationName.tjm_min6, player), lambda state: can_tjm_min6(state, player))
+    set_rule(world.get_location(LocationName.tjm_min7, player), lambda state: can_tjm_min7(state, player))
+    set_rule(world.get_location(LocationName.tjm_min8, player), lambda state: can_tjm_min8(state, player))
+    set_rule(world.get_location(LocationName.tjm_min9, player), lambda state: can_tjm_min9(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1580,6 +1637,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     set_rule(world.get_location(LocationName.aw_rb, player), lambda state: can_aw_rb(state, player))
     set_rule(world.get_location(LocationName.asftc_rb, player), lambda state: can_asftc_rb(state, player))
     # BBPL Red Brick can be obtained in story
+    set_rule(world.get_location(LocationName.tjm_rb, player), lambda state: can_tjm_rb(state, player))
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
