@@ -450,13 +450,13 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.dol_min1: LocationData(base_location_id + 390, "Dying of Laughter"),
     LocationName.dol_min2: LocationData(base_location_id + 391, "Dying of Laughter"),
     LocationName.dol_min3: LocationData(base_location_id + 392, "Dying of Laughter"),
-    LocationName.dol_min4: LocationData(base_location_id + 393, "Dying of Laughter"),
-    LocationName.dol_min5: LocationData(base_location_id + 394, "Dying of Laughter"),
-    LocationName.dol_min6: LocationData(base_location_id + 395, "Dying of Laughter"),
-    LocationName.dol_min7: LocationData(base_location_id + 396, "Dying of Laughter"),
-    LocationName.dol_min8: LocationData(base_location_id + 397, "Dying of Laughter"),
+    LocationName.dol_min4: LocationData(base_location_id + 393, "Dying of Laughter: Freeplay"),
+    LocationName.dol_min5: LocationData(base_location_id + 394, "Dying of Laughter: Freeplay"),
+    LocationName.dol_min6: LocationData(base_location_id + 395, "Dying of Laughter: Freeplay"),
+    LocationName.dol_min7: LocationData(base_location_id + 396, "Dying of Laughter: Freeplay"),
+    LocationName.dol_min8: LocationData(base_location_id + 397, "Dying of Laughter: Freeplay"),
     LocationName.dol_min9: LocationData(base_location_id + 398, "Dying of Laughter"),
-    LocationName.dol_min10: LocationData(base_location_id + 399, "Dying of Laughter"),
+    LocationName.dol_min10: LocationData(base_location_id + 399, "Dying of Laughter: Freeplay"),
 }
 
 hostage_location_table: Dict[str, LocationData] = {
@@ -484,7 +484,7 @@ hostage_location_table: Dict[str, LocationData] = {
     LocationName.asftc_host: LocationData(base_location_id + 421, "A Surprise for the Commissioner: Freeplay"),
     LocationName.tjm_host: LocationData(base_location_id + 422, "The Joker's Masterpiece"),
     LocationName.tlotn_host: LocationData(base_location_id + 423, "The Lure of the Night: Freeplay"),
-    LocationName.dol_host: LocationData(base_location_id + 424, "Dying of Laughter"),
+    LocationName.dol_host: LocationData(base_location_id + 424, "Dying of Laughter: Freeplay"),
 }
 
 level_beaten_location_table: Dict[str, LocationData] = {

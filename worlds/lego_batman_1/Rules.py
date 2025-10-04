@@ -445,6 +445,13 @@ def free_access_tlotn(state: CollectionState, player: int):
     return char_joker(state, player)
 
 
+def free_access_dol(state: CollectionState, player: int):
+    return (
+            char_joker(state, player)
+            and char_can_double_jump(state, player)
+    )
+
+
 def can_ycbob_min4(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1089,6 +1096,41 @@ def can_tlotn_min10(state: CollectionState, player: int):
     )
 
 
+def can_dol_min1(state: CollectionState, player: int):
+    return state.has(ItemName.poisonivy_unlocked, player)
+
+
+def can_dol_min2(state: CollectionState, player: int):
+    return (
+            char_can_double_jump(state, player)
+            and state.has(ItemName.sonicsuit, player)
+    )
+
+
+def can_dol_min3(state: CollectionState, player: int):
+    return char_is_strong(state, player)
+
+
+def can_dol_min4(state: CollectionState, player: int):
+    return char_can_explode(state, player)
+
+
+def can_dol_min5(state: CollectionState, player: int):
+    return state.has(ItemName.magsuit, player)
+
+
+def can_dol_min7(state: CollectionState, player: int):
+    return char_can_glide(state, player)
+
+
+def can_dol_min8(state: CollectionState, player: int):
+    return state.has(ItemName.mrfreeze_unlocked, player)
+
+
+def can_dol_min10(state: CollectionState, player: int):
+    return char_can_explode(state, player)
+
+
 def can_air_host(state: CollectionState, options: LB1Options, player: int):
     if options.freeplay_or_story == 0:
         return (
@@ -1253,11 +1295,7 @@ def can_tlotn_host(state: CollectionState, player: int):
 
 
 def can_dol_host(state: CollectionState, player: int):
-    return (
-            char_joker(state, player)
-            and char_can_double_jump(state, player)
-            and char_can_glide(state, player)
-    )
+    return char_can_glide(state, player)
 
 
 def can_ycbob_rb(state: CollectionState, options: LB1Options, player: int):
@@ -1499,6 +1537,8 @@ def set_entrance_rules(world: MultiWorld, options: LB1Options, player: int):
              lambda state: free_access_tjm(state, player))
     set_rule(world.get_entrance("The Lure of the Night -> The Lure of the Night: Freeplay", player),
              lambda state: free_access_tlotn(state, player))
+    set_rule(world.get_entrance("Dying of Laughter -> Dying of Laughter: Freeplay", player),
+             lambda state: free_access_dol(state, player))
 
 
 def set_level_beaten_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1631,6 +1671,15 @@ def set_minikit_rules(world: MultiWorld, options: LB1Options, player: int):
     set_rule(world.get_location(LocationName.tlotn_min5, player), lambda state: can_tlotn_min5(state, player))
     set_rule(world.get_location(LocationName.tlotn_min9, player), lambda state: can_tlotn_min9(state, player))
     set_rule(world.get_location(LocationName.tlotn_min10, player), lambda state: can_tlotn_min10(state, player))
+    # DOL Minikit 9 can be done in story & 6 can be done with region access
+    set_rule(world.get_location(LocationName.dol_min1, player), lambda state: can_dol_min1(state, player))
+    set_rule(world.get_location(LocationName.dol_min2, player), lambda state: can_dol_min2(state, player))
+    set_rule(world.get_location(LocationName.dol_min3, player), lambda state: can_dol_min3(state, player))
+    set_rule(world.get_location(LocationName.dol_min4, player), lambda state: can_dol_min4(state, player))
+    set_rule(world.get_location(LocationName.dol_min5, player), lambda state: can_dol_min5(state, player))
+    set_rule(world.get_location(LocationName.dol_min7, player), lambda state: can_dol_min7(state, player))
+    set_rule(world.get_location(LocationName.dol_min8, player), lambda state: can_dol_min8(state, player))
+    set_rule(world.get_location(LocationName.dol_min10, player), lambda state: can_dol_min10(state, player))
 
 
 def set_host_rules(world: MultiWorld, options: LB1Options, player: int):
@@ -1708,6 +1757,7 @@ def set_red_brick_location_rules(world: MultiWorld, options: LB1Options, player:
     # BBPL Red Brick can be obtained in story
     set_rule(world.get_location(LocationName.tjm_rb, player), lambda state: can_tjm_rb(state, player))
     set_rule(world.get_location(LocationName.tlotn_rb, player), lambda state: can_tlotn_rb(state, player))
+    # DOL Red Brick can be obtained in freeplay with nothing additional
 
 
 def set_red_brick_purchase_rules(world: MultiWorld, player: int):
