@@ -22,6 +22,18 @@ class MiniKitSanity(DefaultOnToggle):
     display_name = "Minikit Sanity"
 
 
+class MinikitGrouping(Choice):
+    """
+    Determines how many minikits are received when an item is received.
+    This effects how many purple studs are added as filler.
+    """
+    display_name = "Minikit Grouping"
+    option_individual = 0
+    option_2 = 1
+    option_5 = 2
+    option_10 = 3
+
+
 class MinikitsToWin(Range):
     """
     Number of Minikits needed to win. Only applicable if win con is set to Minikits Collected.
@@ -247,6 +259,7 @@ class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
     minikit_sanity: MiniKitSanity
     minikits_to_win: MinikitsToWin
+    minikit_grouping: MinikitGrouping
     levels_to_win: LevelsToWin
     starting_hero_level_count: StartingHeroLevelCount
     starting_hero_level_options: StartingHeroLevelOptions
