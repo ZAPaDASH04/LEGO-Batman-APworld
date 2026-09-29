@@ -42,34 +42,6 @@ class LevelsToWin(Range):
     default = 20
 
 
-class TrueStatusSanity(DefaultOnToggle):
-    """
-    Shuffles the true status of each level.
-    """
-    display_name = "True Status Sanity"
-
-
-class DecoupleCharacterTokens(DefaultOnToggle):
-    """
-    This setting adds character tokens into the multiworld. Character tokens are required for any character purchase.
-    """
-    display_name = "Decouple Character Tokens"
-
-
-# class HostageSanity(Toggle):
-#     """
-#     Puts all 25 Hostages into the pool.
-#     """
-#     display_name = "HostageSanity"
-
-class FreeplayOrStoryUnlocked(DefaultOnToggle):
-    """
-    Determines if the level unlocked item gives you Story Mode or Story Mode & Freeplay.
-    If turned off, Freeplay is unlocked by completing Story Mode.
-    """
-    display_name = "Unlock Story or Story and Freeplay"
-
-
 class StartingHeroLevelCount(Range):
     """
     Determine the number of hero levels you start with.
@@ -249,13 +221,6 @@ class ShuffleHushAndRas(DefaultOnToggle):
     display_name = "Shuffle Hush and Ra's al Ghul"
 
 
-class DecoupleShuffleHushAndRasToken(DefaultOnToggle):
-    """
-    Determines if the Character Token for Hush and Ras are shuffled in the Item Pool.
-    """
-    display_name = "Decouple Hush and Ra's al Ghul's Character Token"
-
-
 class HushPurchaseRequirements(Range):
     """
     Determine the number of Hostages needed to unlock the Hush Purchase.
@@ -283,8 +248,6 @@ class LB1Options(PerGameCommonOptions):
     minikit_sanity: MiniKitSanity
     minikits_to_win: MinikitsToWin
     levels_to_win: LevelsToWin
-    true_status_sanity: TrueStatusSanity
-    freeplay_or_story: FreeplayOrStoryUnlocked
     starting_hero_level_count: StartingHeroLevelCount
     starting_hero_level_options: StartingHeroLevelOptions
     starting_villain_level_count: StartingVillainLevelCount
@@ -292,9 +255,6 @@ class LB1Options(PerGameCommonOptions):
     shop_purchases_required_multiplier: ShopPurchasesRequireMultiplier
     low_multiplier_minimum: LowMultiplierPriceMinimum
     high_multiplier_minimum: HighMultiplierMinimum
-    decouple_character_tokens: DecoupleCharacterTokens
     shuffle_hush_and_ras: ShuffleHushAndRas
-    decouple_hush_and_ras_token: DecoupleShuffleHushAndRasToken
     hush_purchase_requirements: HushPurchaseRequirements
     ras_purchase_requirements: RasPurchaseRequirements
-    # hostage_sanity: HostageSanity
