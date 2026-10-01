@@ -287,6 +287,17 @@ can_get_tttot_rb = can_beat_tttot & char_is_strong
 
 
 # TRMAW Logic
+can_leave_trmaw_garage = char_is_strong & char_can_hypno
+can_access_trmaw_free = can_leave_trmaw_garage & (char_can_double_jump | char_can_explode)
+can_get_trmaw_min1 = char_is_strong
+can_get_trmaw_min2 = char_can_double_jump & can_leave_trmaw_garage
+can_get_trmaw_min3 = char_can_double_jump & char_can_hypno
+can_get_trmaw_min4 = char_can_explode
+can_get_trmaw_min6 = Has(itm.sonicsuit) & (char_can_explode | char_can_double_jump)
+can_get_trmaw_min7 = char_can_double_jump
+can_get_trmaw_min9 = Has(itm.sonicsuit)
+can_get_trmaw_host = Has(itm.sonicsuit)
+can_get_trmaw_rb = Has(itm.magsuit) & can_access_trmaw_free
 
 
 def set_entrance_rules(world):
@@ -334,8 +345,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.fotb + " -> " + RegionName.fotbf), can_access_fotb_free)
     world.set_rule(world.get_entrance(RegionName.itdn + " -> " + RegionName.itdnf), can_access_itdn_free)
     world.set_rule(world.get_entrance(RegionName.tttot + " -> " + RegionName.tttotf), can_access_tttot_free)
-    # world.set_rule(world.get_entrance(RegionName.trmaw + " -> " + RegionName.trmawf),
-    #                lambda state: free_access_trmaw(state))
+    world.set_rule(world.get_entrance(RegionName.trmaw + " -> " + RegionName.trmawf), can_access_trmaw_free)
     # world.set_rule(world.get_entrance(RegionName.otr + " -> " + RegionName.otrf),
     #                lambda state: free_access_otr(state))
     # world.set_rule(world.get_entrance(RegionName.gf + " -> " + RegionName.gff),
@@ -538,6 +548,14 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.tttot_min6), can_get_tttot_min6)
     world.set_rule(world.get_location(locn.tttot_min9), can_get_tttot_min9)
     world.set_rule(world.get_location(locn.tttot_min10), can_get_tttot_min10)
+    # TRMAW Logic
+    world.set_rule(world.get_location(locn.trmaw_min1), can_get_trmaw_min1)
+    world.set_rule(world.get_location(locn.trmaw_min2), can_get_trmaw_min2)
+    world.set_rule(world.get_location(locn.trmaw_min3), can_get_trmaw_min3)
+    world.set_rule(world.get_location(locn.trmaw_min4), can_get_trmaw_min4)
+    world.set_rule(world.get_location(locn.trmaw_min6), can_get_trmaw_min6)
+    world.set_rule(world.get_location(locn.trmaw_min7), can_get_trmaw_min7)
+    world.set_rule(world.get_location(locn.trmaw_min9), can_get_trmaw_min9)
 
 
 def set_host_rules(world):
@@ -549,6 +567,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.jht_host), can_get_jht_host)
     world.set_rule(world.get_location(locn.lfabt_host), can_get_lfabt_host)
     world.set_rule(world.get_location(locn.itdn_host), can_get_itdn_host)
+    world.set_rule(world.get_location(locn.trmaw_host), can_get_trmaw_host)
 
 
 def set_level_beaten_rules(world):
@@ -574,26 +593,6 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.itdn_ts), can_beat_itdn)
     world.set_rule(world.get_location(locn.tttot_beat), can_beat_tttot)
     world.set_rule(world.get_location(locn.tttot_ts), can_beat_tttot)
-
-
-#
-# def set_true_status_rules(world: MultiWorld, options: LB1Options, player: int):
-#     set_rule(world.get_location(LocationName.ycbob_ts, player), lambda state: can_beat_ycbob(state, options, player))
-#     set_rule(world.get_location(LocationName.air_ts, player), lambda state: can_beat_air(state, options, player))
-#     # Two-Face Chase can be beaten in story
-#     set_rule(world.get_location(LocationName.apa_ts, player), lambda state: can_beat_apa(state, player))
-#     set_rule(world.get_location(LocationName.tfo_ts, player), lambda state: can_beat_tfo(state, options, player))
-#     set_rule(world.get_location(LocationName.tsga_ts, player), lambda state: can_beat_tsga(state, options, player))
-#     # Batboat Battle can be beaten in story
-#     set_rule(world.get_location(LocationName.utc_ts, player), lambda state: can_beat_utc(state, options, player))
-#     set_rule(world.get_location(LocationName.zc_ts, player), lambda state: can_beat_zc(state, options, player))
-#     set_rule(world.get_location(LocationName.pl_ts, player), lambda state: can_beat_pl(state, options, player))
-#     set_rule(world.get_location(LocationName.jht_ts, player), lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.lfabt_ts, player), lambda state: can_beat_lfabt(state, options, player))
-#     # Flight of the Bat can be beaten in story
-#     set_rule(world.get_location(LocationName.itdn_ts, player), lambda state: can_beat_itdn(state, options, player))
-#     set_rule(world.get_location(LocationName.tttot_ts, player), lambda state: can_beat_tttot(state, options, player))
-#     # All Villain Levels can be beaten in story
 
 #
 #
@@ -776,67 +775,6 @@ def set_level_beaten_rules(world):
 #     set_rule(world.get_location(LocationName.piecedetect, player),
 #              lambda state: can_purchase_piece_detect(state, options, player))
 #
-#
-# def set_token_rules(world: MultiWorld, options: LB1Options, player: int):
-#     set_rule(world.get_location(LocationName.riddlergoon_collected, player),
-#              lambda state: can_beat_ycbob(state, options, player))
-#     set_rule(world.get_location(LocationName.riddlerhenchman_collected, player),
-#              lambda state: can_beat_ycbob(state, options, player))
-#     set_rule(world.get_location(LocationName.freezegirl_collected, player),
-#              lambda state: can_beat_air(state, options, player))
-#     # TFC can be completed in story - police car, bike, van, joker van don't require anything besides region logic
-#     set_rule(world.get_location(LocationName.poisonivygoon_collected, player),
-#              lambda state: can_beat_apa(state, player))
-#     set_rule(world.get_location(LocationName.fishmonger_collected, player),
-#              lambda state: can_beat_tsga(state, options, player))
-#     set_rule(world.get_location(LocationName.penguingoon_collected, player),
-#              lambda state: can_beat_tsga(state, options, player))
-#     set_rule(world.get_location(LocationName.penguinhenchman_collected, player),
-#              lambda state: can_beat_tsga(state, options, player))
-#     # BBB can be completed in story - robin sub, penguin goon sub, harbour helicopter don't require anything besides
-#     # region logic
-#     set_rule(world.get_location(LocationName.zoosweeper_collected, player),
-#              lambda state: can_beat_zc(state, options, player))
-#     set_rule(world.get_location(LocationName.manbat_collected, player),
-#              lambda state: can_beat_pl(state, options, player))
-#     set_rule(world.get_location(LocationName.yeti_collected, player),
-#              lambda state: can_beat_pl(state, options, player))
-#     set_rule(world.get_location(LocationName.penguinminion_collected, player),
-#              lambda state: can_beat_pl(state, options, player))
-#     set_rule(world.get_location(LocationName.madhatter_collected, player),
-#              lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.jokergoon_collected, player),
-#              lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.jokerhenchman_collected, player),
-#              lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.steamboat_collected, player),
-#              lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.glider_collected, player),
-#              lambda state: can_beat_jht(state, options, player))
-#     set_rule(world.get_location(LocationName.clowngoon_collected, player),
-#              lambda state: can_beat_lfabt(state, options, player))
-#     # FOTB can be completed in story - private jet doesn't require anything besides region logic
-#     set_rule(world.get_location(LocationName.brucewayne_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.alfred_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.batgirl_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.nightwing_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.policeofficer_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.militarypoliceman_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.securityguard_collected, player),
-#              lambda state: can_complete_any_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.battank_collected, player),
-#              lambda state: can_complete_all_hero_episode(state, options, player))
-#     set_rule(world.get_location(LocationName.hush_collected, player),
-#              lambda state: state.has("UNIQUE_HOSTAGES", player, options.hush_purchase_requirements.value))
-#     set_rule(world.get_location(LocationName.rasalghul_collected, player),
-#              lambda state: state.has("UNIQUE_MINIKITS", player, options.ras_purchase_requirements.value))
-#     # All villain levels can be completed in story - no additional logic needed besides region
 
 
 def set_rules(world):
