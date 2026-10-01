@@ -400,7 +400,7 @@ dol_min9 = "Dying of Laughter: Ring the Left Bell Minikit"
 dol_min10 = "Dying of Laughter: Ring Both Front Bells with the Turret Minikit"
 
 # Hostage Definitions
-ycbob_host = "You Can Bank on Batman: Hostage Saved"
+ycbob_host = "You can Bank on Batman: Hostage Saved"
 air_host = "An Icy Reception: Hostage Saved"
 apa_host = "A Poisonous Appointment: Hostage Saved"
 tfo_host = "The Face-Off: Hostage Saved"

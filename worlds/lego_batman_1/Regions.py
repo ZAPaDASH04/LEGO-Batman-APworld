@@ -2,6 +2,7 @@ from BaseClasses import MultiWorld, Region, Entrance, Location, ItemClassificati
 from .Locations import LB1Location, event_location_table
 from .Items import LB1Item
 from .Names import RegionName
+from .Options import LB1Options, EndGoal
 
 
 lb1_hub_regions = [
@@ -59,7 +60,7 @@ lb1_hero_subregions = [
     RegionName.plf,
     # RegionName.jhtf,
     RegionName.lfabtf,
-    # RegionName.fotbf,
+    RegionName.fotbf,
     RegionName.itdnf,
     RegionName.tttotf,
 ]
@@ -91,7 +92,7 @@ lb1_all_regions = [
 ]
 
 
-def create_regions(world: MultiWorld, player: int, seed_locations):
+def create_regions(world: MultiWorld, options: LB1Options, player: int, seed_locations):
     menu = Region("Menu", player, world)
     world.regions.append(menu)
 
@@ -119,6 +120,7 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     connect_regions(world, player, RegionName.zc, RegionName.zcf)
     connect_regions(world, player, RegionName.pl, RegionName.plf)
     connect_regions(world, player, RegionName.lfabt, RegionName.lfabtf)
+    connect_regions(world, player, RegionName.fotb, RegionName.fotbf)
     connect_regions(world, player, RegionName.itdn, RegionName.itdnf)
     connect_regions(world, player, RegionName.tttot, RegionName.tttotf)
 
@@ -136,6 +138,11 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     connect_regions(world, player, RegionName.tjm, RegionName.tjmf)
     connect_regions(world, player, RegionName.tlotn, RegionName.tlotnf)
     connect_regions(world, player, RegionName.dol, RegionName.dolf)
+
+    if options.EndGoal == EndGoal.option_levels_beaten:
+        batcave = world.get_region(RegionName.bc, player)
+        event: Location = create_event("All Required Levels Beaten", "All Required Levels Beaten", batcave, player)
+        event.show_in_spoiler = True
 
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str) -> Entrance:
@@ -156,16 +163,13 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed
     return region
 
 
-def create_events(world: MultiWorld, player: int) -> int:
-    count = 0
+def create_events(world: MultiWorld, options: LB1Options, player: int):
 
-    for (name, data) in event_location_table.items():
-        item_name = "Level Beaten Token"
-        event: Location = create_event(name, item_name, world.get_region(data.region, player), player)
-        event.show_in_spoiler = True
-        count += 1
-
-    return count
+    if options.EndGoal == EndGoal.option_levels_beaten:
+        for (name, data) in event_location_table.items():
+            item_name = "Level Beaten"
+            event: Location = create_event(name, item_name, world.get_region(data.region, player), player)
+            event.show_in_spoiler = True
 
 
 def create_event(name: str, item_name: str, region: Region, player: int) -> Location:

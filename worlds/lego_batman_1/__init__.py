@@ -7,7 +7,7 @@ from .Locations import all_location_table, LocationData, setup_locations, LB1Loc
 from .Names import ItemName, RegionName
 from .Options import LB1Options, RasPurchaseRequirements
 from .Regions import create_regions, connect_regions, create_events
-from .Rules import set_rules, set_event_rules
+from .Rules import set_rules
 from ..AutoWorld import World, WebWorld, CollectionState
 
 
@@ -139,8 +139,8 @@ class LB1World(World):
 
     def create_regions(self):
         self.seed_location_table = setup_locations(self.options)
-        create_regions(self.multiworld, self.player, self.seed_location_table)
-        create_events(self.multiworld, self.player)
+        create_regions(self.multiworld, self.options, self.player, self.seed_location_table)
+        create_events(self.multiworld, self.options, self.player)
 
     def create_item(self, name: str) -> Item:
         item = LB1Item(name, all_item_table[name].classification, all_item_table[name].code, self.player)
@@ -153,13 +153,13 @@ class LB1World(World):
         filler = []
         extra_locations = len(self.seed_location_table) - len(self.seed_item_table)
         while extra_locations > 0:
-            filler += [self.create_item("Nothing")]
+            filler += [self.create_item(ItemName.purp)]
             extra_locations -= 1
         self.multiworld.itempool.extend(filler)
 
     def set_rules(self):
-        set_rules(self.multiworld, self.options, self.player)
-        set_event_rules(self.multiworld, self.player)
+        set_rules(self)
+        # set_event_rules(self.multiworld, self.player)
 
     def collect(self, state: CollectionState, item: Item) -> bool:
         changed = super().collect(state, item)
@@ -202,7 +202,7 @@ class LB1World(World):
         while hero_levels_pushed < self.options.starting_hero_level_count.value:
             starting_hero = self.random.choice(self.options.starting_hero_level_options.value)
             self.options.starting_hero_level_options.value.remove(starting_hero)
-            starting_hero = "Level Unlocked (" + starting_hero + ")"
+            starting_hero = starting_hero + ": Level Unlocked"
             self.multiworld.push_precollected(self.create_item(starting_hero))
             hero_levels_pushed += 1
             del self.seed_item_table[starting_hero]
@@ -211,7 +211,7 @@ class LB1World(World):
         while villain_levels_pushed < self.options.starting_villain_level_count.value:
             starting_villain = self.random.choice(self.options.starting_villain_level_options.value)
             self.options.starting_villain_level_options.value.remove(starting_villain)
-            starting_villain = "Level Unlocked (" + starting_villain + ")"
+            starting_villain = starting_villain + ": Level Unlocked"
             self.multiworld.push_precollected(self.create_item(starting_villain))
             villain_levels_pushed += 1
             del self.seed_item_table[starting_villain]

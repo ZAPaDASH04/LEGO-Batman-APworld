@@ -66,8 +66,8 @@ character_location_table: Dict[str, LocationData] = {
     # Ras
     # LocationName.hero1_unlocked: LocationData(base_location_id + 46, RegionName.sh),
     # LocationName.hero2_unlocked: LocationData(base_location_id + 47, RegionName.sh),
-    LocationName.batmobile_unlocked: LocationData(base_location_id + 48, RegionName.tfc),
-    LocationName.batcycle_unlocked: LocationData(base_location_id + 49, RegionName.tfc),
+    LocationName.batmobile_unlocked: LocationData(base_location_id + 48, RegionName.tfcf),
+    LocationName.batcycle_unlocked: LocationData(base_location_id + 49, RegionName.tfcf),
     LocationName.policecar_unlocked: LocationData(base_location_id + 50, RegionName.sh, 10000),
     LocationName.policebike_unlocked: LocationData(base_location_id + 51, RegionName.sh, 11000),
     LocationName.policevan_unlocked: LocationData(base_location_id + 52, RegionName.sh, 13000),
@@ -88,8 +88,8 @@ character_location_table: Dict[str, LocationData] = {
     LocationName.penguingoonsub_unlocked: LocationData(base_location_id + 67, RegionName.sh, 15000),
     LocationName.iceberg_unlocked: LocationData(base_location_id + 68, RegionName.sh, 23000),
     LocationName.steamboat_unlocked: LocationData(base_location_id + 69, RegionName.sh, 23000),
-    LocationName.batwing_unlocked: LocationData(base_location_id + 70, RegionName.fotb),
-    LocationName.batcopter_unlocked: LocationData(base_location_id + 71, RegionName.fotb),
+    LocationName.batwing_unlocked: LocationData(base_location_id + 70, RegionName.fotbf),
+    LocationName.batcopter_unlocked: LocationData(base_location_id + 71, RegionName.fotbf),
     LocationName.harbourhelicopter_unlocked: LocationData(base_location_id + 72, RegionName.sh, 16000),
     LocationName.policehelicopter_unlocked: LocationData(base_location_id + 73, RegionName.sh, 14000),
     LocationName.privatejet_unlocked: LocationData(base_location_id + 74, RegionName.sh, 15000),
@@ -146,13 +146,13 @@ minikit_location_table: Dict[str, LocationData] = {
     # Two-Face Chase
     LocationName.tfc_min1: LocationData(base_location_id + 120, RegionName.tfc),
     LocationName.tfc_min2: LocationData(base_location_id + 121, RegionName.tfc),
-    LocationName.tfc_min3: LocationData(base_location_id + 122, RegionName.tfc),
-    LocationName.tfc_min4: LocationData(base_location_id + 123, RegionName.tfc),
-    LocationName.tfc_min5: LocationData(base_location_id + 124, RegionName.tfc),
-    LocationName.tfc_min6: LocationData(base_location_id + 125, RegionName.tfc),
+    LocationName.tfc_min3: LocationData(base_location_id + 122, RegionName.tfcf),
+    LocationName.tfc_min4: LocationData(base_location_id + 123, RegionName.tfcf),
+    LocationName.tfc_min5: LocationData(base_location_id + 124, RegionName.tfcf),
+    LocationName.tfc_min6: LocationData(base_location_id + 125, RegionName.tfcf),
     LocationName.tfc_min7: LocationData(base_location_id + 126, RegionName.tfcf),
     LocationName.tfc_min8: LocationData(base_location_id + 127, RegionName.tfcf),
-    LocationName.tfc_min9: LocationData(base_location_id + 128, RegionName.tfc),
+    LocationName.tfc_min9: LocationData(base_location_id + 128, RegionName.tfcf),
     LocationName.tfc_min10: LocationData(base_location_id + 129, RegionName.tfcf),
     # A Poisonous Appointment
     LocationName.apa_min1: LocationData(base_location_id + 130, RegionName.apa),
@@ -257,13 +257,13 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.fotb_min1: LocationData(base_location_id + 220, RegionName.fotb),
     LocationName.fotb_min2: LocationData(base_location_id + 221, RegionName.fotb),
     LocationName.fotb_min3: LocationData(base_location_id + 222, RegionName.fotb),
-    LocationName.fotb_min4: LocationData(base_location_id + 223, RegionName.fotb),
-    LocationName.fotb_min5: LocationData(base_location_id + 224, RegionName.fotb),
-    LocationName.fotb_min6: LocationData(base_location_id + 225, RegionName.fotb),
-    LocationName.fotb_min7: LocationData(base_location_id + 226, RegionName.fotb),
-    LocationName.fotb_min8: LocationData(base_location_id + 227, RegionName.fotb),
-    LocationName.fotb_min9: LocationData(base_location_id + 228, RegionName.fotb),
-    LocationName.fotb_min10: LocationData(base_location_id + 229, RegionName.fotb),
+    LocationName.fotb_min4: LocationData(base_location_id + 223, RegionName.fotbf),
+    LocationName.fotb_min5: LocationData(base_location_id + 224, RegionName.fotbf),
+    LocationName.fotb_min6: LocationData(base_location_id + 225, RegionName.fotbf),
+    LocationName.fotb_min7: LocationData(base_location_id + 226, RegionName.fotbf),
+    LocationName.fotb_min8: LocationData(base_location_id + 227, RegionName.fotbf),
+    LocationName.fotb_min9: LocationData(base_location_id + 228, RegionName.fotbf),
+    LocationName.fotb_min10: LocationData(base_location_id + 229, RegionName.fotbf),
     # In the Dark Night
     LocationName.itdn_min1: LocationData(base_location_id + 230, RegionName.itdn),
     LocationName.itdn_min2: LocationData(base_location_id + 231, RegionName.itdn),
@@ -484,7 +484,7 @@ hostage_location_table: Dict[str, LocationData] = {
 level_beaten_location_table: Dict[str, LocationData] = {
     LocationName.ycbob_beat: LocationData(base_location_id + 425, RegionName.ycbob),
     LocationName.air_beat: LocationData(base_location_id + 426, RegionName.air),
-    LocationName.tfc_beat: LocationData(base_location_id + 427, RegionName.tfc),
+    LocationName.tfc_beat: LocationData(base_location_id + 427, RegionName.tfcf),
     LocationName.apa_beat: LocationData(base_location_id + 428, RegionName.apa),
     LocationName.tfo_beat: LocationData(base_location_id + 429, RegionName.tfo),
     LocationName.tsga_beat: LocationData(base_location_id + 430, RegionName.tsga),
@@ -494,7 +494,7 @@ level_beaten_location_table: Dict[str, LocationData] = {
     LocationName.pl_beat: LocationData(base_location_id + 434, RegionName.pl),
     LocationName.jht_beat: LocationData(base_location_id + 435, RegionName.jht),
     LocationName.lfabt_beat: LocationData(base_location_id + 436, RegionName.lfabt),
-    LocationName.fotb_beat: LocationData(base_location_id + 437, RegionName.fotb),
+    LocationName.fotb_beat: LocationData(base_location_id + 437, RegionName.fotbf),
     LocationName.itdn_beat: LocationData(base_location_id + 438, RegionName.itdn),
     LocationName.tttot_beat: LocationData(base_location_id + 439, RegionName.tttot),
     LocationName.trmaw_beat: LocationData(base_location_id + 440, RegionName.trmaw),
@@ -517,7 +517,7 @@ level_beaten_location_table: Dict[str, LocationData] = {
 true_status_location_table: Dict[str, LocationData] = {
     LocationName.ycbob_ts: LocationData(base_location_id + 455, RegionName.ycbob),
     LocationName.air_ts: LocationData(base_location_id + 456, RegionName.air),
-    LocationName.tfc_ts: LocationData(base_location_id + 457, RegionName.tfc),
+    LocationName.tfc_ts: LocationData(base_location_id + 457, RegionName.tfcf),
     LocationName.apa_ts: LocationData(base_location_id + 458, RegionName.apa),
     LocationName.tfo_ts: LocationData(base_location_id + 459, RegionName.tfo),
     LocationName.tsga_ts: LocationData(base_location_id + 460, RegionName.tsga),
@@ -527,7 +527,7 @@ true_status_location_table: Dict[str, LocationData] = {
     LocationName.pl_ts: LocationData(base_location_id + 464, RegionName.pl),
     LocationName.jht_ts: LocationData(base_location_id + 465, RegionName.jht),
     LocationName.lfabt_ts: LocationData(base_location_id + 466, RegionName.lfabt),
-    LocationName.fotb_ts: LocationData(base_location_id + 467, RegionName.fotb),
+    LocationName.fotb_ts: LocationData(base_location_id + 467, RegionName.fotbf),
     LocationName.itdn_ts: LocationData(base_location_id + 468, RegionName.itdnf),
     LocationName.tttot_ts: LocationData(base_location_id + 469, RegionName.tttotf),
     LocationName.trmaw_ts: LocationData(base_location_id + 470, RegionName.trmaw),
@@ -588,7 +588,7 @@ red_brick_purchase_table: Dict[str, LocationData] = {
 event_location_table = {
     LocationName.ycbob_token: LocationData(0, RegionName.ycbob),
     LocationName.air_token: LocationData(0, RegionName.air),
-    LocationName.tfc_token: LocationData(0, RegionName.tfc),
+    LocationName.tfc_token: LocationData(0, RegionName.tfcf),
     LocationName.apa_token: LocationData(0, RegionName.apa),
     LocationName.tfo_token: LocationData(0, RegionName.tfo),
     LocationName.tsga_token: LocationData(0, RegionName.tsga),
@@ -598,7 +598,7 @@ event_location_table = {
     LocationName.pl_token: LocationData(0, RegionName.pl),
     LocationName.jht_token: LocationData(0, RegionName.jht),
     LocationName.lfabt_token: LocationData(0, RegionName.lfabt),
-    LocationName.fotb_token: LocationData(0, RegionName.fotb),
+    LocationName.fotb_token: LocationData(0, RegionName.fotbf),
     LocationName.itdn_token: LocationData(0, RegionName.itdn),
     LocationName.tttot_token: LocationData(0, RegionName.tttot),
     LocationName.trmaw_token: LocationData(0, RegionName.trmaw),
@@ -640,8 +640,7 @@ def setup_locations(options: LB1Options):
     temp_location_table = {}
     if options.minikit_sanity == 1:
         temp_location_table.update({**minikit_location_table})
-    if options.true_status_sanity == 1:
-        temp_location_table.update({**true_status_location_table})
+    temp_location_table.update({**true_status_location_table})
     temp_location_table.update({**character_location_table})
     if options.shuffle_hush_and_ras == 1:
         temp_location_table.update({**hard_character_location_table})
