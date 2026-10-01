@@ -857,8 +857,8 @@ def set_rules(world):
 def set_event_rules(world):
     for (name, data) in event_location_table.items():
         event: Location = world.get_location(name)
-        level_beaten_name = name.removesuffix(" Event")
-        world.set_rule(event, world.get_location(level_beaten_name).access_rule)
+        level_beaten_name = name.removesuffix(" Token")
+        world.set_rule(event, CanReachLocation(level_beaten_name))
 
     if world.options.EndGoal == EndGoal.option_levels_beaten:
         world.set_rule(world.get_location("All Required Levels Beaten"),
