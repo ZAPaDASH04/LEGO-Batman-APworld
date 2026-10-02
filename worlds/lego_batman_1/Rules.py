@@ -285,7 +285,6 @@ can_get_tttot_min9 = char_can_glide & char_can_double_jump
 can_get_tttot_min10 = can_beat_tttot & char_can_explode
 can_get_tttot_rb = can_beat_tttot & char_is_strong
 
-
 # TRMAW Logic
 can_leave_trmaw_garage = char_is_strong & char_can_hypno
 can_access_trmaw_free = can_leave_trmaw_garage & (char_can_double_jump | char_can_explode)
@@ -298,6 +297,19 @@ can_get_trmaw_min7 = char_can_double_jump
 can_get_trmaw_min9 = Has(itm.sonicsuit)
 can_get_trmaw_host = Has(itm.sonicsuit)
 can_get_trmaw_rb = Has(itm.magsuit) & can_access_trmaw_free
+
+# OTR Logic
+can_access_otr = char_is_strong
+can_access_otr_free = Has(itm.mrfreeze_unlocked) & char_can_hypno
+can_get_otr_min2 = Has(itm.sonicsuit) & char_can_hypno
+can_get_otr_min4 = Has(itm.mrfreeze_unlocked) & char_can_explode
+can_get_otr_min5 = HasAll(itm.mrfreeze_unlocked, itm.magsuit)
+can_get_otr_min6 = Has(itm.mrfreeze_unlocked)
+can_get_otr_min7 = Has(itm.attractsuit)
+can_get_otr_min8 = char_can_explode
+can_get_otr_min9 = char_can_glide & Has(itm.magsuit)
+can_get_otr_host = char_can_explode & Has(itm.mrfreeze_unlocked)
+can_get_otr_rb = char_can_explode & Has(itm.mrfreeze_unlocked)
 
 
 def set_entrance_rules(world):
@@ -317,7 +329,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.itdn), Has(ItemName.itdn_lvl))
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.tttot), Has(ItemName.tttot_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.trmaw), Has(ItemName.trmaw_lvl))
-    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.otr), Has(ItemName.otr_lvl))
+    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.otr), can_access_otr)
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.gf), Has(ItemName.gf_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.aet), Has(ItemName.aet_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.bb), Has(ItemName.bb_lvl))
@@ -346,8 +358,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.itdn + " -> " + RegionName.itdnf), can_access_itdn_free)
     world.set_rule(world.get_entrance(RegionName.tttot + " -> " + RegionName.tttotf), can_access_tttot_free)
     world.set_rule(world.get_entrance(RegionName.trmaw + " -> " + RegionName.trmawf), can_access_trmaw_free)
-    # world.set_rule(world.get_entrance(RegionName.otr + " -> " + RegionName.otrf),
-    #                lambda state: free_access_otr(state))
+    world.set_rule(world.get_entrance(RegionName.otr + " -> " + RegionName.otrf), can_access_otr_free)
     # world.set_rule(world.get_entrance(RegionName.gf + " -> " + RegionName.gff),
     #                lambda state: free_access_gf(state))
     # world.set_rule(world.get_entrance(RegionName.bb + " -> " + RegionName.bbf),
@@ -556,6 +567,14 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.trmaw_min6), can_get_trmaw_min6)
     world.set_rule(world.get_location(locn.trmaw_min7), can_get_trmaw_min7)
     world.set_rule(world.get_location(locn.trmaw_min9), can_get_trmaw_min9)
+    # OTR Logic
+    world.set_rule(world.get_location(locn.otr_min2), can_get_otr_min2)
+    world.set_rule(world.get_location(locn.otr_min4), can_get_otr_min4)
+    world.set_rule(world.get_location(locn.otr_min5), can_get_otr_min5)
+    world.set_rule(world.get_location(locn.otr_min6), can_get_otr_min6)
+    world.set_rule(world.get_location(locn.otr_min7), can_get_otr_min7)
+    world.set_rule(world.get_location(locn.otr_min8), can_get_otr_min8)
+    world.set_rule(world.get_location(locn.otr_min9), can_get_otr_min9)
 
 
 def set_host_rules(world):
@@ -568,6 +587,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.lfabt_host), can_get_lfabt_host)
     world.set_rule(world.get_location(locn.itdn_host), can_get_itdn_host)
     world.set_rule(world.get_location(locn.trmaw_host), can_get_trmaw_host)
+    world.set_rule(world.get_location(locn.otr_host), can_get_otr_host)
 
 
 def set_level_beaten_rules(world):
