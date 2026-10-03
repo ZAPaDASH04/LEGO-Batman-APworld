@@ -362,6 +362,19 @@ can_get_rtd_min9 = char_is_female & Has(itm.attractsuit)
 can_get_rtd_host = Has(itm.sonicsuit)
 can_get_rtd_rb = char_is_female & char_is_strong & Has(itm.penguin_unlocked)
 
+# STS Logic
+can_access_sts_free = char_can_glide & char_is_female
+can_get_sts_min1 = char_is_strong & Has(itm.magsuit)
+can_get_sts_min2 = char_can_glide
+can_get_sts_min3 = char_can_glide & Has(itm.poisonivy_unlocked)
+can_get_sts_min6 = Has(itm.magsuit)
+can_get_sts_min7 = Has(itm.sonicsuit) & char_is_strong
+can_get_sts_min9 = HasAll(itm.sonicsuit, itm.penguin_unlocked)
+can_get_sts_min10 = char_is_strong = Has(itm.penguin_unlocked)
+can_get_sts_host = Has(itm.magsuit) & char_is_strong
+can_get_sts_rb = (can_access_sts_free & HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
+                  char_can_explode)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -414,8 +427,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.aet + " -> " + RegionName.aetf), can_access_aet_free)
     world.set_rule(world.get_entrance(RegionName.bb + " -> " + RegionName.bbf), can_access_bb_free)
     world.set_rule(world.get_entrance(RegionName.rtd + " -> " + RegionName.rtdf), can_access_rtd_free)
-    # world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf),
-    #                lambda state: free_access_sts(state))
+    world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf), can_access_sts_free)
     # world.set_rule(world.get_entrance(RegionName.hag + " -> " + RegionName.hagf),
     #                lambda state: free_access_hag(state))
     # world.set_rule(world.get_entrance(RegionName.adr + " -> " + RegionName.adrf),
@@ -658,6 +670,14 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.rtd_min5), can_get_rtd_min5)
     world.set_rule(world.get_location(locn.rtd_min7), can_get_rtd_min7)
     world.set_rule(world.get_location(locn.rtd_min9), can_get_rtd_min9)
+    # STS Logic
+    world.set_rule(world.get_location(locn.sts_min1), can_get_sts_min1)
+    world.set_rule(world.get_location(locn.sts_min2), can_get_sts_min2)
+    world.set_rule(world.get_location(locn.sts_min3), can_get_sts_min3)
+    world.set_rule(world.get_location(locn.sts_min6), can_get_sts_min6)
+    world.set_rule(world.get_location(locn.sts_min7), can_get_sts_min7)
+    world.set_rule(world.get_location(locn.sts_min9), can_get_sts_min9)
+    world.set_rule(world.get_location(locn.sts_min10), can_get_sts_min10)
 
 
 def set_host_rules(world):
@@ -675,6 +695,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.aet_host), can_get_aet_host)
     world.set_rule(world.get_location(locn.bb_host), can_get_bb_host)
     world.set_rule(world.get_location(locn.rtd_host), can_get_rtd_host)
+    world.set_rule(world.get_location(locn.sts_host), can_get_sts_host)
 
 
 def set_level_beaten_rules(world):
