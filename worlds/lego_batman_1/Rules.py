@@ -464,8 +464,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.rtd + " -> " + RegionName.rtdf), can_access_rtd_free)
     world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf), can_access_sts_free)
     world.set_rule(world.get_entrance(RegionName.adr + " -> " + RegionName.adrf), can_access_adr_free)
-    # world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf),
-    #                lambda state: free_access_aw(state))
+    world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf), can_access_aw_free)
     # world.set_rule(world.get_entrance(RegionName.asftc + " -> " + RegionName.asftcf),
     #                lambda state: free_access_asftc(state))
     # world.set_rule(world.get_entrance(RegionName.bbpl + " -> " + RegionName.bbplf),
