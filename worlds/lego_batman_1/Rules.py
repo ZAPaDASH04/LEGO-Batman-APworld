@@ -311,6 +311,20 @@ can_get_otr_min9 = char_can_glide & Has(itm.magsuit)
 can_get_otr_host = char_can_explode & Has(itm.mrfreeze_unlocked)
 can_get_otr_rb = char_can_explode & Has(itm.mrfreeze_unlocked)
 
+# GF Logic
+can_access_gf_free = Has(itm.poisonivy_unlocked) & char_can_hypno
+can_get_gf_min1 = char_can_techno
+can_get_gf_min2 = char_can_explode & char_can_double_jump
+can_get_gf_min4 = char_can_explode
+can_get_gf_min5 = char_can_sink & Has(itm.sonicsuit)
+can_get_gf_min6 = HasAll(itm.magsuit, itm.sonicsuit)
+can_get_gf_min7 = char_can_explode & char_is_strong & Has(itm.magsuit)
+can_get_gf_min8 = Has(itm.heatprotectsuit)
+can_get_gf_min9 = char_can_sink & Has(itm.sonicsuit)
+can_get_gf_min10 = char_can_explode
+can_get_gf_host = char_can_explode & Has(itm.poisonivy_unlocked)
+can_get_gf_rb = char_can_explode & char_can_techno & HasAll(itm.attractsuit, itm.poisonivy_unlocked)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -575,6 +589,16 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.otr_min7), can_get_otr_min7)
     world.set_rule(world.get_location(locn.otr_min8), can_get_otr_min8)
     world.set_rule(world.get_location(locn.otr_min9), can_get_otr_min9)
+    # GF Logic
+    world.set_rule(world.get_location(locn.gf_min1), can_get_gf_min1)
+    world.set_rule(world.get_location(locn.gf_min2), can_get_gf_min2)
+    world.set_rule(world.get_location(locn.gf_min4), can_get_gf_min4)
+    world.set_rule(world.get_location(locn.gf_min5), can_get_gf_min5)
+    world.set_rule(world.get_location(locn.gf_min6), can_get_gf_min6)
+    world.set_rule(world.get_location(locn.gf_min7), can_get_gf_min7)
+    world.set_rule(world.get_location(locn.gf_min8), can_get_gf_min8)
+    world.set_rule(world.get_location(locn.gf_min9), can_get_gf_min9)
+    world.set_rule(world.get_location(locn.gf_min10), can_get_gf_min10)
 
 
 def set_host_rules(world):
@@ -588,6 +612,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.itdn_host), can_get_itdn_host)
     world.set_rule(world.get_location(locn.trmaw_host), can_get_trmaw_host)
     world.set_rule(world.get_location(locn.otr_host), can_get_otr_host)
+    world.set_rule(world.get_location(locn.gf_host), can_get_gf_host)
 
 
 def set_level_beaten_rules(world):
