@@ -395,6 +395,21 @@ can_get_adr_min9 = HasAll(itm.magsuit, itm.penguin_unlocked)
 can_get_adr_host = char_is_joker
 can_get_adr_rb = char_can_techno & HasAll(itm.penguin_unlocked, itm.sonicsuit)
 
+# Arctic World Logic
+can_access_aw_free = char_can_double_jump & Has(itm.penguin_unlocked)
+can_get_aw_min1 = char_can_sink
+can_get_aw_min2 = HasAll(itm.sonicsuit, itm.magsuit) & char_is_joker & char_is_strong & char_can_double_jump
+can_get_aw_min3 = Has(itm.sonicsuit) & char_can_double_jump
+can_get_aw_min4 = char_is_strong & char_is_female & char_can_double_jump & char_can_explode
+can_get_aw_min5 = Has(itm.sonicsuit)
+can_get_aw_min6 = char_is_strong & char_can_cross_toxic
+can_get_aw_min7 = char_is_female
+can_get_aw_min8 = char_can_explode & char_is_female
+can_get_aw_min9 = char_can_sink & char_is_female
+can_get_aw_min10 = Has(itm.mrfreeze_unlocked) & char_is_female
+can_get_aw_host = char_can_cross_toxic
+can_get_aw_rb = char_can_cross_toxic & Has(itm.attractsuit)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -708,6 +723,17 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.adr_min6), can_get_adr_min6)
     world.set_rule(world.get_location(locn.adr_min7), can_get_adr_min7)
     world.set_rule(world.get_location(locn.adr_min9), can_get_adr_min9)
+    # Arctic World Logic
+    world.set_rule(world.get_location(locn.aw_min1), can_get_aw_min1)
+    world.set_rule(world.get_location(locn.aw_min2), can_get_aw_min2)
+    world.set_rule(world.get_location(locn.aw_min3), can_get_aw_min3)
+    world.set_rule(world.get_location(locn.aw_min4), can_get_aw_min4)
+    world.set_rule(world.get_location(locn.aw_min5), can_get_aw_min5)
+    world.set_rule(world.get_location(locn.aw_min6), can_get_aw_min6)
+    world.set_rule(world.get_location(locn.aw_min7), can_get_aw_min7)
+    world.set_rule(world.get_location(locn.aw_min8), can_get_aw_min8)
+    world.set_rule(world.get_location(locn.aw_min9), can_get_aw_min9)
+    world.set_rule(world.get_location(locn.aw_min10), can_get_aw_min10)
 
 
 def set_host_rules(world):
@@ -727,6 +753,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.rtd_host), can_get_rtd_host)
     world.set_rule(world.get_location(locn.sts_host), can_get_sts_host)
     world.set_rule(world.get_location(locn.adr_host), can_get_adr_host)
+    world.set_rule(world.get_location(locn.aw_host), can_get_aw_host)
 
 
 def set_level_beaten_rules(world):
