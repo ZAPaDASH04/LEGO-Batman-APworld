@@ -73,7 +73,7 @@ lb1_villain_subregions = [
     RegionName.bbf,
     RegionName.rtdf,
     RegionName.stsf,
-    RegionName.hagf,
+    # RegionName.hagf,
     RegionName.adrf,
     RegionName.awf,
     RegionName.asftcf,
@@ -131,7 +131,7 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int, seed_loc
     connect_regions(world, player, RegionName.bb, RegionName.bbf)
     connect_regions(world, player, RegionName.rtd, RegionName.rtdf)
     connect_regions(world, player, RegionName.sts, RegionName.stsf)
-    connect_regions(world, player, RegionName.hag, RegionName.hagf)
+    # connect_regions(world, player, RegionName.hag, RegionName.hagf)
     connect_regions(world, player, RegionName.adr, RegionName.adrf)
     connect_regions(world, player, RegionName.aw, RegionName.awf)
     connect_regions(world, player, RegionName.asftc, RegionName.asftcf)

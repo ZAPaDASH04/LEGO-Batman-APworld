@@ -375,6 +375,14 @@ can_get_sts_host = Has(itm.magsuit) & char_is_strong
 can_get_sts_rb = (can_access_sts_free & HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
                   char_can_explode)
 
+# HAG Logic
+can_access_hag = has_two_watercraft & water_has_torpedo & Has(itm.hag_lvl)
+can_get_hag_min3 = Has(itm.batboat_unlocked)
+can_get_hag_min7 = water_can_cross_toxic
+can_get_hag_min8 = Has(itm.batboat_unlocked)
+can_get_hag_min10 = Has(itm.robinswatercraft_unlocked)
+can_get_hag_rb = Has(itm.robinswatercraft_unlocked)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -399,7 +407,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.bb), Has(ItemName.bb_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.rtd), can_access_rtd)
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.sts), Has(ItemName.sts_lvl))
-    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.hag), Has(ItemName.hag_lvl))
+    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.hag), can_access_hag)
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.adr), Has(ItemName.adr_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.aw), Has(ItemName.aw_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.asftc), Has(ItemName.asftc_lvl))
@@ -428,8 +436,6 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bb + " -> " + RegionName.bbf), can_access_bb_free)
     world.set_rule(world.get_entrance(RegionName.rtd + " -> " + RegionName.rtdf), can_access_rtd_free)
     world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf), can_access_sts_free)
-    # world.set_rule(world.get_entrance(RegionName.hag + " -> " + RegionName.hagf),
-    #                lambda state: free_access_hag(state))
     # world.set_rule(world.get_entrance(RegionName.adr + " -> " + RegionName.adrf),
     #                lambda state: free_access_adr(state))
     # world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf),
@@ -678,6 +684,11 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.sts_min7), can_get_sts_min7)
     world.set_rule(world.get_location(locn.sts_min9), can_get_sts_min9)
     world.set_rule(world.get_location(locn.sts_min10), can_get_sts_min10)
+    # HAG Logic
+    world.set_rule(world.get_location(locn.hag_min3), can_get_hag_min3)
+    world.set_rule(world.get_location(locn.hag_min7), can_get_hag_min7)
+    world.set_rule(world.get_location(locn.hag_min8), can_get_hag_min8)
+    world.set_rule(world.get_location(locn.hag_min10), can_get_hag_min10)
 
 
 def set_host_rules(world):

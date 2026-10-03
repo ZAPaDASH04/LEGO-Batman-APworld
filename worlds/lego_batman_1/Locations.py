@@ -366,14 +366,14 @@ minikit_location_table: Dict[str, LocationData] = {
     # Harbouring a Grudge
     LocationName.hag_min1: LocationData(base_location_id + 320, RegionName.hag),
     LocationName.hag_min2: LocationData(base_location_id + 321, RegionName.hag),
-    LocationName.hag_min3: LocationData(base_location_id + 322, RegionName.hagf),
+    LocationName.hag_min3: LocationData(base_location_id + 322, RegionName.hag),
     LocationName.hag_min4: LocationData(base_location_id + 323, RegionName.hag),
     LocationName.hag_min5: LocationData(base_location_id + 324, RegionName.hag),
     LocationName.hag_min6: LocationData(base_location_id + 325, RegionName.hag),
     LocationName.hag_min7: LocationData(base_location_id + 326, RegionName.hag),
-    LocationName.hag_min8: LocationData(base_location_id + 327, RegionName.hagf),
+    LocationName.hag_min8: LocationData(base_location_id + 327, RegionName.hag),
     LocationName.hag_min9: LocationData(base_location_id + 328, RegionName.hag),
-    LocationName.hag_min10: LocationData(base_location_id + 329, RegionName.hagf),
+    LocationName.hag_min10: LocationData(base_location_id + 329, RegionName.hag),
     # A Daring Rescue
     LocationName.adr_min1: LocationData(base_location_id + 330, RegionName.adr),
     LocationName.adr_min2: LocationData(base_location_id + 331, RegionName.adrf),
