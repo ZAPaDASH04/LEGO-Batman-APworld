@@ -338,6 +338,19 @@ can_get_aet_min9 = Has(itm.heatprotectsuit)
 can_get_aet_host = Has(itm.sonicsuit)
 can_get_aet_rb = char_is_joker & char_can_explode & HasAll(itm.attractsuit, itm.heatprotectsuit, itm.sonicsuit)
 
+# BB Logic
+can_access_bb_free = char_can_hypno
+can_get_bb_min2 = char_can_double_jump
+can_get_bb_min4 = HasAll(itm.sonicsuit, itm.attractsuit, itm.magsuit)
+can_get_bb_min5 = char_is_strong
+can_get_bb_min6 = char_can_explode
+can_get_bb_min7 = char_is_joker & char_can_double_jump
+can_get_bb_min8 = char_can_explode & char_can_cross_toxic
+can_get_bb_min9 = HasAll(itm.sonicsuit, itm.magsuit) & char_can_cross_toxic
+can_get_bb_min10 = char_can_explode & char_can_cross_toxic
+can_get_bb_host = Has(itm.sonicsuit) & char_is_strong
+can_get_bb_rb = char_can_explode
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -388,8 +401,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.otr + " -> " + RegionName.otrf), can_access_otr_free)
     world.set_rule(world.get_entrance(RegionName.gf + " -> " + RegionName.gff), can_access_gf_free)
     world.set_rule(world.get_entrance(RegionName.aet + " -> " + RegionName.aetf), can_access_aet_free)
-    # world.set_rule(world.get_entrance(RegionName.bb + " -> " + RegionName.bbf),
-    #                lambda state: free_access_bb(state))
+    world.set_rule(world.get_entrance(RegionName.bb + " -> " + RegionName.bbf), can_access_bb_free)
     # world.set_rule(world.get_entrance(RegionName.rtd + " -> " + RegionName.rtdf),
     #                lambda state: free_access_rtd(state))
     # world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf),
@@ -621,6 +633,15 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.aet_min7), can_get_aet_min7)
     world.set_rule(world.get_location(locn.aet_min8), can_get_aet_min8)
     world.set_rule(world.get_location(locn.aet_min9), can_get_aet_min9)
+    # BB Logic
+    world.set_rule(world.get_location(locn.bb_min2), can_get_bb_min2)
+    world.set_rule(world.get_location(locn.bb_min4), can_get_bb_min4)
+    world.set_rule(world.get_location(locn.bb_min5), can_get_bb_min5)
+    world.set_rule(world.get_location(locn.bb_min6), can_get_bb_min6)
+    world.set_rule(world.get_location(locn.bb_min7), can_get_bb_min7)
+    world.set_rule(world.get_location(locn.bb_min8), can_get_bb_min8)
+    world.set_rule(world.get_location(locn.bb_min9), can_get_bb_min9)
+    world.set_rule(world.get_location(locn.bb_min10), can_get_bb_min10)
 
 
 def set_host_rules(world):
@@ -636,6 +657,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.otr_host), can_get_otr_host)
     world.set_rule(world.get_location(locn.gf_host), can_get_gf_host)
     world.set_rule(world.get_location(locn.aet_host), can_get_aet_host)
+    world.set_rule(world.get_location(locn.bb_host), can_get_bb_host)
 
 
 def set_level_beaten_rules(world):
