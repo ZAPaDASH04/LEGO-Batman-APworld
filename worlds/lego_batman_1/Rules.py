@@ -479,6 +479,63 @@ can_get_dol_min8 = Has(itm.mrfreeze_unlocked)
 can_get_dol_min10 = char_can_explode
 can_get_dol_host = char_can_glide
 
+# Suit Logic
+can_unlock_heat_suit = CanReachLocation(locn.apa_beat)
+
+glide_suit_air = CanReachLocation(locn.air_beat)
+glide_suit_tfo = Has(itm.tfo_lvl)
+glide_suit_tsga = HasAll(itm.tsga_lvl, itm.magsuit)
+glide_suit_utc = CanReachLocation(locn.utc_beat)
+glide_suit_pl = Has(itm.pl_lvl)
+glide_suit_jht = HasAll(itm.jht_lvl, itm.attractsuit)
+glide_suit_tttot = CanReachLocation(locn.tttot_beat)
+can_unlock_glide_suit = Has(itm.glidesuit) & (glide_suit_air | glide_suit_tfo | glide_suit_tsga | glide_suit_utc |
+                                              glide_suit_pl | glide_suit_jht | glide_suit_tttot)
+
+demo_suit_ycbob = Has(itm.ycbob_lvl)
+demo_suit_tsga = CanReachLocation(locn.tsga_beat)
+demo_suit_utc = HasAll(itm.utc_lvl, itm.magsuit)
+demo_suit_zc = CanReachLocation(locn.zc_beat)
+demo_suit_lfabt = Has(itm.lfabt_lvl)
+demo_suit_itdn = Has(itm.itdn_lvl)
+demo_suit_tttot = Has(itm.tttot_lvl)
+can_unlock_demo_suit = Has(itm.demosuit) & (demo_suit_ycbob | demo_suit_tsga | demo_suit_utc | demo_suit_zc |
+                                            demo_suit_lfabt | demo_suit_itdn | demo_suit_tttot)
+
+mag_suit_air = Has(itm.air_lvl)
+mag_suit_tfo = Has(itm.tfo_lvl) & char_can_glide
+mag_suit_tsga = Has(itm.tsga_lvl)
+mag_suit_utc = Has(itm.utc_lvl)
+mag_suit_zc = Has(itm.zc_lvl)
+mag_suit_jht = CanReachLocation(locn.jht_beat)
+mag_suit_lfabt = HasAll(itm.lfabt_lvl, itm.sonicsuit) & char_can_explode
+mag_suit_itdn = CanReachLocation(locn.itdn_beat)
+mag_suit_tttot = Has(itm.tttot_lvl) & char_can_explode
+can_unlock_mag_suit = Has(itm.magsuit) & (mag_suit_air | mag_suit_tfo | mag_suit_tsga | mag_suit_utc | mag_suit_zc |
+                                          mag_suit_jht | mag_suit_lfabt | mag_suit_itdn | mag_suit_tttot)
+
+sonic_suit_apa = Has(itm.apa_lvl)
+sonic_suit_zc = Has(itm.zc_lvl) & (char_can_explode | char_can_glide)
+sonic_suit_lfabt = Has(itm.lfabt_lvl) & char_can_explode
+can_unlock_sonic_suit = Has(itm.sonicsuit) & (sonic_suit_apa | sonic_suit_zc | sonic_suit_lfabt)
+
+water_suit_utc = Has(itm.utc_lvl) & char_can_explode
+water_suit_zc = Has(itm.zc_lvl) & char_can_glide
+can_unlock_water_suit = Has(itm.watersuit) & (water_suit_utc | water_suit_zc)
+
+tech_suit_ycbob = Has(itm.ycbob_lvl) & char_can_explode
+tech_suit_tsga = HasAll(itm.tsga_lvl, itm.magsuit) & char_can_glide
+tech_suit_zc = Has(itm.zc_lvl) & (char_can_explode | (Has(itm.magsuit) & char_can_glide))
+tech_suit_itdn = Has(itm.itdn_lvl) & char_can_explode
+can_unlock_tech_suit = Has(itm.techsuit) & (tech_suit_ycbob | tech_suit_tsga | tech_suit_zc | tech_suit_itdn)
+
+attract_suit_apa = HasAll(itm.apa_lvl, itm.sonicsuit)
+attract_suit_tfo = HasAll(itm.tfo_lvl, itm.magsuit) & char_can_glide
+attract_suit_jht = Has(itm.jht_lvl)
+attract_suit_lfabt = HasAll(itm.lfabt_lvl, itm.magsuit, itm.sonicsuit) & char_can_explode
+can_unlock_attract_suit = Has(itm.attractsuit) & (attract_suit_apa | attract_suit_tfo | attract_suit_jht |
+                                                  attract_suit_lfabt)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -564,25 +621,17 @@ def set_entrance_rules(world):
 #     # Villain levels can be beaten in story
 #
 #
-# def set_suit_rules(world: MultiWorld, options: LB1Options, player: int):
-#     set_rule(world.get_location(LocationName.heatprotectsuit, player),
-#              lambda state: can_unlock_heat_suit(state, player))
-#     set_rule(world.get_location(LocationName.glidesuit, player),
-#              lambda state: can_unlock_glide_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.demosuit, player),
-#              lambda state: can_unlock_demo_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.sonicsuit, player),
-#              lambda state: can_unlock_sonic_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.watersuit, player),
-#              lambda state: can_unlock_water_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.techsuit, player),
-#              lambda state: can_unlock_tech_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.magsuit, player),
-#              lambda state: can_unlock_mag_suit(state, options, player))
-#     set_rule(world.get_location(LocationName.attractsuit, player),
-#              lambda state: can_unlock_attract_suit(state, options, player))
-#
-#
+def set_suit_rules(world):
+    world.set_rule(world.get_location(LocationName.heatprotectsuit), can_unlock_heat_suit)
+    world.set_rule(world.get_location(LocationName.glidesuit), can_unlock_glide_suit)
+    world.set_rule(world.get_location(LocationName.demosuit), can_unlock_demo_suit)
+    world.set_rule(world.get_location(LocationName.sonicsuit), can_unlock_sonic_suit)
+    world.set_rule(world.get_location(LocationName.watersuit), can_unlock_water_suit)
+    world.set_rule(world.get_location(LocationName.techsuit), can_unlock_tech_suit)
+    world.set_rule(world.get_location(LocationName.magsuit), can_unlock_mag_suit)
+    world.set_rule(world.get_location(LocationName.attractsuit), can_unlock_attract_suit)
+
+
 def set_minikit_rules(world):
     # You Can Bank on Batman Logic
     world.set_rule(world.get_location(locn.ycbob_min3), can_get_ycbob_min3)
@@ -1090,7 +1139,7 @@ def set_rules(world):
     set_entrance_rules(world)
     # set_char_rules(world, options, player)
     # # Hard char Rules
-    # set_suit_rules(world, options, player)
+    set_suit_rules(world)
     if world.options.minikit_sanity == 1:
         set_minikit_rules(world)
     set_host_rules(world)
