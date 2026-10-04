@@ -440,6 +440,17 @@ can_get_bbpl_min9 = Has(itm.batwing_unlocked)
 can_get_bbpl_min10 = Has(itm.batwing_unlocked)
 can_get_bbpl_rb = can_access_bbpl_free & can_access_bbpl
 
+# The Joker's Masterpiece Logic
+can_access_tjm_free = char_is_joker & char_can_hypno
+can_get_tjm_min3 = char_can_double_jump
+can_get_tjm_min5 = Has(itm.sonicsuit)
+can_get_tjm_min6 = char_is_strong
+can_get_tjm_min7 = HasAll(itm.sonicsuit, itm.heatprotectsuit) & char_can_explode
+can_get_tjm_min8 = char_can_double_jump
+can_get_tjm_min9 = char_can_double_jump
+can_get_tjm_host = char_is_joker & char_can_explode & Has(itm.heatprotectsuit)
+can_get_tjm_rb = char_is_joker & char_can_explode & Has(itm.heatprotectsuit)
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -497,8 +508,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf), can_access_aw_free)
     world.set_rule(world.get_entrance(RegionName.asftc + " -> " + RegionName.asftcf), can_access_asftc_free)
     world.set_rule(world.get_entrance(RegionName.bbpl + " -> " + RegionName.bbplf), can_access_bbpl_free)
-    # world.set_rule(world.get_entrance(RegionName.tjm + " -> " + RegionName.tjmf),
-    #                lambda state: free_access_tjm(state))
+    world.set_rule(world.get_entrance(RegionName.tjm + " -> " + RegionName.tjmf), can_access_tjm_free)
     # world.set_rule(world.get_entrance(RegionName.tlotn + " -> " + RegionName.tlotnf),
     #                lambda state: free_access_tlotn(state))
     # world.set_rule(world.get_entrance(RegionName.dol + " -> " + RegionName.dolf),
@@ -778,6 +788,13 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.bbpl_min8), can_get_bbpl_min8)
     world.set_rule(world.get_location(locn.bbpl_min9), can_get_bbpl_min9)
     world.set_rule(world.get_location(locn.bbpl_min10), can_get_bbpl_min10)
+    # The Joker's Masterpiece Logic
+    world.set_rule(world.get_location(locn.tjm_min3), can_get_tjm_min3)
+    world.set_rule(world.get_location(locn.tjm_min5), can_get_tjm_min5)
+    world.set_rule(world.get_location(locn.tjm_min6), can_get_tjm_min6)
+    world.set_rule(world.get_location(locn.tjm_min7), can_get_tjm_min7)
+    world.set_rule(world.get_location(locn.tjm_min8), can_get_tjm_min8)
+    world.set_rule(world.get_location(locn.tjm_min9), can_get_tjm_min9)
 
 
 def set_host_rules(world):
@@ -799,6 +816,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.adr_host), can_get_adr_host)
     world.set_rule(world.get_location(locn.aw_host), can_get_aw_host)
     world.set_rule(world.get_location(locn.asftc_host), can_get_asftc_host)
+    world.set_rule(world.get_location(locn.tjm_host), can_get_tjm_host)
 
 
 def set_level_beaten_rules(world):

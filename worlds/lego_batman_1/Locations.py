@@ -419,8 +419,8 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.bbpl_min9: LocationData(base_location_id + 368, RegionName.bbplf),
     LocationName.bbpl_min10: LocationData(base_location_id + 369, RegionName.bbplf),
     # The Joker's Masterpiece
-    LocationName.tjm_min1: LocationData(base_location_id + 370, RegionName.tjm),
-    LocationName.tjm_min2: LocationData(base_location_id + 371, RegionName.tjm),
+    LocationName.tjm_min1: LocationData(base_location_id + 370, RegionName.tjmf),
+    LocationName.tjm_min2: LocationData(base_location_id + 371, RegionName.tjmf),
     LocationName.tjm_min3: LocationData(base_location_id + 372, RegionName.tjmf),
     LocationName.tjm_min4: LocationData(base_location_id + 373, RegionName.tjm),
     LocationName.tjm_min5: LocationData(base_location_id + 374, RegionName.tjmf),
@@ -428,7 +428,7 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.tjm_min7: LocationData(base_location_id + 376, RegionName.tjmf),
     LocationName.tjm_min8: LocationData(base_location_id + 377, RegionName.tjmf),
     LocationName.tjm_min9: LocationData(base_location_id + 378, RegionName.tjmf),
-    LocationName.tjm_min10: LocationData(base_location_id + 379, RegionName.tjm),
+    LocationName.tjm_min10: LocationData(base_location_id + 379, RegionName.tjmf),
     # The Lure of the Night
     LocationName.tlotn_min1: LocationData(base_location_id + 380, RegionName.tlotn),
     LocationName.tlotn_min2: LocationData(base_location_id + 381, RegionName.tlotnf),
