@@ -312,7 +312,8 @@ can_get_otr_host = char_can_explode & Has(itm.mrfreeze_unlocked)
 can_get_otr_rb = char_can_explode & Has(itm.mrfreeze_unlocked)
 
 # GF Logic
-can_access_gf_free = Has(itm.poisonivy_unlocked) & char_can_hypno
+can_access_gf_free = char_can_cross_toxic & char_can_hypno
+can_beat_gf = Has(itm.poisonivy_unlocked)
 can_get_gf_min1 = char_can_techno
 can_get_gf_min2 = char_can_explode & char_can_double_jump
 can_get_gf_min4 = char_can_explode
@@ -340,6 +341,7 @@ can_get_aet_rb = char_is_joker & char_can_explode & HasAll(itm.attractsuit, itm.
 
 # BB Logic
 can_access_bb_free = char_can_hypno
+can_beat_bb = char_can_cross_toxic
 can_get_bb_min2 = char_can_double_jump
 can_get_bb_min4 = HasAll(itm.sonicsuit, itm.attractsuit, itm.magsuit)
 can_get_bb_min5 = char_is_strong
@@ -364,6 +366,7 @@ can_get_rtd_rb = char_is_female & char_is_strong & Has(itm.penguin_unlocked)
 
 # STS Logic
 can_access_sts_free = char_can_glide & char_is_female
+can_beat_sts = Has(itm.penguin_unlocked)
 can_get_sts_min1 = char_is_strong & Has(itm.magsuit)
 can_get_sts_min2 = char_can_glide
 can_get_sts_min3 = char_can_glide & Has(itm.poisonivy_unlocked)
@@ -397,6 +400,7 @@ can_get_adr_rb = char_can_techno & HasAll(itm.penguin_unlocked, itm.sonicsuit)
 
 # Arctic World Logic
 can_access_aw_free = char_can_double_jump & Has(itm.penguin_unlocked)
+can_beat_aw = char_is_female
 can_get_aw_min1 = char_can_sink
 can_get_aw_min2 = HasAll(itm.sonicsuit, itm.magsuit) & char_is_joker & char_is_strong & char_can_double_jump
 can_get_aw_min3 = Has(itm.sonicsuit) & char_can_double_jump
@@ -409,6 +413,22 @@ can_get_aw_min9 = char_can_sink & char_is_female
 can_get_aw_min10 = Has(itm.mrfreeze_unlocked) & char_is_female
 can_get_aw_host = char_can_cross_toxic
 can_get_aw_rb = char_can_cross_toxic & Has(itm.attractsuit)
+
+# A Surprise for the Commissioner Logic
+can_access_asftc_free = char_can_double_jump
+can_beat_asftc = char_is_joker
+can_get_asftc_min1 = char_is_strong
+can_get_asftc_min2 = Has(itm.sonicsuit)
+can_get_asftc_min3 = Has(itm.mrfreeze_unlocked) & char_is_joker
+can_get_asftc_min4 = char_can_explode
+can_get_asftc_min5 = Has(itm.magsuit)
+can_get_asftc_min6 = Has(itm.magsuit) | char_is_joker
+can_get_asftc_min7 = Has(itm.magsuit) & char_can_explode
+can_get_asftc_min8 = char_can_sink & char_is_joker
+can_get_asftc_min9 = Has(itm.attractsuit) & char_is_joker & char_can_techno
+can_get_asftc_min10 = char_is_joker
+can_get_asftc_host = char_can_explode
+can_get_asftc_rb = char_can_glide & char_can_explode & char_is_joker
 
 
 def set_entrance_rules(world):
@@ -465,8 +485,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.sts + " -> " + RegionName.stsf), can_access_sts_free)
     world.set_rule(world.get_entrance(RegionName.adr + " -> " + RegionName.adrf), can_access_adr_free)
     world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf), can_access_aw_free)
-    # world.set_rule(world.get_entrance(RegionName.asftc + " -> " + RegionName.asftcf),
-    #                lambda state: free_access_asftc(state))
+    world.set_rule(world.get_entrance(RegionName.asftc + " -> " + RegionName.asftcf), can_access_asftc_free)
     # world.set_rule(world.get_entrance(RegionName.bbpl + " -> " + RegionName.bbplf),
     #                lambda state: free_access_bbpl(state))
     # world.set_rule(world.get_entrance(RegionName.tjm + " -> " + RegionName.tjmf),
@@ -733,6 +752,17 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.aw_min8), can_get_aw_min8)
     world.set_rule(world.get_location(locn.aw_min9), can_get_aw_min9)
     world.set_rule(world.get_location(locn.aw_min10), can_get_aw_min10)
+    # A Surprise for the Commissioner Logic
+    world.set_rule(world.get_location(locn.asftc_min1), can_get_asftc_min1)
+    world.set_rule(world.get_location(locn.asftc_min2), can_get_asftc_min2)
+    world.set_rule(world.get_location(locn.asftc_min3), can_get_asftc_min3)
+    world.set_rule(world.get_location(locn.asftc_min4), can_get_asftc_min4)
+    world.set_rule(world.get_location(locn.asftc_min5), can_get_asftc_min5)
+    world.set_rule(world.get_location(locn.asftc_min6), can_get_asftc_min6)
+    world.set_rule(world.get_location(locn.asftc_min7), can_get_asftc_min7)
+    world.set_rule(world.get_location(locn.asftc_min8), can_get_asftc_min8)
+    world.set_rule(world.get_location(locn.asftc_min9), can_get_asftc_min9)
+    world.set_rule(world.get_location(locn.asftc_min10), can_get_asftc_min10)
 
 
 def set_host_rules(world):
@@ -753,6 +783,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.sts_host), can_get_sts_host)
     world.set_rule(world.get_location(locn.adr_host), can_get_adr_host)
     world.set_rule(world.get_location(locn.aw_host), can_get_aw_host)
+    world.set_rule(world.get_location(locn.asftc_host), can_get_asftc_host)
 
 
 def set_level_beaten_rules(world):
@@ -778,6 +809,16 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.itdn_ts), can_beat_itdn)
     world.set_rule(world.get_location(locn.tttot_beat), can_beat_tttot)
     world.set_rule(world.get_location(locn.tttot_ts), can_beat_tttot)
+    world.set_rule(world.get_location(locn.gf_beat), can_beat_gf)
+    world.set_rule(world.get_location(locn.gf_ts), can_beat_gf)
+    world.set_rule(world.get_location(locn.bb_beat), can_beat_bb)
+    world.set_rule(world.get_location(locn.bb_ts), can_beat_bb)
+    world.set_rule(world.get_location(locn.sts_beat), can_beat_sts)
+    world.set_rule(world.get_location(locn.sts_ts), can_beat_sts)
+    world.set_rule(world.get_location(locn.aw_beat), can_beat_aw)
+    world.set_rule(world.get_location(locn.aw_ts), can_beat_aw)
+    world.set_rule(world.get_location(locn.asftc_beat), can_beat_asftc)
+    world.set_rule(world.get_location(locn.asftc_ts), can_beat_asftc)
 
 #
 #

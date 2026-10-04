@@ -402,11 +402,11 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.asftc_min3: LocationData(base_location_id + 352, RegionName.asftcf),
     LocationName.asftc_min4: LocationData(base_location_id + 353, RegionName.asftcf),
     LocationName.asftc_min5: LocationData(base_location_id + 354, RegionName.asftcf),
-    LocationName.asftc_min6: LocationData(base_location_id + 355, RegionName.asftc),
+    LocationName.asftc_min6: LocationData(base_location_id + 355, RegionName.asftcf),
     LocationName.asftc_min7: LocationData(base_location_id + 356, RegionName.asftcf),
     LocationName.asftc_min8: LocationData(base_location_id + 357, RegionName.asftcf),
     LocationName.asftc_min9: LocationData(base_location_id + 358, RegionName.asftcf),
-    LocationName.asftc_min10: LocationData(base_location_id + 359, RegionName.asftc),
+    LocationName.asftc_min10: LocationData(base_location_id + 359, RegionName.asftcf),
     # Biplane Blast
     LocationName.bbpl_min1: LocationData(base_location_id + 360, RegionName.bbplf),
     LocationName.bbpl_min2: LocationData(base_location_id + 361, RegionName.bbpl),
@@ -507,11 +507,11 @@ level_beaten_location_table: Dict[str, LocationData] = {
     LocationName.hag_beat: LocationData(base_location_id + 447, RegionName.hag),
     LocationName.adr_beat: LocationData(base_location_id + 448, RegionName.adrf),
     LocationName.aw_beat: LocationData(base_location_id + 449, RegionName.awf),
-    LocationName.asftc_beat: LocationData(base_location_id + 450, RegionName.asftc),
-    LocationName.bbpl_beat: LocationData(base_location_id + 451, RegionName.bbpl),
-    LocationName.tjm_beat: LocationData(base_location_id + 452, RegionName.tjm),
-    LocationName.tlotn_beat: LocationData(base_location_id + 453, RegionName.tlotn),
-    LocationName.dol_beat: LocationData(base_location_id + 454, RegionName.dol),
+    LocationName.asftc_beat: LocationData(base_location_id + 450, RegionName.asftcf),
+    LocationName.bbpl_beat: LocationData(base_location_id + 451, RegionName.bbplf),
+    LocationName.tjm_beat: LocationData(base_location_id + 452, RegionName.tjmf),
+    LocationName.tlotn_beat: LocationData(base_location_id + 453, RegionName.tlotnf),
+    LocationName.dol_beat: LocationData(base_location_id + 454, RegionName.dolf),
 }
 
 true_status_location_table: Dict[str, LocationData] = {
@@ -540,11 +540,11 @@ true_status_location_table: Dict[str, LocationData] = {
     LocationName.hag_ts: LocationData(base_location_id + 477, RegionName.hag),
     LocationName.adr_ts: LocationData(base_location_id + 478, RegionName.adrf),
     LocationName.aw_ts: LocationData(base_location_id + 479, RegionName.awf),
-    LocationName.asftc_ts: LocationData(base_location_id + 480, RegionName.asftc),
-    LocationName.bbpl_ts: LocationData(base_location_id + 481, RegionName.bbpl),
-    LocationName.tjm_ts: LocationData(base_location_id + 482, RegionName.tjm),
-    LocationName.tlotn_ts: LocationData(base_location_id + 483, RegionName.tlotn),
-    LocationName.dol_ts: LocationData(base_location_id + 484, RegionName.dol),
+    LocationName.asftc_ts: LocationData(base_location_id + 480, RegionName.asftcf),
+    LocationName.bbpl_ts: LocationData(base_location_id + 481, RegionName.bbplf),
+    LocationName.tjm_ts: LocationData(base_location_id + 482, RegionName.tjmf),
+    LocationName.tlotn_ts: LocationData(base_location_id + 483, RegionName.tlotnf),
+    LocationName.dol_ts: LocationData(base_location_id + 484, RegionName.dolf),
 }
 
 red_brick_purchase_table: Dict[str, LocationData] = {

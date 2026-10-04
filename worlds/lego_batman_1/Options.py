@@ -253,7 +253,6 @@ class RasPurchaseRequirements(Range):
     default = 150
 
 
-# TODO: look into what option groups are
 @dataclass
 class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
