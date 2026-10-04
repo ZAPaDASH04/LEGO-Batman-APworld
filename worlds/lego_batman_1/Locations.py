@@ -449,7 +449,7 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.dol_min6: LocationData(base_location_id + 395, RegionName.dolf),
     LocationName.dol_min7: LocationData(base_location_id + 396, RegionName.dolf),
     LocationName.dol_min8: LocationData(base_location_id + 397, RegionName.dolf),
-    LocationName.dol_min9: LocationData(base_location_id + 398, RegionName.dol),
+    LocationName.dol_min9: LocationData(base_location_id + 398, RegionName.dolf),
     LocationName.dol_min10: LocationData(base_location_id + 399, RegionName.dolf),
 }
 
