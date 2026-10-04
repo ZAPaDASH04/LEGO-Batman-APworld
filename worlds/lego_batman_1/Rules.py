@@ -71,14 +71,14 @@ water_can_cross_toxic = Has(itm.policewatercraft_unlocked) | Has(itm.swamprider_
 has_two_aircraft = HasFromListUnique(itm.batwing_unlocked, itm.batcopter_unlocked,
                                      itm.harbourhelicopter_unlocked, itm.policehelicopter_unlocked,
                                      itm.privatejet_unlocked, itm.jokerhelicopter_unlocked,
-                                     itm.scarecrowbiplane_unlocked,
+                                     itm.biplane_unlocked,
                                      itm.goonhelicopter_unlocked, itm.riddlerjet_unlocked, itm.glider_unlocked, count=2)
 
 air_has_cable = (Has(itm.batcopter_unlocked) | Has(itm.harbourhelicopter_unlocked) | Has(itm.policehelicopter_unlocked)
                  | Has(itm.jokerhelicopter_unlocked) | Has(itm.goonhelicopter_unlocked))
 
 air_can_cross_toxic = (Has(itm.harbourhelicopter_unlocked) | Has(itm.policehelicopter_unlocked) |
-                       Has(itm.jokerhelicopter_unlocked) | Has(itm.scarecrowbiplane_unlocked) |
+                       Has(itm.jokerhelicopter_unlocked) | Has(itm.biplane_unlocked) |
                        Has(itm.goonhelicopter_unlocked))
 
 has_high_multi = (Has(itm.scorex6) | Has(itm.scorex8) | Has(itm.scorex10) |
@@ -86,7 +86,7 @@ has_high_multi = (Has(itm.scorex6) | Has(itm.scorex8) | Has(itm.scorex10) |
 
 has_low_multi = (Has(itm.scorex2) | Has(itm.scorex4))
 
-# YCBOB Logic
+# You Can Bank on Batman Logic
 can_access_ycbob_free = char_can_explode
 can_beat_ycbob = char_can_explode & char_can_techno
 can_get_ycbob_min3 = Has(itm.sonicsuit)
@@ -99,7 +99,7 @@ can_get_ycbob_min9 = char_can_hypno & char_can_techno
 can_get_ycbob_min10 = char_can_techno
 can_get_ycbob_rb = char_can_techno & can_access_ycbob_free
 
-# AIR Logic
+# An Icy Reception Logic
 can_access_air_free = Has(itm.magsuit) & char_can_glide
 can_beat_air = Has(itm.magsuit) & char_can_glide
 can_get_air_min1 = char_can_double_jump
@@ -114,14 +114,14 @@ can_get_air_min10 = char_can_hypno
 can_get_air_host = char_can_hypno
 can_get_air_rb = char_is_strong & can_access_air_free
 
-# TFC Logic
+# Two Face Chase Logic
 can_access_tfc_free = auto_has_cable
 can_access_tfc = Has(itm.tfc_lvl) & has_two_auto
 can_get_tfc_min5 = Has(itm.jokervan_unlocked)
 can_get_tfc_min6 = Has(itm.hammertruck_unlocked)
 can_get_tfc_min10 = auto_can_explode
 
-# APA Logic
+# A Poisonous Appointment Logic
 can_access_apa_free = HasAll(itm.attractsuit, itm.sonicsuit)
 can_beat_apa = HasAll(itm.attractsuit, itm.sonicsuit, itm.heatprotectsuit)
 can_get_apa_min2 = char_can_double_jump & char_can_glide
@@ -136,7 +136,7 @@ can_get_apa_min10 = Has(itm.heatprotectsuit)
 can_get_apa_host = Has(itm.sonicsuit)
 can_get_apa_rb = char_can_explode & char_is_joker & Has(itm.heatprotectsuit) & can_access_apa_free
 
-# TFO Logic
+# The Face Off Logic
 can_access_tfo = Has(itm.tfo_lvl) & char_can_glide
 can_access_tfo_free = Has(itm.magsuit)
 can_beat_tfo = Has(itm.magsuit) & (Has(itm.attractsuit) | char_can_cross_toxic)
@@ -150,7 +150,7 @@ can_get_tfo_min10 = Has(itm.attractsuit) | char_can_cross_toxic
 can_get_tfo_host = Has(itm.attractsuit) & char_can_double_jump
 can_get_tfo_rb = char_can_cross_toxic & can_access_tfo_free
 
-# TSGA Logic
+# There She Goes Again Logic
 can_access_tsga_free = char_can_glide & Has(itm.magsuit)
 can_beat_tsga = char_can_explode & char_can_techno & Has(itm.magsuit) & char_can_glide
 can_get_tsga_min1 = Has(itm.magsuit) & char_is_female
@@ -164,7 +164,7 @@ can_get_tsga_min9 = Has(itm.sonicsuit) & can_beat_tsga
 can_get_tsga_min10 = can_beat_tsga & char_can_sink & Has(itm.sonicsuit)
 can_get_tsga_rb = can_beat_tsga & Has(itm.sonicsuit) & can_access_tsga_free
 
-# BBB Logic
+# Batboat Battle Logic
 can_access_bbb = Has(itm.bbb_lvl) & has_two_watercraft & Has(itm.batboat_unlocked)
 can_get_bbb_min2 = Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min3 = water_can_sink & Has(itm.robinswatercraft_unlocked)
@@ -176,7 +176,7 @@ can_get_bbb_min9 = HasAll(itm.robinswatercraft_unlocked, itm.penguinsubmarine_un
 can_get_bbb_min10 = can_get_bbb_min9 & water_can_cross_toxic
 can_get_bbb_rb = HasAll(itm.robinswatercraft_unlocked, itm.penguinsubmarine_unlocked)
 
-# UTC Logic
+# Under The City Logic
 can_access_utc_free = char_can_explode & char_can_sink & (Has(itm.magsuit) | char_can_glide)
 can_beat_utc = char_can_glide & char_can_sink & char_can_explode
 can_get_utc_min1 = char_can_double_jump & char_can_explode
@@ -191,7 +191,7 @@ can_get_utc_min10 = char_is_joker
 can_get_utc_host = char_can_explode
 can_get_utc_rb = char_can_techno
 
-# ZC Logic
+# Zoo's Company Logic
 can_access_zc_free = char_can_explode | (char_can_glide & Has(itm.magsuit))
 can_beat_zc = char_can_glide & char_can_explode & HasAll(itm.magsuit, itm.sonicsuit)
 can_get_zc_min1 = char_is_female & char_can_explode
@@ -206,7 +206,7 @@ can_get_zc_min10 = char_can_glide & char_is_strong & Has(itm.sonicsuit)
 can_get_zc_host = Has(itm.sonicsuit) | (char_can_glide & char_can_techno)
 can_get_zc_rb = char_can_double_jump & char_can_sink & can_access_zc_free
 
-# PL Logic
+# Penguin's Lair Logic
 can_access_pl_free = char_can_glide & char_can_sink
 can_beat_pl = char_can_glide & char_can_sink
 can_get_pl_min1 = Has(itm.sonicsuit)
@@ -218,7 +218,7 @@ can_get_pl_min8 = char_can_cross_toxic & Has(itm.penguin_unlocked)
 can_get_pl_min10 = HasAll(itm.heatprotectsuit, itm.sonicsuit)
 can_get_pl_rb = Has(itm.sonicsuit) & can_access_pl_free
 
-# JHT Logic
+# Joker's Home Turf Logic
 can_access_jht = HasAll(itm.attractsuit, itm.jht_lvl) & char_can_glide
 can_beat_jht = char_can_glide & HasAll(itm.magsuit, itm.attractsuit)
 can_get_jht_min1 = char_can_explode
@@ -233,7 +233,7 @@ can_get_jht_min_10 = char_can_explode & Has(itm.magsuit)
 can_get_jht_host = can_beat_jht & char_is_joker
 can_get_jht_rb = HasAll(itm.mrfreeze_unlocked, itm.sonicsuit) & char_can_double_jump
 
-# LFABT Logic
+# Little Fun at the Big Top Logic
 can_access_lfabt_free = char_can_explode & Has(itm.sonicsuit)
 can_beat_lfabt = char_can_explode & HasAll(itm.magsuit, itm.attractsuit)
 can_get_lfabt_min1 = char_is_strong & char_can_double_jump
@@ -249,14 +249,14 @@ can_get_lfabt_min_10 = HasAll(itm.attractsuit, itm.magsuit) & char_can_cross_tox
 can_get_lfabt_host = Has(itm.magsuit)
 can_get_lfabt_rb = char_can_glide & char_can_techno
 
-# FOTB Logic
+# Flight of the Bat Logic
 can_access_fotb_free = air_has_cable
 can_access_fotb = Has(itm.fotb_lvl) & has_two_aircraft & Has(itm.batwing_unlocked)
 can_get_fotb_min7 = air_can_cross_toxic
 can_get_fotb_min9 = air_can_cross_toxic
 can_get_fotb_rb = air_can_cross_toxic & can_access_fotb_free
 
-# ITDN Logic
+# In the Dark Night Logic
 can_access_itdn_free = char_can_explode
 can_beat_itdn = Has(itm.magsuit) & char_can_explode & char_can_techno
 can_get_itdn_min1 = char_is_strong & Has(itm.sonicsuit)
@@ -273,7 +273,7 @@ can_get_itdn_min10 = char_is_joker & char_can_double_jump & Has(itm.sonicsuit)
 can_get_itdn_host = char_can_explode & char_can_techno
 can_get_itdn_rb = can_beat_itdn & char_can_glide & Has(itm.heatprotectsuit) & can_access_itdn_free
 
-# TTTOT Logic
+# To the Top of the Tower Logic
 can_access_tttot_free = Has(itm.magsuit)
 can_beat_tttot = Has(itm.magsuit) & char_can_glide
 can_get_tttot_min1 = char_can_explode
@@ -285,7 +285,7 @@ can_get_tttot_min9 = char_can_glide & char_can_double_jump
 can_get_tttot_min10 = can_beat_tttot & char_can_explode
 can_get_tttot_rb = can_beat_tttot & char_is_strong
 
-# TRMAW Logic
+# The Riddler Makes A Withdrawal Logic
 can_leave_trmaw_garage = char_is_strong & char_can_hypno
 can_access_trmaw_free = can_leave_trmaw_garage & (char_can_double_jump | char_can_explode)
 can_get_trmaw_min1 = char_is_strong
@@ -298,7 +298,7 @@ can_get_trmaw_min9 = Has(itm.sonicsuit)
 can_get_trmaw_host = Has(itm.sonicsuit)
 can_get_trmaw_rb = Has(itm.magsuit) & can_access_trmaw_free
 
-# OTR Logic
+# On The Rocks Logic
 can_access_otr = char_is_strong
 can_access_otr_free = Has(itm.mrfreeze_unlocked) & char_can_hypno
 can_get_otr_min2 = Has(itm.sonicsuit) & char_can_hypno
@@ -311,7 +311,7 @@ can_get_otr_min9 = char_can_glide & Has(itm.magsuit)
 can_get_otr_host = char_can_explode & Has(itm.mrfreeze_unlocked)
 can_get_otr_rb = char_can_explode & Has(itm.mrfreeze_unlocked)
 
-# GF Logic
+# Green Fingers Logic
 can_access_gf_free = char_can_cross_toxic & char_can_hypno
 can_beat_gf = Has(itm.poisonivy_unlocked)
 can_get_gf_min1 = char_can_techno
@@ -326,7 +326,7 @@ can_get_gf_min10 = char_can_explode
 can_get_gf_host = char_can_explode & Has(itm.poisonivy_unlocked)
 can_get_gf_rb = char_can_explode & char_can_techno & HasAll(itm.attractsuit, itm.poisonivy_unlocked)
 
-# AET Logic
+# An Enterprising Threat Logic
 can_access_aet_free = char_can_hypno & char_can_cross_toxic
 can_get_aet_min1 = Has(itm.sonicsuit) & char_can_double_jump
 can_get_aet_min2 = Has(itm.sonicsuit) & char_can_techno
@@ -339,7 +339,7 @@ can_get_aet_min9 = Has(itm.heatprotectsuit)
 can_get_aet_host = Has(itm.sonicsuit)
 can_get_aet_rb = char_is_joker & char_can_explode & HasAll(itm.attractsuit, itm.heatprotectsuit, itm.sonicsuit)
 
-# BB Logic
+# Breaking Blocks Logic
 can_access_bb_free = char_can_hypno
 can_beat_bb = char_can_cross_toxic
 can_get_bb_min2 = char_can_double_jump
@@ -353,7 +353,7 @@ can_get_bb_min10 = char_can_explode & char_can_cross_toxic
 can_get_bb_host = Has(itm.sonicsuit) & char_is_strong
 can_get_bb_rb = char_can_explode
 
-# RTD Logic
+# Rockin The Dock Logic
 can_access_rtd = char_is_strong & char_can_explode & Has(itm.rtd_lvl)
 can_access_rtd_free = char_can_cross_toxic
 can_get_rtd_min1 = char_can_double_jump & Has(itm.sonicsuit)
@@ -364,7 +364,7 @@ can_get_rtd_min9 = char_is_female & Has(itm.attractsuit)
 can_get_rtd_host = Has(itm.sonicsuit)
 can_get_rtd_rb = char_is_female & char_is_strong & Has(itm.penguin_unlocked)
 
-# STS Logic
+# Stealing The Show Logic
 can_access_sts_free = char_can_glide & char_is_female
 can_beat_sts = Has(itm.penguin_unlocked)
 can_get_sts_min1 = char_is_strong & Has(itm.magsuit)
@@ -378,7 +378,7 @@ can_get_sts_host = Has(itm.magsuit) & char_is_strong
 can_get_sts_rb = (can_access_sts_free & HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
                   char_can_explode)
 
-# HAG Logic
+# Harbouring A Grudge Logic
 can_access_hag = has_two_watercraft & water_has_torpedo & Has(itm.hag_lvl)
 can_get_hag_min3 = Has(itm.batboat_unlocked)
 can_get_hag_min7 = water_can_cross_toxic
@@ -386,7 +386,7 @@ can_get_hag_min8 = Has(itm.batboat_unlocked)
 can_get_hag_min10 = Has(itm.robinswatercraft_unlocked)
 can_get_hag_rb = Has(itm.robinswatercraft_unlocked)
 
-# ADR Logic
+# A Daring Rescue Logic
 can_access_adr_free = char_is_strong & char_can_cross_toxic & (char_can_double_jump | char_can_glide)
 can_get_adr_min1 = char_can_explode & char_can_cross_toxic
 can_get_adr_min2 = char_is_joker
@@ -430,6 +430,16 @@ can_get_asftc_min10 = char_is_joker
 can_get_asftc_host = char_can_explode
 can_get_asftc_rb = char_can_glide & char_can_explode & char_is_joker
 
+# Biplane Blast Logic
+can_access_bbpl = air_has_cable & Has(itm.bbpl_lvl)
+can_access_bbpl_free = Has(itm.biplane_unlocked)
+can_get_bbpl_min1 = Has(itm.batwing_unlocked)
+can_get_bbpl_min3 = Has(itm.batwing_unlocked)
+can_get_bbpl_min8 = Has(itm.batwing_unlocked)
+can_get_bbpl_min9 = Has(itm.batwing_unlocked)
+can_get_bbpl_min10 = Has(itm.batwing_unlocked)
+can_get_bbpl_rb = can_access_bbpl_free & can_access_bbpl
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -459,7 +469,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.aw), Has(ItemName.aw_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.asftc), Has(ItemName.asftc_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.bbpl), Has(ItemName.bbpl_lvl))
-    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tjm), Has(ItemName.tjm_lvl))
+    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tjm), can_access_bbpl)
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tlotn), Has(ItemName.tlotn_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.dol), Has(ItemName.dol_lvl))
     # Sub Regions
@@ -486,8 +496,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.adr + " -> " + RegionName.adrf), can_access_adr_free)
     world.set_rule(world.get_entrance(RegionName.aw + " -> " + RegionName.awf), can_access_aw_free)
     world.set_rule(world.get_entrance(RegionName.asftc + " -> " + RegionName.asftcf), can_access_asftc_free)
-    # world.set_rule(world.get_entrance(RegionName.bbpl + " -> " + RegionName.bbplf),
-    #                lambda state: free_access_bbpl(state))
+    world.set_rule(world.get_entrance(RegionName.bbpl + " -> " + RegionName.bbplf), can_access_bbpl_free)
     # world.set_rule(world.get_entrance(RegionName.tjm + " -> " + RegionName.tjmf),
     #                lambda state: free_access_tjm(state))
     # world.set_rule(world.get_entrance(RegionName.tlotn + " -> " + RegionName.tlotnf),
@@ -539,7 +548,7 @@ def set_entrance_rules(world):
 #
 #
 def set_minikit_rules(world):
-    # YCBOB
+    # You Can Bank on Batman Logic
     world.set_rule(world.get_location(locn.ycbob_min3), can_get_ycbob_min3)
     world.set_rule(world.get_location(locn.ycbob_min4), can_get_ycbob_min4)
     world.set_rule(world.get_location(locn.ycbob_min5), can_get_ycbob_min5)
@@ -548,7 +557,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.ycbob_min8), can_get_ycbob_min8)
     world.set_rule(world.get_location(locn.ycbob_min9), can_get_ycbob_min9)
     world.set_rule(world.get_location(locn.ycbob_min10), can_get_ycbob_min10)
-    # AIR
+    # An Icy Reception Logic
     world.set_rule(world.get_location(locn.air_min1), can_get_air_min1)
     world.set_rule(world.get_location(locn.air_min2), can_get_air_min2)
     world.set_rule(world.get_location(locn.air_min4), can_get_air_min4)
@@ -558,11 +567,11 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.air_min8), can_get_air_min8)
     world.set_rule(world.get_location(locn.air_min9), can_get_air_min9)
     world.set_rule(world.get_location(locn.air_min10), can_get_air_min10)
-    # TFC
+    # Two Face Chase Logic
     world.set_rule(world.get_location(locn.tfc_min5), can_get_tfc_min5)
     world.set_rule(world.get_location(locn.tfc_min6), can_get_tfc_min6)
     world.set_rule(world.get_location(locn.tfc_min10), can_get_tfc_min10)
-    # APA
+    # A Poisonous Appointment Logic
     world.set_rule(world.get_location(locn.apa_min2), can_get_apa_min2)
     world.set_rule(world.get_location(locn.apa_min3), can_get_apa_min3)
     world.set_rule(world.get_location(locn.apa_min4), can_get_apa_min4)
@@ -572,7 +581,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.apa_min8), can_get_apa_min8)
     world.set_rule(world.get_location(locn.apa_min9), can_get_apa_min9)
     world.set_rule(world.get_location(locn.apa_min10), can_get_apa_min10)
-    # TFO Logic
+    # The Face Off Logic
     world.set_rule(world.get_location(locn.tfo_min4), can_get_tfo_min4)
     world.set_rule(world.get_location(locn.tfo_min5), can_get_tfo_min5)
     world.set_rule(world.get_location(locn.tfo_min6), can_get_tfo_min6)
@@ -580,7 +589,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.tfo_min8), can_get_tfo_min8)
     world.set_rule(world.get_location(locn.tfo_min9), can_get_tfo_min9)
     world.set_rule(world.get_location(locn.tfo_min10), can_get_tfo_min10)
-    # TSGA Logic
+    # There She Goes Again Logic
     world.set_rule(world.get_location(locn.tsga_min1), can_get_tsga_min1)
     world.set_rule(world.get_location(locn.tsga_min2), can_get_tsga_min2)
     world.set_rule(world.get_location(locn.tsga_min3), can_get_tsga_min3)
@@ -590,7 +599,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.tsga_min8), can_get_tsga_min8)
     world.set_rule(world.get_location(locn.tsga_min9), can_get_tsga_min9)
     world.set_rule(world.get_location(locn.tsga_min10), can_get_tsga_min10)
-    # BBB Logic
+    # Batboat Battle Logic
     world.set_rule(world.get_location(locn.bbb_min2), can_get_bbb_min2)
     world.set_rule(world.get_location(locn.bbb_min3), can_get_bbb_min3)
     world.set_rule(world.get_location(locn.bbb_min5), can_get_bbb_min5)
@@ -599,7 +608,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.bbb_min8), can_get_bbb_min8)
     world.set_rule(world.get_location(locn.bbb_min9), can_get_bbb_min9)
     world.set_rule(world.get_location(locn.bbb_min10), can_get_bbb_min10)
-    # UTC Logic
+    # Under The City Logic
     world.set_rule(world.get_location(locn.utc_min1), can_get_utc_min1)
     world.set_rule(world.get_location(locn.utc_min2), can_get_utc_min2)
     world.set_rule(world.get_location(locn.utc_min3), can_get_utc_min3)
@@ -609,7 +618,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.utc_min7), can_get_utc_min7)
     world.set_rule(world.get_location(locn.utc_min8), can_get_utc_min8)
     world.set_rule(world.get_location(locn.utc_min10), can_get_utc_min10)
-    # ZC Logic
+    # Zoo's Company Logic
     world.set_rule(world.get_location(locn.zc_min1), can_get_zc_min1)
     world.set_rule(world.get_location(locn.zc_min2), can_get_zc_min2)
     world.set_rule(world.get_location(locn.zc_min3), can_get_zc_min3)
@@ -619,7 +628,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.zc_min8), can_get_zc_min8)
     world.set_rule(world.get_location(locn.zc_min9), can_get_zc_min9)
     world.set_rule(world.get_location(locn.zc_min10), can_get_zc_min10)
-    # PL Logic
+    # Penguin's Lair Logic
     world.set_rule(world.get_location(locn.pl_min1), can_get_pl_min1)
     world.set_rule(world.get_location(locn.pl_min2), can_get_pl_min2)
     world.set_rule(world.get_location(locn.pl_min3), can_get_pl_min3)
@@ -627,7 +636,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.pl_min7), can_get_pl_min7)
     world.set_rule(world.get_location(locn.pl_min8), can_get_pl_min8)
     world.set_rule(world.get_location(locn.pl_min10), can_get_pl_min10)
-    # JHT Logic
+    # Joker's Home Turf Logic
     world.set_rule(world.get_location(locn.jht_min1), can_get_jht_min1)
     world.set_rule(world.get_location(locn.jht_min3), can_get_jht_min3)
     world.set_rule(world.get_location(locn.jht_min4), can_get_jht_min4)
@@ -637,7 +646,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.jht_min8), can_get_jht_min8)
     world.set_rule(world.get_location(locn.jht_min9), can_get_jht_min9)
     world.set_rule(world.get_location(locn.jht_min10), can_get_jht_min_10)
-    # LFABT Logic
+    # Little Fun at the Big Top Logic
     world.set_rule(world.get_location(locn.lfabt_min1), can_get_lfabt_min1)
     world.set_rule(world.get_location(locn.lfabt_min2), can_get_lfabt_min2)
     world.set_rule(world.get_location(locn.lfabt_min3), can_get_lfabt_min3)
@@ -648,10 +657,10 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.lfabt_min8), can_get_lfabt_min8)
     world.set_rule(world.get_location(locn.lfabt_min9), can_get_lfabt_min9)
     world.set_rule(world.get_location(locn.lfabt_min10), can_get_lfabt_min_10)
-    # FOTB Logic
+    # Flight of the Bat Logic
     world.set_rule(world.get_location(locn.fotb_min7), can_get_fotb_min7)
     world.set_rule(world.get_location(locn.fotb_min9), can_get_fotb_min9)
-    # ITDN Logic
+    # In the Dark Night Logic
     world.set_rule(world.get_location(locn.itdn_min1), can_get_itdn_min1)
     world.set_rule(world.get_location(locn.itdn_min2), can_get_itdn_min2)
     world.set_rule(world.get_location(locn.itdn_min3), can_get_itdn_min3)
@@ -662,7 +671,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.itdn_min8), can_get_itdn_min8)
     world.set_rule(world.get_location(locn.itdn_min9), can_get_itdn_min9)
     world.set_rule(world.get_location(locn.itdn_min10), can_get_itdn_min10)
-    # TTTOT Logic
+    # To the Top of the Tower Logic
     world.set_rule(world.get_location(locn.tttot_min1), can_get_tttot_min1)
     world.set_rule(world.get_location(locn.tttot_min3), can_get_tttot_min3)
     world.set_rule(world.get_location(locn.tttot_min4), can_get_tttot_min4)
@@ -670,7 +679,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.tttot_min6), can_get_tttot_min6)
     world.set_rule(world.get_location(locn.tttot_min9), can_get_tttot_min9)
     world.set_rule(world.get_location(locn.tttot_min10), can_get_tttot_min10)
-    # TRMAW Logic
+    # The Riddler Makes A Withdrawal Logic
     world.set_rule(world.get_location(locn.trmaw_min1), can_get_trmaw_min1)
     world.set_rule(world.get_location(locn.trmaw_min2), can_get_trmaw_min2)
     world.set_rule(world.get_location(locn.trmaw_min3), can_get_trmaw_min3)
@@ -678,7 +687,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.trmaw_min6), can_get_trmaw_min6)
     world.set_rule(world.get_location(locn.trmaw_min7), can_get_trmaw_min7)
     world.set_rule(world.get_location(locn.trmaw_min9), can_get_trmaw_min9)
-    # OTR Logic
+    # On The Rocks Logic
     world.set_rule(world.get_location(locn.otr_min2), can_get_otr_min2)
     world.set_rule(world.get_location(locn.otr_min4), can_get_otr_min4)
     world.set_rule(world.get_location(locn.otr_min5), can_get_otr_min5)
@@ -686,7 +695,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.otr_min7), can_get_otr_min7)
     world.set_rule(world.get_location(locn.otr_min8), can_get_otr_min8)
     world.set_rule(world.get_location(locn.otr_min9), can_get_otr_min9)
-    # GF Logic
+    # Green Fingers Logic
     world.set_rule(world.get_location(locn.gf_min1), can_get_gf_min1)
     world.set_rule(world.get_location(locn.gf_min2), can_get_gf_min2)
     world.set_rule(world.get_location(locn.gf_min4), can_get_gf_min4)
@@ -696,7 +705,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.gf_min8), can_get_gf_min8)
     world.set_rule(world.get_location(locn.gf_min9), can_get_gf_min9)
     world.set_rule(world.get_location(locn.gf_min10), can_get_gf_min10)
-    # AET Logic
+    # An Enterprising Threat Logic
     world.set_rule(world.get_location(locn.aet_min1), can_get_aet_min1)
     world.set_rule(world.get_location(locn.aet_min2), can_get_aet_min2)
     world.set_rule(world.get_location(locn.aet_min3), can_get_aet_min3)
@@ -705,7 +714,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.aet_min7), can_get_aet_min7)
     world.set_rule(world.get_location(locn.aet_min8), can_get_aet_min8)
     world.set_rule(world.get_location(locn.aet_min9), can_get_aet_min9)
-    # BB Logic
+    # Breaking Blocks Logic
     world.set_rule(world.get_location(locn.bb_min2), can_get_bb_min2)
     world.set_rule(world.get_location(locn.bb_min4), can_get_bb_min4)
     world.set_rule(world.get_location(locn.bb_min5), can_get_bb_min5)
@@ -714,13 +723,13 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.bb_min8), can_get_bb_min8)
     world.set_rule(world.get_location(locn.bb_min9), can_get_bb_min9)
     world.set_rule(world.get_location(locn.bb_min10), can_get_bb_min10)
-    # RTD Logic
+    # Rockin The Dock Logic
     world.set_rule(world.get_location(locn.rtd_min1), can_get_rtd_min1)
     world.set_rule(world.get_location(locn.rtd_min2), can_get_rtd_min2)
     world.set_rule(world.get_location(locn.rtd_min5), can_get_rtd_min5)
     world.set_rule(world.get_location(locn.rtd_min7), can_get_rtd_min7)
     world.set_rule(world.get_location(locn.rtd_min9), can_get_rtd_min9)
-    # STS Logic
+    # Stealing The Show Logic
     world.set_rule(world.get_location(locn.sts_min1), can_get_sts_min1)
     world.set_rule(world.get_location(locn.sts_min2), can_get_sts_min2)
     world.set_rule(world.get_location(locn.sts_min3), can_get_sts_min3)
@@ -728,12 +737,12 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.sts_min7), can_get_sts_min7)
     world.set_rule(world.get_location(locn.sts_min9), can_get_sts_min9)
     world.set_rule(world.get_location(locn.sts_min10), can_get_sts_min10)
-    # HAG Logic
+    # Harbouring A Grudge Logic
     world.set_rule(world.get_location(locn.hag_min3), can_get_hag_min3)
     world.set_rule(world.get_location(locn.hag_min7), can_get_hag_min7)
     world.set_rule(world.get_location(locn.hag_min8), can_get_hag_min8)
     world.set_rule(world.get_location(locn.hag_min10), can_get_hag_min10)
-    # ADR Logic
+    # A Daring Rescue Logic
     world.set_rule(world.get_location(locn.adr_min1), can_get_adr_min1)
     world.set_rule(world.get_location(locn.adr_min2), can_get_adr_min2)
     world.set_rule(world.get_location(locn.adr_min3), can_get_adr_min3)
@@ -763,6 +772,12 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.asftc_min8), can_get_asftc_min8)
     world.set_rule(world.get_location(locn.asftc_min9), can_get_asftc_min9)
     world.set_rule(world.get_location(locn.asftc_min10), can_get_asftc_min10)
+    # Biplane Blast Logic
+    world.set_rule(world.get_location(locn.bbpl_min1), can_get_bbpl_min1)
+    world.set_rule(world.get_location(locn.bbpl_min3), can_get_bbpl_min3)
+    world.set_rule(world.get_location(locn.bbpl_min8), can_get_bbpl_min8)
+    world.set_rule(world.get_location(locn.bbpl_min9), can_get_bbpl_min9)
+    world.set_rule(world.get_location(locn.bbpl_min10), can_get_bbpl_min10)
 
 
 def set_host_rules(world):

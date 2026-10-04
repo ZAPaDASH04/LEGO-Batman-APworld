@@ -111,7 +111,7 @@ character_item_table: Dict[str, LB1ItemData] = {
                                                     ItemClassification.progression_deprioritized, "Character"),
     ItemName.privatejet_unlocked: LB1ItemData(base_item_id + 74, ItemClassification.filler, "Character"),
     ItemName.jokerhelicopter_unlocked: LB1ItemData(base_item_id + 75, ItemClassification.progression, "Character"),
-    ItemName.scarecrowbiplane_unlocked: LB1ItemData(base_item_id + 76, ItemClassification.progression, "Character"),
+    ItemName.biplane_unlocked: LB1ItemData(base_item_id + 76, ItemClassification.progression, "Character"),
     ItemName.goonhelicopter_unlocked: LB1ItemData(base_item_id + 77,
                                                   ItemClassification.progression_deprioritized, "Character"),
     ItemName.riddlerjet_unlocked: LB1ItemData(base_item_id + 78,
