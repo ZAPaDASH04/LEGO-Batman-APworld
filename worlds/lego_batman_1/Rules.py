@@ -451,6 +451,22 @@ can_get_tjm_min9 = char_can_double_jump
 can_get_tjm_host = char_is_joker & char_can_explode & Has(itm.heatprotectsuit)
 can_get_tjm_rb = char_is_joker & char_can_explode & Has(itm.heatprotectsuit)
 
+# The Lure of the Night Logic
+can_access_tlotn_free = char_is_joker
+can_beat_tlotn = char_can_long_jump
+can_get_tlotn_min1 = char_can_hypno & char_can_explode
+can_get_tlotn_min2 = char_can_double_jump & char_can_explode
+can_get_tlotn_min3 = char_can_double_jump
+can_get_tlotn_min4 = char_is_strong & char_can_long_jump
+can_get_tlotn_min5 = Has(itm.magsuit) & char_can_long_jump
+can_get_tlotn_min6 = char_can_long_jump
+can_get_tlotn_min7 = char_can_long_jump
+can_get_tlotn_min8 = char_can_long_jump
+can_get_tlotn_min9 = char_can_explode & char_can_long_jump
+can_get_tlotn_min10 = char_can_sink & Has(itm.sonicsuit) & char_can_long_jump
+can_get_tlotn_host = char_can_double_jump
+can_get_tlotn_rb = HasAll(itm.poisonivy_unlocked, itm.attractsuit) & char_can_double_jump
+
 
 def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.bc + " -> " + RegionName.ycbob), Has(ItemName.ycbob_lvl))
@@ -795,6 +811,17 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.tjm_min7), can_get_tjm_min7)
     world.set_rule(world.get_location(locn.tjm_min8), can_get_tjm_min8)
     world.set_rule(world.get_location(locn.tjm_min9), can_get_tjm_min9)
+    # The Lure of the Night Logic
+    world.set_rule(world.get_location(locn.tlotn_min1), can_get_tlotn_min1)
+    world.set_rule(world.get_location(locn.tlotn_min2), can_get_tlotn_min2)
+    world.set_rule(world.get_location(locn.tlotn_min3), can_get_tlotn_min3)
+    world.set_rule(world.get_location(locn.tlotn_min4), can_get_tlotn_min4)
+    world.set_rule(world.get_location(locn.tlotn_min5), can_get_tlotn_min5)
+    world.set_rule(world.get_location(locn.tlotn_min6), can_get_tlotn_min6)
+    world.set_rule(world.get_location(locn.tlotn_min7), can_get_tlotn_min7)
+    world.set_rule(world.get_location(locn.tlotn_min8), can_get_tlotn_min8)
+    world.set_rule(world.get_location(locn.tlotn_min9), can_get_tlotn_min9)
+    world.set_rule(world.get_location(locn.tlotn_min10), can_get_tlotn_min10)
 
 
 def set_host_rules(world):
@@ -817,6 +844,7 @@ def set_host_rules(world):
     world.set_rule(world.get_location(locn.aw_host), can_get_aw_host)
     world.set_rule(world.get_location(locn.asftc_host), can_get_asftc_host)
     world.set_rule(world.get_location(locn.tjm_host), can_get_tjm_host)
+    world.set_rule(world.get_location(locn.tlotn_host), can_get_tlotn_host)
 
 
 def set_level_beaten_rules(world):
@@ -852,6 +880,8 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.aw_ts), can_beat_aw)
     world.set_rule(world.get_location(locn.asftc_beat), can_beat_asftc)
     world.set_rule(world.get_location(locn.asftc_ts), can_beat_asftc)
+    world.set_rule(world.get_location(locn.tlotn_beat), can_beat_tlotn)
+    world.set_rule(world.get_location(locn.tlotn_ts), can_beat_tlotn)
 
 #
 #
