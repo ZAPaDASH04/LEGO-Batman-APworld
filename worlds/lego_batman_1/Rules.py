@@ -1,13 +1,18 @@
-from typing import List, Callable
+from typing import TYPE_CHECKING, Any
+from typing_extensions import override
+import dataclasses
 
 from BaseClasses import Location
-from worlds.generic.Rules import set_rule
+from Options import Option
 from rule_builder.options import OptionFilter, Operator
 from rule_builder.rules import Rule, Has, HasAll, HasFromListUnique, True_, And, Or, CanReachLocation, CanReachRegion
 
-from .Locations import event_location_table, purchase_location_table
+if TYPE_CHECKING:
+    from . import LB1World
+
+from .Locations import all_location_table, event_location_table
 from .Names import LocationName, ItemName, RegionName
-from .Options import LB1Options, EndGoal
+from .Options import LB1Options, EndGoal, HardPurchases
 
 itm = ItemName
 locn = LocationName
@@ -97,7 +102,7 @@ can_get_ycbob_min7 = char_is_strong
 can_get_ycbob_min8 = HasAll(itm.attractsuit, itm.sonicsuit)
 can_get_ycbob_min9 = char_can_hypno & char_can_techno
 can_get_ycbob_min10 = char_can_techno
-can_get_ycbob_rb = char_can_techno & can_access_ycbob_free
+can_get_ycbob_rb = char_can_techno
 
 # An Icy Reception Logic
 can_access_air_free = Has(itm.magsuit) & char_can_glide
@@ -112,7 +117,7 @@ can_get_air_min8 = char_can_cross_toxic & char_can_explode
 can_get_air_min9 = char_can_explode
 can_get_air_min10 = char_can_hypno
 can_get_air_host = char_can_hypno
-can_get_air_rb = char_is_strong & can_access_air_free
+can_get_air_rb = char_is_strong
 
 # Two Face Chase Logic
 can_access_tfc_free = auto_has_cable
@@ -134,7 +139,7 @@ can_get_apa_min8 = Has(itm.heatprotectsuit) & char_can_double_jump
 can_get_apa_min9 = Has(itm.heatprotectsuit)
 can_get_apa_min10 = Has(itm.heatprotectsuit)
 can_get_apa_host = Has(itm.sonicsuit)
-can_get_apa_rb = char_can_explode & char_is_joker & Has(itm.heatprotectsuit) & can_access_apa_free
+can_get_apa_rb = char_can_explode & char_is_joker & Has(itm.heatprotectsuit)
 
 # The Face Off Logic
 can_access_tfo = Has(itm.tfo_lvl) & char_can_glide
@@ -148,7 +153,7 @@ can_get_tfo_min8 = HasAll(itm.mrfreeze_unlocked, itm.poisonivy_unlocked)
 can_get_tfo_min9 = Has(itm.attractsuit) | char_can_cross_toxic
 can_get_tfo_min10 = Has(itm.attractsuit) | char_can_cross_toxic
 can_get_tfo_host = Has(itm.attractsuit) & char_can_double_jump
-can_get_tfo_rb = char_can_cross_toxic & can_access_tfo_free
+can_get_tfo_rb = char_can_cross_toxic
 
 # There She Goes Again Logic
 can_access_tsga_free = char_can_glide & Has(itm.magsuit)
@@ -162,7 +167,7 @@ can_get_tsga_min7 = char_is_strong
 can_get_tsga_min8 = char_is_strong & char_can_double_jump & char_can_explode
 can_get_tsga_min9 = Has(itm.sonicsuit) & can_beat_tsga
 can_get_tsga_min10 = can_beat_tsga & char_can_sink & Has(itm.sonicsuit)
-can_get_tsga_rb = can_beat_tsga & Has(itm.sonicsuit) & can_access_tsga_free
+can_get_tsga_rb = Has(itm.sonicsuit)
 
 # Batboat Battle Logic
 can_access_bbb = Has(itm.bbb_lvl) & has_two_watercraft & Has(itm.batboat_unlocked)
@@ -204,7 +209,7 @@ can_get_zc_min8 = char_can_glide & Has(itm.sonicsuit)
 can_get_zc_min9 = char_can_glide & HasAll(itm.sonicsuit, itm.mrfreeze_unlocked)
 can_get_zc_min10 = char_can_glide & char_is_strong & Has(itm.sonicsuit)
 can_get_zc_host = Has(itm.sonicsuit) | (char_can_glide & char_can_techno)
-can_get_zc_rb = char_can_double_jump & char_can_sink & can_access_zc_free
+can_get_zc_rb = char_can_double_jump & char_can_sink
 
 # Penguin's Lair Logic
 can_access_pl_free = char_can_glide & char_can_sink
@@ -216,7 +221,7 @@ can_get_pl_min5 = Has(itm.glidesuit) & char_can_sink
 can_get_pl_min7 = char_can_double_jump
 can_get_pl_min8 = char_can_cross_toxic & Has(itm.penguin_unlocked)
 can_get_pl_min10 = HasAll(itm.heatprotectsuit, itm.sonicsuit)
-can_get_pl_rb = Has(itm.sonicsuit) & can_access_pl_free
+can_get_pl_rb = Has(itm.sonicsuit)
 
 # Joker's Home Turf Logic
 can_access_jht = HasAll(itm.attractsuit, itm.jht_lvl) & char_can_glide
@@ -254,7 +259,7 @@ can_access_fotb_free = air_has_cable
 can_access_fotb = Has(itm.fotb_lvl) & has_two_aircraft & Has(itm.batwing_unlocked)
 can_get_fotb_min7 = air_can_cross_toxic
 can_get_fotb_min9 = air_can_cross_toxic
-can_get_fotb_rb = air_can_cross_toxic & can_access_fotb_free
+can_get_fotb_rb = air_can_cross_toxic
 
 # In the Dark Night Logic
 can_access_itdn_free = char_can_explode
@@ -271,7 +276,7 @@ can_get_itdn_min8 = can_beat_itdn
 can_get_itdn_min9 = can_beat_itdn & char_is_joker & Has(itm.sonicsuit)
 can_get_itdn_min10 = char_is_joker & char_can_double_jump & Has(itm.sonicsuit)
 can_get_itdn_host = char_can_explode & char_can_techno
-can_get_itdn_rb = can_beat_itdn & char_can_glide & Has(itm.heatprotectsuit) & can_access_itdn_free
+can_get_itdn_rb = char_can_glide & Has(itm.heatprotectsuit)
 
 # To the Top of the Tower Logic
 can_access_tttot_free = Has(itm.magsuit)
@@ -283,7 +288,7 @@ can_get_tttot_min5 = char_can_long_jump
 can_get_tttot_min6 = char_is_joker
 can_get_tttot_min9 = char_can_glide & char_can_double_jump
 can_get_tttot_min10 = can_beat_tttot & char_can_explode
-can_get_tttot_rb = can_beat_tttot & char_is_strong
+can_get_tttot_rb = char_is_strong
 
 # The Riddler Makes A Withdrawal Logic
 can_leave_trmaw_garage = char_is_strong & char_can_hypno
@@ -296,7 +301,7 @@ can_get_trmaw_min6 = Has(itm.sonicsuit) & (char_can_explode | char_can_double_ju
 can_get_trmaw_min7 = char_can_double_jump
 can_get_trmaw_min9 = Has(itm.sonicsuit)
 can_get_trmaw_host = Has(itm.sonicsuit)
-can_get_trmaw_rb = Has(itm.magsuit) & can_access_trmaw_free
+can_get_trmaw_rb = Has(itm.magsuit)
 
 # On The Rocks Logic
 can_access_otr = char_is_strong
@@ -375,7 +380,7 @@ can_get_sts_min7 = Has(itm.sonicsuit) & char_is_strong
 can_get_sts_min9 = HasAll(itm.sonicsuit, itm.penguin_unlocked)
 can_get_sts_min10 = char_is_strong = Has(itm.penguin_unlocked)
 can_get_sts_host = Has(itm.magsuit) & char_is_strong
-can_get_sts_rb = (can_access_sts_free & HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
+can_get_sts_rb = (HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
                   char_can_explode)
 
 # Harbouring A Grudge Logic
@@ -438,7 +443,6 @@ can_get_bbpl_min3 = Has(itm.batwing_unlocked)
 can_get_bbpl_min8 = Has(itm.batwing_unlocked)
 can_get_bbpl_min9 = Has(itm.batwing_unlocked)
 can_get_bbpl_min10 = Has(itm.batwing_unlocked)
-can_get_bbpl_rb = can_access_bbpl_free & can_access_bbpl
 
 # The Joker's Masterpiece Logic
 can_access_tjm_free = char_is_joker & char_can_hypno
@@ -535,6 +539,76 @@ attract_suit_jht = Has(itm.jht_lvl)
 attract_suit_lfabt = HasAll(itm.lfabt_lvl, itm.magsuit, itm.sonicsuit) & char_can_explode
 can_unlock_attract_suit = Has(itm.attractsuit) & (attract_suit_apa | attract_suit_tfo | attract_suit_jht |
                                                   attract_suit_lfabt)
+
+
+# Shop Logic
+def from_option(option: type[Option], value: Any, operator: Operator = "eq") -> Rule:
+    return True_(options=[OptionFilter(option, value, operator)])
+
+
+def has_needed_multi(location_name: str) -> Rule:
+    return Or(from_option(HardPurchases, 1), HasMultiplier(location_name))
+
+
+@dataclasses.dataclass
+class HasMultiplier(Rule, game="Lego Batman The Video Game"):
+    location_name: str
+
+    @override
+    def _instantiate(self, world: "LB1World") -> Rule.Resolved:
+        # Look up the price
+        data = all_location_table[self.location_name]
+        cheaper_shop_amount = world.options.CheaperShops
+        price = data.price / cheaper_shop_amount
+
+        # Get Multiplier Requirements
+        low = world.options.LowMultiplierPriceMinimum
+        high = world.options.HighMultiplierPriceMinimum
+
+        # Compare and Return
+        if price < low:
+            return True_().resolve(world)
+        elif price < high:
+            return has_low_multi.resolve(world)
+        else:
+            return has_high_multi.resolve(world)
+
+
+can_purchase_silhouettes = has_needed_multi(locn.silhouettes)
+can_purchase_beepbeep = has_needed_multi(locn.beepbeep)
+can_purchase_icerink = has_needed_multi(locn.icerink)
+can_purchase_disguise = has_needed_multi(locn.disguise)
+can_purchase_extratoggle = has_needed_multi(locn.extratoggle)
+can_purchase_scorex2 = has_needed_multi(locn.scorex2) & can_get_trmaw_rb & CanReachLocation(locn.trmaw_beat)
+can_purchase_scorex4 = has_needed_multi(locn.scorex4) & can_get_otr_rb & CanReachLocation(locn.otr_beat)
+can_purchase_scorex6 = has_needed_multi(locn.scorex6) & can_get_gf_rb & CanReachLocation(locn.gf_beat)
+can_purchase_scorex8 = has_needed_multi(locn.scorex8) & can_get_aet_rb & CanReachLocation(locn.aet_beat)
+can_purchase_scorex10 = has_needed_multi(locn.scorex10) & can_get_bb_rb & CanReachLocation(locn.bb_beat)
+can_purchase_stud_magnet = has_needed_multi(locn.studmagnet) & can_get_rtd_rb & CanReachLocation(locn.rtd_beat)
+can_purchase_char_studs = has_needed_multi(locn.charstuds) & can_get_sts_rb & CanReachLocation(locn.sts_beat)
+can_purchase_minikit_detect = has_needed_multi(locn.minidetect) & can_get_hag_rb & CanReachLocation(locn.hag_beat)
+can_purchase_pwr_brick_detect = has_needed_multi(locn.powerdetect) & can_get_adr_rb & CanReachLocation(locn.adr_beat)
+can_purchase_always_multi = has_needed_multi(locn.alwaysscore) & can_get_aw_rb & CanReachLocation(locn.aw_beat)
+can_purchase_fast_build = has_needed_multi(locn.fastbuild) & can_get_asftc_rb & CanReachLocation(locn.asftc_beat)
+can_purchase_freeze_immune = has_needed_multi(locn.immunefreeze) & CanReachLocation(locn.bbpl_beat)
+can_purchase_regen_hearts = has_needed_multi(locn.regenhearts) & can_get_tjm_rb & CanReachLocation(locn.tjm_beat)
+can_purchase_extra_hearts = has_needed_multi(locn.extrahearts) & can_get_tlotn_rb & CanReachLocation(locn.tlotn_beat)
+can_purchase_invincibility = has_needed_multi(locn.invincibility) & CanReachLocation(locn.dol_beat)
+can_purchase_fast_grapple = has_needed_multi(locn.fastgrap) & can_get_ycbob_rb & CanReachLocation(locn.ycbob_beat)
+can_purchase_fast_bat = has_needed_multi(locn.fastbat) & can_get_air_rb & CanReachLocation(locn.air_beat)
+can_purchase_more_bat = has_needed_multi(locn.moretargets) & CanReachLocation(locn.tfc_beat)
+can_purchase_flame_bat = has_needed_multi(locn.flamingbat) & can_get_apa_rb & CanReachLocation(locn.apa_beat)
+can_purchase_slam = has_needed_multi(locn.slam) & can_get_tfo_rb & CanReachLocation(locn.tfo_beat)
+can_purchase_more_det = has_needed_multi(locn.moredet) & can_get_tsga_rb & CanReachLocation(locn.tsga_beat)
+can_purchase_armour_plat = has_needed_multi(locn.armourplating) & CanReachLocation(locn.bbb_beat)
+can_purchase_sonic_pain = has_needed_multi(locn.sonicpain) & can_get_utc_rb & CanReachLocation(locn.utc_beat)
+can_purchase_area_effect = has_needed_multi(locn.areaeffect) & can_get_zc_rb & CanReachLocation(locn.zc_beat)
+can_purchase_bats = has_needed_multi(locn.bats) & can_get_pl_rb & CanReachLocation(locn.pl_beat)
+can_purchase_freeze_bat = has_needed_multi(locn.freezebatarang) & can_get_jht_rb & CanReachLocation(locn.jht_beat)
+can_purchase_decoy = has_needed_multi(locn.decoy) & can_get_lfabt_rb & CanReachLocation(locn.lfabt_beat)
+can_purchase_fast_walk = has_needed_multi(locn.fastwalk) & can_get_fotb_rb & CanReachLocation(locn.fotb_beat)
+can_purchase_faster_piece = has_needed_multi(locn.fasterpieces) & can_get_itdn_rb & CanReachLocation(locn.itdn_beat)
+can_purchase_piece_detect = has_needed_multi(locn.piecedetect) & can_get_tttot_rb & CanReachLocation(locn.tttot_beat)
 
 
 def set_entrance_rules(world):
@@ -952,199 +1026,160 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.tlotn_beat), can_beat_tlotn)
     world.set_rule(world.get_location(locn.tlotn_ts), can_beat_tlotn)
 
-#
-#
-# def set_shop_rules(world: MultiWorld, options: LB1Options, player: int):
-#     set_rule(world.get_location(LocationName.riddlergoon_unlocked, player),
-#              lambda state: can_purchase_riddler_goon(state, options, player))
-#     set_rule(world.get_location(LocationName.riddlerhenchman_unlocked, player),
-#              lambda state: can_purchase_riddler_henchman(state, options, player))
-#     set_rule(world.get_location(LocationName.freezegirl_unlocked, player),
-#              lambda state: can_purchase_freeze_girl(state, options, player))
-#     set_rule(world.get_location(LocationName.policecar_unlocked, player),
-#              lambda state: can_purchase_police_car(state, options, player))
-#     set_rule(world.get_location(LocationName.policebike_unlocked, player),
-#              lambda state: can_purchase_police_bike(state, options, player))
-#     set_rule(world.get_location(LocationName.policevan_unlocked, player),
-#              lambda state: can_purchase_police_van(state, options, player))
-#     set_rule(world.get_location(LocationName.jokervan_unlocked, player),
-#              lambda state: can_purchase_joker_van(state, options, player))
-#     set_rule(world.get_location(LocationName.poisonivygoon_unlocked, player),
-#              lambda state: can_purchase_poison_ivy_goon(state, options, player))
-#     set_rule(world.get_location(LocationName.fishmonger_unlocked, player),
-#              lambda state: can_purchase_fishmonger(state, options, player))
-#     set_rule(world.get_location(LocationName.penguingoon_unlocked, player),
-#              lambda state: can_purchase_penguin_goon(state, options, player))
-#     set_rule(world.get_location(LocationName.penguinhenchman_unlocked, player),
-#              lambda state: can_purchase_penguin_henchman(state, options, player))
-#     set_rule(world.get_location(LocationName.robinssubmarine_unlocked, player),
-#              lambda state: can_purchase_robin_sub(state, options, player))
-#     set_rule(world.get_location(LocationName.penguingoonsub_unlocked, player),
-#              lambda state: can_purchase_goon_sub(state, options, player))
-#     set_rule(world.get_location(LocationName.harbourhelicopter_unlocked, player),
-#              lambda state: can_purchase_harbour_heli(state, options, player))
-#     set_rule(world.get_location(LocationName.zoosweeper_unlocked, player),
-#              lambda state: can_purchase_zoo_sweeper(state, options, player))
-#     set_rule(world.get_location(LocationName.manbat_unlocked, player),
-#              lambda state: can_purchase_manbat(state, options, player))
-#     set_rule(world.get_location(LocationName.yeti_unlocked, player),
-#              lambda state: can_purchase_yeti(state, options, player))
-#     set_rule(world.get_location(LocationName.penguinminion_unlocked, player),
-#              lambda state: can_purchase_penguin_minion(state, options, player))
-#     set_rule(world.get_location(LocationName.madhatter_unlocked, player),
-#              lambda state: can_purchase_mad_hatter(state, options, player))
-#     set_rule(world.get_location(LocationName.jokergoon_unlocked, player),
-#              lambda state: can_purchase_joker_goon(state, options, player))
-#     set_rule(world.get_location(LocationName.jokerhenchman_unlocked, player),
-#              lambda state: can_purchase_joker_henchman(state, options, player))
-#     set_rule(world.get_location(LocationName.steamboat_unlocked, player),
-#              lambda state: can_purchase_steamboat(state, options, player))
-#     set_rule(world.get_location(LocationName.glider_unlocked, player),
-#              lambda state: can_purchase_glider(state, options, player))
-#     set_rule(world.get_location(LocationName.clowngoon_unlocked, player),
-#              lambda state: can_purchase_clown(state, options, player))
-#     set_rule(world.get_location(LocationName.privatejet_unlocked, player),
-#              lambda state: can_purchase_private_jet(state, options, player))
-#     set_rule(world.get_location(LocationName.brucewayne_unlocked, player),
-#              lambda state: can_purchase_bruce_wayne(state, options, player))
-#     set_rule(world.get_location(LocationName.alfred_unlocked, player),
-#              lambda state: can_purchase_alfred(state, options, player))
-#     set_rule(world.get_location(LocationName.batgirl_unlocked, player),
-#              lambda state: can_purchase_batgirl(state, options, player))
-#     set_rule(world.get_location(LocationName.nightwing_unlocked, player),
-#              lambda state: can_purchase_nightwing(state, options, player))
-#     set_rule(world.get_location(LocationName.policeofficer_unlocked, player),
-#              lambda state: can_purchase_police_officer(state, options, player))
-#     set_rule(world.get_location(LocationName.militarypoliceman_unlocked, player),
-#              lambda state: can_purchase_military_police(state, options, player))
-#     set_rule(world.get_location(LocationName.securityguard_unlocked, player),
-#              lambda state: can_purchase_security_guard(state, options, player))
-#     set_rule(world.get_location(LocationName.battank_unlocked, player),
-#              lambda state: can_purchase_bat_tank(state, options, player))
-#     set_rule(world.get_location(LocationName.freezekart_unlocked, player),
-#              lambda state: can_purchase_freeze_kart(state, options, player))
-#     set_rule(world.get_location(LocationName.iceberg_unlocked, player),
-#              lambda state: can_purchase_iceberg(state, options, player))
-#     set_rule(world.get_location(LocationName.scientist_unlocked, player),
-#              lambda state: can_purchase_scientist(state, options, player))
-#     set_rule(world.get_location(LocationName.armouredtruck_unlocked, player),
-#              lambda state: can_purchase_armoured_truck(state, options, player))
-#     set_rule(world.get_location(LocationName.swat_unlocked, player),
-#              lambda state: can_purchase_swat(state, options, player))
-#     set_rule(world.get_location(LocationName.riddlerjet_unlocked, player),
-#              lambda state: can_purchase_riddler_jet(state, options, player))
-#     set_rule(world.get_location(LocationName.sailor_unlocked, player),
-#              lambda state: can_purchase_sailor(state, options, player))
-#     set_rule(world.get_location(LocationName.catwomanclassic_unlocked, player),
-#              lambda state: can_purchase_catwoman_classic(state, options, player))
-#     set_rule(world.get_location(LocationName.catmotorcycle_unlocked, player),
-#              lambda state: can_purchase_cat_motorcycle(state, options, player))
-#     set_rule(world.get_location(LocationName.policewatercraft_unlocked, player),
-#              lambda state: can_purchase_police_watercraft(state, options, player))
-#     set_rule(world.get_location(LocationName.policeboat_unlocked, player),
-#              lambda state: can_purchase_police_boat(state, options, player))
-#     set_rule(world.get_location(LocationName.commissionergordon_unlocked, player),
-#              lambda state: can_purchase_commissioner(state, options, player))
-#     set_rule(world.get_location(LocationName.hammertruck_unlocked, player),
-#              lambda state: can_purchase_hammer_truck(state, options, player))
-#     set_rule(world.get_location(LocationName.policehelicopter_unlocked, player),
-#              lambda state: can_purchase_police_heli(state, options, player))
-#     set_rule(world.get_location(LocationName.goonhelicopter_unlocked, player),
-#              lambda state: can_purchase_goon_heli(state, options, player))
-#     set_rule(world.get_location(LocationName.garbagetruck_unlocked, player),
-#              lambda state: can_purchase_garbage_truck(state, options, player))
-#     set_rule(world.get_location(LocationName.policemarksman_unlocked, player),
-#              lambda state: can_purchase_police_marksman(state, options, player))
-#     set_rule(world.get_location(LocationName.jokertropical_unlocked, player),
-#              lambda state: can_purchase_joker_tropic(state, options, player))
-#     set_rule(world.get_location(LocationName.hush_unlocked, player),
-#              lambda state: can_purchase_hush(state, options, player))
-#     set_rule(world.get_location(LocationName.rasalghul_unlocked, player),
-#              lambda state: can_purchase_ras(state, options, player))
-#
-#     set_rule(world.get_location(LocationName.silhouettes, player),
-#              lambda state: can_purchase_silhouettes(state, options, player))
-#     set_rule(world.get_location(LocationName.beepbeep, player),
-#              lambda state: can_purchase_beepbeep(state, options, player))
-#     set_rule(world.get_location(LocationName.icerink, player),
-#              lambda state: can_purchase_ice_rink(state, options, player))
-#     set_rule(world.get_location(LocationName.disguise, player),
-#              lambda state: can_purchase_disguise(state, options, player))
-#     set_rule(world.get_location(LocationName.extratoggle, player),
-#              lambda state: can_purchase_extra_toggle(state, options, player))
-#     set_rule(world.get_location(LocationName.scorex2, player),
-#              lambda state: can_purchase_scorex2(state, options, player))
-#     set_rule(world.get_location(LocationName.scorex4, player),
-#              lambda state: can_purchase_scorex4(state, options, player))
-#     set_rule(world.get_location(LocationName.scorex6, player),
-#              lambda state: can_purchase_scorex6(state, options, player))
-#     set_rule(world.get_location(LocationName.scorex8, player),
-#              lambda state: can_purchase_scorex8(state, options, player))
-#     set_rule(world.get_location(LocationName.scorex10, player),
-#              lambda state: can_purchase_scorex10(state, options, player))
-#     set_rule(world.get_location(LocationName.studmagnet, player),
-#              lambda state: can_purchase_stud_magnet(state, options, player))
-#     set_rule(world.get_location(LocationName.charstuds, player),
-#              lambda state: can_purchase_char_studs(state, options, player))
-#     set_rule(world.get_location(LocationName.minikitdetect, player),
-#              lambda state: can_purchase_minikit_detect(state, options, player))
-#     set_rule(world.get_location(LocationName.pwrbrickdetect, player),
-#              lambda state: can_purchase_powerbrick_detect(state, options, player))
-#     set_rule(world.get_location(LocationName.alwaysscore, player),
-#              lambda state: can_purchase_always_score(state, options, player))
-#     set_rule(world.get_location(LocationName.fastbuild, player),
-#              lambda state: can_purchase_fast_build(state, options, player))
-#     set_rule(world.get_location(LocationName.immunefreeze, player),
-#              lambda state: can_purchase_immune_freeze(state, options, player))
-#     set_rule(world.get_location(LocationName.regenhearts, player),
-#              lambda state: can_purchase_regen_hearts(state, options, player))
-#     set_rule(world.get_location(LocationName.extrahearts, player),
-#              lambda state: can_purchase_extra_hearts(state, options, player))
-#     set_rule(world.get_location(LocationName.invincibility, player),
-#              lambda state: can_purchase_invincibility(state, options, player))
-#     set_rule(world.get_location(LocationName.fastgrapple, player),
-#              lambda state: can_purchase_fast_grapple(state, options, player))
-#     set_rule(world.get_location(LocationName.fastbatarang, player),
-#              lambda state: can_purchase_fast_batarang(state, options, player))
-#     set_rule(world.get_location(LocationName.moretargets, player),
-#              lambda state: can_purchase_more_targets(state, options, player))
-#     set_rule(world.get_location(LocationName.flamingbata, player),
-#              lambda state: can_purchase_flaming_bat(state, options, player))
-#     set_rule(world.get_location(LocationName.slam, player),
-#              lambda state: can_purchase_slam(state, options, player))
-#     set_rule(world.get_location(LocationName.moredet, player),
-#              lambda state: can_purchase_more_det(state, options, player))
-#     set_rule(world.get_location(LocationName.armorplating, player),
-#              lambda state: can_purchase_armor_plating(state, options, player))
-#     set_rule(world.get_location(LocationName.sonicpain, player),
-#              lambda state: can_purchase_sonic_pain(state, options, player))
-#     set_rule(world.get_location(LocationName.areaeffect, player),
-#              lambda state: can_purchase_area_effect(state, options, player))
-#     set_rule(world.get_location(LocationName.bats, player),
-#              lambda state: can_purchase_bats(state, options, player))
-#     set_rule(world.get_location(LocationName.freezebatarang, player),
-#              lambda state: can_purchase_freeze_bat(state, options, player))
-#     set_rule(world.get_location(LocationName.decoy, player),
-#              lambda state: can_purchase_decoy(state, options, player))
-#     set_rule(world.get_location(LocationName.fastwalk, player),
-#              lambda state: can_purchase_fast_walk(state, options, player))
-#     set_rule(world.get_location(LocationName.fasterpieces, player),
-#              lambda state: can_purchase_faster_pieces(state, options, player))
-#     set_rule(world.get_location(LocationName.piecedetect, player),
-#              lambda state: can_purchase_piece_detect(state, options, player))
-#
+
+def set_shop_rules(world):
+    #     set_rule(world.get_location(LocationName.riddlergoon_unlocked, player),
+    #              lambda state: can_purchase_riddler_goon(state, options, player))
+    #     set_rule(world.get_location(LocationName.riddlerhenchman_unlocked, player),
+    #              lambda state: can_purchase_riddler_henchman(state, options, player))
+    #     set_rule(world.get_location(LocationName.freezegirl_unlocked, player),
+    #              lambda state: can_purchase_freeze_girl(state, options, player))
+    #     set_rule(world.get_location(LocationName.policecar_unlocked, player),
+    #              lambda state: can_purchase_police_car(state, options, player))
+    #     set_rule(world.get_location(LocationName.policebike_unlocked, player),
+    #              lambda state: can_purchase_police_bike(state, options, player))
+    #     set_rule(world.get_location(LocationName.policevan_unlocked, player),
+    #              lambda state: can_purchase_police_van(state, options, player))
+    #     set_rule(world.get_location(LocationName.jokervan_unlocked, player),
+    #              lambda state: can_purchase_joker_van(state, options, player))
+    #     set_rule(world.get_location(LocationName.poisonivygoon_unlocked, player),
+    #              lambda state: can_purchase_poison_ivy_goon(state, options, player))
+    #     set_rule(world.get_location(LocationName.fishmonger_unlocked, player),
+    #              lambda state: can_purchase_fishmonger(state, options, player))
+    #     set_rule(world.get_location(LocationName.penguingoon_unlocked, player),
+    #              lambda state: can_purchase_penguin_goon(state, options, player))
+    #     set_rule(world.get_location(LocationName.penguinhenchman_unlocked, player),
+    #              lambda state: can_purchase_penguin_henchman(state, options, player))
+    #     set_rule(world.get_location(LocationName.robinssubmarine_unlocked, player),
+    #              lambda state: can_purchase_robin_sub(state, options, player))
+    #     set_rule(world.get_location(LocationName.penguingoonsub_unlocked, player),
+    #              lambda state: can_purchase_goon_sub(state, options, player))
+    #     set_rule(world.get_location(LocationName.harbourhelicopter_unlocked, player),
+    #              lambda state: can_purchase_harbour_heli(state, options, player))
+    #     set_rule(world.get_location(LocationName.zoosweeper_unlocked, player),
+    #              lambda state: can_purchase_zoo_sweeper(state, options, player))
+    #     set_rule(world.get_location(LocationName.manbat_unlocked, player),
+    #              lambda state: can_purchase_manbat(state, options, player))
+    #     set_rule(world.get_location(LocationName.yeti_unlocked, player),
+    #              lambda state: can_purchase_yeti(state, options, player))
+    #     set_rule(world.get_location(LocationName.penguinminion_unlocked, player),
+    #              lambda state: can_purchase_penguin_minion(state, options, player))
+    #     set_rule(world.get_location(LocationName.madhatter_unlocked, player),
+    #              lambda state: can_purchase_mad_hatter(state, options, player))
+    #     set_rule(world.get_location(LocationName.jokergoon_unlocked, player),
+    #              lambda state: can_purchase_joker_goon(state, options, player))
+    #     set_rule(world.get_location(LocationName.jokerhenchman_unlocked, player),
+    #              lambda state: can_purchase_joker_henchman(state, options, player))
+    #     set_rule(world.get_location(LocationName.steamboat_unlocked, player),
+    #              lambda state: can_purchase_steamboat(state, options, player))
+    #     set_rule(world.get_location(LocationName.glider_unlocked, player),
+    #              lambda state: can_purchase_glider(state, options, player))
+    #     set_rule(world.get_location(LocationName.clowngoon_unlocked, player),
+    #              lambda state: can_purchase_clown(state, options, player))
+    #     set_rule(world.get_location(LocationName.privatejet_unlocked, player),
+    #              lambda state: can_purchase_private_jet(state, options, player))
+    #     set_rule(world.get_location(LocationName.brucewayne_unlocked, player),
+    #              lambda state: can_purchase_bruce_wayne(state, options, player))
+    #     set_rule(world.get_location(LocationName.alfred_unlocked, player),
+    #              lambda state: can_purchase_alfred(state, options, player))
+    #     set_rule(world.get_location(LocationName.batgirl_unlocked, player),
+    #              lambda state: can_purchase_batgirl(state, options, player))
+    #     set_rule(world.get_location(LocationName.nightwing_unlocked, player),
+    #              lambda state: can_purchase_nightwing(state, options, player))
+    #     set_rule(world.get_location(LocationName.policeofficer_unlocked, player),
+    #              lambda state: can_purchase_police_officer(state, options, player))
+    #     set_rule(world.get_location(LocationName.militarypoliceman_unlocked, player),
+    #              lambda state: can_purchase_military_police(state, options, player))
+    #     set_rule(world.get_location(LocationName.securityguard_unlocked, player),
+    #              lambda state: can_purchase_security_guard(state, options, player))
+    #     set_rule(world.get_location(LocationName.battank_unlocked, player),
+    #              lambda state: can_purchase_bat_tank(state, options, player))
+    #     set_rule(world.get_location(LocationName.freezekart_unlocked, player),
+    #              lambda state: can_purchase_freeze_kart(state, options, player))
+    #     set_rule(world.get_location(LocationName.iceberg_unlocked, player),
+    #              lambda state: can_purchase_iceberg(state, options, player))
+    #     set_rule(world.get_location(LocationName.scientist_unlocked, player),
+    #              lambda state: can_purchase_scientist(state, options, player))
+    #     set_rule(world.get_location(LocationName.armouredtruck_unlocked, player),
+    #              lambda state: can_purchase_armoured_truck(state, options, player))
+    #     set_rule(world.get_location(LocationName.swat_unlocked, player),
+    #              lambda state: can_purchase_swat(state, options, player))
+    #     set_rule(world.get_location(LocationName.riddlerjet_unlocked, player),
+    #              lambda state: can_purchase_riddler_jet(state, options, player))
+    #     set_rule(world.get_location(LocationName.sailor_unlocked, player),
+    #              lambda state: can_purchase_sailor(state, options, player))
+    #     set_rule(world.get_location(LocationName.catwomanclassic_unlocked, player),
+    #              lambda state: can_purchase_catwoman_classic(state, options, player))
+    #     set_rule(world.get_location(LocationName.catmotorcycle_unlocked, player),
+    #              lambda state: can_purchase_cat_motorcycle(state, options, player))
+    #     set_rule(world.get_location(LocationName.policewatercraft_unlocked, player),
+    #              lambda state: can_purchase_police_watercraft(state, options, player))
+    #     set_rule(world.get_location(LocationName.policeboat_unlocked, player),
+    #              lambda state: can_purchase_police_boat(state, options, player))
+    #     set_rule(world.get_location(LocationName.commissionergordon_unlocked, player),
+    #              lambda state: can_purchase_commissioner(state, options, player))
+    #     set_rule(world.get_location(LocationName.hammertruck_unlocked, player),
+    #              lambda state: can_purchase_hammer_truck(state, options, player))
+    #     set_rule(world.get_location(LocationName.policehelicopter_unlocked, player),
+    #              lambda state: can_purchase_police_heli(state, options, player))
+    #     set_rule(world.get_location(LocationName.goonhelicopter_unlocked, player),
+    #              lambda state: can_purchase_goon_heli(state, options, player))
+    #     set_rule(world.get_location(LocationName.garbagetruck_unlocked, player),
+    #              lambda state: can_purchase_garbage_truck(state, options, player))
+    #     set_rule(world.get_location(LocationName.policemarksman_unlocked, player),
+    #              lambda state: can_purchase_police_marksman(state, options, player))
+    #     set_rule(world.get_location(LocationName.jokertropical_unlocked, player),
+    #              lambda state: can_purchase_joker_tropic(state, options, player))
+    #     set_rule(world.get_location(LocationName.hush_unlocked, player),
+    #              lambda state: can_purchase_hush(state, options, player))
+    #     set_rule(world.get_location(LocationName.rasalghul_unlocked, player),
+    #              lambda state: can_purchase_ras(state, options, player))
+
+    world.set_rule(world.get_location(LocationName.silhouettes), can_purchase_silhouettes)
+    world.set_rule(world.get_location(LocationName.beepbeep), can_purchase_beepbeep)
+    world.set_rule(world.get_location(LocationName.icerink), can_purchase_icerink)
+    world.set_rule(world.get_location(LocationName.disguise), can_purchase_disguise)
+    world.set_rule(world.get_location(LocationName.extratoggle), can_purchase_extratoggle)
+    world.set_rule(world.get_location(LocationName.scorex2), can_purchase_scorex2)
+    world.set_rule(world.get_location(LocationName.scorex4), can_purchase_scorex4)
+    world.set_rule(world.get_location(LocationName.scorex6), can_purchase_scorex6)
+    world.set_rule(world.get_location(LocationName.scorex8), can_purchase_scorex8)
+    world.set_rule(world.get_location(LocationName.scorex10), can_purchase_scorex10)
+    world.set_rule(world.get_location(LocationName.studmagnet), can_purchase_stud_magnet)
+    world.set_rule(world.get_location(LocationName.charstuds), can_purchase_stud_magnet)
+    world.set_rule(world.get_location(LocationName.minidetect), can_purchase_minikit_detect)
+    world.set_rule(world.get_location(LocationName.powerdetect), can_purchase_pwr_brick_detect)
+    world.set_rule(world.get_location(LocationName.alwaysscore), can_purchase_always_multi)
+    world.set_rule(world.get_location(LocationName.fastbuild), can_purchase_fast_build)
+    world.set_rule(world.get_location(LocationName.immunefreeze), can_purchase_freeze_immune)
+    world.set_rule(world.get_location(LocationName.regenhearts), can_purchase_regen_hearts)
+    world.set_rule(world.get_location(LocationName.extrahearts), can_purchase_extra_hearts)
+    world.set_rule(world.get_location(LocationName.invincibility), can_purchase_invincibility)
+    world.set_rule(world.get_location(LocationName.fastgrap), can_purchase_fast_grapple)
+    world.set_rule(world.get_location(LocationName.fastbat), can_purchase_fast_bat)
+    world.set_rule(world.get_location(LocationName.moretargets), can_purchase_more_bat)
+    world.set_rule(world.get_location(LocationName.flamingbat), can_purchase_flame_bat)
+    world.set_rule(world.get_location(LocationName.slam), can_purchase_slam)
+    world.set_rule(world.get_location(LocationName.moredet), can_purchase_more_det)
+    world.set_rule(world.get_location(LocationName.armourplating), can_purchase_armour_plat)
+    world.set_rule(world.get_location(LocationName.sonicpain), can_purchase_sonic_pain)
+    world.set_rule(world.get_location(LocationName.areaeffect), can_purchase_area_effect)
+    world.set_rule(world.get_location(LocationName.bats), can_purchase_bats)
+    world.set_rule(world.get_location(LocationName.freezebatarang), can_purchase_freeze_bat)
+    world.set_rule(world.get_location(LocationName.decoy), can_purchase_decoy)
+    world.set_rule(world.get_location(LocationName.fastwalk), can_purchase_fast_walk)
+    world.set_rule(world.get_location(LocationName.fasterpieces), can_purchase_faster_piece)
+    world.set_rule(world.get_location(LocationName.piecedetect), can_purchase_piece_detect)
 
 
 def set_rules(world):
     set_entrance_rules(world)
-    # set_char_rules(world, options, player)
-    # # Hard char Rules
     set_suit_rules(world)
     if world.options.minikit_sanity == 1:
         set_minikit_rules(world)
     set_host_rules(world)
     set_level_beaten_rules(world)
-    # set_shop_rules(world, options, player)
+    set_shop_rules(world)
     if world.options.EndGoal == EndGoal.option_levels_beaten:
         set_event_rules(world)
     set_win_con(world)

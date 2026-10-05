@@ -2,6 +2,7 @@ from typing import Dict
 
 from BaseClasses import Item, Tutorial, ItemClassification
 from Options import OptionError
+from typing import Any
 from .Items import LB1Item, all_item_table, minikit_values, hostage_names_set, LB1ItemData
 from .Locations import all_location_table, LocationData, setup_locations, LB1Location
 from .Names import ItemName, RegionName
@@ -120,15 +121,38 @@ class LB1World(World):
         RegionName.aa: {name for name, data in all_location_table.items() if data.region == RegionName.aa},
     }
 
+    @staticmethod
+    def interpret_slot_data(slot_data: Dict[str, Any]) -> Dict[str, Any]:
+        return slot_data
+
+    ut_can_gen_without_yaml = True
+
     def generate_early(self):
         self.validate_yaml()
         self.create_item_table()
         self.choose_starting_levels()
 
+        if hasattr(self.multiworld, "generation_is_fake"):
+            if hasattr(self.multiworld, "re_gen_passthrough"):
+                if "Lego Batman The Video Game" in self.multiworld.re_gen_passthrough:
+                    slot_data = self.multiworld.re_gen_passthrough["Lego Batman The Video Game"]
+                    self.options.EndGoal.value = slot_data["EndGoal"]
+                    self.options.minikit_sanity.value = slot_data["MinikitSanity"]
+                    self.options.minikits_to_win.value = slot_data["MinikitsToWin"]
+                    self.options.minikit_grouping.value = slot_data["MinikitGrouping"]
+                    self.options.levels_to_win.value = slot_data["LevelsToWin"]
+                    self.options.CheaperShops.value = slot_data["CheaperShops"]
+                    self.options.HardPurchases.value = slot_data["HardPurchases"]
+                    self.options.LowMultiplierPriceMinimum.value = slot_data["LowMultiplierPriceMinimum"]
+                    self.options.HighMultiplierPriceMinimum.value = slot_data["HighMultiplierPriceMinimum"]
+                    self.options.shuffle_hush_and_ras.value = slot_data["ShuffleHushAndRas"]
+                    self.options.hush_purchase_requirements.value = slot_data["HushUnlockCondition"]
+                    self.options.ras_purchase_requirements.value = slot_data["RasUnlockCondition"]
+
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
             raise OptionError("Minikit Win Con Requires Minikit Sanity to be enabled.")
-        if self.options.high_multiplier_minimum.value < self.options.low_multiplier_minimum.value:
+        if self.options.HighMultiplierPriceMinimum.value < self.options.LowMultiplierPriceMinimum.value:
             raise OptionError("High Multiplier Minimum must be greater than Low Multiplier Minimum.")
         if self.options.starting_hero_level_count.value > len(self.options.starting_hero_level_options.value):
             raise OptionError("You want to start with more hero levels than are in the starting pool")
@@ -192,6 +216,10 @@ class LB1World(World):
             "MinikitsToWin": self.options.minikits_to_win.value,
             "MinikitGrouping": self.options.minikit_grouping.value,
             "LevelsToWin": self.options.levels_to_win.value,
+            "CheaperShops": self.options.CheaperShops.value,
+            "HardPurchases": self.options.HardPurchases.value,
+            "LowMultiplierPriceMinimum": self.options.LowMultiplierPriceMinimum.value,
+            "HighMultiplierPriceMinimum": self.options.HighMultiplierPriceMinimum.value,
             "ShuffleHushAndRas": self.options.shuffle_hush_and_ras.value,
             "HushUnlockCondition": self.options.hush_purchase_requirements.value,
             "RasUnlockCondition": self.options.ras_purchase_requirements.value,

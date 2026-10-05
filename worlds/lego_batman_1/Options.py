@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import DefaultOnToggle, Range, Choice, PerGameCommonOptions, OptionList
+from Options import DefaultOnToggle, Toggle, Range, Choice, PerGameCommonOptions, OptionList
 
 
 class EndGoal(Choice):
@@ -196,11 +196,23 @@ class StartingVillainLevelOptions(OptionList):
     ]
 
 
-class ShopPurchasesRequireMultiplier(DefaultOnToggle):
+class CheaperShops(Range):
     """
-    Determines if shop purchases require a score multiplier.
+    Determines how many times cheaper purchases are from vanilla game.
+    1 is no change and 10 is 10x cheaper.
+    This is taken into account for stud multiplier logic
     """
-    display_name = "Shop Purchases Require Multiplier"
+    display_name = "Cheaper Shop Purchases"
+    range_start = 1
+    range_end = 10
+    default = 5
+
+
+class HardPurchases(Toggle):
+    """
+    Turning this on makes it so purchases no longer require a stud multiplier.
+    """
+    display_name = "Hard Purchases"
 
 
 class LowMultiplierPriceMinimum(Range):
@@ -214,7 +226,7 @@ class LowMultiplierPriceMinimum(Range):
     default = 50000
 
 
-class HighMultiplierMinimum(Range):
+class HighMultiplierPriceMinimum(Range):
     """
     Determines the starting price for a high multiplier. Does nothing if Shop Purchases Require Multiplier is disabled.
     Must be larger than Low Multiplier Price.
@@ -264,9 +276,10 @@ class LB1Options(PerGameCommonOptions):
     starting_hero_level_options: StartingHeroLevelOptions
     starting_villain_level_count: StartingVillainLevelCount
     starting_villain_level_options: StartingVillainLevelOptions
-    shop_purchases_required_multiplier: ShopPurchasesRequireMultiplier
-    low_multiplier_minimum: LowMultiplierPriceMinimum
-    high_multiplier_minimum: HighMultiplierMinimum
+    CheaperShops: CheaperShops
+    HardPurchases: HardPurchases
+    LowMultiplierPriceMinimum: LowMultiplierPriceMinimum
+    HighMultiplierPriceMinimum: HighMultiplierPriceMinimum
     shuffle_hush_and_ras: ShuffleHushAndRas
     hush_purchase_requirements: HushPurchaseRequirements
     ras_purchase_requirements: RasPurchaseRequirements
