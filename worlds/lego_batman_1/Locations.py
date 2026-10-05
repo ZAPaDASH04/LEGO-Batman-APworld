@@ -6,7 +6,7 @@ from .Names import LocationName, RegionName
 
 
 class LB1Location(Location):
-    game: str = "Lego Batman The Videogame"
+    game: str = "Lego Batman The Video Game"
 
 
 class LocationData(NamedTuple):

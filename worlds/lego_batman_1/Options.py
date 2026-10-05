@@ -265,6 +265,17 @@ class RasPurchaseRequirements(Range):
     default = 150
 
 
+class SimplifiedEpisodeCharacters(DefaultOnToggle):
+    """
+    Turning this on simplifies the unlock condition for characters that require episode completion in Vanilla.
+    Instead of having to complete the full episode, this makes it so you only have to complete level 5 of the episode.
+
+    WARNING: Disabling this makes it so Bat Tank requires all hero levels to be completed before the purchase is
+    available rather than all 3 Level 5's.
+    """
+    display_name = "Simplified Episode Character Unlocks"
+
+
 @dataclass
 class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
@@ -276,10 +287,11 @@ class LB1Options(PerGameCommonOptions):
     starting_hero_level_options: StartingHeroLevelOptions
     starting_villain_level_count: StartingVillainLevelCount
     starting_villain_level_options: StartingVillainLevelOptions
-    CheaperShops: CheaperShops
-    HardPurchases: HardPurchases
-    LowMultiplierPriceMinimum: LowMultiplierPriceMinimum
-    HighMultiplierPriceMinimum: HighMultiplierPriceMinimum
+    cheaper_shops: CheaperShops
+    hard_purchases: HardPurchases
+    low_multiplier_price_minimum: LowMultiplierPriceMinimum
+    high_multiplier_price_minimum: HighMultiplierPriceMinimum
     shuffle_hush_and_ras: ShuffleHushAndRas
     hush_purchase_requirements: HushPurchaseRequirements
     ras_purchase_requirements: RasPurchaseRequirements
+    simple_episode_characters: SimplifiedEpisodeCharacters

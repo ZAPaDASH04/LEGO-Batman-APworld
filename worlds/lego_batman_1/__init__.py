@@ -141,18 +141,19 @@ class LB1World(World):
                     self.options.minikits_to_win.value = slot_data["MinikitsToWin"]
                     self.options.minikit_grouping.value = slot_data["MinikitGrouping"]
                     self.options.levels_to_win.value = slot_data["LevelsToWin"]
-                    self.options.CheaperShops.value = slot_data["CheaperShops"]
-                    self.options.HardPurchases.value = slot_data["HardPurchases"]
-                    self.options.LowMultiplierPriceMinimum.value = slot_data["LowMultiplierPriceMinimum"]
-                    self.options.HighMultiplierPriceMinimum.value = slot_data["HighMultiplierPriceMinimum"]
+                    self.options.cheaper_shops.value = slot_data["cheaper_shops"]
+                    self.options.hard_purchases.value = slot_data["hard_purchases"]
+                    self.options.low_multiplier_price_minimum.value = slot_data["low_multiplier_price_minimum"]
+                    self.options.high_multiplier_price_minimum.value = slot_data["high_multiplier_price_minimum"]
                     self.options.shuffle_hush_and_ras.value = slot_data["ShuffleHushAndRas"]
                     self.options.hush_purchase_requirements.value = slot_data["HushUnlockCondition"]
                     self.options.ras_purchase_requirements.value = slot_data["RasUnlockCondition"]
+                    self.options.simple_episode_characters.value = slot_data["SimpleEpisodeCharacters"]
 
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
             raise OptionError("Minikit Win Con Requires Minikit Sanity to be enabled.")
-        if self.options.HighMultiplierPriceMinimum.value < self.options.LowMultiplierPriceMinimum.value:
+        if self.options.high_multiplier_price_minimum.value < self.options.low_multiplier_price_minimum.value:
             raise OptionError("High Multiplier Minimum must be greater than Low Multiplier Minimum.")
         if self.options.starting_hero_level_count.value > len(self.options.starting_hero_level_options.value):
             raise OptionError("You want to start with more hero levels than are in the starting pool")
@@ -216,13 +217,14 @@ class LB1World(World):
             "MinikitsToWin": self.options.minikits_to_win.value,
             "MinikitGrouping": self.options.minikit_grouping.value,
             "LevelsToWin": self.options.levels_to_win.value,
-            "CheaperShops": self.options.CheaperShops.value,
-            "HardPurchases": self.options.HardPurchases.value,
-            "LowMultiplierPriceMinimum": self.options.LowMultiplierPriceMinimum.value,
-            "HighMultiplierPriceMinimum": self.options.HighMultiplierPriceMinimum.value,
+            "cheaper_shops": self.options.cheaper_shops.value,
+            "hard_purchases": self.options.hard_purchases.value,
+            "low_multiplier_price_minimum": self.options.low_multiplier_price_minimum.value,
+            "high_multiplier_price_minimum": self.options.high_multiplier_price_minimum.value,
             "ShuffleHushAndRas": self.options.shuffle_hush_and_ras.value,
             "HushUnlockCondition": self.options.hush_purchase_requirements.value,
             "RasUnlockCondition": self.options.ras_purchase_requirements.value,
+            "SimpleEpisodeCharacters": self.options.simple_episode_characters.value,
         }
 
     def choose_starting_levels(self):
