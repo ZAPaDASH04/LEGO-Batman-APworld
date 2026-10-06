@@ -25,13 +25,13 @@ class MiniKitSanity(DefaultOnToggle):
 class MinikitGrouping(Choice):
     """
     Determines how many minikits are received when an item is received.
-    This effects how many purple studs are added as filler.
+    Each level provides 10 minikits total, split across items using this grouping.
     """
     display_name = "Minikit Grouping"
-    option_individual = 0
-    option_2 = 1
-    option_5 = 2
-    option_10 = 3
+    option_individual = 1
+    option_2 = 2
+    option_5 = 5
+    option_10 = 10
 
 
 class MinikitsToWin(Range):
@@ -223,7 +223,7 @@ class LowMultiplierPriceMinimum(Range):
     display_name = "Low Multiplier Price Minimum"
     range_start = 10
     range_end = 10000000
-    default = 50000
+    default = 10000
 
 
 class HighMultiplierPriceMinimum(Range):
@@ -235,7 +235,7 @@ class HighMultiplierPriceMinimum(Range):
     display_name = "High Multiplier Price Minimum"
     range_start = 10
     range_end = 10000000
-    default = 100000
+    default = 25000
 
 
 class ShuffleHushAndRas(DefaultOnToggle):

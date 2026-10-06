@@ -3,10 +3,10 @@ from typing import Dict
 from BaseClasses import Item, Tutorial, ItemClassification
 from Options import OptionError
 from typing import Any
-from .Items import LB1Item, all_item_table, minikit_values, hostage_names_set, LB1ItemData
+from .Items import LB1Item, all_item_table, minikit_table, hostage_names_set, LB1ItemData
 from .Locations import all_location_table, LocationData, setup_locations, LB1Location
 from .Names import ItemName, RegionName
-from .Options import LB1Options, RasPurchaseRequirements
+from .Options import LB1Options, MinikitGrouping, RasPurchaseRequirements
 from .Regions import create_regions, connect_regions, create_events
 from .Rules import set_rules
 from ..AutoWorld import World, WebWorld, CollectionState
@@ -41,7 +41,6 @@ class LB1World(World):
     seed_item_table: Dict[str, LB1ItemData]
 
     data_version = 1
-    required_client_version = (0, 5, 1)
     web = LB1Web()
 
     item_name_groups = {
@@ -172,11 +171,13 @@ class LB1World(World):
         return item
 
     def create_items(self):
-        # TODO: need to update this for the new minikit counts
-        self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
+        for item_name, data in self.seed_item_table.items():
+            for _ in range(data.count):
+                self.multiworld.itempool.append(self.create_item(item_name))
 
         filler = []
-        extra_locations = len(self.seed_location_table) - len(self.seed_item_table)
+        total_items = sum(data.count for data in self.seed_item_table.values())
+        extra_locations = len(self.seed_location_table) - total_items
         while extra_locations > 0:
             filler += [self.create_item(ItemName.purp)]
             extra_locations -= 1
@@ -190,10 +191,10 @@ class LB1World(World):
         changed = super().collect(state, item)
         if changed:
             name = item.name
-            if name in minikit_values and state.count(name, self.player) == 1:
+            if name in minikit_table and state.count(name, self.player) > 0:
                 # Count was 0 before super().collect().
                 # Increase unique minikit count.
-                state.prog_items[self.player]["UNIQUE_MINIKITS"] += minikit_values[name]
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] += 1
             if name in hostage_names_set and state.count(name, self.player) == 1:
                 state.prog_items[self.player]["UNIQUE_HOSTAGES"] += 1
         return changed
@@ -202,10 +203,10 @@ class LB1World(World):
         changed = super().remove(state, item)
         if changed:
             name = item.name
-            if name in minikit_values and state.count(name, self.player) == 0:
+            if name in minikit_table and state.count(name, self.player) == 0:
                 # Count was 1 before super().remove().
                 # Decrease unique minikit count.
-                state.prog_items[self.player]["UNIQUE_MINIKITS"] -= minikit_values[name]
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] -= 1
             if name in hostage_names_set and state.count(name, self.player) == 0:
                 state.prog_items[self.player]["UNIQUE_HOSTAGES"] -= 1
         return changed
@@ -247,11 +248,16 @@ class LB1World(World):
             del self.seed_item_table[starting_villain]
 
     def create_item_table(self):
-        # TODO: Need to update this for the new minikit counts
         self.seed_item_table = {}
-        required_minikits = self.options.minikits_to_win.value
+        # required_minikits = self.options.minikits_to_win.value
         ras_minikits = self.options.ras_purchase_requirements.value
         hush_hostages = self.options.hush_purchase_requirements.value
+        minikit_grouping = self.options.minikit_grouping.value
+        # higher_minikit_value = required_minikits if required_minikits > ras_minikits else ras_minikits
+        # required_count_mini = higher_minikit_value // minikit_grouping
+        # if higher_minikit_value % minikit_grouping > 0:
+        #     required_count_mini += 1
+
         for name, data in all_item_table.items():
             match data.type:
                 case "Character" | "Suit" | "True Status" | "Level" | "Red Brick Collected" | "Red Brick Unlocked":
@@ -261,14 +267,17 @@ class LB1World(World):
                         self.seed_item_table[name] = data
                 case "Minikit":
                     if self.options.minikit_sanity.value == 1:
-                        value = minikit_values[name]
-                        if ((self.options.EndGoal.value == 0 and required_minikits > 0)
-                                or (self.options.shuffle_hush_and_ras == 1 and ras_minikits > 0)):
+                        value = 10 // minikit_table[name].count
+                        if value != minikit_grouping:
+                            continue
+
+                        multiplier = 10 // value
+                        for _ in range(multiplier):
+                            # if required_count_mini > 0:
                             all_item_table[name].classification = (
                                 ItemClassification.progression_deprioritized_skip_balancing
                             )
-                            required_minikits -= value
-                            ras_minikits -= value
+                            # required_count_mini -= value
                         self.seed_item_table[name] = data
                 case "Hostage":
                     if self.options.shuffle_hush_and_ras == 1 and hush_hostages > 0:

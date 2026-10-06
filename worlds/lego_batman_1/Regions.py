@@ -140,6 +140,12 @@ def create_regions(world: MultiWorld, options: LB1Options, player: int, seed_loc
     connect_regions(world, player, RegionName.tlotn, RegionName.tlotnf)
     connect_regions(world, player, RegionName.dol, RegionName.dolf)
 
+    if options.EndGoal == EndGoal.option_minikits:
+        batcave = world.get_region(RegionName.bc, player)
+        event: Location = create_event("All Required Minikits Received", "All Required Minikits Received",
+                                       batcave, player)
+        event.show_in_spoiler = True
+
     if options.EndGoal == EndGoal.option_levels_beaten:
         batcave = world.get_region(RegionName.bc, player)
         event: Location = create_event("All Required Levels Beaten", "All Required Levels Beaten", batcave, player)

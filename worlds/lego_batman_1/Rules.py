@@ -1266,22 +1266,32 @@ def set_rules(world):
     set_host_rules(world)
     set_level_beaten_rules(world)
     set_red_brick_rules(world)
-    if world.options.EndGoal == EndGoal.option_levels_beaten:
-        set_event_rules(world)
+    set_event_rules(world)
     set_win_con(world)
 
 
 def set_event_rules(world):
-    for (name, data) in event_location_table.items():
-        event: Location = world.get_location(name)
-        level_beaten_name = name.removesuffix(" Token")
-        world.set_rule(event, CanReachLocation(level_beaten_name))
+    if world.options.EndGoal == EndGoal.option_minikits:
+        minikit_to_win = world.options.minikits_to_win.value
+        minikit_grouping = world.options.minikit_grouping.value
+        required_count: int = minikit_to_win // minikit_grouping
+        if minikit_to_win % minikit_grouping > 0:
+            required_count += 1
+        world.set_rule(world.get_location("All Required Minikits Received"),
+                       Has("UNIQUE_MINIKITS", required_count))
 
     if world.options.EndGoal == EndGoal.option_levels_beaten:
+        for (name, data) in event_location_table.items():
+            event: Location = world.get_location(name)
+            level_beaten_name = name.removesuffix(" Token")
+            world.set_rule(event, CanReachLocation(level_beaten_name))
+
         world.set_rule(world.get_location("All Required Levels Beaten"),
                        Has("Level Beaten", world.options.levels_to_win.value))
 
 
 def set_win_con(world):
+    if world.options.EndGoal == EndGoal.option_minikits:
+        world.set_completion_rule(Has("All Required Minikits Received"))
     if world.options.EndGoal == EndGoal.option_levels_beaten:
         world.set_completion_rule(Has("All Required Levels Beaten"))
