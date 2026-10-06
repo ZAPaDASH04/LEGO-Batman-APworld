@@ -881,8 +881,13 @@ def set_char_rules(world):
 def set_hard_char_rules(world):
     world.set_rule(world.get_location(LocationName.hush_unlocked), has_needed_multi(locn.hush_unlocked) &
                    Has("UNIQUE_HOSTAGES", world.options.hush_purchase_requirements.value))
+    hush_minikits = world.options.hush_purchase_requirements.value
+    minikit_grouping = world.options.minikit_grouping.value
+    required_count: int = hush_minikits // minikit_grouping
+    if hush_minikits % minikit_grouping > 0:
+        required_count += 1
     world.set_rule(world.get_location(LocationName.rasalghul_unlocked), has_needed_multi(locn.rasalghul_unlocked) &
-                   Has("UNIQUE_MINIKITS", world.options.ras_purchase_requirements.value))
+                   Has("UNIQUE_MINIKITS", required_count))
 
 
 def set_suit_rules(world):
