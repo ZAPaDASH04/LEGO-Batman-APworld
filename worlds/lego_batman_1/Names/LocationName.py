@@ -88,14 +88,14 @@ riddlerjet_unlocked = "Riddler's Jet Unlocked"
 glider_unlocked = "Mad Hatter's Glider Unlocked"
 
 # Suit Definitions
-heatprotectsuit = "Heat Protection Suit Unlocked"
-glidesuit = "Glide Suit Unlocked"
-demosuit = "Demolition Suit Unlocked"
-sonicsuit = "Sonic Suit Unlocked"
-watersuit = "Water Suit Unlocked"
-techsuit = "Technology Suit Unlocked"
-magsuit = "Magnet Suit Unlocked"
-attractsuit = "Attract Suit Unlocked"
+heatprotectsuit = "Heat Protection Suit Worn"
+glidesuit = "Glide Suit Worn"
+demosuit = "Demolition Suit Worn"
+sonicsuit = "Sonic Suit Worn"
+watersuit = "Water Suit Worn"
+techsuit = "Technology Suit Worn"
+magsuit = "Magnet Suit Worn"
+attractsuit = "Attract Suit Worn"
 
 # Minikit Definitions
 ycbob_min1 = "You can Bank on Batman: Minikit inside the Garage near Spawn"
