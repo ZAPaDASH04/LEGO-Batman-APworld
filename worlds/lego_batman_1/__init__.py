@@ -194,7 +194,7 @@ class LB1World(World):
             if name in minikit_table and state.count(name, self.player) > 0:
                 # Count was 0 before super().collect().
                 # Increase unique minikit count.
-                state.prog_items[self.player]["UNIQUE_MINIKITS"] += 1
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] += (1 * self.options.minikit_grouping.value)
             if name in hostage_names_set and state.count(name, self.player) == 1:
                 state.prog_items[self.player]["UNIQUE_HOSTAGES"] += 1
         return changed

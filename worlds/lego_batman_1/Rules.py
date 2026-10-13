@@ -882,12 +882,8 @@ def set_hard_char_rules(world):
     world.set_rule(world.get_location(LocationName.hush_unlocked), has_needed_multi(locn.hush_unlocked) &
                    Has("UNIQUE_HOSTAGES", world.options.hush_purchase_requirements.value))
     hush_minikits = world.options.hush_purchase_requirements.value
-    minikit_grouping = world.options.minikit_grouping.value
-    required_count: int = hush_minikits // minikit_grouping
-    if hush_minikits % minikit_grouping > 0:
-        required_count += 1
     world.set_rule(world.get_location(LocationName.rasalghul_unlocked), has_needed_multi(locn.rasalghul_unlocked) &
-                   Has("UNIQUE_MINIKITS", required_count))
+                   Has("UNIQUE_MINIKITS", hush_minikits))
 
 
 def set_suit_rules(world):
@@ -1278,12 +1274,7 @@ def set_rules(world):
 def set_event_rules(world):
     if world.options.EndGoal == EndGoal.option_minikits:
         minikit_to_win = world.options.minikits_to_win.value
-        minikit_grouping = world.options.minikit_grouping.value
-        required_count: int = minikit_to_win // minikit_grouping
-        if minikit_to_win % minikit_grouping > 0:
-            required_count += 1
-        world.set_rule(world.get_location("All Required Minikits Received"),
-                       Has("UNIQUE_MINIKITS", required_count))
+        world.set_rule(world.get_location("All Required Minikits Received"), Has("UNIQUE_MINIKITS", minikit_to_win))
 
     if world.options.EndGoal == EndGoal.option_levels_beaten:
         for (name, data) in event_location_table.items():
