@@ -1186,6 +1186,8 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.ycbob_ts), can_beat_ycbob)
     world.set_rule(world.get_location(locn.air_beat), can_beat_air)
     world.set_rule(world.get_location(locn.air_ts), can_beat_air)
+    world.set_rule(world.get_location(locn.apa_beat), can_beat_apa)
+    world.set_rule(world.get_location(locn.apa_ts), can_beat_apa)
     world.set_rule(world.get_location(locn.tfo_beat), can_beat_tfo)
     world.set_rule(world.get_location(locn.tfo_ts), can_beat_tfo)
     world.set_rule(world.get_location(locn.tsga_beat), can_beat_tsga)
