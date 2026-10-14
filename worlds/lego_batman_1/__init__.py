@@ -128,8 +128,6 @@ class LB1World(World):
 
     def generate_early(self):
         self.validate_yaml()
-        self.create_item_table()
-        self.choose_starting_levels()
 
         if hasattr(self.multiworld, "generation_is_fake"):
             if hasattr(self.multiworld, "re_gen_passthrough"):
@@ -148,6 +146,9 @@ class LB1World(World):
                     self.options.hush_purchase_requirements.value = slot_data["HushUnlockCondition"]
                     self.options.ras_purchase_requirements.value = slot_data["RasUnlockCondition"]
                     self.options.simple_episode_characters.value = slot_data["SimpleEpisodeCharacters"]
+
+        self.create_item_table()
+        self.choose_starting_levels()
 
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:

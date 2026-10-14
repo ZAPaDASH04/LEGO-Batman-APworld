@@ -32,6 +32,7 @@ class MinikitGrouping(Choice):
     option_2 = 2
     option_5 = 5
     option_10 = 10
+    default = 5
 
 
 class MinikitsToWin(Range):
