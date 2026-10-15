@@ -50,9 +50,9 @@ char_can_explode = Has(itm.demosuit) | Has(itm.penguin_unlocked)
 char_can_techno = Has(itm.techsuit) | Has(itm.scientist_unlocked)
 
 has_auto = HasFromListUnique(itm.batmobile_unlocked, itm.batcycle_unlocked, itm.policecar_unlocked,
-                                 itm.policebike_unlocked, itm.policevan_unlocked, itm.battank_unlocked,
-                                 itm.catmotorcycle_unlocked, itm.armouredtruck_unlocked, itm.freezekart_unlocked,
-                                 itm.hammertruck_unlocked, itm.jokervan_unlocked, itm.garbagetruck_unlocked, count=1)
+                             itm.policebike_unlocked, itm.policevan_unlocked, itm.battank_unlocked,
+                             itm.catmotorcycle_unlocked, itm.armouredtruck_unlocked, itm.freezekart_unlocked,
+                             itm.hammertruck_unlocked, itm.jokervan_unlocked, itm.garbagetruck_unlocked, count=1)
 
 auto_has_cable = (Has(itm.batmobile_unlocked) | Has(itm.batcycle_unlocked) | Has(itm.battank_unlocked) |
                   Has(itm.catmotorcycle_unlocked))
@@ -122,8 +122,8 @@ can_get_air_rb = char_is_strong
 # Two Face Chase Logic
 can_access_tfc_free = auto_has_cable
 can_access_tfc = Has(itm.tfc_lvl) & has_auto
-can_get_tfc_min5 = Has(itm.jokervan_unlocked)
-can_get_tfc_min6 = Has(itm.hammertruck_unlocked)
+can_get_tfc_min7 = Has(itm.jokervan_unlocked)
+can_get_tfc_min8 = Has(itm.hammertruck_unlocked)
 can_get_tfc_min10 = auto_can_explode
 
 # A Poisonous Appointment Logic
@@ -240,17 +240,17 @@ can_get_jht_rb = HasAll(itm.mrfreeze_unlocked, itm.sonicsuit) & char_can_double_
 
 # Little Fun at the Big Top Logic
 can_access_lfabt_free = char_can_explode & Has(itm.sonicsuit)
-can_beat_lfabt = char_can_explode & HasAll(itm.magsuit, itm.attractsuit)
+can_beat_lfabt = char_can_explode & HasAll(itm.magsuit, itm.attractsuit, itm.sonicsuit)
 can_get_lfabt_min1 = char_is_strong & char_can_double_jump
 can_get_lfabt_min2 = char_can_long_jump & Has(itm.sonicsuit)
 can_get_lfabt_min3 = char_can_sink
 can_get_lfabt_min4 = char_can_techno
 can_get_lfabt_min5 = char_can_explode
 can_get_lfabt_min6 = char_is_joker & Has(itm.magsuit)
-can_get_lfabt_min7 = HasAll(itm.magsuit, itm.attractsuit)
-can_get_lfabt_min8 = HasAll(itm.magsuit, itm.attractsuit) & char_can_techno & char_can_cross_toxic
-can_get_lfabt_min9 = HasAll(itm.attractsuit, itm.magsuit) & char_is_strong
-can_get_lfabt_min_10 = HasAll(itm.attractsuit, itm.magsuit) & char_can_cross_toxic
+can_get_lfabt_min7 = HasAll(itm.magsuit, itm.attractsuit, itm.sonicsuit)
+can_get_lfabt_min8 = HasAll(itm.magsuit, itm.attractsuit, itm.sonicsuit) & char_can_techno & char_can_cross_toxic
+can_get_lfabt_min9 = HasAll(itm.attractsuit, itm.magsuit, itm.sonicsuit) & char_is_strong
+can_get_lfabt_min_10 = HasAll(itm.attractsuit, itm.magsuit, itm.sonicsuit) & char_can_cross_toxic
 can_get_lfabt_host = Has(itm.magsuit)
 can_get_lfabt_rb = char_can_glide & char_can_techno
 
@@ -304,7 +304,7 @@ can_get_trmaw_host = Has(itm.sonicsuit)
 can_get_trmaw_rb = Has(itm.magsuit)
 
 # On The Rocks Logic
-can_access_otr = char_is_strong
+can_access_otr = char_is_strong & Has(itm.otr_lvl)
 can_access_otr_free = Has(itm.mrfreeze_unlocked) & char_can_hypno
 can_get_otr_min2 = Has(itm.sonicsuit) & char_can_hypno
 can_get_otr_min4 = Has(itm.mrfreeze_unlocked) & char_can_explode
@@ -385,6 +385,7 @@ can_get_sts_rb = (HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techn
 # Harbouring A Grudge Logic
 can_access_hag = has_watercraft & water_has_torpedo & Has(itm.hag_lvl)
 can_get_hag_min3 = Has(itm.batboat_unlocked)
+can_get_hag_min6 = Has(itm.batboat_unlocked) | Has(itm.swamprider_unlocked)
 can_get_hag_min7 = water_can_cross_toxic
 can_get_hag_min8 = Has(itm.batboat_unlocked)
 can_get_hag_min10 = Has(itm.robinswatercraft_unlocked)
@@ -644,21 +645,21 @@ lvl5_mode = from_option(SimplifiedEpisodeCharacters, 1)
 can_unlock_batman = can_complete_any_hero_level
 can_unlock_robin = can_complete_any_hero_level
 can_unlock_bruce_wayne = has_needed_multi(locn.brucewayne_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_alfred = has_needed_multi(locn.alfred_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_batgirl = has_needed_multi(locn.batgirl_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_nightwing = has_needed_multi(locn.nightwing_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_commissioner = has_needed_multi(locn.commissionergordon_unlocked) & CanReachLocation(locn.asftc_beat)
 can_unlock_police_officer = has_needed_multi(locn.policeofficer_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_fishmonger = has_needed_multi(locn.fishmonger_unlocked) & CanReachLocation(locn.tsga_beat)
 can_unlock_military_poli = has_needed_multi(locn.militarypoliceman_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_security_guard = has_needed_multi(locn.securityguard_unlocked) & (
-    (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
+        (episode_mode & can_complete_any_hero_episode) | (lvl5_mode & can_complete_any_lvl_5))
 can_unlock_swat = has_needed_multi(locn.swat_unlocked) & CanReachLocation(locn.bb_beat)
 can_unlock_scientist = has_needed_multi(locn.scientist_unlocked) & CanReachLocation(locn.aet_beat)
 can_unlock_sailor = has_needed_multi(locn.sailor_unlocked) & CanReachLocation(locn.rtd_beat)
@@ -917,8 +918,8 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.air_min9), can_get_air_min9)
     world.set_rule(world.get_location(locn.air_min10), can_get_air_min10)
     # Two Face Chase Logic
-    world.set_rule(world.get_location(locn.tfc_min5), can_get_tfc_min5)
-    world.set_rule(world.get_location(locn.tfc_min6), can_get_tfc_min6)
+    world.set_rule(world.get_location(locn.tfc_min7), can_get_tfc_min7)
+    world.set_rule(world.get_location(locn.tfc_min8), can_get_tfc_min8)
     world.set_rule(world.get_location(locn.tfc_min10), can_get_tfc_min10)
     # A Poisonous Appointment Logic
     world.set_rule(world.get_location(locn.apa_min2), can_get_apa_min2)
@@ -1087,6 +1088,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.sts_min10), can_get_sts_min10)
     # Harbouring A Grudge Logic
     world.set_rule(world.get_location(locn.hag_min3), can_get_hag_min3)
+    world.set_rule(world.get_location(locn.hag_min6), can_get_hag_min6)
     world.set_rule(world.get_location(locn.hag_min7), can_get_hag_min7)
     world.set_rule(world.get_location(locn.hag_min8), can_get_hag_min8)
     world.set_rule(world.get_location(locn.hag_min10), can_get_hag_min10)
