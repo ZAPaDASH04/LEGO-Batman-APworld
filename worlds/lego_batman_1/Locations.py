@@ -354,7 +354,7 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.rtd_min10: LocationData(base_location_id + 309, RegionName.rtdf),
     # Stealing the Show
     LocationName.sts_min1: LocationData(base_location_id + 310, RegionName.sts),
-    LocationName.sts_min2: LocationData(base_location_id + 311, RegionName.sts),
+    LocationName.sts_min2: LocationData(base_location_id + 311, RegionName.stsf),
     LocationName.sts_min3: LocationData(base_location_id + 312, RegionName.sts),
     LocationName.sts_min4: LocationData(base_location_id + 313, RegionName.stsf),
     LocationName.sts_min5: LocationData(base_location_id + 314, RegionName.stsf),

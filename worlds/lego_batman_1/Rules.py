@@ -373,7 +373,6 @@ can_get_rtd_rb = char_is_female & char_is_strong & Has(itm.penguin_unlocked)
 can_access_sts_free = char_can_glide & char_is_female
 can_beat_sts = Has(itm.penguin_unlocked)
 can_get_sts_min1 = char_is_strong & Has(itm.magsuit)
-can_get_sts_min2 = char_can_glide
 can_get_sts_min3 = char_can_glide & Has(itm.poisonivy_unlocked)
 can_get_sts_min6 = Has(itm.magsuit)
 can_get_sts_min7 = Has(itm.sonicsuit) & char_is_strong
@@ -1081,7 +1080,6 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.rtd_min9), can_get_rtd_min9)
     # Stealing The Show Logic
     world.set_rule(world.get_location(locn.sts_min1), can_get_sts_min1)
-    world.set_rule(world.get_location(locn.sts_min2), can_get_sts_min2)
     world.set_rule(world.get_location(locn.sts_min3), can_get_sts_min3)
     world.set_rule(world.get_location(locn.sts_min6), can_get_sts_min6)
     world.set_rule(world.get_location(locn.sts_min7), can_get_sts_min7)
