@@ -1232,7 +1232,7 @@ def set_red_brick_rules(world):
     world.set_rule(world.get_location(LocationName.scorex8), can_purchase_scorex8)
     world.set_rule(world.get_location(LocationName.scorex10), can_purchase_scorex10)
     world.set_rule(world.get_location(LocationName.studmagnet), can_purchase_stud_magnet)
-    world.set_rule(world.get_location(LocationName.charstuds), can_purchase_stud_magnet)
+    world.set_rule(world.get_location(LocationName.charstuds), can_purchase_char_studs)
     world.set_rule(world.get_location(LocationName.minidetect), can_purchase_minikit_detect)
     world.set_rule(world.get_location(LocationName.powerdetect), can_purchase_pwr_brick_detect)
     world.set_rule(world.get_location(LocationName.alwaysscore), can_purchase_always_multi)
