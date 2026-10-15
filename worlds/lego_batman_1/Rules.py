@@ -49,10 +49,10 @@ char_can_explode = Has(itm.demosuit) | Has(itm.penguin_unlocked)
 
 char_can_techno = Has(itm.techsuit) | Has(itm.scientist_unlocked)
 
-has_two_auto = HasFromListUnique(itm.batmobile_unlocked, itm.batcycle_unlocked, itm.policecar_unlocked,
+has_auto = HasFromListUnique(itm.batmobile_unlocked, itm.batcycle_unlocked, itm.policecar_unlocked,
                                  itm.policebike_unlocked, itm.policevan_unlocked, itm.battank_unlocked,
                                  itm.catmotorcycle_unlocked, itm.armouredtruck_unlocked, itm.freezekart_unlocked,
-                                 itm.hammertruck_unlocked, itm.jokervan_unlocked, itm.garbagetruck_unlocked, count=2)
+                                 itm.hammertruck_unlocked, itm.jokervan_unlocked, itm.garbagetruck_unlocked, count=1)
 
 auto_has_cable = (Has(itm.batmobile_unlocked) | Has(itm.batcycle_unlocked) | Has(itm.battank_unlocked) |
                   Has(itm.catmotorcycle_unlocked))
@@ -60,11 +60,11 @@ auto_has_cable = (Has(itm.batmobile_unlocked) | Has(itm.batcycle_unlocked) | Has
 auto_can_explode = (Has(itm.policecar_unlocked) | Has(itm.policevan_unlocked) | Has(itm.hammertruck_unlocked) |
                     Has(itm.jokervan_unlocked) | Has(itm.garbagetruck_unlocked))
 
-has_two_watercraft = HasFromListUnique(itm.batboat_unlocked, itm.robinswatercraft_unlocked,
-                                       itm.robinssubmarine_unlocked, itm.policewatercraft_unlocked,
-                                       itm.policeboat_unlocked, itm.penguinsubmarine_unlocked, itm.swamprider_unlocked,
-                                       itm.penguingoonsub_unlocked, itm.iceberg_unlocked, itm.steamboat_unlocked,
-                                       count=2)
+has_watercraft = HasFromListUnique(itm.batboat_unlocked, itm.robinswatercraft_unlocked,
+                                   itm.robinssubmarine_unlocked, itm.policewatercraft_unlocked,
+                                   itm.policeboat_unlocked, itm.penguinsubmarine_unlocked, itm.swamprider_unlocked,
+                                   itm.penguingoonsub_unlocked, itm.iceberg_unlocked, itm.steamboat_unlocked,
+                                   count=1)
 
 water_has_torpedo = Has(itm.robinswatercraft_unlocked) | Has(itm.penguinsubmarine_unlocked)
 
@@ -73,11 +73,11 @@ water_can_sink = (Has(itm.robinssubmarine_unlocked) | Has(itm.penguinsubmarine_u
 
 water_can_cross_toxic = Has(itm.policewatercraft_unlocked) | Has(itm.swamprider_unlocked) | Has(itm.iceberg_unlocked)
 
-has_two_aircraft = HasFromListUnique(itm.batwing_unlocked, itm.batcopter_unlocked,
-                                     itm.harbourhelicopter_unlocked, itm.policehelicopter_unlocked,
-                                     itm.privatejet_unlocked, itm.jokerhelicopter_unlocked,
-                                     itm.biplane_unlocked,
-                                     itm.goonhelicopter_unlocked, itm.riddlerjet_unlocked, itm.glider_unlocked, count=2)
+has_aircraft = HasFromListUnique(itm.batwing_unlocked, itm.batcopter_unlocked,
+                                 itm.harbourhelicopter_unlocked, itm.policehelicopter_unlocked,
+                                 itm.privatejet_unlocked, itm.jokerhelicopter_unlocked,
+                                 itm.biplane_unlocked,
+                                 itm.goonhelicopter_unlocked, itm.riddlerjet_unlocked, itm.glider_unlocked, count=1)
 
 air_has_cable = (Has(itm.batcopter_unlocked) | Has(itm.harbourhelicopter_unlocked) | Has(itm.policehelicopter_unlocked)
                  | Has(itm.jokerhelicopter_unlocked) | Has(itm.goonhelicopter_unlocked))
@@ -121,7 +121,7 @@ can_get_air_rb = char_is_strong
 
 # Two Face Chase Logic
 can_access_tfc_free = auto_has_cable
-can_access_tfc = Has(itm.tfc_lvl) & has_two_auto
+can_access_tfc = Has(itm.tfc_lvl) & has_auto
 can_get_tfc_min5 = Has(itm.jokervan_unlocked)
 can_get_tfc_min6 = Has(itm.hammertruck_unlocked)
 can_get_tfc_min10 = auto_can_explode
@@ -170,7 +170,7 @@ can_get_tsga_min10 = can_beat_tsga & char_can_sink & Has(itm.sonicsuit)
 can_get_tsga_rb = Has(itm.sonicsuit)
 
 # Batboat Battle Logic
-can_access_bbb = Has(itm.bbb_lvl) & has_two_watercraft & Has(itm.batboat_unlocked)
+can_access_bbb = Has(itm.bbb_lvl) & has_watercraft & Has(itm.batboat_unlocked)
 can_get_bbb_min2 = Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min3 = water_can_sink & Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min5 = water_can_sink
@@ -256,7 +256,7 @@ can_get_lfabt_rb = char_can_glide & char_can_techno
 
 # Flight of the Bat Logic
 can_access_fotb_free = air_has_cable
-can_access_fotb = Has(itm.fotb_lvl) & has_two_aircraft & Has(itm.batwing_unlocked)
+can_access_fotb = Has(itm.fotb_lvl) & has_aircraft & Has(itm.batwing_unlocked)
 can_get_fotb_min7 = air_can_cross_toxic
 can_get_fotb_min9 = air_can_cross_toxic
 can_get_fotb_rb = air_can_cross_toxic
@@ -383,7 +383,7 @@ can_get_sts_rb = (HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techn
                   char_can_explode)
 
 # Harbouring A Grudge Logic
-can_access_hag = has_two_watercraft & water_has_torpedo & Has(itm.hag_lvl)
+can_access_hag = has_watercraft & water_has_torpedo & Has(itm.hag_lvl)
 can_get_hag_min3 = Has(itm.batboat_unlocked)
 can_get_hag_min7 = water_can_cross_toxic
 can_get_hag_min8 = Has(itm.batboat_unlocked)
