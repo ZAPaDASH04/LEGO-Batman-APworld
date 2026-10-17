@@ -360,10 +360,10 @@ can_get_bb_rb = char_can_explode
 
 # Rockin The Dock Logic
 can_access_rtd = char_is_strong & char_can_explode & Has(itm.rtd_lvl)
-can_access_rtd_free = char_can_cross_toxic
+can_access_rtd_free = char_can_cross_toxic & char_can_glide
 can_get_rtd_min1 = char_can_double_jump & Has(itm.sonicsuit)
 can_get_rtd_min2 = char_can_double_jump
-can_get_rtd_min5 = Has(itm.poisonivy_unlocked)
+can_get_rtd_min5 = Has(itm.poisonivy_unlocked) & char_can_glide
 can_get_rtd_min7 = char_is_joker & char_can_techno
 can_get_rtd_min9 = char_is_female & Has(itm.attractsuit)
 can_get_rtd_host = Has(itm.sonicsuit)
