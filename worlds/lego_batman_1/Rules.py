@@ -345,18 +345,21 @@ can_get_aet_host = Has(itm.sonicsuit)
 can_get_aet_rb = char_is_joker & char_can_explode & HasAll(itm.attractsuit, itm.heatprotectsuit, itm.sonicsuit)
 
 # Breaking Blocks Logic
-can_access_bb_free = char_can_hypno
-can_beat_bb = char_can_cross_toxic
-can_get_bb_min2 = char_can_double_jump
+can_access_bb_free = char_can_hypno | char_can_explode  # Past the first outside door
+can_access_second_bank_room = char_can_hypno | Has(itm.sonicsuit)  # Past the first inner door
+can_access_third_bank_room = char_can_hypno & char_can_cross_toxic & can_access_second_bank_room  # Past the Toxic &
+# Hypno Check doors
+can_beat_bb = can_access_second_bank_room & can_access_third_bank_room
+can_get_bb_min2 = char_can_double_jump & char_can_hypno
 can_get_bb_min4 = HasAll(itm.sonicsuit, itm.attractsuit, itm.magsuit)
-can_get_bb_min5 = char_is_strong
-can_get_bb_min6 = char_can_explode
-can_get_bb_min7 = char_is_joker & char_can_double_jump
-can_get_bb_min8 = char_can_explode & char_can_cross_toxic
-can_get_bb_min9 = HasAll(itm.sonicsuit, itm.magsuit) & char_can_cross_toxic
-can_get_bb_min10 = char_can_explode & char_can_cross_toxic
-can_get_bb_host = Has(itm.sonicsuit) & char_is_strong
-can_get_bb_rb = char_can_explode
+can_get_bb_min5 = char_is_strong & can_access_second_bank_room
+can_get_bb_min6 = char_can_explode & can_access_second_bank_room
+can_get_bb_min7 = char_is_joker & char_can_double_jump & can_access_third_bank_room
+can_get_bb_min8 = char_can_explode & can_access_third_bank_room
+can_get_bb_min9 = HasAll(itm.sonicsuit, itm.magsuit) & can_access_third_bank_room
+can_get_bb_min10 = char_can_explode & can_access_third_bank_room
+can_get_bb_host = char_can_explode & can_access_second_bank_room
+can_get_bb_rb = char_can_explode & Has(itm.sonicsuit)
 
 # Rockin The Dock Logic
 can_access_rtd = char_is_strong & char_can_explode & Has(itm.rtd_lvl)

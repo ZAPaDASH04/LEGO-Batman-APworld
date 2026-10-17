@@ -332,7 +332,7 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.aet_min10: LocationData(base_location_id + 289, RegionName.aetf),
     # Breaking Blocks
     LocationName.bb_min1: LocationData(base_location_id + 290, RegionName.bb),
-    LocationName.bb_min2: LocationData(base_location_id + 291, RegionName.bbf),
+    LocationName.bb_min2: LocationData(base_location_id + 291, RegionName.bb),
     LocationName.bb_min3: LocationData(base_location_id + 292, RegionName.bbf),
     LocationName.bb_min4: LocationData(base_location_id + 293, RegionName.bbf),
     LocationName.bb_min5: LocationData(base_location_id + 294, RegionName.bbf),
