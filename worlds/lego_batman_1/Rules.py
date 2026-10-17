@@ -720,7 +720,7 @@ can_unlock_police_water = has_needed_multi(locn.policewatercraft_unlocked) & Can
 can_unlock_police_boat = has_needed_multi(locn.policeboat_unlocked) & CanReachLocation(locn.hag_beat)
 can_unlock_penguin_sub = CanReachLocation(locn.hag_beat)
 can_unlock_swamp_rider = CanReachLocation(locn.hag_beat)
-can_unlock_goon_sub = has_needed_multi(locn.penguinsubmarine_unlocked) & CanReachLocation(locn.bbb_beat)
+can_unlock_goon_sub = has_needed_multi(locn.penguingoonsub_unlocked) & CanReachLocation(locn.bbb_beat)
 can_unlock_iceberg = has_needed_multi(locn.iceberg_unlocked) & CanReachLocation(locn.otr_beat)
 can_unlock_steam_boat = has_needed_multi(locn.steamboat_unlocked) & CanReachLocation(locn.jht_beat)
 
@@ -860,7 +860,7 @@ def set_char_rules(world):
     world.set_rule(world.get_location(LocationName.robinssubmarine_unlocked), can_unlock_robinssub)
     world.set_rule(world.get_location(LocationName.policewatercraft_unlocked), can_unlock_police_water)
     world.set_rule(world.get_location(LocationName.policeboat_unlocked), can_unlock_police_boat)
-    world.set_rule(world.get_location(LocationName.penguingoonsub_unlocked), can_unlock_penguin_sub)
+    world.set_rule(world.get_location(LocationName.penguingoonsub_unlocked), can_unlock_goon_sub)
     world.set_rule(world.get_location(LocationName.swamprider_unlocked), can_unlock_swamp_rider)
     world.set_rule(world.get_location(LocationName.penguinsubmarine_unlocked), can_unlock_goon_sub)
     world.set_rule(world.get_location(LocationName.iceberg_unlocked), can_unlock_iceberg)
