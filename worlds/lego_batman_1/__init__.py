@@ -182,6 +182,26 @@ class LB1World(World):
         if self.options.shuffle_hush_and_ras.value == 1 and self.options.minikit_sanity.value == 0:
             raise OptionError("Shuffling Hush & Ras requires Minikit Sanity to be enabled.")
 
+        hero_vehicle_levels = {
+            "Two-Face Chase",
+            "Batboat Battle",
+            "Flight of the Bat",
+        }
+
+        villain_vehicle_levels = {
+            "Harbouring a Grudge",
+            "Biplane Blast",
+        }
+
+        selected_hero_options = set(self.options.starting_hero_level_options.value)
+        selected_villain_options = set(self.options.starting_villain_level_options.value)
+        if (selected_hero_options.issubset(hero_vehicle_levels) and
+                selected_villain_options.issubset(villain_vehicle_levels)):
+            raise OptionError(
+                "Starting Level Options cannot consist only of vehicle levels. "
+                "Please include at least one non‑vehicle level."
+            )
+
     def create_regions(self):
         self.seed_location_table = setup_locations(self.options)
         create_regions(self.multiworld, self.options, self.player, self.seed_location_table)
@@ -251,22 +271,35 @@ class LB1World(World):
 
     def choose_starting_levels(self):
         hero_levels_pushed: int = 0
+        hero_levels_selected = []
+        hero_vehicle_levels = {ItemName.tfc_lvl, ItemName.bbb_lvl, ItemName.fotb_lvl}
+        villain_vehicle_levels = {ItemName.hag_lvl, ItemName.bbpl_lvl}
+
         while hero_levels_pushed < self.options.starting_hero_level_count.value:
             starting_hero = self.random.choice(self.options.starting_hero_level_options.value)
             self.options.starting_hero_level_options.value.remove(starting_hero)
-            starting_hero = starting_hero + ": Level Unlocked"
-            self.multiworld.push_precollected(self.create_item(starting_hero))
+            unlocked_name = starting_hero + ": Level Unlocked"
+            self.multiworld.push_precollected(self.create_item(unlocked_name))
             hero_levels_pushed += 1
-            del self.seed_item_table[starting_hero]
+            hero_levels_selected.append(starting_hero)
+            del self.seed_item_table[unlocked_name]
+
+        # This code is to make it so the player can't have only vehicle levels to start
+        hero_selected_set = set(hero_levels_selected)
+        if hero_selected_set.issubset(hero_vehicle_levels) and self.options.starting_villain_level_count <= 2:
+            self.options.starting_villain_level_options.value = [
+                lvl for lvl in self.options.starting_villain_level_options.value
+                if lvl not in villain_vehicle_levels
+            ]
 
         villain_levels_pushed: int = 0
         while villain_levels_pushed < self.options.starting_villain_level_count.value:
             starting_villain = self.random.choice(self.options.starting_villain_level_options.value)
             self.options.starting_villain_level_options.value.remove(starting_villain)
-            starting_villain = starting_villain + ": Level Unlocked"
-            self.multiworld.push_precollected(self.create_item(starting_villain))
+            unlocked_name = starting_villain + ": Level Unlocked"
+            self.multiworld.push_precollected(self.create_item(unlocked_name))
             villain_levels_pushed += 1
-            del self.seed_item_table[starting_villain]
+            del self.seed_item_table[unlocked_name]
 
     def create_item_table(self):
         self.seed_item_table = {}
