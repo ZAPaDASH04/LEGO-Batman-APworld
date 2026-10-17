@@ -1,8 +1,9 @@
-from typing import Dict
+from settings import FilePath, Group
 
 from BaseClasses import Item, Tutorial, ItemClassification
 from Options import OptionError
-from typing import Any
+from typing import Any, Dict, ClassVar, Union
+
 from .Items import LB1Item, all_item_table, minikit_table, hostage_names_set, LB1ItemData
 from .Locations import all_location_table, LocationData, setup_locations, LB1Location
 from .Names import ItemName, RegionName
@@ -10,6 +11,14 @@ from .Options import LB1Options, MinikitGrouping, RasPurchaseRequirements
 from .Regions import create_regions, connect_regions, create_events
 from .Rules import set_rules
 from ..AutoWorld import World, WebWorld, CollectionState
+
+
+class UTPackPath(FilePath):
+    required = False
+
+
+class LB1Settings(Group):
+    ut_pack_path: Union[UTPackPath, str] = UTPackPath()
 
 
 class LB1Web(WebWorld):
@@ -125,6 +134,17 @@ class LB1World(World):
         return slot_data
 
     ut_can_gen_without_yaml = True
+
+    settings_key = "lb1_settings"
+    settings: ClassVar[LB1Settings]
+
+    tracker_world: ClassVar = {
+        "external_pack_key": "ut_pack_path",
+        "map_page_maps": ["maps/maps.json"],
+        "map_page_locations": ["locations/characters.json", "locations/levels.json", "locations/suits.json",
+                               "locations/minikits.json", "locations/red_bricks.json"],
+        "map_page_layouts": ["layouts/tabs.json"]
+    }
 
     def generate_early(self):
         self.validate_yaml()
