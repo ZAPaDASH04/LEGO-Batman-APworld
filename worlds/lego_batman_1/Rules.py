@@ -377,7 +377,7 @@ can_get_sts_min3 = char_can_glide & Has(itm.poisonivy_unlocked)
 can_get_sts_min6 = Has(itm.magsuit)
 can_get_sts_min7 = Has(itm.sonicsuit) & char_is_strong
 can_get_sts_min9 = HasAll(itm.sonicsuit, itm.penguin_unlocked)
-can_get_sts_min10 = char_is_strong = Has(itm.penguin_unlocked)
+can_get_sts_min10 = Has(itm.penguin_unlocked)
 can_get_sts_host = Has(itm.magsuit) & char_is_strong
 can_get_sts_rb = (HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techno &
                   char_can_explode)
