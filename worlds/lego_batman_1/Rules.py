@@ -395,16 +395,19 @@ can_get_hag_min10 = Has(itm.robinswatercraft_unlocked)
 can_get_hag_rb = Has(itm.robinswatercraft_unlocked)
 
 # A Daring Rescue Logic
-can_access_adr_free = char_is_strong & char_can_cross_toxic & (char_can_double_jump | char_can_glide)
+can_access_adr_free = char_is_strong & char_can_cross_toxic & char_can_long_jump
+can_get_out_of_sewer = char_can_sink & char_can_explode
+can_beat_adr = can_get_out_of_sewer
 can_get_adr_min1 = char_can_explode & char_can_cross_toxic
 can_get_adr_min2 = char_is_joker
 can_get_adr_min3 = Has(itm.heatprotectsuit)
-can_get_adr_min5 = HasAll(itm.attractsuit, itm.penguin_unlocked, itm.sonicsuit)
-can_get_adr_min6 = char_can_hypno & HasAll(itm.mrfreeze_unlocked, itm.penguin_unlocked)
+can_get_adr_min5 = HasAll(itm.attractsuit, itm.sonicsuit) & can_get_out_of_sewer
+can_get_adr_min6 = char_can_hypno & HasAll(itm.mrfreeze_unlocked) & can_get_out_of_sewer
 can_get_adr_min7 = Has(itm.sonicsuit)
-can_get_adr_min9 = HasAll(itm.magsuit, itm.penguin_unlocked)
+can_get_adr_min8 = can_get_out_of_sewer
+can_get_adr_min9 = Has(itm.magsuit) & can_get_out_of_sewer
 can_get_adr_host = char_is_joker
-can_get_adr_rb = char_can_techno & HasAll(itm.penguin_unlocked, itm.sonicsuit)
+can_get_adr_rb = char_can_techno & Has(itm.sonicsuit) & can_get_out_of_sewer
 
 # Arctic World Logic
 can_access_aw_free = char_can_double_jump & Has(itm.penguin_unlocked)
@@ -1102,6 +1105,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.adr_min5), can_get_adr_min5)
     world.set_rule(world.get_location(locn.adr_min6), can_get_adr_min6)
     world.set_rule(world.get_location(locn.adr_min7), can_get_adr_min7)
+    world.set_rule(world.get_location(locn.adr_min8), can_get_adr_min8)
     world.set_rule(world.get_location(locn.adr_min9), can_get_adr_min9)
     # Arctic World Logic
     world.set_rule(world.get_location(locn.aw_min1), can_get_aw_min1)
@@ -1215,6 +1219,8 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.bb_ts), can_beat_bb)
     world.set_rule(world.get_location(locn.sts_beat), can_beat_sts)
     world.set_rule(world.get_location(locn.sts_ts), can_beat_sts)
+    world.set_rule(world.get_location(locn.adr_beat), can_beat_adr)
+    world.set_rule(world.get_location(locn.adr_ts), can_beat_adr)
     world.set_rule(world.get_location(locn.aw_beat), can_beat_aw)
     world.set_rule(world.get_location(locn.aw_ts), can_beat_aw)
     world.set_rule(world.get_location(locn.asftc_beat), can_beat_asftc)
