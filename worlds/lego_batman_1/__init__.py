@@ -339,3 +339,9 @@ class LB1World(World):
                             = ItemClassification.progression_deprioritized_skip_balancing
                         hush_hostages -= 1
                     self.seed_item_table[name] = data
+
+        if self.options.start_with_detectors. value == 1:
+            self.multiworld.push_precollected(self.create_item(ItemName.minidetect))
+            self.multiworld.push_precollected(self.create_item(ItemName.powerdetect))
+            del self.seed_item_table[ItemName.minidetect]
+            del self.seed_item_table[ItemName.powerdetect]

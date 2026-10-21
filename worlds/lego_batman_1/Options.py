@@ -277,6 +277,13 @@ class SimplifiedEpisodeCharacters(DefaultOnToggle):
     display_name = "Simplified Episode Character Unlocks"
 
 
+class StartWithDetectors(DefaultOnToggle):
+    """
+    Turning this on means you start with Minikit Detector & Power Brick Detector.
+    """
+    display_name = "Start with Detectors"
+
+
 @dataclass
 class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
@@ -296,3 +303,4 @@ class LB1Options(PerGameCommonOptions):
     hush_purchase_requirements: HushPurchaseRequirements
     ras_purchase_requirements: RasPurchaseRequirements
     simple_episode_characters: SimplifiedEpisodeCharacters
+    start_with_detectors: StartWithDetectors
