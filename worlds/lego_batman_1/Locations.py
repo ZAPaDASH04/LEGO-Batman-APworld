@@ -435,9 +435,9 @@ minikit_location_table: Dict[str, LocationData] = {
     LocationName.tlotn_min3: LocationData(base_location_id + 382, RegionName.tlotnf),
     LocationName.tlotn_min4: LocationData(base_location_id + 383, RegionName.tlotnf),
     LocationName.tlotn_min5: LocationData(base_location_id + 384, RegionName.tlotnf),
-    LocationName.tlotn_min6: LocationData(base_location_id + 385, RegionName.tlotn),
-    LocationName.tlotn_min7: LocationData(base_location_id + 386, RegionName.tlotn),
-    LocationName.tlotn_min8: LocationData(base_location_id + 387, RegionName.tlotn),
+    LocationName.tlotn_min6: LocationData(base_location_id + 385, RegionName.tlotnf),
+    LocationName.tlotn_min7: LocationData(base_location_id + 386, RegionName.tlotnf),
+    LocationName.tlotn_min8: LocationData(base_location_id + 387, RegionName.tlotnf),
     LocationName.tlotn_min9: LocationData(base_location_id + 388, RegionName.tlotnf),
     LocationName.tlotn_min10: LocationData(base_location_id + 389, RegionName.tlotnf),
     # Dying of Laughter

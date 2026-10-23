@@ -317,8 +317,7 @@ can_get_otr_host = char_can_explode & Has(itm.mrfreeze_unlocked)
 can_get_otr_rb = char_can_explode & Has(itm.mrfreeze_unlocked)
 
 # Green Fingers Logic
-can_access_gf_free = char_can_cross_toxic & char_can_hypno
-can_beat_gf = Has(itm.poisonivy_unlocked)
+can_access_gf_free = Has(itm.poisonivy_unlocked) & char_can_hypno
 can_get_gf_min1 = char_can_techno
 can_get_gf_min2 = char_can_explode & char_can_double_jump
 can_get_gf_min4 = char_can_explode
@@ -387,10 +386,12 @@ can_get_sts_rb = (HasAll(itm.attractsuit, itm.penguin_unlocked) & char_can_techn
 
 # Harbouring A Grudge Logic
 can_access_hag = has_watercraft & water_has_torpedo & Has(itm.hag_lvl)
+can_beat_hag = water_can_cross_toxic
 can_get_hag_min3 = Has(itm.batboat_unlocked)
 can_get_hag_min6 = Has(itm.batboat_unlocked) | Has(itm.swamprider_unlocked)
 can_get_hag_min7 = water_can_cross_toxic
 can_get_hag_min8 = Has(itm.batboat_unlocked)
+can_get_hag_min9 = water_can_cross_toxic
 can_get_hag_min10 = Has(itm.robinswatercraft_unlocked)
 can_get_hag_rb = Has(itm.robinswatercraft_unlocked)
 
@@ -769,8 +770,8 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.adr), Has(ItemName.adr_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.aw), Has(ItemName.aw_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.asftc), Has(ItemName.asftc_lvl))
-    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.bbpl), Has(ItemName.bbpl_lvl))
-    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tjm), can_access_bbpl)
+    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.bbpl), can_access_bbpl)
+    world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tjm), Has(itm.tjm_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.tlotn), Has(ItemName.tlotn_lvl))
     world.set_rule(world.get_entrance(RegionName.aa + " -> " + RegionName.dol), Has(ItemName.dol_lvl))
     # Sub Regions
@@ -1097,6 +1098,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.hag_min6), can_get_hag_min6)
     world.set_rule(world.get_location(locn.hag_min7), can_get_hag_min7)
     world.set_rule(world.get_location(locn.hag_min8), can_get_hag_min8)
+    world.set_rule(world.get_location(locn.hag_min9), can_get_hag_min9)
     world.set_rule(world.get_location(locn.hag_min10), can_get_hag_min10)
     # A Daring Rescue Logic
     world.set_rule(world.get_location(locn.adr_min1), can_get_adr_min1)
@@ -1213,12 +1215,12 @@ def set_level_beaten_rules(world):
     world.set_rule(world.get_location(locn.itdn_ts), can_beat_itdn)
     world.set_rule(world.get_location(locn.tttot_beat), can_beat_tttot)
     world.set_rule(world.get_location(locn.tttot_ts), can_beat_tttot)
-    world.set_rule(world.get_location(locn.gf_beat), can_beat_gf)
-    world.set_rule(world.get_location(locn.gf_ts), can_beat_gf)
     world.set_rule(world.get_location(locn.bb_beat), can_beat_bb)
     world.set_rule(world.get_location(locn.bb_ts), can_beat_bb)
     world.set_rule(world.get_location(locn.sts_beat), can_beat_sts)
     world.set_rule(world.get_location(locn.sts_ts), can_beat_sts)
+    world.set_rule(world.get_location(locn.hag_beat), can_beat_hag)
+    world.set_rule(world.get_location(locn.hag_ts), can_beat_hag)
     world.set_rule(world.get_location(locn.adr_beat), can_beat_adr)
     world.set_rule(world.get_location(locn.adr_ts), can_beat_adr)
     world.set_rule(world.get_location(locn.aw_beat), can_beat_aw)
