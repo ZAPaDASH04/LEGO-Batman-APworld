@@ -171,6 +171,7 @@ can_get_tsga_rb = Has(itm.sonicsuit)
 
 # Batboat Battle Logic
 can_access_bbb = Has(itm.bbb_lvl) & has_watercraft & Has(itm.batboat_unlocked)
+can_access_bbb_free = Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min2 = Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min3 = water_can_sink & Has(itm.robinswatercraft_unlocked)
 can_get_bbb_min5 = water_can_sink
@@ -781,6 +782,7 @@ def set_entrance_rules(world):
     world.set_rule(world.get_entrance(RegionName.apa + " -> " + RegionName.apaf), can_access_apa_free)
     world.set_rule(world.get_entrance(RegionName.tfo + " -> " + RegionName.tfof), can_access_tfo_free)
     world.set_rule(world.get_entrance(RegionName.tsga + " -> " + RegionName.tsgaf), can_access_tsga_free)
+    world.set_rule(world.get_entrance(RegionName.bbb + " -> " + RegionName.bbbf), can_access_bbb_free)
     world.set_rule(world.get_entrance(RegionName.utc + " -> " + RegionName.utcf), can_access_utc_free)
     world.set_rule(world.get_entrance(RegionName.zc + " -> " + RegionName.zcf), can_access_zc_free)
     world.set_rule(world.get_entrance(RegionName.pl + " -> " + RegionName.plf), can_access_pl_free)
@@ -888,9 +890,8 @@ def set_char_rules(world):
 def set_hard_char_rules(world):
     world.set_rule(world.get_location(LocationName.hush_unlocked), has_needed_multi(locn.hush_unlocked) &
                    Has("UNIQUE_HOSTAGES", world.options.hush_purchase_requirements.value))
-    hush_minikits = world.options.hush_purchase_requirements.value
     world.set_rule(world.get_location(LocationName.rasalghul_unlocked), has_needed_multi(locn.rasalghul_unlocked) &
-                   Has("UNIQUE_MINIKITS", hush_minikits))
+                   Has("UNIQUE_MINIKITS", world.options.ras_purchase_requirements.value))
 
 
 def set_suit_rules(world):
