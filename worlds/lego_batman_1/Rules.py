@@ -199,7 +199,7 @@ can_get_utc_rb = char_can_techno
 
 # Zoo's Company Logic
 can_access_zc_free = char_can_explode | (char_can_glide & Has(itm.magsuit))
-can_beat_zc = char_can_glide & char_can_explode & HasAll(itm.magsuit, itm.sonicsuit)
+can_beat_zc = char_can_glide & char_can_explode & Has(itm.sonicsuit)
 can_get_zc_min1 = char_is_female & char_can_explode
 can_get_zc_min2 = char_is_strong & char_can_double_jump & char_can_cross_toxic
 can_get_zc_min3 = Has(itm.attractsuit) & (char_is_female | (char_can_cross_toxic & char_is_strong))
