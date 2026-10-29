@@ -1,5 +1,19 @@
 # Lego Batman: The Videogame
 
-## Where is the options page?
-The player options page for this game contains all the options you need to configure and export a config file. Player
-options page link: 
+## What items and locations are shuffled?
+- Level Unlocks
+- Minikts
+- Power Brick Purchases
+- Hostages
+- True Super
+- Characters
+- Suits
+
+## Is this game compatible with Universal Tracker and does it have a map tracker?
+Yes, this game is compatible with Universal Tracker's yamless generation and its /explain function for logic. There is a map pack in progress.
+
+## Will there be GOG support?
+Yes, GOG support is planned, but will require us to adjust how things are handled so it won't be in the near future.
+
+## How do I report bugs?
+Please report bugs in the discord thread. Include as much detail as possible so we can recreate the issue.
