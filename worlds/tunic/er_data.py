@@ -213,7 +213,7 @@ portal_mapping: list[Portal] = [
            destination="East Forest Redux Interior", tag="_upper", direction=Direction.east),
     Portal(name="Forest Grave Path Lower Entrance", region="East Forest",
            destination="Sword Access", tag="_lower", direction=Direction.east),
-    Portal(name="Forest Grave Path Upper Entrance", region="East Forest",
+    Portal(name="Forest Grave Path Upper Entrance", region="East Forest above Guard House 2",
            destination="Sword Access", tag="_upper", direction=Direction.east),
 
     Portal(name="Forest Grave Path Upper Exit", region="Forest Grave Path Upper",
@@ -618,6 +618,7 @@ tunic_er_regions: dict[str, RegionInfo] = {
     "Forest Belltower Main behind bushes": RegionInfo("Forest Belltower"),
     "Forest Belltower Lower": RegionInfo("Forest Belltower"),
     "East Forest": RegionInfo("East Forest Redux"),
+    "East Forest above Guard House 2": RegionInfo("East Forest Redux"),
     "East Forest Dance Fox Spot": RegionInfo("East Forest Redux"),
     "East Forest Portal": RegionInfo("East Forest Redux", outlet_region="East Forest"),
     "Lower Forest": RegionInfo("East Forest Redux"),  # bottom of the forest
@@ -735,7 +736,7 @@ tunic_er_regions: dict[str, RegionInfo] = {
     "Rooted Ziggurat Lower Entry": RegionInfo("ziggurat2020_3"),  # the vanilla entry point side
     "Rooted Ziggurat Lower Front": RegionInfo("ziggurat2020_3"),  # the front for combat logic
     "Rooted Ziggurat Lower Mid Checkpoint": RegionInfo("ziggurat2020_3"),  # the mid-checkpoint before double admin
-    "Rooted Ziggurat Lower Miniboss Platform": RegionInfo("ziggurat2020_3"), # the double admin platform
+    "Rooted Ziggurat Lower Miniboss Platform": RegionInfo("ziggurat2020_3"),  # the double admin platform
     "Rooted Ziggurat Lower Back": RegionInfo("ziggurat2020_3"),  # the boss side
     "Zig Skip Exit": RegionInfo("ziggurat2020_3", dead_end=DeadEnd.special, outlet_region="Rooted Ziggurat Lower Entry", is_fake_region=True),  # for use with fixed shop on
     "Rooted Ziggurat Portal Room Entrance": RegionInfo("ziggurat2020_3", outlet_region="Rooted Ziggurat Lower Back"),  # the door itself on the zig 3 side
