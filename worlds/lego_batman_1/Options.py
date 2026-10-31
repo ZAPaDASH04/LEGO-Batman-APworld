@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import DefaultOnToggle, Range, Choice, PerGameCommonOptions
+from Options import DefaultOnToggle, Toggle, Range, Choice, PerGameCommonOptions, OptionList
 
 
 class EndGoal(Choice):
@@ -22,6 +22,19 @@ class MiniKitSanity(DefaultOnToggle):
     display_name = "Minikit Sanity"
 
 
+class MinikitGrouping(Choice):
+    """
+    Determines how many minikits are received when an item is received.
+    Each level provides 10 minikits total, split across items using this grouping.
+    """
+    display_name = "Minikit Grouping"
+    option_individual = 1
+    option_2 = 2
+    option_5 = 5
+    option_10 = 10
+    default = 5
+
+
 class MinikitsToWin(Range):
     """
     Number of Minikits needed to win. Only applicable if win con is set to Minikits Collected.
@@ -42,35 +55,252 @@ class LevelsToWin(Range):
     default = 20
 
 
-class TrueStatusSanity(DefaultOnToggle):
+class StartingHeroLevelCount(Range):
     """
-    Shuffles the true status of each level.
+    Determine the number of hero levels you start with.
     """
-    display_name = "True Status Sanity"
+    display_name = "Starting Hero Level Count"
+    range_start = 1
+    range_end = 15
+    default = 1
 
 
-# class HostageSanity(Toggle):
-#     """
-#     Puts all 25 Hostages into the pool.
-#     """
-#     display_name = "HostageSanity"
-
-class FreeplayOrStoryUnlocked(DefaultOnToggle):
+class StartingHeroLevelOptions(OptionList):
     """
-    Determines if the level unlocked item gives you Story Mode or Story Mode & Freeplay.
-    If turned off, Freeplay is unlocked by completing Story Mode.
+    Determines which hero levels you can start with.
+
+    Valid Keys:
+    "You can Bank on Batman"
+    "An Icy Reception"
+    "Two-Face Chase"
+    "A Poisonous Appointment"
+    "The Face-Off"
+    "There She Goes Again"
+    "Batboat Battle"
+    "Under the City"
+    "Zoo's Company"
+    "Penguin's Lair"
+    "Joker's Home Turf"
+    "Little Fun at the Big Top"
+    "Flight of the Bat"
+    "In the Dark Night"
+    "To the Top of the Tower"
     """
-    display_name = "Unlock Story or Story and Freeplay"
+
+    display_name = "Starting Hero Level Options"
+
+    valid_keys = {
+        "You can Bank on Batman",
+        "An Icy Reception",
+        "Two-Face Chase",
+        "A Poisonous Appointment",
+        "The Face-Off",
+        "There She Goes Again",
+        "Batboat Battle",
+        "Under the City",
+        "Zoo's Company",
+        "Penguin's Lair",
+        "Joker's Home Turf",
+        "Little Fun at the Big Top",
+        "Flight of the Bat",
+        "In the Dark Night",
+        "To the Top of the Tower",
+    }
+
+    default = [
+        "You can Bank on Batman",
+        "An Icy Reception",
+        "Two-Face Chase",
+        "A Poisonous Appointment",
+        "The Face-Off",
+        "There She Goes Again",
+        "Batboat Battle",
+        "Under the City",
+        "Zoo's Company",
+        "Penguin's Lair",
+        "Joker's Home Turf",
+        "Little Fun at the Big Top",
+        "Flight of the Bat",
+        "In the Dark Night",
+        "To the Top of the Tower",
+    ]
 
 
-# TODO: look into what option groups are
+class StartingVillainLevelCount(Range):
+    """
+    Determine the number of villain levels you start with.
+    """
+    display_name = "Starting Villain Level Count"
+    range_start = 1
+    range_end = 15
+    default = 1
+
+
+class StartingVillainLevelOptions(OptionList):
+    """
+    Determines which villain levels you can start with.
+
+    Valid Keys:
+    "The Riddler Makes a Withdrawal"
+    "On the Rocks"
+    "Green Fingers"
+    "An Enterprising Theft"
+    "Breaking Blocks"
+    "Rockin' the Docks"
+    "Stealing the Show"
+    "Harbouring a Grudge"
+    "A Daring Rescue"
+    "Arctic World"
+    "A Surprise for the Commissioner"
+    "Biplane Blast"
+    "The Joker's Masterpiece"
+    "The Lure of the Night"
+    "Dying of Laughter"
+    """
+
+    display_name = "Starting Villain Level Options"
+
+    valid_keys = {
+        "The Riddler Makes a Withdrawal",
+        "On the Rocks",
+        "Green Fingers",
+        "An Enterprising Theft",
+        "Breaking Blocks",
+        "Rockin' the Docks",
+        "Stealing the Show",
+        "Harbouring a Grudge",
+        "A Daring Rescue",
+        "Arctic World",
+        "A Surprise for the Commissioner",
+        "Biplane Blast",
+        "The Joker's Masterpiece",
+        "The Lure of the Night",
+        "Dying of Laughter",
+    }
+
+    default = [
+        "The Riddler Makes a Withdrawal",
+        "On the Rocks",
+        "Green Fingers",
+        "An Enterprising Theft",
+        "Breaking Blocks",
+        "Rockin' the Docks",
+        "Stealing the Show",
+        "Harbouring a Grudge",
+        "A Daring Rescue",
+        "Arctic World",
+        "A Surprise for the Commissioner",
+        "Biplane Blast",
+        "The Joker's Masterpiece",
+        "The Lure of the Night",
+        "Dying of Laughter",
+    ]
+
+
+class CheaperShops(Range):
+    """
+    Determines how many times cheaper purchases are from vanilla game.
+    1 is no change and 10 is 10x cheaper.
+    This is taken into account for stud multiplier logic
+    """
+    display_name = "Cheaper Shop Purchases"
+    range_start = 1
+    range_end = 10
+    default = 5
+
+
+class HardPurchases(Toggle):
+    """
+    Turning this on makes it so purchases no longer require a stud multiplier.
+    """
+    display_name = "Hard Purchases"
+
+
+class LowMultiplierPriceMinimum(Range):
+    """
+    Determines the starting price for a low multiplier. Does nothing if Shop Purchases Require Multiplier is disabled.
+    A low multiplier is defined as any multiplier.
+    """
+    display_name = "Low Multiplier Price Minimum"
+    range_start = 10
+    range_end = 10000000
+    default = 10000
+
+
+class HighMultiplierPriceMinimum(Range):
+    """
+    Determines the starting price for a high multiplier. Does nothing if Shop Purchases Require Multiplier is disabled.
+    Must be larger than Low Multiplier Price.
+    A high multiplier is defined as Score x6, Score x8, Score x10 or both Score x2 and Score x4.
+    """
+    display_name = "High Multiplier Price Minimum"
+    range_start = 10
+    range_end = 10000000
+    default = 25000
+
+
+class ShuffleHushAndRas(DefaultOnToggle):
+    """
+    Determines if the purchases for Hush and Ras are shuffled in the Item Pool.
+    """
+    display_name = "Shuffle Hush and Ra's al Ghul"
+
+
+class HushPurchaseRequirements(Range):
+    """
+    Determine the number of Hostages needed to unlock the Hush Purchase.
+    """
+    display_name = "Hush Purchase Requirements"
+    range_start = 0
+    range_end = 25
+    default = 12
+
+
+class RasPurchaseRequirements(Range):
+    """
+    Determine the number of Minikits needed to unlock the Ra's al Ghul Purchase.
+    """
+    display_name = "Ra's al Ghul Purchase Requirements"
+    range_start = 0
+    range_end = 300
+    default = 150
+
+
+class SimplifiedEpisodeCharacters(DefaultOnToggle):
+    """
+    Turning this on simplifies the unlock condition for characters that require episode completion in Vanilla.
+    Instead of having to complete the full episode, this makes it so you only have to complete level 5 of the episode.
+
+    WARNING: Disabling this makes it so Bat Tank requires all hero levels to be completed before the purchase is
+    available rather than all 3 Level 5's.
+    """
+    display_name = "Simplified Episode Character Unlocks"
+
+
+class StartWithDetectors(DefaultOnToggle):
+    """
+    Turning this on means you start with Minikit Detector & Power Brick Detector.
+    """
+    display_name = "Start with Detectors"
+
 
 @dataclass
 class LB1Options(PerGameCommonOptions):
     EndGoal: EndGoal
     minikit_sanity: MiniKitSanity
     minikits_to_win: MinikitsToWin
+    minikit_grouping: MinikitGrouping
     levels_to_win: LevelsToWin
-    true_status_sanity: TrueStatusSanity
-    freeplay_or_story: FreeplayOrStoryUnlocked
-    # hostage_sanity: HostageSanity
+    starting_hero_level_count: StartingHeroLevelCount
+    starting_hero_level_options: StartingHeroLevelOptions
+    starting_villain_level_count: StartingVillainLevelCount
+    starting_villain_level_options: StartingVillainLevelOptions
+    cheaper_shops: CheaperShops
+    hard_purchases: HardPurchases
+    low_multiplier_price_minimum: LowMultiplierPriceMinimum
+    high_multiplier_price_minimum: HighMultiplierPriceMinimum
+    shuffle_hush_and_ras: ShuffleHushAndRas
+    hush_purchase_requirements: HushPurchaseRequirements
+    ras_purchase_requirements: RasPurchaseRequirements
+    simple_episode_characters: SimplifiedEpisodeCharacters
+    start_with_detectors: StartWithDetectors

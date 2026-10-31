@@ -2,862 +2,637 @@ from typing import Dict, NamedTuple
 
 from BaseClasses import Location
 from .Options import LB1Options
+from .Names import LocationName, RegionName
 
 
 class LB1Location(Location):
-    game: str = "Lego Batman: The Videogame"
+    game: str = "Lego Batman The Video Game"
 
 
 class LocationData(NamedTuple):
     id: int = 0
     region: str = ""
+    price: int = 0
 
 
 base_location_id: int = 400000
 
+character_location_table: Dict[str, LocationData] = {
+    # LocationName.batman_unlocked: LocationData(base_location_id + 0, RegionName.bc),
+    # LocationName.robin_unlocked: LocationData(base_location_id + 1, RegionName.bc),
+    LocationName.brucewayne_unlocked: LocationData(base_location_id + 2, RegionName.sh, 100000),
+    LocationName.alfred_unlocked: LocationData(base_location_id + 3, RegionName.sh, 75000),
+    LocationName.batgirl_unlocked: LocationData(base_location_id + 4, RegionName.sh, 100000),
+    LocationName.nightwing_unlocked: LocationData(base_location_id + 5, RegionName.sh, 125000),
+    LocationName.commissionergordon_unlocked: LocationData(base_location_id + 6, RegionName.sh, 25000),
+    LocationName.policeofficer_unlocked: LocationData(base_location_id + 7, RegionName.sh, 5000),
+    LocationName.fishmonger_unlocked: LocationData(base_location_id + 8, RegionName.sh, 4000),
+    LocationName.militarypoliceman_unlocked: LocationData(base_location_id + 9, RegionName.sh, 17000),
+    LocationName.securityguard_unlocked: LocationData(base_location_id + 10, RegionName.sh, 10000),
+    LocationName.swat_unlocked: LocationData(base_location_id + 11, RegionName.sh, 10000),
+    LocationName.scientist_unlocked: LocationData(base_location_id + 12, RegionName.sh, 6000),
+    LocationName.sailor_unlocked: LocationData(base_location_id + 13, RegionName.sh, 5000),
+    LocationName.policemarksman_unlocked: LocationData(base_location_id + 14, RegionName.sh, 5000),
+    LocationName.clayface_unlocked: LocationData(base_location_id + 15, RegionName.trmaw),
+    LocationName.mrfreeze_unlocked: LocationData(base_location_id + 16, RegionName.otr),
+    LocationName.poisonivy_unlocked: LocationData(base_location_id + 17, RegionName.gf),
+    LocationName.twoface_unlocked: LocationData(base_location_id + 18, RegionName.aa),
+    LocationName.riddler_unlocked: LocationData(base_location_id + 19, RegionName.aa),
+    LocationName.bane_unlocked: LocationData(base_location_id + 20, RegionName.rtd),
+    LocationName.catwoman_unlocked: LocationData(base_location_id + 21, RegionName.aa),
+    LocationName.catwomanclassic_unlocked: LocationData(base_location_id + 22, RegionName.sh, 67000),
+    LocationName.killercroc_unlocked: LocationData(base_location_id + 23, RegionName.adr),
+    LocationName.manbat_unlocked: LocationData(base_location_id + 24, RegionName.sh, 40000),
+    LocationName.penguin_unlocked: LocationData(base_location_id + 25, RegionName.aa),
+    LocationName.harleyquinn_unlocked: LocationData(base_location_id + 26, RegionName.aa),
+    LocationName.scarecrow_unlocked: LocationData(base_location_id + 27, RegionName.tjm),
+    LocationName.killermoth_unlocked: LocationData(base_location_id + 28, RegionName.tlotn),
+    LocationName.madhatter_unlocked: LocationData(base_location_id + 29, RegionName.sh, 35000),
+    LocationName.joker_unlocked: LocationData(base_location_id + 30, RegionName.aa),
+    LocationName.jokertropical_unlocked: LocationData(base_location_id + 31, RegionName.sh, 30000),
+    LocationName.poisonivygoon_unlocked: LocationData(base_location_id + 32, RegionName.sh, 25000),
+    LocationName.zoosweeper_unlocked: LocationData(base_location_id + 33, RegionName.sh, 12500),
+    LocationName.freezegirl_unlocked: LocationData(base_location_id + 34, RegionName.sh, 4000),
+    LocationName.yeti_unlocked: LocationData(base_location_id + 35, RegionName.sh, 9000),
+    LocationName.riddlergoon_unlocked: LocationData(base_location_id + 36, RegionName.sh, 6000),
+    LocationName.riddlerhenchman_unlocked: LocationData(base_location_id + 37, RegionName.sh, 7000),
+    LocationName.penguingoon_unlocked: LocationData(base_location_id + 38, RegionName.sh, 3000),
+    LocationName.penguinhenchman_unlocked: LocationData(base_location_id + 39, RegionName.sh, 5000),
+    LocationName.penguinminion_unlocked: LocationData(base_location_id + 40, RegionName.sh, 30000),
+    LocationName.jokergoon_unlocked: LocationData(base_location_id + 41, RegionName.sh, 7000),
+    LocationName.jokerhenchman_unlocked: LocationData(base_location_id + 42, RegionName.sh, 9000),
+    LocationName.clowngoon_unlocked: LocationData(base_location_id + 43, RegionName.sh, 100000),
+    # Hush
+    # Ras
+    # LocationName.hero1_unlocked: LocationData(base_location_id + 46, RegionName.sh),
+    # LocationName.hero2_unlocked: LocationData(base_location_id + 47, RegionName.sh),
+    LocationName.batmobile_unlocked: LocationData(base_location_id + 48, RegionName.tfcf),
+    LocationName.batcycle_unlocked: LocationData(base_location_id + 49, RegionName.tfcf),
+    LocationName.policecar_unlocked: LocationData(base_location_id + 50, RegionName.sh, 10000),
+    LocationName.policebike_unlocked: LocationData(base_location_id + 51, RegionName.sh, 11000),
+    LocationName.policevan_unlocked: LocationData(base_location_id + 52, RegionName.sh, 13000),
+    LocationName.battank_unlocked: LocationData(base_location_id + 53, RegionName.sh, 200000),
+    LocationName.catmotorcycle_unlocked: LocationData(base_location_id + 54, RegionName.sh, 23000),
+    LocationName.armouredtruck_unlocked: LocationData(base_location_id + 55, RegionName.sh, 24000),
+    LocationName.freezekart_unlocked: LocationData(base_location_id + 56, RegionName.sh, 25000),
+    LocationName.hammertruck_unlocked: LocationData(base_location_id + 57, RegionName.sh, 80000),
+    LocationName.jokervan_unlocked: LocationData(base_location_id + 58, RegionName.sh, 60000),
+    LocationName.garbagetruck_unlocked: LocationData(base_location_id + 59, RegionName.sh, 99000),
+    LocationName.batboat_unlocked: LocationData(base_location_id + 60, RegionName.bbbf),
+    LocationName.robinswatercraft_unlocked: LocationData(base_location_id + 61, RegionName.bbbf),
+    LocationName.robinssubmarine_unlocked: LocationData(base_location_id + 62, RegionName.sh, 30000),
+    LocationName.policewatercraft_unlocked: LocationData(base_location_id + 63, RegionName.sh, 12000),
+    LocationName.policeboat_unlocked: LocationData(base_location_id + 64, RegionName.sh, 13000),
+    LocationName.penguinsubmarine_unlocked: LocationData(base_location_id + 65, RegionName.hag),
+    LocationName.swamprider_unlocked: LocationData(base_location_id + 66, RegionName.hag),
+    LocationName.penguingoonsub_unlocked: LocationData(base_location_id + 67, RegionName.sh, 15000),
+    LocationName.iceberg_unlocked: LocationData(base_location_id + 68, RegionName.sh, 23000),
+    LocationName.steamboat_unlocked: LocationData(base_location_id + 69, RegionName.sh, 23000),
+    LocationName.batwing_unlocked: LocationData(base_location_id + 70, RegionName.fotbf),
+    LocationName.batcopter_unlocked: LocationData(base_location_id + 71, RegionName.fotbf),
+    LocationName.harbourhelicopter_unlocked: LocationData(base_location_id + 72, RegionName.sh, 16000),
+    LocationName.policehelicopter_unlocked: LocationData(base_location_id + 73, RegionName.sh, 14000),
+    LocationName.privatejet_unlocked: LocationData(base_location_id + 74, RegionName.sh, 15000),
+    LocationName.jokerhelicopter_unlocked: LocationData(base_location_id + 75, RegionName.bbpl),
+    LocationName.scarecrowbiplane_unlocked: LocationData(base_location_id + 76, RegionName.bbpl),
+    LocationName.goonhelicopter_unlocked: LocationData(base_location_id + 77, RegionName.sh, 11000),
+    LocationName.riddlerjet_unlocked: LocationData(base_location_id + 78, RegionName.sh, 17000),
+    LocationName.glider_unlocked: LocationData(base_location_id + 79, RegionName.sh, 18000),
+}
+
+hard_character_location_table: Dict[str, LocationData] = {
+    LocationName.hush_unlocked: LocationData(base_location_id + 44, RegionName.sh, 150000),
+    LocationName.rasalghul_unlocked: LocationData(base_location_id + 45, RegionName.sh, 500000),
+}
+
+# Currently stored in Batcave because it is sounding like they can be unlocked in multiple levels
+suit_location_table: Dict[str, LocationData] = {
+    # LocationName.batsuit_collected: LocationData(base_location_id + 80, RegionName.bc),
+    LocationName.heatprotectsuit: LocationData(base_location_id + 81, RegionName.apa),
+    LocationName.glidesuit: LocationData(base_location_id + 82, RegionName.bc),
+    LocationName.demosuit: LocationData(base_location_id + 83, RegionName.bc),
+    LocationName.sonicsuit: LocationData(base_location_id + 84, RegionName.bc),
+    # LocationName.robinsuit_collected: LocationData(base_location_id + 85, RegionName.bc),
+    LocationName.watersuit: LocationData(base_location_id + 86, RegionName.bc),
+    LocationName.techsuit: LocationData(base_location_id + 87, RegionName.bc),
+    LocationName.magsuit: LocationData(base_location_id + 88, RegionName.bc),
+    LocationName.attractsuit: LocationData(base_location_id + 89, RegionName.bc),
+}
+
 minikit_location_table: Dict[str, LocationData] = {
     # You can Bank on Batman
-    "You can Bank on Batman: Minikit inside the Garage near Spawn":
-        LocationData(base_location_id + 100, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit above the Garage near Spawn":
-        LocationData(base_location_id + 101, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit behind Glass Window near Spawn":
-        LocationData(base_location_id + 102, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit in the Bar behind the Broken Down Van":
-        LocationData(base_location_id + 103, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit in the Sewer Grate":
-        LocationData(base_location_id + 104, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit behind a High Window by Cement Mixer":
-        LocationData(base_location_id + 105, "You can Bank on Batman"),
-    "You can Bank on Batman: Minikit on a Balcony Behind Heavy Item near Downward Slope":
-        LocationData(base_location_id + 106, "You can Bank on Batman"),
-    "You can Bank on Batman: Recycler Minikit":
-        LocationData(base_location_id + 107, "You can Bank on Batman"),
-    "You can Bank on Batman: Park 2 Cars Minikit":
-        LocationData(base_location_id + 108, "You can Bank on Batman"),
-    "You can Bank on Batman: Destroy 5 Phone Booths Minikit":
-        LocationData(base_location_id + 109, "You can Bank on Batman"),
+    LocationName.ycbob_min1: LocationData(base_location_id + 100, RegionName.ycbob),
+    LocationName.ycbob_min2: LocationData(base_location_id + 101, RegionName.ycbob),
+    LocationName.ycbob_min3: LocationData(base_location_id + 102, RegionName.ycbob),
+    LocationName.ycbob_min4: LocationData(base_location_id + 103, RegionName.ycbob),
+    LocationName.ycbob_min5: LocationData(base_location_id + 104, RegionName.ycbobf),
+    LocationName.ycbob_min6: LocationData(base_location_id + 105, RegionName.ycbobf),
+    LocationName.ycbob_min7: LocationData(base_location_id + 106, RegionName.ycbobf),
+    LocationName.ycbob_min8: LocationData(base_location_id + 107, RegionName.ycbobf),
+    LocationName.ycbob_min9: LocationData(base_location_id + 108, RegionName.ycbobf),
+    LocationName.ycbob_min10: LocationData(base_location_id + 109, RegionName.ycbobf),
+
     # An Icy Reception
-    "An Icy Reception: Minikit on a Ledge near Spawn":
-        LocationData(base_location_id + 110, "An Icy Reception"),
-    "An Icy Reception: Minikit behind the Boarded Window on Ledge near Spawn":
-        LocationData(base_location_id + 111, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Silver Lego Icecream Stand":
-        LocationData(base_location_id + 112, "An Icy Reception"),
-    "An Icy Reception: Minikit behind the Icecream Truck":
-        LocationData(base_location_id + 113, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Alley with Hostage":
-        LocationData(base_location_id + 114, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Silver Legos Above Icecream Cones":
-        LocationData(base_location_id + 115, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Female Locked Room":
-        LocationData(base_location_id + 116, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Silver Legos Behind Toxic Gas":
-        LocationData(base_location_id + 117, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Vent with Fan":
-        LocationData(base_location_id + 118, "An Icy Reception"),
-    "An Icy Reception: Minikit in the Hypnosis Room":
-        LocationData(base_location_id + 119, "An Icy Reception"),
+    LocationName.air_min1: LocationData(base_location_id + 110, RegionName.air),
+    LocationName.air_min2: LocationData(base_location_id + 111, RegionName.air),
+    LocationName.air_min3: LocationData(base_location_id + 112, RegionName.air),
+    LocationName.air_min4: LocationData(base_location_id + 113, RegionName.air),
+    LocationName.air_min5: LocationData(base_location_id + 114, RegionName.air),
+    LocationName.air_min6: LocationData(base_location_id + 115, RegionName.air),
+    LocationName.air_min7: LocationData(base_location_id + 116, RegionName.airf),
+    LocationName.air_min8: LocationData(base_location_id + 117, RegionName.airf),
+    LocationName.air_min9: LocationData(base_location_id + 118, RegionName.airf),
+    LocationName.air_min10: LocationData(base_location_id + 119, RegionName.airf),
     # Two-Face Chase
-    "Two-Face Chase: Destroy 3 Dumpsters Minikit":
-        LocationData(base_location_id + 120, "Two-Face Chase"),
-    "Two-Face Chase: Minikit in the Manhole Cover":
-        LocationData(base_location_id + 121, "Two-Face Chase"),
-    "Two-Face Chase: Destroy the Southwest Trash Dumpster Minikit":
-        LocationData(base_location_id + 122, "Two-Face Chase"),
-    "Two-Face Chase: Destroy 3 Cars Minikit":
-        LocationData(base_location_id + 123, "Two-Face Chase"),
-    "Two-Face Chase: Destroy the North Supports Minikit":
-        LocationData(base_location_id + 124, "Two-Face Chase"),
-    "Two-Face Chase: Destroy the South Supports Minikit":
-        LocationData(base_location_id + 125, "Two-Face Chase"),
-    "Two-Face Chase: The Joker's Van Panel Minikit":
-        LocationData(base_location_id + 126, "Two-Face Chase"),
-    "Two-Face Chase: Harley's Truck Panel Minikit":
-        LocationData(base_location_id + 127, "Two-Face Chase"),
-    "Two-Face Chase: Minikit in the Telephone Booth":
-        LocationData(base_location_id + 128, "Two-Face Chase"),
-    "Two-Face Chase: Destroy 3 Food Carts Minikit":
-        LocationData(base_location_id + 129, "Two-Face Chase"),
+    LocationName.tfc_min1: LocationData(base_location_id + 120, RegionName.tfc),
+    LocationName.tfc_min2: LocationData(base_location_id + 121, RegionName.tfc),
+    LocationName.tfc_min3: LocationData(base_location_id + 122, RegionName.tfcf),
+    LocationName.tfc_min4: LocationData(base_location_id + 123, RegionName.tfcf),
+    LocationName.tfc_min5: LocationData(base_location_id + 124, RegionName.tfcf),
+    LocationName.tfc_min6: LocationData(base_location_id + 125, RegionName.tfcf),
+    LocationName.tfc_min7: LocationData(base_location_id + 126, RegionName.tfcf),
+    LocationName.tfc_min8: LocationData(base_location_id + 127, RegionName.tfcf),
+    LocationName.tfc_min9: LocationData(base_location_id + 128, RegionName.tfcf),
+    LocationName.tfc_min10: LocationData(base_location_id + 129, RegionName.tfcf),
     # A Poisonous Appointment
-    "A Poisonous Appointment: Farm the Carrots Minikit":
-        LocationData(base_location_id + 130, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit on Top oft the Trees":
-        LocationData(base_location_id + 131, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit in the Heated Greenhouse":
-        LocationData(base_location_id + 132, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit above the Orange Flowers":
-        LocationData(base_location_id + 133, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit near the Rail above the Potted Plant":
-        LocationData(base_location_id + 134, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit in the Underwater Pipe":
-        LocationData(base_location_id + 135, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit in a Vat near the Second Pitcher Plant":
-        LocationData(base_location_id + 136, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Destroy 3 Carrots Minikit":
-        LocationData(base_location_id + 137, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit above the Heated Pipes":
-        LocationData(base_location_id + 138, "A Poisonous Appointment"),
-    "A Poisonous Appointment: Minikit in the Toxic Waste Room Above Ledge":
-        LocationData(base_location_id + 139, "A Poisonous Appointment"),
+    LocationName.apa_min1: LocationData(base_location_id + 130, RegionName.apa),
+    LocationName.apa_min2: LocationData(base_location_id + 131, RegionName.apa),
+    LocationName.apa_min3: LocationData(base_location_id + 132, RegionName.apa),
+    LocationName.apa_min4: LocationData(base_location_id + 133, RegionName.apa),
+    LocationName.apa_min5: LocationData(base_location_id + 134, RegionName.apa),
+    LocationName.apa_min6: LocationData(base_location_id + 135, RegionName.apaf),
+    LocationName.apa_min7: LocationData(base_location_id + 136, RegionName.apaf),
+    LocationName.apa_min8: LocationData(base_location_id + 137, RegionName.apaf),
+    LocationName.apa_min9: LocationData(base_location_id + 138, RegionName.apaf),
+    LocationName.apa_min10: LocationData(base_location_id + 139, RegionName.apaf),
     # The Face-Off
-    "The Face-Off: Jump on the 5 Poles Minikit":
-        LocationData(base_location_id + 140, "The Face-Off"),
-    "The Face-Off: Minikit above Grapple Point to the Right of the Bank":
-        LocationData(base_location_id + 141, "The Face-Off"),
-    "The Face-Off: Build the Dollar Sign Minikit":
-        LocationData(base_location_id + 142, "The Face-Off"),
-    "The Face-Off: Minikit in the Revolving Door":
-        LocationData(base_location_id + 143, "The Face-Off"),
-    "The Face-Off: Minikit on the Roof Above Recycler":
-        LocationData(base_location_id + 144, "The Face-Off"),
-    "The Face-Off: Minikit in the Toxic Waste Room Pipe":
-        LocationData(base_location_id + 145, "The Face-Off"),
-    "The Face-Off: Underneath the 3 Platform Bridge Minikit":
-        LocationData(base_location_id + 146, "The Face-Off"),
-    "The Face-Off: Minikit on the Right Side of Toxic Waste Room":
-        LocationData(base_location_id + 147, "The Face-Off"),
-    "The Face-Off: Minikit on the Right Side of Vault Room":
-        LocationData(base_location_id + 148, "The Face-Off"),
-    "The Face-Off: Destroy 5 Chests Minikit":
-        LocationData(base_location_id + 149, "The Face-Off"),
+    LocationName.tfo_min1: LocationData(base_location_id + 140, RegionName.tfo),
+    LocationName.tfo_min2: LocationData(base_location_id + 141, RegionName.tfo),
+    LocationName.tfo_min3: LocationData(base_location_id + 142, RegionName.tfo),
+    LocationName.tfo_min4: LocationData(base_location_id + 143, RegionName.tfo),
+    LocationName.tfo_min5: LocationData(base_location_id + 144, RegionName.tfo),
+    LocationName.tfo_min6: LocationData(base_location_id + 145, RegionName.tfof),
+    LocationName.tfo_min7: LocationData(base_location_id + 146, RegionName.tfof),
+    LocationName.tfo_min8: LocationData(base_location_id + 147, RegionName.tfof),
+    LocationName.tfo_min9: LocationData(base_location_id + 148, RegionName.tfof),
+    LocationName.tfo_min10: LocationData(base_location_id + 149, RegionName.tfof),
     # There She Goes Again
-    "There She Goes Again: Minikit in the Female Locked Room":
-        LocationData(base_location_id + 150, "There She Goes Again"),
-    "There She Goes Again: Drive the Car Into Garage Minikit":
-        LocationData(base_location_id + 151, "There She Goes Again"),
-    "There She Goes Again: Minikit locked Underwater Behind the Fence":
-        LocationData(base_location_id + 152, "There She Goes Again"),
-    "There She Goes Again: Destroy 3 Carrots Minikit":
-        LocationData(base_location_id + 153, "There She Goes Again"),
-    "There She Goes Again: Minikit locked Underwater by the Blue Pump":
-        LocationData(base_location_id + 154, "There She Goes Again"),
-    "There She Goes Again: Lawnmow the Flowers Minikit":
-        LocationData(base_location_id + 155, "There She Goes Again"),
-    "There She Goes Again: Minikit behind the Window Above Dumpster":
-        LocationData(base_location_id + 156, "There She Goes Again"),
-    "There She Goes Again: Minikit behind the Second Dumpster Under Water Tower":
-        LocationData(base_location_id + 157, "There She Goes Again"),
-    "There She Goes Again: Minikit in the Glass Roof":
-        LocationData(base_location_id + 158, "There She Goes Again"),
-    "There She Goes Again: Minikit in the Pipe After Breaking Glass":
-        LocationData(base_location_id + 159, "There She Goes Again"),
+    LocationName.tsga_min1: LocationData(base_location_id + 150, RegionName.tsga),
+    LocationName.tsga_min2: LocationData(base_location_id + 151, RegionName.tsga),
+    LocationName.tsga_min3: LocationData(base_location_id + 152, RegionName.tsga),
+    LocationName.tsga_min4: LocationData(base_location_id + 153, RegionName.tsga),
+    LocationName.tsga_min5: LocationData(base_location_id + 154, RegionName.tsga),
+    LocationName.tsga_min6: LocationData(base_location_id + 155, RegionName.tsgaf),
+    LocationName.tsga_min7: LocationData(base_location_id + 156, RegionName.tsgaf),
+    LocationName.tsga_min8: LocationData(base_location_id + 157, RegionName.tsgaf),
+    LocationName.tsga_min9: LocationData(base_location_id + 158, RegionName.tsgaf),
+    LocationName.tsga_min10: LocationData(base_location_id + 159, RegionName.tsgaf),
     # Batboat Battle
-    "Batboat Battle: Turn on the Lighthouse Minikit":
-        LocationData(base_location_id + 160, "Batboat Battle"),
-    "Batboat Battle: Blow Up the Silver Lego Box Minikit":
-        LocationData(base_location_id + 161, "Batboat Battle"),
-    "Batboat Battle: Sink the Ship Minikit":
-        LocationData(base_location_id + 162, "Batboat Battle"),
-    "Batboat Battle: Pull the Pipe Minikit":
-        LocationData(base_location_id + 163, "Batboat Battle"),
-    "Batboat Battle: Minikit in Alcove Surrounded by Ice":
-        LocationData(base_location_id + 164, "Batboat Battle"),
-    "Batboat Battle: Minikit in Silver Lego Crate Surrounded by Toxic Water":
-        LocationData(base_location_id + 165, "Batboat Battle"),
-    "Batboat Battle: Destroy Silver Legos Around Pipe Minikit":
-        LocationData(base_location_id + 166, "Batboat Battle"),
-    "Batboat Battle: Destroy 3 Buoys Minikit":
-        LocationData(base_location_id + 167, "Batboat Battle"),
-    "Batboat Battle: Minikit in the Corner Surrounded by Ice":
-        LocationData(base_location_id + 168, "Batboat Battle"),
-    "Batboat Battle: Destroy 3 Silver Lego Boxes in Toxic Water Minikit":
-        LocationData(base_location_id + 169, "Batboat Battle"),
+    LocationName.bbb_min1: LocationData(base_location_id + 160, RegionName.bbb),
+    LocationName.bbb_min2: LocationData(base_location_id + 161, RegionName.bbbf),
+    LocationName.bbb_min3: LocationData(base_location_id + 162, RegionName.bbb),
+    LocationName.bbb_min4: LocationData(base_location_id + 163, RegionName.bbb),
+    LocationName.bbb_min5: LocationData(base_location_id + 164, RegionName.bbbf),
+    LocationName.bbb_min6: LocationData(base_location_id + 165, RegionName.bbbf),
+    LocationName.bbb_min7: LocationData(base_location_id + 166, RegionName.bbbf),
+    LocationName.bbb_min8: LocationData(base_location_id + 167, RegionName.bbbf),
+    LocationName.bbb_min9: LocationData(base_location_id + 168, RegionName.bbbf),
+    LocationName.bbb_min10: LocationData(base_location_id + 169, RegionName.bbbf),
     # Under the City
-    "Under the City: Minikit on Top of the Rafters":
-        LocationData(base_location_id + 170, "Under the City"),
-    "Under the City: Minikit in the Cage Behind Mind Control Door":
-        LocationData(base_location_id + 171, "Under the City"),
-    "Under the City: Minikit in the Glass Room":
-        LocationData(base_location_id + 172, "Under the City"),
-    "Under the City: Minikit on the Pipes Above the Robin Suit Swapper":
-        LocationData(base_location_id + 173, "Under the City"),
-    "Under the City: Minikit from Destroying 5 Markers with the Boat Built from the Recycler":
-        LocationData(base_location_id + 174, "Under the City"),
-    "Under the City: Minikit above the Ladder Across the Toxic Waste":
-        LocationData(base_location_id + 175, "Under the City"),
-    "Under the City: Jump From the Toilet Minikit":
-        LocationData(base_location_id + 176, "Under the City"),
-    "Under the City: Above the Scissor Lifter Minikit":
-        LocationData(base_location_id + 177, "Under the City"),
-    "Under the City: Underwater underneath the Hatch Minikit":
-        LocationData(base_location_id + 178, "Under the City"),
-    "Under the City: Minikit on Top of the Pillar by the Generator":
-        LocationData(base_location_id + 179, "Under the City"),
+    LocationName.utc_min1: LocationData(base_location_id + 170, RegionName.utc),
+    LocationName.utc_min2: LocationData(base_location_id + 171, RegionName.utc),
+    LocationName.utc_min3: LocationData(base_location_id + 172, RegionName.utc),
+    LocationName.utc_min4: LocationData(base_location_id + 173, RegionName.utc),
+    LocationName.utc_min5: LocationData(base_location_id + 174, RegionName.utcf),
+    LocationName.utc_min6: LocationData(base_location_id + 175, RegionName.utcf),
+    LocationName.utc_min7: LocationData(base_location_id + 176, RegionName.utcf),
+    LocationName.utc_min8: LocationData(base_location_id + 177, RegionName.utcf),
+    LocationName.utc_min9: LocationData(base_location_id + 178, RegionName.utcf),
+    LocationName.utc_min10: LocationData(base_location_id + 179, RegionName.utcf),
     # Zoo's Company
-    "Zoo's Company: Hit Buoys with a Boat Minikit":
-        LocationData(base_location_id + 180, "Zoo's Company"),
-    "Zoo's Company: Minikit in the Air on Other Side of Toxic Waste Behind the Barred Door":
-        LocationData(base_location_id + 181, "Zoo's Company"),
-    "Zoo's Company: Recycler Minikit":
-        LocationData(base_location_id + 182, "Zoo's Company"),
-    "Zoo's Company: Minikit from Destroying the Silver Legos Above the Recycler":
-        LocationData(base_location_id + 183, "Zoo's Company"),
-    "Zoo's Company: Build the Totem Minikit":
-        LocationData(base_location_id + 184, "Zoo's Company"),
-    "Zoo's Company: Destroy the Silver Legos in Lion Enclosure Minikit":
-        LocationData(base_location_id + 185, "Zoo's Company"),
-    "Zoo's Company: Minikit in the Elephant Enclosure":
-        LocationData(base_location_id + 186, "Zoo's Company"),
-    "Zoo's Company: Minikit above the Lilypad by the Boat":
-        LocationData(base_location_id + 187, "Zoo's Company"),
-    "Zoo's Company: Minikit on the Ledge Behind Waterfall":
-        LocationData(base_location_id + 188, "Zoo's Company"),
-    "Zoo's Company: Minikit behind the Strength Handle by Batman Suit Swapper":
-        LocationData(base_location_id + 189, "Zoo's Company"),
+    LocationName.zc_min1: LocationData(base_location_id + 180, RegionName.zc),
+    LocationName.zc_min2: LocationData(base_location_id + 181, RegionName.zc),
+    LocationName.zc_min3: LocationData(base_location_id + 182, RegionName.zc),
+    LocationName.zc_min4: LocationData(base_location_id + 183, RegionName.zc),
+    LocationName.zc_min5: LocationData(base_location_id + 184, RegionName.zcf),
+    LocationName.zc_min6: LocationData(base_location_id + 185, RegionName.zcf),
+    LocationName.zc_min7: LocationData(base_location_id + 186, RegionName.zcf),
+    LocationName.zc_min8: LocationData(base_location_id + 187, RegionName.zcf),
+    LocationName.zc_min9: LocationData(base_location_id + 188, RegionName.zcf),
+    LocationName.zc_min10: LocationData(base_location_id + 189, RegionName.zcf),
     # Penguin's Lair
-    "Penguin's Lair: Minikit under the Glass Covered Water":
-        LocationData(base_location_id + 190, "Penguin's Lair"),
-    "Penguin's Lair: Minikit in the Silver Lego Cage":
-        LocationData(base_location_id + 191, "Penguin's Lair"),
-    "Penguin's Lair: Minikit on the Roof Above the Robin Suit Swapper":
-        LocationData(base_location_id + 192, "Penguin's Lair"),
-    "Penguin's Lair: Grow 3 Carrots Minikits":
-        LocationData(base_location_id + 193, "Penguin's Lair"),
-    "Penguin's Lair: Minikit on the Icy Ledge":
-        LocationData(base_location_id + 194, "Penguin's Lair"),
-    "Penguin's Lair: Minikit on the Iceberg in the Final Battle Room":
-        LocationData(base_location_id + 195, "Penguin's Lair"),
-    "Penguin's Lair: Minikit on the South East Ledge in the Final Battle Room":
-        LocationData(base_location_id + 196, "Penguin's Lair"),
-    "Penguin's Lair: Minikit behind the Silver Lego in Toxic Waste":
-        LocationData(base_location_id + 197, "Penguin's Lair"),
-    "Penguin's Lair: Destroy Capacitors with Batarang Minikit":
-        LocationData(base_location_id + 198, "Penguin's Lair"),
-    "Penguin's Lair: Build the Heated Objects Minikit":
-        LocationData(base_location_id + 199, "Penguin's Lair"),
+    LocationName.pl_min1: LocationData(base_location_id + 190, RegionName.pl),
+    LocationName.pl_min2: LocationData(base_location_id + 191, RegionName.pl),
+    LocationName.pl_min3: LocationData(base_location_id + 192, RegionName.pl),
+    LocationName.pl_min4: LocationData(base_location_id + 193, RegionName.plf),
+    LocationName.pl_min5: LocationData(base_location_id + 194, RegionName.pl),
+    LocationName.pl_min6: LocationData(base_location_id + 195, RegionName.plf),
+    LocationName.pl_min7: LocationData(base_location_id + 196, RegionName.plf),
+    LocationName.pl_min8: LocationData(base_location_id + 197, RegionName.plf),
+    LocationName.pl_min9: LocationData(base_location_id + 198, RegionName.plf),
+    LocationName.pl_min10: LocationData(base_location_id + 199, RegionName.plf),
     # Joker's Home Turf
-    "Joker's Home Turf: Minikit above the Fan Built from Silver Legos":
-        LocationData(base_location_id + 200, "Joker's Home Turf"),
-    "Joker's Home Turf: Clean up the Toxic Waste Minikit":
-        LocationData(base_location_id + 201, "Joker's Home Turf"),
-    "Joker's Home Turf: Puzzle Behind the Mind Control Door Minikit":
-        LocationData(base_location_id + 202, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit above the Ledge Accessed by Joker's Ladder":
-        LocationData(base_location_id + 203, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit caged in the Room Accessed by Controlling the Crane":
-        LocationData(base_location_id + 204, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit in the Toxic Waste Pipe":
-        LocationData(base_location_id + 205, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit high Up in Alcove Behind the Strength Gate":
-        LocationData(base_location_id + 206, "Joker's Home Turf"),
-    "Joker's Home Turf: Cross the Toxic Waste Water Minikit":
-        LocationData(base_location_id + 207, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit in the Pool of Toxic Waste Drained by Generator":
-        LocationData(base_location_id + 208, "Joker's Home Turf"),
-    "Joker's Home Turf: Minikit behind the Silver Legos in Mad Hatter Fight":
-        LocationData(base_location_id + 209, "Joker's Home Turf"),
+    LocationName.jht_min1: LocationData(base_location_id + 200, RegionName.jht),
+    LocationName.jht_min2: LocationData(base_location_id + 201, RegionName.jht),
+    LocationName.jht_min3: LocationData(base_location_id + 202, RegionName.jht),
+    LocationName.jht_min4: LocationData(base_location_id + 203, RegionName.jht),
+    LocationName.jht_min5: LocationData(base_location_id + 204, RegionName.jht),
+    LocationName.jht_min6: LocationData(base_location_id + 205, RegionName.jht),
+    LocationName.jht_min7: LocationData(base_location_id + 206, RegionName.jht),
+    LocationName.jht_min8: LocationData(base_location_id + 207, RegionName.jht),
+    LocationName.jht_min9: LocationData(base_location_id + 208, RegionName.jht),
+    LocationName.jht_min10: LocationData(base_location_id + 209, RegionName.jht),
     # Little Fun at the Big Top
-    "Little Fun at the Big Top: Minikit across the Tightrope Behind the Pushable Bus":
-        LocationData(base_location_id + 210, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Carnival Target Game Minikit":
-        LocationData(base_location_id + 211, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Minikit inside the Water Filled Pipe Above Carnival Game":
-        LocationData(base_location_id + 212, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Yellow Duck Carnival Game Minikit":
-        LocationData(base_location_id + 213, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Minikit behind the Window Above Gumball Machine":
-        LocationData(base_location_id + 214, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Teacup Ride Minikit":
-        LocationData(base_location_id + 215, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Minikit on the Spiral Slide":
-        LocationData(base_location_id + 216, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Store the Toy Boats Minikit":
-        LocationData(base_location_id + 217, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Bumper Cars Minikit":
-        LocationData(base_location_id + 218, "Little Fun at the Big Top"),
-    "Little Fun at the Big Top: Tightrope on the Other Side of the Toxic Waste Minikit":
-        LocationData(base_location_id + 219, "Little Fun at the Big Top"),
+    LocationName.lfabt_min1: LocationData(base_location_id + 210, RegionName.lfabt),
+    LocationName.lfabt_min2: LocationData(base_location_id + 211, RegionName.lfabt),
+    LocationName.lfabt_min3: LocationData(base_location_id + 212, RegionName.lfabtf),
+    LocationName.lfabt_min4: LocationData(base_location_id + 213, RegionName.lfabt),
+    LocationName.lfabt_min5: LocationData(base_location_id + 214, RegionName.lfabtf),
+    LocationName.lfabt_min6: LocationData(base_location_id + 215, RegionName.lfabtf),
+    LocationName.lfabt_min7: LocationData(base_location_id + 216, RegionName.lfabtf),
+    LocationName.lfabt_min8: LocationData(base_location_id + 217, RegionName.lfabtf),
+    LocationName.lfabt_min9: LocationData(base_location_id + 218, RegionName.lfabtf),
+    LocationName.lfabt_min10: LocationData(base_location_id + 219, RegionName.lfabtf),
     # Flight of the Bat
-    "Flight of the Bat: Destroy the 6 Missile Launchers Minikit":
-        LocationData(base_location_id + 220, "Flight of the Bat"),
-    "Flight of the Bat: Minikit floating by the Last 2 Turrets":
-        LocationData(base_location_id + 221, "Flight of the Bat"),
-    "Flight of the Bat: Minikit on the Railway":
-        LocationData(base_location_id + 222, "Flight of the Bat"),
-    "Flight of the Bat: Minikit in the Silver Lego by Hotel Sign":
-        LocationData(base_location_id + 223, "Flight of the Bat"),
-    "Flight of the Bat: Destroy the Gray Pipe Minikit":
-        LocationData(base_location_id + 224, "Flight of the Bat"),
-    "Flight of the Bat: Blow up the Silver Lego Valves Minikit":
-        LocationData(base_location_id + 225, "Flight of the Bat"),
-    "Flight of the Bat: Destroy 3 Gargoyles Minikit":
-        LocationData(base_location_id + 226, "Flight of the Bat"),
-    "Flight of the Bat: Barrel Puzzle Minikit":
-        LocationData(base_location_id + 227, "Flight of the Bat"),
-    "Flight of the Bat: Minikit on platform near the Helicopter Pad":
-        LocationData(base_location_id + 228, "Flight of the Bat"),
-    "Flight of the Bat: Minikit near the Yellow Barrels on the Rooftop":
-        LocationData(base_location_id + 229, "Flight of the Bat"),
+    LocationName.fotb_min1: LocationData(base_location_id + 220, RegionName.fotb),
+    LocationName.fotb_min2: LocationData(base_location_id + 221, RegionName.fotb),
+    LocationName.fotb_min3: LocationData(base_location_id + 222, RegionName.fotb),
+    LocationName.fotb_min4: LocationData(base_location_id + 223, RegionName.fotbf),
+    LocationName.fotb_min5: LocationData(base_location_id + 224, RegionName.fotbf),
+    LocationName.fotb_min6: LocationData(base_location_id + 225, RegionName.fotbf),
+    LocationName.fotb_min7: LocationData(base_location_id + 226, RegionName.fotbf),
+    LocationName.fotb_min8: LocationData(base_location_id + 227, RegionName.fotbf),
+    LocationName.fotb_min9: LocationData(base_location_id + 228, RegionName.fotbf),
+    LocationName.fotb_min10: LocationData(base_location_id + 229, RegionName.fotbf),
     # In the Dark Night
-    "In the Dark Night: Break the Glass Behind the Strength Door Minikit":
-        LocationData(base_location_id + 230, "In the Dark Night"),
-    "In the Dark Night: Minikit back Left Corner of the Rooftop Reached by Grapple":
-        LocationData(base_location_id + 231, "In the Dark Night"),
-    "In the Dark Night: Find 3 Cakes Minikit":
-        LocationData(base_location_id + 232, "In the Dark Night"),
-    "In the Dark Night: Minikit in the Fish Tank":
-        LocationData(base_location_id + 233, "In the Dark Night"),
-    "In the Dark Night: Fly the Helicopter into the 10 Lights Minikit":
-        LocationData(base_location_id + 234, "In the Dark Night"),
-    "In the Dark Night: Minikit in the Silver Lego Behind the Garbage Truck":
-        LocationData(base_location_id + 235, "In the Dark Night"),
-    "In the Dark Night: Minikit on the Ledge Next to the Graffiti Wall":
-        LocationData(base_location_id + 236, "In the Dark Night"),
-    "In the Dark Night: Minikit inside the Silver Lego Manhole Cover":
-        LocationData(base_location_id + 237, "In the Dark Night"),
-    "In the Dark Night: Explode the Generator in the Boss Room Minikit":
-        LocationData(base_location_id + 238, "In the Dark Night"),
-    "In the Dark Night: Minikit in Glass Above Joker's Generator":
-        LocationData(base_location_id + 239, "In the Dark Night"),
+    LocationName.itdn_min1: LocationData(base_location_id + 230, RegionName.itdn),
+    LocationName.itdn_min2: LocationData(base_location_id + 231, RegionName.itdn),
+    LocationName.itdn_min3: LocationData(base_location_id + 232, RegionName.itdn),
+    LocationName.itdn_min4: LocationData(base_location_id + 233, RegionName.itdnf),
+    LocationName.itdn_min5: LocationData(base_location_id + 234, RegionName.itdnf),
+    LocationName.itdn_min6: LocationData(base_location_id + 235, RegionName.itdnf),
+    LocationName.itdn_min7: LocationData(base_location_id + 236, RegionName.itdnf),
+    LocationName.itdn_min8: LocationData(base_location_id + 237, RegionName.itdnf),
+    LocationName.itdn_min9: LocationData(base_location_id + 238, RegionName.itdnf),
+    LocationName.itdn_min10: LocationData(base_location_id + 239, RegionName.itdn),
     # To the Top of the Tower
-    "To the Top of the Tower: Destroy 3 Silver Lego Gargoyles Minikit":
-        LocationData(base_location_id + 240, "To the Top of the Tower"),
-    "To the Top of the Tower: Buttons on the Ledge Above the Flowerbed Minikit":
-        LocationData(base_location_id + 241, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit behind the Glass Filled Arch":
-        LocationData(base_location_id + 242, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit in the Recycler Destroyed Wall":
-        LocationData(base_location_id + 243, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit floating on the Right Side of the Cathedral":
-        LocationData(base_location_id + 244, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit on the Wooden Platform Lowered by Generator":
-        LocationData(base_location_id + 245, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit on the Ledge Above Magnet Wall":
-        LocationData(base_location_id + 246, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit hidden to the Right of the Lever":
-        LocationData(base_location_id + 247, "To the Top of the Tower"),
-    "To the Top of the Tower: Use the Orange Buttons on Left Side of Bell Tower Minikit":
-        LocationData(base_location_id + 248, "To the Top of the Tower"),
-    "To the Top of the Tower: Minikit in the Silver Lego Crate next to Statue Path":
-        LocationData(base_location_id + 249, "To the Top of the Tower"),
+    LocationName.tttot_min1: LocationData(base_location_id + 240, RegionName.tttotf),
+    LocationName.tttot_min2: LocationData(base_location_id + 241, RegionName.tttot),
+    LocationName.tttot_min3: LocationData(base_location_id + 242, RegionName.tttotf),
+    LocationName.tttot_min4: LocationData(base_location_id + 243, RegionName.tttot),
+    LocationName.tttot_min5: LocationData(base_location_id + 244, RegionName.tttotf),
+    LocationName.tttot_min6: LocationData(base_location_id + 245, RegionName.tttotf),
+    LocationName.tttot_min7: LocationData(base_location_id + 246, RegionName.tttotf),
+    LocationName.tttot_min8: LocationData(base_location_id + 247, RegionName.tttotf),
+    LocationName.tttot_min9: LocationData(base_location_id + 248, RegionName.tttotf),
+    LocationName.tttot_min10: LocationData(base_location_id + 249, RegionName.tttotf),
     # The Riddler Makes a Withdrawal
-    "The Riddler Makes a Withdrawal: Minikit behind the Dumpster":
-        LocationData(base_location_id + 250, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit above the Parking Lot":
-        LocationData(base_location_id + 251, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Smash the Blue Booth Minikit":
-        LocationData(base_location_id + 252, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit behind the Silver Lego Gate":
-        LocationData(base_location_id + 253, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit behind the Window Above the Grapple":
-        LocationData(base_location_id + 254, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit inside the Glass House":
-        LocationData(base_location_id + 255, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit above the Rails Outside Bank":
-        LocationData(base_location_id + 256, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit in the Barrels next to the Bank":
-        LocationData(base_location_id + 257, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit behind the Glass Window":
-        LocationData(base_location_id + 258, "The Riddler Makes a Withdrawal"),
-    "The Riddler Makes a Withdrawal: Minikit in the Car Show Room":
-        LocationData(base_location_id + 259, "The Riddler Makes a Withdrawal"),
+    LocationName.trmaw_min1: LocationData(base_location_id + 250, RegionName.trmaw),
+    LocationName.trmaw_min2: LocationData(base_location_id + 251, RegionName.trmawf),
+    LocationName.trmaw_min3: LocationData(base_location_id + 252, RegionName.trmaw),
+    LocationName.trmaw_min4: LocationData(base_location_id + 253, RegionName.trmawf),
+    LocationName.trmaw_min5: LocationData(base_location_id + 254, RegionName.trmawf),
+    LocationName.trmaw_min6: LocationData(base_location_id + 255, RegionName.trmawf),
+    LocationName.trmaw_min7: LocationData(base_location_id + 256, RegionName.trmawf),
+    LocationName.trmaw_min8: LocationData(base_location_id + 257, RegionName.trmawf),
+    LocationName.trmaw_min9: LocationData(base_location_id + 258, RegionName.trmawf),
+    LocationName.trmaw_min10: LocationData(base_location_id + 259, RegionName.trmawf),
     # On the Rocks
-    "On the Rocks: Minikit from park the Ice Cream Van":
-        LocationData(base_location_id + 260, "On the Rocks"),
-    "On the Rocks: Minikit Build 3 Snowmen":
-        LocationData(base_location_id + 261, "On the Rocks"),
-    "On the Rocks: Minikit behind the Window near the Snowman Billboard":
-        LocationData(base_location_id + 262, "On the Rocks"),
-    "On the Rocks: Minikit behind the Ice Wall":
-        LocationData(base_location_id + 263, "On the Rocks"),
-    "On the Rocks: Minikit on the Ledge Accessed by the Magnet Wall":
-        LocationData(base_location_id + 264, "On the Rocks"),
-    "On the Rocks: Minikit floating below Rails off the Edge":
-        LocationData(base_location_id + 265, "On the Rocks"),
-    "On the Rocks: Recycler Minikit":
-        LocationData(base_location_id + 266, "On the Rocks"),
-    "On the Rocks: Minikit in the Silver Lego Crate by Hypnotised Man":
-        LocationData(base_location_id + 267, "On the Rocks"),
-    "On the Rocks: Minikit above the Left Vat in the Last room":
-        LocationData(base_location_id + 268, "On the Rocks"),
-    "On the Rocks: Minikit near Worker in the Last room":
-        LocationData(base_location_id + 269, "On the Rocks"),
+    LocationName.otr_min1: LocationData(base_location_id + 260, RegionName.otr),
+    LocationName.otr_min2: LocationData(base_location_id + 261, RegionName.otr),
+    LocationName.otr_min3: LocationData(base_location_id + 262, RegionName.otr),
+    LocationName.otr_min4: LocationData(base_location_id + 263, RegionName.otr),
+    LocationName.otr_min5: LocationData(base_location_id + 264, RegionName.otr),
+    LocationName.otr_min6: LocationData(base_location_id + 265, RegionName.otr),
+    LocationName.otr_min7: LocationData(base_location_id + 266, RegionName.otrf),
+    LocationName.otr_min8: LocationData(base_location_id + 267, RegionName.otrf),
+    LocationName.otr_min9: LocationData(base_location_id + 268, RegionName.otrf),
+    LocationName.otr_min10: LocationData(base_location_id + 269, RegionName.otrf),
     # Green Fingers
-    "Green Fingers: Race Around the Track Minikit":
-        LocationData(base_location_id + 270, "Green Fingers"),
-    "Green Fingers: Minikit on the Wooden Platforms in the Garden":
-        LocationData(base_location_id + 271, "Green Fingers"),
-    "Green Fingers: Minikit above the Rails On Left Side of the Building":
-        LocationData(base_location_id + 272, "Green Fingers"),
-    "Green Fingers: Complete the Block Puzzle Minikit":
-        LocationData(base_location_id + 273, "Green Fingers"),
-    "Green Fingers: Turn on the Fountain Minikit":
-        LocationData(base_location_id + 274, "Green Fingers"),
-    "Green Fingers: Minikit near the Pipe Above the Toxic Waste":
-        LocationData(base_location_id + 275, "Green Fingers"),
-    "Green Fingers: Break the Machine Behind the Silver Lego Door Minikit":
-        LocationData(base_location_id + 276, "Green Fingers"),
-    "Green Fingers: Minikit in the Hole Above the Heated Pipe":
-        LocationData(base_location_id + 277, "Green Fingers"),
-    "Green Fingers: Minikit floating Above the Water in the Other Water Tank":
-        LocationData(base_location_id + 278, "Green Fingers"),
-    "Green Fingers: Minikit in the Metal Cage Below the Hypnotized Man":
-        LocationData(base_location_id + 279, "Green Fingers"),
+    LocationName.gf_min1: LocationData(base_location_id + 270, RegionName.gf),
+    LocationName.gf_min2: LocationData(base_location_id + 271, RegionName.gf),
+    LocationName.gf_min3: LocationData(base_location_id + 272, RegionName.gf),
+    LocationName.gf_min4: LocationData(base_location_id + 273, RegionName.gff),
+    LocationName.gf_min5: LocationData(base_location_id + 274, RegionName.gff),
+    LocationName.gf_min6: LocationData(base_location_id + 275, RegionName.gff),
+    LocationName.gf_min7: LocationData(base_location_id + 276, RegionName.gff),
+    LocationName.gf_min8: LocationData(base_location_id + 277, RegionName.gff),
+    LocationName.gf_min9: LocationData(base_location_id + 278, RegionName.gff),
+    LocationName.gf_min10: LocationData(base_location_id + 279, RegionName.gff),
     # An Enterprising Theft
-    "An Enterprising Theft: Minikit above the Display Case":
-        LocationData(base_location_id + 280, "An Enterprising Theft"),
-    "An Enterprising Theft: Car Maze Minikit":
-        LocationData(base_location_id + 281, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit inside the Elevator":
-        LocationData(base_location_id + 282, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit behind the Glass Window":
-        LocationData(base_location_id + 283, "An Enterprising Theft"),
-    "An Enterprising Theft: Fly the Helicopter in the Toxic Waste Room Minikit":
-        LocationData(base_location_id + 284, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit in the Metal Pipe that the Hypnotized Man Opens":
-        LocationData(base_location_id + 285, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit behind the Silver Lego Grate":
-        LocationData(base_location_id + 286, "An Enterprising Theft"),
-    "An Enterprising Theft: Put the Weight on the Scale Minikit":
-        LocationData(base_location_id + 287, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit above the Heated Pipe of the Silver Lego Gate":
-        LocationData(base_location_id + 288, "An Enterprising Theft"),
-    "An Enterprising Theft: Minikit next to the Glowing Purple Vat":
-        LocationData(base_location_id + 289, "An Enterprising Theft"),
+    LocationName.aet_min1: LocationData(base_location_id + 280, RegionName.aet),
+    LocationName.aet_min2: LocationData(base_location_id + 281, RegionName.aet),
+    LocationName.aet_min3: LocationData(base_location_id + 282, RegionName.aet),
+    LocationName.aet_min4: LocationData(base_location_id + 283, RegionName.aet),
+    LocationName.aet_min5: LocationData(base_location_id + 284, RegionName.aet),
+    LocationName.aet_min6: LocationData(base_location_id + 285, RegionName.aetf),
+    LocationName.aet_min7: LocationData(base_location_id + 286, RegionName.aetf),
+    LocationName.aet_min8: LocationData(base_location_id + 287, RegionName.aetf),
+    LocationName.aet_min9: LocationData(base_location_id + 288, RegionName.aetf),
+    LocationName.aet_min10: LocationData(base_location_id + 289, RegionName.aetf),
     # Breaking Blocks
-    "Breaking Blocks: Minikit on the Large Leaves":
-        LocationData(base_location_id + 290, "Breaking Blocks"),
-    "Breaking Blocks: Minikit destroy Security Cameras":
-        LocationData(base_location_id + 291, "Breaking Blocks"),
-    "Breaking Blocks: Minikit behind the 3rd Painting":
-        LocationData(base_location_id + 292, "Breaking Blocks"),
-    "Breaking Blocks: Minikit on a Ledge Above the Recycler":
-        LocationData(base_location_id + 293, "Breaking Blocks"),
-    "Breaking Blocks: Minikit behind the Bookcase":
-        LocationData(base_location_id + 294, "Breaking Blocks"),
-    "Breaking Blocks: Minikit in the Silver Lego Cage near Hostage":
-        LocationData(base_location_id + 295, "Breaking Blocks"),
-    "Breaking Blocks: Destroy 4 Golden Piggy Banks Minikit":
-        LocationData(base_location_id + 296, "Breaking Blocks"),
-    "Breaking Blocks: Minikit in the Silver Lego Cage near the Lasers":
-        LocationData(base_location_id + 297, "Breaking Blocks"),
-    "Breaking Blocks: Push the Metal Legos off the Edge Minikit":
-        LocationData(base_location_id + 298, "Breaking Blocks"),
-    "Breaking Blocks: Minikit behind the Silver Lego Vault Door":
-        LocationData(base_location_id + 299, "Breaking Blocks"),
+    LocationName.bb_min1: LocationData(base_location_id + 290, RegionName.bb),
+    LocationName.bb_min2: LocationData(base_location_id + 291, RegionName.bb),
+    LocationName.bb_min3: LocationData(base_location_id + 292, RegionName.bbf),
+    LocationName.bb_min4: LocationData(base_location_id + 293, RegionName.bbf),
+    LocationName.bb_min5: LocationData(base_location_id + 294, RegionName.bbf),
+    LocationName.bb_min6: LocationData(base_location_id + 295, RegionName.bbf),
+    LocationName.bb_min7: LocationData(base_location_id + 296, RegionName.bbf),
+    LocationName.bb_min8: LocationData(base_location_id + 297, RegionName.bbf),
+    LocationName.bb_min9: LocationData(base_location_id + 298, RegionName.bbf),
+    LocationName.bb_min10: LocationData(base_location_id + 299, RegionName.bbf),
     # Rockin' the Docks
-    "Rockin' the Docks: Minikit on the Rails in the Hostage Room":
-        LocationData(base_location_id + 300, "Rockin' the Docks"),
-    "Rockin' the Docks: Grow 3 Carrots Minikit":
-        LocationData(base_location_id + 301, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit inside the Boat":
-        LocationData(base_location_id + 302, "Rockin' the Docks"),
-    "Rockin' the Docks: Park the Trucks on the Buttons Minikit":
-        LocationData(base_location_id + 303, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit on the Ledge reached from the Plant Ladder":
-        LocationData(base_location_id + 304, "Rockin' the Docks"),
-    "Rockin' the Docks: Destroy 5 Water Cannons on Docks Minikit":
-        LocationData(base_location_id + 305, "Rockin' the Docks"),
-    "Rockin' the Docks: Joker's Pirate Ship Race Minikit":
-        LocationData(base_location_id + 306, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit beneath the Lily Pads":
-        LocationData(base_location_id + 307, "Rockin' the Docks"),
-    "Rockin' the Docks: Recycler Minikit in the Female Locked Room":
-        LocationData(base_location_id + 308, "Rockin' the Docks"),
-    "Rockin' the Docks: Minikit on the Narrow Ledge to the Left After Riding the Elevator":
-        LocationData(base_location_id + 309, "Rockin' the Docks"),
+    LocationName.rtd_min1: LocationData(base_location_id + 300, RegionName.rtd),
+    LocationName.rtd_min2: LocationData(base_location_id + 301, RegionName.rtd),
+    LocationName.rtd_min3: LocationData(base_location_id + 302, RegionName.rtd),
+    LocationName.rtd_min4: LocationData(base_location_id + 303, RegionName.rtd),
+    LocationName.rtd_min5: LocationData(base_location_id + 304, RegionName.rtd),
+    LocationName.rtd_min6: LocationData(base_location_id + 305, RegionName.rtdf),
+    LocationName.rtd_min7: LocationData(base_location_id + 306, RegionName.rtdf),
+    LocationName.rtd_min8: LocationData(base_location_id + 307, RegionName.rtdf),
+    LocationName.rtd_min9: LocationData(base_location_id + 308, RegionName.rtdf),
+    LocationName.rtd_min10: LocationData(base_location_id + 309, RegionName.rtdf),
     # Stealing the Show
-    "Stealing the Show: Minikit in the Room Behind the Boarded Up Windows":
-        LocationData(base_location_id + 310, "Stealing the Show"),
-    "Stealing the Show: Destroy 3 Neon Signs Minikit":
-        LocationData(base_location_id + 311, "Stealing the Show"),
-    "Stealing the Show: Minikit on the Roof Above the Wall Fans":
-        LocationData(base_location_id + 312, "Stealing the Show"),
-    "Stealing the Show: Minikit behind Glass Roof after Helicopter Fight":
-        LocationData(base_location_id + 313, "Stealing the Show"),
-    "Stealing the Show: Minikit on the Balcony Near the Edge of the Screen":
-        LocationData(base_location_id + 314, "Stealing the Show"),
-    "Stealing the Show: Minikit on the Roof Above the Magnetic Wall":
-        LocationData(base_location_id + 315, "Stealing the Show"),
-    "Stealing the Show: Minikit inside the Glass Display Case":
-        LocationData(base_location_id + 316, "Stealing the Show"),
-    "Stealing the Show: Minikit inside the Crate Next to the Dinosaurs":
-        LocationData(base_location_id + 317, "Stealing the Show"),
-    "Stealing the Show: Minikit caged Above the Catapults":
-        LocationData(base_location_id + 318, "Stealing the Show"),
-    "Stealing the Show: Minikit on the Roof of the Museum Accessed by a Ladder Inside":
-        LocationData(base_location_id + 319, "Stealing the Show"),
+    LocationName.sts_min1: LocationData(base_location_id + 310, RegionName.sts),
+    LocationName.sts_min2: LocationData(base_location_id + 311, RegionName.stsf),
+    LocationName.sts_min3: LocationData(base_location_id + 312, RegionName.sts),
+    LocationName.sts_min4: LocationData(base_location_id + 313, RegionName.stsf),
+    LocationName.sts_min5: LocationData(base_location_id + 314, RegionName.stsf),
+    LocationName.sts_min6: LocationData(base_location_id + 315, RegionName.stsf),
+    LocationName.sts_min7: LocationData(base_location_id + 316, RegionName.stsf),
+    LocationName.sts_min8: LocationData(base_location_id + 317, RegionName.stsf),
+    LocationName.sts_min9: LocationData(base_location_id + 318, RegionName.stsf),
+    LocationName.sts_min10: LocationData(base_location_id + 319, RegionName.stsf),
     # Harbouring a Grudge
-    "Harbouring a Grudge: Minikit inside the Toxic Waste Barrel":
-        LocationData(base_location_id + 320, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit destroy 3 Mini Oil Rigs":
-        LocationData(base_location_id + 321, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit behind Silver Lego Locked Gate":
-        LocationData(base_location_id + 322, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Destroy 5 Buoys Minikit":
-        LocationData(base_location_id + 323, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Destroy the Docked Boat Minikit":
-        LocationData(base_location_id + 324, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit floating Off of the Ramp":
-        LocationData(base_location_id + 325, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit inside the Police Boat in Toxic Water":
-        LocationData(base_location_id + 326, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit inside the Orange Crane's Crate":
-        LocationData(base_location_id + 327, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit inside the Barrel Floating in Toxic Waste":
-        LocationData(base_location_id + 328, "Harbouring a Grudge"),
-    "Harbouring a Grudge: Minikit behind the Robin Wall":
-        LocationData(base_location_id + 329, "Harbouring a Grudge"),
+    LocationName.hag_min1: LocationData(base_location_id + 320, RegionName.hag),
+    LocationName.hag_min2: LocationData(base_location_id + 321, RegionName.hag),
+    LocationName.hag_min3: LocationData(base_location_id + 322, RegionName.hag),
+    LocationName.hag_min4: LocationData(base_location_id + 323, RegionName.hag),
+    LocationName.hag_min5: LocationData(base_location_id + 324, RegionName.hag),
+    LocationName.hag_min6: LocationData(base_location_id + 325, RegionName.hag),
+    LocationName.hag_min7: LocationData(base_location_id + 326, RegionName.hag),
+    LocationName.hag_min8: LocationData(base_location_id + 327, RegionName.hag),
+    LocationName.hag_min9: LocationData(base_location_id + 328, RegionName.hag),
+    LocationName.hag_min10: LocationData(base_location_id + 329, RegionName.hag),
     # A Daring Rescue
-    "A Daring Rescue: Minikit in the Underground Path Accessed through Manhole Cover":
-        LocationData(base_location_id + 330, "A Daring Rescue"),
-    "A Daring Rescue: Build a Band Minikit":
-        LocationData(base_location_id + 331, "A Daring Rescue"),
-    "A Daring Rescue: Minikit complete the Water Pressure Puzzle":
-        LocationData(base_location_id + 332, "A Daring Rescue"),
-    "A Daring Rescue: Destroy 5 TVs Minikit":
-        LocationData(base_location_id + 333, "A Daring Rescue"),
-    "A Daring Rescue: Recycler Minikit":
-        LocationData(base_location_id + 334, "A Daring Rescue"),
-    "A Daring Rescue: Park 3 Police Vehicles Minikit":
-        LocationData(base_location_id + 335, "A Daring Rescue"),
-    "A Daring Rescue: Minikit up the Stairs after Pulling the Glass Locked Switch":
-        LocationData(base_location_id + 336, "A Daring Rescue"),
-    "A Daring Rescue: Minikit left Toilet Stall":
-        LocationData(base_location_id + 337, "A Daring Rescue"),
-    "A Daring Rescue: Minikit in the Case Above Magnet Wall":
-        LocationData(base_location_id + 338, "A Daring Rescue"),
-    "A Daring Rescue: Holding Cell Minikit":
-        LocationData(base_location_id + 339, "A Daring Rescue"),
+    LocationName.adr_min1: LocationData(base_location_id + 330, RegionName.adr),
+    LocationName.adr_min2: LocationData(base_location_id + 331, RegionName.adrf),
+    LocationName.adr_min3: LocationData(base_location_id + 332, RegionName.adrf),
+    LocationName.adr_min4: LocationData(base_location_id + 333, RegionName.adrf),
+    LocationName.adr_min5: LocationData(base_location_id + 334, RegionName.adrf),
+    LocationName.adr_min6: LocationData(base_location_id + 335, RegionName.adrf),
+    LocationName.adr_min7: LocationData(base_location_id + 336, RegionName.adrf),
+    LocationName.adr_min8: LocationData(base_location_id + 337, RegionName.adrf),
+    LocationName.adr_min9: LocationData(base_location_id + 338, RegionName.adrf),
+    LocationName.adr_min10: LocationData(base_location_id + 339, RegionName.adrf),
     # Arctic World
-    "Arctic World: Minikit inside the Ice Cream Shop":
-        LocationData(base_location_id + 340, "Arctic World"),
-    "Arctic World: Minikit on the Penguin Sign after Powering up the Generator":
-        LocationData(base_location_id + 341, "Arctic World"),
-    "Arctic World: Minikit in the Cave Blocked by Glass":
-        LocationData(base_location_id + 342, "Arctic World"),
-    "Arctic World: Slalom Skiing Minikit":
-        LocationData(base_location_id + 343, "Arctic World"),
-    "Arctic World: Minikit the Shark's Minikit":
-        LocationData(base_location_id + 344, "Arctic World"),
-    "Arctic World: Minikit complete the 3 Button Puzzle":
-        LocationData(base_location_id + 345, "Arctic World"),
-    "Arctic World: Minikit slide Through the 5 Yellow Gates":
-        LocationData(base_location_id + 346, "Arctic World"),
-    "Arctic World: Minikit in the Air Above the Silver Legos":
-        LocationData(base_location_id + 347, "Arctic World"),
-    "Arctic World: Minikit underwater in Final Room":
-        LocationData(base_location_id + 348, "Arctic World"),
-    "Arctic World: Minikit in the Hanging Silver Cage":
-        LocationData(base_location_id + 349, "Arctic World"),
+    LocationName.aw_min1: LocationData(base_location_id + 340, RegionName.aw),
+    LocationName.aw_min2: LocationData(base_location_id + 341, RegionName.aw),
+    LocationName.aw_min3: LocationData(base_location_id + 342, RegionName.aw),
+    LocationName.aw_min4: LocationData(base_location_id + 343, RegionName.aw),
+    LocationName.aw_min5: LocationData(base_location_id + 344, RegionName.awf),
+    LocationName.aw_min6: LocationData(base_location_id + 345, RegionName.awf),
+    LocationName.aw_min7: LocationData(base_location_id + 346, RegionName.awf),
+    LocationName.aw_min8: LocationData(base_location_id + 347, RegionName.awf),
+    LocationName.aw_min9: LocationData(base_location_id + 348, RegionName.awf),
+    LocationName.aw_min10: LocationData(base_location_id + 349, RegionName.awf),
     # A Surprise for the Commissioner
-    "A Surprise for the Commissioner: Minikit on Ledge Left of Spawn":
-        LocationData(base_location_id + 350, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit behind the Glass Window":
-        LocationData(base_location_id + 351, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Freeze 3 Ice Cream Cones Minikits":
-        LocationData(base_location_id + 352, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit inside the Vending Machine In Hostage Room":
-        LocationData(base_location_id + 353, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit behind the Door Above the Grapple":
-        LocationData(base_location_id + 354, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit on the Roller Coaster Slope":
-        LocationData(base_location_id + 355, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit on the Ledge Above the Silver Lego Antenna":
-        LocationData(base_location_id + 356, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Minikit underwater in the Duck Pond":
-        LocationData(base_location_id + 357, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Park 4 Trucks Minikit":
-        LocationData(base_location_id + 358, "A Surprise for the Commissioner"),
-    "A Surprise for the Commissioner: Drive the Ice Cream Truck to Garage Minikit":
-        LocationData(base_location_id + 359, "A Surprise for the Commissioner"),
+    LocationName.asftc_min1: LocationData(base_location_id + 350, RegionName.asftcf),
+    LocationName.asftc_min2: LocationData(base_location_id + 351, RegionName.asftcf),
+    LocationName.asftc_min3: LocationData(base_location_id + 352, RegionName.asftcf),
+    LocationName.asftc_min4: LocationData(base_location_id + 353, RegionName.asftcf),
+    LocationName.asftc_min5: LocationData(base_location_id + 354, RegionName.asftcf),
+    LocationName.asftc_min6: LocationData(base_location_id + 355, RegionName.asftcf),
+    LocationName.asftc_min7: LocationData(base_location_id + 356, RegionName.asftcf),
+    LocationName.asftc_min8: LocationData(base_location_id + 357, RegionName.asftcf),
+    LocationName.asftc_min9: LocationData(base_location_id + 358, RegionName.asftcf),
+    LocationName.asftc_min10: LocationData(base_location_id + 359, RegionName.asftcf),
     # Biplane Blast
-    "Biplane Blast: Destroy Brown 10 Towers Minikit":
-        LocationData(base_location_id + 360, "Biplane Blast"),
-    "Biplane Blast: Minikit in the Chapel Tower":
-        LocationData(base_location_id + 361, "Biplane Blast"),
-    "Biplane Blast: Activate the Signal Tower Minikit":
-        LocationData(base_location_id + 362, "Biplane Blast"),
-    "Biplane Blast: Shoot the 3 Joker Balloons Minikit":
-        LocationData(base_location_id + 363, "Biplane Blast"),
-    "Biplane Blast: Destroy 3 Cages from the Joker Shield Minikit":
-        LocationData(base_location_id + 364, "Biplane Blast"),
-    "Biplane Blast: Minikit inside the Silver Air Conditioner":
-        LocationData(base_location_id + 365, "Biplane Blast"),
-    "Biplane Blast: Minikit on Other Side of the Scarecrow Billboard":
-        LocationData(base_location_id + 366, "Biplane Blast"),
-    "Biplane Blast: Minikit behind the Crane":
-        LocationData(base_location_id + 367, "Biplane Blast"),
-    "Biplane Blast: Minikit inside Silver Lego Tank":
-        LocationData(base_location_id + 368, "Biplane Blast"),
-    "Biplane Blast: Minikit inside Silver Lego Cage by Bat Symbol":
-        LocationData(base_location_id + 369, "Biplane Blast"),
+    LocationName.bbpl_min1: LocationData(base_location_id + 360, RegionName.bbplf),
+    LocationName.bbpl_min2: LocationData(base_location_id + 361, RegionName.bbpl),
+    LocationName.bbpl_min3: LocationData(base_location_id + 362, RegionName.bbpl),
+    LocationName.bbpl_min4: LocationData(base_location_id + 363, RegionName.bbpl),
+    LocationName.bbpl_min5: LocationData(base_location_id + 364, RegionName.bbplf),
+    LocationName.bbpl_min6: LocationData(base_location_id + 365, RegionName.bbplf),
+    LocationName.bbpl_min7: LocationData(base_location_id + 366, RegionName.bbplf),
+    LocationName.bbpl_min8: LocationData(base_location_id + 367, RegionName.bbplf),
+    LocationName.bbpl_min9: LocationData(base_location_id + 368, RegionName.bbplf),
+    LocationName.bbpl_min10: LocationData(base_location_id + 369, RegionName.bbplf),
     # The Joker's Masterpiece
-    "The Joker's Masterpiece: Smash 3 Containers Minikit":
-        LocationData(base_location_id + 370, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit behind the Laser Grid":
-        LocationData(base_location_id + 371, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit drop the Statue off the Ledge":
-        LocationData(base_location_id + 372, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit behind the Pillars Painting":
-        LocationData(base_location_id + 373, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit in Glass Display Case in Gas Room":
-        LocationData(base_location_id + 374, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit behind Pushable Wall":
-        LocationData(base_location_id + 375, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Build the Joker's Face Minikit":
-        LocationData(base_location_id + 376, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit in the Wooden Crate Dropped from Hypnotized Man":
-        LocationData(base_location_id + 377, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Minikit in the Vent":
-        LocationData(base_location_id + 378, "The Joker's Masterpiece"),
-    "The Joker's Masterpiece: Use the Generator Twice Minikit":
-        LocationData(base_location_id + 379, "The Joker's Masterpiece"),
+    LocationName.tjm_min1: LocationData(base_location_id + 370, RegionName.tjmf),
+    LocationName.tjm_min2: LocationData(base_location_id + 371, RegionName.tjmf),
+    LocationName.tjm_min3: LocationData(base_location_id + 372, RegionName.tjmf),
+    LocationName.tjm_min4: LocationData(base_location_id + 373, RegionName.tjm),
+    LocationName.tjm_min5: LocationData(base_location_id + 374, RegionName.tjmf),
+    LocationName.tjm_min6: LocationData(base_location_id + 375, RegionName.tjmf),
+    LocationName.tjm_min7: LocationData(base_location_id + 376, RegionName.tjmf),
+    LocationName.tjm_min8: LocationData(base_location_id + 377, RegionName.tjmf),
+    LocationName.tjm_min9: LocationData(base_location_id + 378, RegionName.tjmf),
+    LocationName.tjm_min10: LocationData(base_location_id + 379, RegionName.tjmf),
     # The Lure of the Night
-    "The Lure of the Night: Minikit inside the Silver Lego Box Dropped by Hypnotized Man":
-        LocationData(base_location_id + 380, "The Lure of the Night"),
-    "The Lure of the Night: Build the Green ? Minikit":
-        LocationData(base_location_id + 381, "The Lure of the Night"),
-    "The Lure of the Night: Build and Connect the Battery Minikit":
-        LocationData(base_location_id + 382, "The Lure of the Night"),
-    "The Lure of the Night: Navigate the Boat around the Circuit Minikit":
-        LocationData(base_location_id + 383, "The Lure of the Night"),
-    "The Lure of the Night: Minikit above the Magnet Wall":
-        LocationData(base_location_id + 384, "The Lure of the Night"),
-    "The Lure of the Night: Minikit behind Silver Lego Door":
-        LocationData(base_location_id + 385, "The Lure of the Night"),
-    "The Lure of the Night: Destroy 5 Fire Hydrants Minikit":
-        LocationData(base_location_id + 386, "The Lure of the Night"),
-    "The Lure of the Night: Minikit behind the Purple and Green Climbing Set in Playground":
-        LocationData(base_location_id + 387, "The Lure of the Night"),
-    "The Lure of the Night: Minikit behind Silver Lego Vault Doors":
-        LocationData(base_location_id + 388, "The Lure of the Night"),
-    "The Lure of the Night: Minikit in the Underwater Glass Cage":
-        LocationData(base_location_id + 389, "The Lure of the Night"),
+    LocationName.tlotn_min1: LocationData(base_location_id + 380, RegionName.tlotn),
+    LocationName.tlotn_min2: LocationData(base_location_id + 381, RegionName.tlotnf),
+    LocationName.tlotn_min3: LocationData(base_location_id + 382, RegionName.tlotnf),
+    LocationName.tlotn_min4: LocationData(base_location_id + 383, RegionName.tlotnf),
+    LocationName.tlotn_min5: LocationData(base_location_id + 384, RegionName.tlotnf),
+    LocationName.tlotn_min6: LocationData(base_location_id + 385, RegionName.tlotnf),
+    LocationName.tlotn_min7: LocationData(base_location_id + 386, RegionName.tlotnf),
+    LocationName.tlotn_min8: LocationData(base_location_id + 387, RegionName.tlotnf),
+    LocationName.tlotn_min9: LocationData(base_location_id + 388, RegionName.tlotnf),
+    LocationName.tlotn_min10: LocationData(base_location_id + 389, RegionName.tlotnf),
     # Dying of Laughter
-    "Dying of Laughter: Minikit on the Tightrope above the Potted Plants":
-        LocationData(base_location_id + 390, "Dying of Laughter"),
-    "Dying of Laughter: Minikit behind the Glass Window on the Wooden Platform":
-        LocationData(base_location_id + 391, "Dying of Laughter"),
-    "Dying of Laughter: Minikit inside the Altar":
-        LocationData(base_location_id + 392, "Dying of Laughter"),
-    "Dying of Laughter: Minikit above the Ladder Built from Destroying Silver Legos":
-        LocationData(base_location_id + 393, "Dying of Laughter"),
-    "Dying of Laughter: Minikit above the Magnet Wall after Second Double Button":
-        LocationData(base_location_id + 394, "Dying of Laughter"),
-    "Dying of Laughter: Minikit inside the Wooden Box next to the Elevator":
-        LocationData(base_location_id + 395, "Dying of Laughter"),
-    "Dying of Laughter: Minikit on the Platform Across from the Wooden Box":
-        LocationData(base_location_id + 396, "Dying of Laughter"),
-    "Dying of Laughter: Build and Destroy the Ice Sculpture Minikit":
-        LocationData(base_location_id + 397, "Dying of Laughter"),
-    "Dying of Laughter: Ring the Left Bell Minikit":
-        LocationData(base_location_id + 398, "Dying of Laughter"),
-    "Dying of Laughter: Ring Both Front Bells with the Turret Minikit":
-        LocationData(base_location_id + 399, "Dying of Laughter"),
+    LocationName.dol_min1: LocationData(base_location_id + 390, RegionName.dol),
+    LocationName.dol_min2: LocationData(base_location_id + 391, RegionName.dol),
+    LocationName.dol_min3: LocationData(base_location_id + 392, RegionName.dol),
+    LocationName.dol_min4: LocationData(base_location_id + 393, RegionName.dolf),
+    LocationName.dol_min5: LocationData(base_location_id + 394, RegionName.dolf),
+    LocationName.dol_min6: LocationData(base_location_id + 395, RegionName.dolf),
+    LocationName.dol_min7: LocationData(base_location_id + 396, RegionName.dolf),
+    LocationName.dol_min8: LocationData(base_location_id + 397, RegionName.dolf),
+    LocationName.dol_min9: LocationData(base_location_id + 398, RegionName.dolf),
+    LocationName.dol_min10: LocationData(base_location_id + 399, RegionName.dolf),
 }
 
 hostage_location_table: Dict[str, LocationData] = {
-    "You can Bank on Batman: Hostage": LocationData(base_location_id + 400, "You can Bank on Batman"),
-    "An Icy Reception: Hostage": LocationData(base_location_id + 401, "An Icy Reception"),
-    "A Poisonous Appointment: Hostage": LocationData(base_location_id + 402, "A Poisonous Appointment"),
-    "The Face-Off: Hostage": LocationData(base_location_id + 403, "The Face-Off"),
-    "There She Goes Again: Hostage": LocationData(base_location_id + 404, "There She Goes Again"),
-    "Under the City: Hostage": LocationData(base_location_id + 405, "Under the City"),
-    "Zoo's Company: Hostage": LocationData(base_location_id + 406, "Zoo's Company"),
-    "Penguin's Lair: Hostage": LocationData(base_location_id + 407, "Penguin's Lair"),
-    "Joker's Home Turf: Hostage": LocationData(base_location_id + 408, "Joker's Home Turf"),
-    "Little Fun at the Big Top: Hostage": LocationData(base_location_id + 409, "Little Fun at the Big Top"),
-    "In the Dark Night: Hostage": LocationData(base_location_id + 410, "In the Dark Night"),
-    "To the Top of the Tower: Hostage": LocationData(base_location_id + 411, "To the Top of the Tower"),
-    "The Riddler Makes a Withdrawal: Hostage": LocationData(base_location_id + 412, "The Riddler Makes a Withdrawal"),
-    "On the Rocks: Hostage": LocationData(base_location_id + 413, "On the Rocks"),
-    "Green Fingers: Hostage": LocationData(base_location_id + 414, "Green Fingers"),
-    "An Enterprising Theft: Hostage": LocationData(base_location_id + 415, "An Enterprising Theft"),
-    "Breaking Blocks: Hostage": LocationData(base_location_id + 416, "Breaking Blocks"),
-    "Rockin' the Docks: Hostage": LocationData(base_location_id + 417, "Rockin' the Docks"),
-    "Stealing the Show: Hostage": LocationData(base_location_id + 418, "Stealing the Show"),
-    "A Daring Rescue: Hostage": LocationData(base_location_id + 419, "A Daring Rescue"),
-    "Arctic World: Hostage": LocationData(base_location_id + 420, "Arctic World"),
-    "A Surprise for the Commissioner: Hostage": LocationData(base_location_id + 421, "A Surprise for the Commissioner"),
-    "The Joker's Masterpiece: Hostage": LocationData(base_location_id + 422, "The Joker's Masterpiece"),
-    "The Lure of the Night: Hostage": LocationData(base_location_id + 423, "The Lure of the Night"),
-    "Dying of Laughter: Hostage": LocationData(base_location_id + 424, "Dying of Laughter"),
+    LocationName.ycbob_host: LocationData(base_location_id + 400, RegionName.ycbob),
+    LocationName.air_host: LocationData(base_location_id + 401, RegionName.air),
+    LocationName.apa_host: LocationData(base_location_id + 402, RegionName.apa),
+    LocationName.tfo_host: LocationData(base_location_id + 403, RegionName.tfo),
+    LocationName.tsga_host: LocationData(base_location_id + 404, RegionName.tsgaf),
+    LocationName.utc_host: LocationData(base_location_id + 405, RegionName.utc),
+    LocationName.zc_host: LocationData(base_location_id + 406, RegionName.zcf),
+    LocationName.pl_host: LocationData(base_location_id + 407, RegionName.plf),
+    LocationName.jht_host: LocationData(base_location_id + 408, RegionName.jht),
+    LocationName.lfabt_host: LocationData(base_location_id + 409, RegionName.lfabtf),
+    LocationName.itdn_host: LocationData(base_location_id + 410, RegionName.itdnf),
+    LocationName.tttot_host: LocationData(base_location_id + 411, RegionName.tttot),
+    LocationName.trmaw_host: LocationData(base_location_id + 412, RegionName.trmawf),
+    LocationName.otr_host: LocationData(base_location_id + 413, RegionName.otr),
+    LocationName.gf_host: LocationData(base_location_id + 414, RegionName.gf),
+    LocationName.aet_host: LocationData(base_location_id + 415, RegionName.aet),
+    LocationName.bb_host: LocationData(base_location_id + 416, RegionName.bbf),
+    LocationName.rtd_host: LocationData(base_location_id + 417, RegionName.rtdf),
+    LocationName.sts_host: LocationData(base_location_id + 418, RegionName.sts),
+    LocationName.adr_host: LocationData(base_location_id + 419, RegionName.adrf),
+    LocationName.aw_host: LocationData(base_location_id + 420, RegionName.aw),
+    LocationName.asftc_host: LocationData(base_location_id + 421, RegionName.asftcf),
+    LocationName.tjm_host: LocationData(base_location_id + 422, RegionName.tjm),
+    LocationName.tlotn_host: LocationData(base_location_id + 423, RegionName.tlotnf),
+    LocationName.dol_host: LocationData(base_location_id + 424, RegionName.dolf),
 }
 
 level_beaten_location_table: Dict[str, LocationData] = {
-    "You can Bank on Batman: Level Beaten": LocationData(base_location_id + 425, "You can Bank on Batman"),
-    "An Icy Reception: Level Beaten": LocationData(base_location_id + 426, "An Icy Reception"),
-    "Two-Face Chase: Level Beaten": LocationData(base_location_id + 427, "Two-Face Chase"),
-    "A Poisonous Appointment: Level Beaten": LocationData(base_location_id + 428, "A Poisonous Appointment"),
-    "The Face-Off: Level Beaten": LocationData(base_location_id + 429, "The Face-Off"),
-    "There She Goes Again: Level Beaten": LocationData(base_location_id + 430, "There She Goes Again"),
-    "Batboat Battle: Level Beaten": LocationData(base_location_id + 431, "Batboat Battle"),
-    "Under the City: Level Beaten": LocationData(base_location_id + 432, "Under the City"),
-    "Zoo's Company: Level Beaten": LocationData(base_location_id + 433, "Zoo's Company"),
-    "Penguin's Lair: Level Beaten": LocationData(base_location_id + 434, "Penguin's Lair"),
-    "Joker's Home Turf: Level Beaten": LocationData(base_location_id + 435, "Joker's Home Turf"),
-    "Little Fun at the Big Top: Level Beaten": LocationData(base_location_id + 436, "Little Fun at the Big Top"),
-    "Flight of the Bat: Level Beaten": LocationData(base_location_id + 437, "Flight of the Bat"),
-    "In the Dark Night: Level Beaten": LocationData(base_location_id + 438, "In the Dark Night"),
-    "To the Top of the Tower: Level Beaten": LocationData(base_location_id + 439, "To the Top of the Tower"),
-    "The Riddler Makes a Withdrawal: Level Beaten":
-        LocationData(base_location_id + 440, "The Riddler Makes a Withdrawal"),
-    "On the Rocks: Level Beaten": LocationData(base_location_id + 441, "On the Rocks"),
-    "Green Fingers: Level Beaten": LocationData(base_location_id + 442, "Green Fingers"),
-    "An Enterprising Theft: Level Beaten": LocationData(base_location_id + 443, "An Enterprising Theft"),
-    "Breaking Blocks: Level Beaten": LocationData(base_location_id + 444, "Breaking Blocks"),
-    "Rockin' the Docks: Level Beaten": LocationData(base_location_id + 445, "Rockin' the Docks"),
-    "Stealing the Show: Level Beaten": LocationData(base_location_id + 446, "Stealing the Show"),
-    "Harbouring a Grudge: Level Beaten": LocationData(base_location_id + 447, "Harbouring a Grudge"),
-    "A Daring Rescue: Level Beaten": LocationData(base_location_id + 448, "A Daring Rescue"),
-    "Arctic World: Level Beaten": LocationData(base_location_id + 449, "Arctic World"),
-    "A Surprise for the Commissioner: Level Beaten":
-        LocationData(base_location_id + 450, "A Surprise for the Commissioner"),
-    "Biplane Blast: Level Beaten": LocationData(base_location_id + 451, "Biplane Blast"),
-    "The Joker's Masterpiece: Level Beaten": LocationData(base_location_id + 452, "The Joker's Masterpiece"),
-    "The Lure of the Night: Level Beaten": LocationData(base_location_id + 453, "The Lure of the Night"),
-    "Dying of Laughter: Level Beaten": LocationData(base_location_id + 454, "Dying of Laughter"),
+    LocationName.ycbob_beat: LocationData(base_location_id + 425, RegionName.ycbob),
+    LocationName.air_beat: LocationData(base_location_id + 426, RegionName.air),
+    LocationName.tfc_beat: LocationData(base_location_id + 427, RegionName.tfcf),
+    LocationName.apa_beat: LocationData(base_location_id + 428, RegionName.apa),
+    LocationName.tfo_beat: LocationData(base_location_id + 429, RegionName.tfo),
+    LocationName.tsga_beat: LocationData(base_location_id + 430, RegionName.tsga),
+    LocationName.bbb_beat: LocationData(base_location_id + 431, RegionName.bbbf),
+    LocationName.utc_beat: LocationData(base_location_id + 432, RegionName.utc),
+    LocationName.zc_beat: LocationData(base_location_id + 433, RegionName.zc),
+    LocationName.pl_beat: LocationData(base_location_id + 434, RegionName.pl),
+    LocationName.jht_beat: LocationData(base_location_id + 435, RegionName.jht),
+    LocationName.lfabt_beat: LocationData(base_location_id + 436, RegionName.lfabt),
+    LocationName.fotb_beat: LocationData(base_location_id + 437, RegionName.fotbf),
+    LocationName.itdn_beat: LocationData(base_location_id + 438, RegionName.itdn),
+    LocationName.tttot_beat: LocationData(base_location_id + 439, RegionName.tttot),
+    LocationName.trmaw_beat: LocationData(base_location_id + 440, RegionName.trmawf),
+    LocationName.otr_beat: LocationData(base_location_id + 441, RegionName.otrf),
+    LocationName.gf_beat: LocationData(base_location_id + 442, RegionName.gff),
+    LocationName.aet_beat: LocationData(base_location_id + 443, RegionName.aetf),
+    LocationName.bb_beat: LocationData(base_location_id + 444, RegionName.bbf),
+    LocationName.rtd_beat: LocationData(base_location_id + 445, RegionName.rtdf),
+    LocationName.sts_beat: LocationData(base_location_id + 446, RegionName.stsf),
+    LocationName.hag_beat: LocationData(base_location_id + 447, RegionName.hag),
+    LocationName.adr_beat: LocationData(base_location_id + 448, RegionName.adrf),
+    LocationName.aw_beat: LocationData(base_location_id + 449, RegionName.awf),
+    LocationName.asftc_beat: LocationData(base_location_id + 450, RegionName.asftcf),
+    LocationName.bbpl_beat: LocationData(base_location_id + 451, RegionName.bbplf),
+    LocationName.tjm_beat: LocationData(base_location_id + 452, RegionName.tjmf),
+    LocationName.tlotn_beat: LocationData(base_location_id + 453, RegionName.tlotnf),
+    LocationName.dol_beat: LocationData(base_location_id + 454, RegionName.dolf),
 }
 
 true_status_location_table: Dict[str, LocationData] = {
-    "You can Bank on Batman: True Status": LocationData(base_location_id + 455, "You can Bank on Batman"),
-    "An Icy Reception: True Status": LocationData(base_location_id + 456, "An Icy Reception"),
-    "Two-Face Chase: True Status": LocationData(base_location_id + 457, "Two-Face Chase"),
-    "A Poisonous Appointment: True Status": LocationData(base_location_id + 458, "A Poisonous Appointment"),
-    "The Face-Off: True Status": LocationData(base_location_id + 459, "The Face-Off"),
-    "There She Goes Again: True Status": LocationData(base_location_id + 460, "There She Goes Again"),
-    "Batboat Battle: True Status": LocationData(base_location_id + 461, "Batboat Battle"),
-    "Under the City: True Status": LocationData(base_location_id + 462, "Under the City"),
-    "Zoo's Company: True Status": LocationData(base_location_id + 463, "Zoo's Company"),
-    "Penguin's Lair: True Status": LocationData(base_location_id + 464, "Penguin's Lair"),
-    "Joker's Home Turf: True Status": LocationData(base_location_id + 465, "Joker's Home Turf"),
-    "Little Fun at the Big Top: True Status": LocationData(base_location_id + 466, "Little Fun at the Big Top"),
-    "Flight of the Bat: True Status": LocationData(base_location_id + 467, "Flight of the Bat"),
-    "In the Dark Night: True Status": LocationData(base_location_id + 468, "In the Dark Night"),
-    "To the Top of the Tower: True Status": LocationData(base_location_id + 469, "To the Top of the Tower"),
-    "The Riddler Makes a Withdrawal: True Status":
-        LocationData(base_location_id + 470, "The Riddler Makes a Withdrawal"),
-    "On the Rocks: True Status": LocationData(base_location_id + 471, "On the Rocks"),
-    "Green Fingers: True Status": LocationData(base_location_id + 472, "Green Fingers"),
-    "An Enterprising Theft: True Status": LocationData(base_location_id + 473, "An Enterprising Theft"),
-    "Breaking Blocks: True Status": LocationData(base_location_id + 474, "Breaking Blocks"),
-    "Rockin' the Docks: True Status": LocationData(base_location_id + 475, "Rockin' the Docks"),
-    "Stealing the Show: True Status": LocationData(base_location_id + 476, "Stealing the Show"),
-    "Harbouring a Grudge: True Status": LocationData(base_location_id + 477, "Harbouring a Grudge"),
-    "A Daring Rescue: True Status": LocationData(base_location_id + 478, "A Daring Rescue"),
-    "Arctic World: True Status": LocationData(base_location_id + 479, "Arctic World"),
-    "A Surprise for the Commissioner: True Status":
-        LocationData(base_location_id + 480, "A Surprise for the Commissioner"),
-    "Biplane Blast: True Status": LocationData(base_location_id + 481, "Biplane Blast"),
-    "The Joker's Masterpiece: True Status": LocationData(base_location_id + 482, "The Joker's Masterpiece"),
-    "The Lure of the Night: True Status": LocationData(base_location_id + 483, "The Lure of the Night"),
-    "Dying of Laughter: True Status": LocationData(base_location_id + 484, "Dying of Laughter"),
+    LocationName.ycbob_ts: LocationData(base_location_id + 455, RegionName.ycbob),
+    LocationName.air_ts: LocationData(base_location_id + 456, RegionName.air),
+    LocationName.tfc_ts: LocationData(base_location_id + 457, RegionName.tfcf),
+    LocationName.apa_ts: LocationData(base_location_id + 458, RegionName.apa),
+    LocationName.tfo_ts: LocationData(base_location_id + 459, RegionName.tfo),
+    LocationName.tsga_ts: LocationData(base_location_id + 460, RegionName.tsga),
+    LocationName.bbb_ts: LocationData(base_location_id + 461, RegionName.bbbf),
+    LocationName.utc_ts: LocationData(base_location_id + 462, RegionName.utc),
+    LocationName.zc_ts: LocationData(base_location_id + 463, RegionName.zc),
+    LocationName.pl_ts: LocationData(base_location_id + 464, RegionName.pl),
+    LocationName.jht_ts: LocationData(base_location_id + 465, RegionName.jht),
+    LocationName.lfabt_ts: LocationData(base_location_id + 466, RegionName.lfabt),
+    LocationName.fotb_ts: LocationData(base_location_id + 467, RegionName.fotbf),
+    LocationName.itdn_ts: LocationData(base_location_id + 468, RegionName.itdnf),
+    LocationName.tttot_ts: LocationData(base_location_id + 469, RegionName.tttotf),
+    LocationName.trmaw_ts: LocationData(base_location_id + 470, RegionName.trmawf),
+    LocationName.otr_ts: LocationData(base_location_id + 471, RegionName.otrf),
+    LocationName.gf_ts: LocationData(base_location_id + 472, RegionName.gff),
+    LocationName.aet_ts: LocationData(base_location_id + 473, RegionName.aetf),
+    LocationName.bb_ts: LocationData(base_location_id + 474, RegionName.bbf),
+    LocationName.rtd_ts: LocationData(base_location_id + 475, RegionName.rtdf),
+    LocationName.sts_ts: LocationData(base_location_id + 476, RegionName.stsf),
+    LocationName.hag_ts: LocationData(base_location_id + 477, RegionName.hag),
+    LocationName.adr_ts: LocationData(base_location_id + 478, RegionName.adrf),
+    LocationName.aw_ts: LocationData(base_location_id + 479, RegionName.awf),
+    LocationName.asftc_ts: LocationData(base_location_id + 480, RegionName.asftcf),
+    LocationName.bbpl_ts: LocationData(base_location_id + 481, RegionName.bbplf),
+    LocationName.tjm_ts: LocationData(base_location_id + 482, RegionName.tjmf),
+    LocationName.tlotn_ts: LocationData(base_location_id + 483, RegionName.tlotnf),
+    LocationName.dol_ts: LocationData(base_location_id + 484, RegionName.dolf),
 }
 
-red_brick_location_table = {
-    "You can Bank on Batman: Red Brick": LocationData(base_location_id + 485, "You can Bank on Batman"),
-    "An Icy Reception: Red Brick": LocationData(base_location_id + 486, "An Icy Reception"),
-    "Two-Face Chase: Red Brick": LocationData(base_location_id + 487, "Two-Face Chase"),
-    "A Poisonous Appointment: Red Brick": LocationData(base_location_id + 488, "A Poisonous Appointment"),
-    "The Face-Off: Red Brick": LocationData(base_location_id + 489, "The Face-Off"),
-    "There She Goes Again: Red Brick": LocationData(base_location_id + 490, "There She Goes Again"),
-    "Batboat Battle: Red Brick": LocationData(base_location_id + 491, "Batboat Battle"),
-    "Under the City: Red Brick": LocationData(base_location_id + 492, "Under the City"),
-    "Zoo's Company: Red Brick": LocationData(base_location_id + 493, "Zoo's Company"),
-    "Penguin's Lair: Red Brick": LocationData(base_location_id + 494, "Penguin's Lair"),
-    "Joker's Home Turf: Red Brick": LocationData(base_location_id + 495, "Joker's Home Turf"),
-    "Little Fun at the Big Top: Red Brick": LocationData(base_location_id + 496, "Little Fun at the Big Top"),
-    "Flight of the Bat: Red Brick": LocationData(base_location_id + 497, "Flight of the Bat"),
-    "In the Dark Night: Red Brick": LocationData(base_location_id + 498, "In the Dark Night"),
-    "To the Top of the Tower: Red Brick": LocationData(base_location_id + 499, "To the Top of the Tower"),
-    "The Riddler Makes a Withdrawal: Red Brick": LocationData(base_location_id + 500, "The Riddler Makes a Withdrawal"),
-    "On the Rocks: Red Brick": LocationData(base_location_id + 501, "On the Rocks"),
-    "Green Fingers: Red Brick": LocationData(base_location_id + 502, "Green Fingers"),
-    "An Enterprising Theft: Red Brick": LocationData(base_location_id + 503, "An Enterprising Theft"),
-    "Breaking Blocks: Red Brick": LocationData(base_location_id + 504, "Breaking Blocks"),
-    "Rockin' the Docks: Red Brick": LocationData(base_location_id + 505, "Rockin' the Docks"),
-    "Stealing the Show: Red Brick": LocationData(base_location_id + 506, "Stealing the Show"),
-    "Harbouring a Grudge: Red Brick": LocationData(base_location_id + 507, "Harbouring a Grudge"),
-    "A Daring Rescue: Red Brick": LocationData(base_location_id + 508, "A Daring Rescue"),
-    "Arctic World: Red Brick": LocationData(base_location_id + 509, "Arctic World"),
-    "A Surprise for the Commissioner: Red Brick":
-        LocationData(base_location_id + 510, "A Surprise for the Commissioner"),
-    "Biplane Blast: Red Brick": LocationData(base_location_id + 511, "Biplane Blast"),
-    "The Joker's Masterpiece: Red Brick": LocationData(base_location_id + 512, "The Joker's Masterpiece"),
-    "The Lure of the Night: Red Brick": LocationData(base_location_id + 513, "The Lure of the Night"),
-    "Dying of Laughter: Red Brick": LocationData(base_location_id + 514, "Dying of Laughter"),
+red_brick_purchase_table: Dict[str, LocationData] = {
+    LocationName.silhouettes: LocationData(base_location_id + 486, RegionName.sh, 10000),
+    LocationName.beepbeep: LocationData(base_location_id + 487, RegionName.sh, 20000),
+    LocationName.icerink: LocationData(base_location_id + 488, RegionName.sh, 30000),
+    LocationName.disguise: LocationData(base_location_id + 489, RegionName.sh, 40000),
+    LocationName.extratoggle: LocationData(base_location_id + 490, RegionName.sh, 50000),
+    LocationName.scorex2: LocationData(base_location_id + 491, RegionName.sh, 1000000),
+    LocationName.scorex4: LocationData(base_location_id + 492, RegionName.sh, 2000000),
+    LocationName.scorex6: LocationData(base_location_id + 493, RegionName.sh, 3000000),
+    LocationName.scorex8: LocationData(base_location_id + 494, RegionName.sh, 4000000),
+    LocationName.scorex10: LocationData(base_location_id + 495, RegionName.sh, 5000000),
+    LocationName.studmagnet: LocationData(base_location_id + 496, RegionName.sh, 100000),
+    LocationName.charstuds: LocationData(base_location_id + 497, RegionName.sh, 200000),
+    LocationName.minidetect: LocationData(base_location_id + 498, RegionName.sh, 300000),
+    LocationName.powerdetect: LocationData(base_location_id + 499, RegionName.sh, 400000),
+    LocationName.alwaysscore: LocationData(base_location_id + 500, RegionName.sh, 500000),
+    LocationName.fastbuild: LocationData(base_location_id + 501, RegionName.sh, 100000),
+    LocationName.immunefreeze: LocationData(base_location_id + 502, RegionName.sh, 200000),
+    LocationName.regenhearts: LocationData(base_location_id + 503, RegionName.sh, 300000),
+    LocationName.extrahearts: LocationData(base_location_id + 504, RegionName.sh, 400000),
+    LocationName.invincibility: LocationData(base_location_id + 505, RegionName.sh, 500000),
+    LocationName.fastgrap: LocationData(base_location_id + 506, RegionName.sh, 10000),
+    LocationName.fastbat: LocationData(base_location_id + 507, RegionName.sh, 20000),
+    LocationName.moretargets: LocationData(base_location_id + 508, RegionName.sh, 30000),
+    LocationName.flamingbat: LocationData(base_location_id + 509, RegionName.sh, 40000),
+    LocationName.slam: LocationData(base_location_id + 510, RegionName.sh, 50000),
+    LocationName.moredet: LocationData(base_location_id + 511, RegionName.sh, 10000),
+    LocationName.armourplating: LocationData(base_location_id + 512, RegionName.sh, 20000),
+    LocationName.sonicpain: LocationData(base_location_id + 513, RegionName.sh, 30000),
+    LocationName.areaeffect: LocationData(base_location_id + 514, RegionName.sh, 40000),
+    LocationName.bats: LocationData(base_location_id + 515, RegionName.sh, 50000),
+    LocationName.freezebatarang: LocationData(base_location_id + 516, RegionName.sh, 10000),
+    LocationName.decoy: LocationData(base_location_id + 517, RegionName.sh, 20000),
+    LocationName.fastwalk: LocationData(base_location_id + 518, RegionName.sh, 30000),
+    LocationName.fasterpieces: LocationData(base_location_id + 519, RegionName.sh, 40000),
+    LocationName.piecedetect: LocationData(base_location_id + 520, RegionName.sh, 50000),
 }
 
-red_brick_purchase_table = {
-    "Silhouettes Purchased": LocationData(base_location_id + 515, "Shop"),
-    "Beep Beep Purchased": LocationData(base_location_id + 516, "Shop"),
-    "Ice Rink Purchased": LocationData(base_location_id + 517, "Shop"),
-    "Disguise Purchased": LocationData(base_location_id + 518, "Shop"),
-    "Extra Toggle Purchased": LocationData(base_location_id + 519, "Shop"),
-    "Score x2 Purchased": LocationData(base_location_id + 520, "Shop"),
-    "Score x4 Purchased": LocationData(base_location_id + 521, "Shop"),
-    "Score x6 Purchased": LocationData(base_location_id + 522, "Shop"),
-    "Score x8 Purchased": LocationData(base_location_id + 523, "Shop"),
-    "Score x10 Purchased": LocationData(base_location_id + 524, "Shop"),
-    "Stud Magnet Purchased": LocationData(base_location_id + 525, "Shop"),
-    "Character Studs Purchased": LocationData(base_location_id + 526, "Shop"),
-    "Minikit Detector Purchased": LocationData(base_location_id + 527, "Shop"),
-    "Power Brick Detector Purchased": LocationData(base_location_id + 528, "Shop"),
-    "Always Score Multiply Purchased": LocationData(base_location_id + 529, "Shop"),
-    "Fast Build Purchased": LocationData(base_location_id + 530, "Shop"),
-    "Immune to Freeze Purchased": LocationData(base_location_id + 531, "Shop"),
-    "Regenerate Hearts Purchased": LocationData(base_location_id + 532, "Shop"),
-    "Extra Hearts Purchased": LocationData(base_location_id + 533, "Shop"),
-    "Invincibility Purchased": LocationData(base_location_id + 534, "Shop"),
-    "Fast Grapple (All Suits) Purchased": LocationData(base_location_id + 535, "Shop"),
-    "Fast Batarangs (All Suits) Purchased": LocationData(base_location_id + 536, "Shop"),
-    "More Batarang Targets (All Suits) Purchased": LocationData(base_location_id + 537, "Shop"),
-    "Flaming Batarang (Heat Protection Suit) Purchased": LocationData(base_location_id + 538, "Shop"),
-    "Slam (Glide Suit) Purchased": LocationData(base_location_id + 539, "Shop"),
-    "More Detonators (Demolition Suit) Purchased": LocationData(base_location_id + 540, "Shop"),
-    "Amour Plating (Demolition Suit) Purchased": LocationData(base_location_id + 541, "Shop"),
-    "Sonic Pain (Sonic Suit) Purchased": LocationData(base_location_id + 542, "Shop"),
-    "Area Effect (Sonic Suit) Purchased": LocationData(base_location_id + 543, "Shop"),
-    "Bats (Sonic Suit) Purchased": LocationData(base_location_id + 544, "Shop"),
-    "Freeze Batarang (Water Suit) Purchased": LocationData(base_location_id + 545, "Shop"),
-    "Decoy (Technology Suit) Purchased": LocationData(base_location_id + 546, "Shop"),
-    "Fast Walk (Magnet Suit) Purchased": LocationData(base_location_id + 547, "Shop"),
-    "Faster Pieces (Attract Suit) Purchased": LocationData(base_location_id + 548, "Shop"),
-    "Piece Detector (Attract Suit) Purchased": LocationData(base_location_id + 549, "Shop"),
-}
-
-level_beaten_event_location_table = {
-    "You can Bank on Batman: Level Beaten Event": LocationData(0, "You can Bank on Batman"),
-    "An Icy Reception: Level Beaten Event": LocationData(0, "An Icy Reception"),
-    "Two-Face Chase: Level Beaten Event": LocationData(0, "Two-Face Chase"),
-    "A Poisonous Appointment: Level Beaten Event": LocationData(0, "A Poisonous Appointment"),
-    "The Face-Off: Level Beaten Event": LocationData(0, "The Face-Off"),
-    "There She Goes Again: Level Beaten Event": LocationData(0, "There She Goes Again"),
-    "Batboat Battle: Level Beaten Event": LocationData(0, "Batboat Battle"),
-    "Under the City: Level Beaten Event": LocationData(0, "Under the City"),
-    "Zoo's Company: Level Beaten Event": LocationData(0, "Zoo's Company"),
-    "Penguin's Lair: Level Beaten Event": LocationData(0, "Penguin's Lair"),
-    "Joker's Home Turf: Level Beaten Event": LocationData(0, "Joker's Home Turf"),
-    "Little Fun at the Big Top: Level Beaten Event": LocationData(0, "Little Fun at the Big Top"),
-    "Flight of the Bat: Level Beaten Event": LocationData(0, "Flight of the Bat"),
-    "In the Dark Night: Level Beaten Event": LocationData(0, "In the Dark Night"),
-    "To the Top of the Tower: Level Beaten Event": LocationData(0, "To the Top of the Tower"),
-    "The Riddler Makes a Withdrawal: Level Beaten Event": LocationData(0, "The Riddler Makes a Withdrawal"),
-    "On the Rocks: Level Beaten Event": LocationData(0, "On the Rocks"),
-    "Green Fingers: Level Beaten Event": LocationData(0, "Green Fingers"),
-    "An Enterprising Theft: Level Beaten Event": LocationData(0, "An Enterprising Theft"),
-    "Breaking Blocks: Level Beaten Event": LocationData(0, "Breaking Blocks"),
-    "Rockin' the Docks: Level Beaten Event": LocationData(0, "Rockin' the Docks"),
-    "Stealing the Show: Level Beaten Event": LocationData(0, "Stealing the Show"),
-    "Harbouring a Grudge: Level Beaten Event": LocationData(0, "Harbouring a Grudge"),
-    "A Daring Rescue: Level Beaten Event": LocationData(0, "A Daring Rescue"),
-    "Arctic World: Level Beaten Event": LocationData(0, "Arctic World"),
-    "A Surprise for the Commissioner: Level Beaten Event": LocationData(0, "A Surprise for the Commissioner"),
-    "Biplane Blast: Level Beaten Event": LocationData(0, "Biplane Blast"),
-    "The Joker's Masterpiece: Level Beaten Event": LocationData(0, "The Joker's Masterpiece"),
-    "The Lure of the Night: Level Beaten Event": LocationData(0, "The Lure of the Night"),
-    "Dying of Laughter: Level Beaten Event": LocationData(0, "Dying of Laughter"),
+event_location_table = {
+    LocationName.ycbob_token: LocationData(0, RegionName.ycbob),
+    LocationName.air_token: LocationData(0, RegionName.air),
+    LocationName.tfc_token: LocationData(0, RegionName.tfc),
+    LocationName.apa_token: LocationData(0, RegionName.apa),
+    LocationName.tfo_token: LocationData(0, RegionName.tfo),
+    LocationName.tsga_token: LocationData(0, RegionName.tsga),
+    LocationName.bbb_token: LocationData(0, RegionName.bbb),
+    LocationName.utc_token: LocationData(0, RegionName.utc),
+    LocationName.zc_token: LocationData(0, RegionName.zc),
+    LocationName.pl_token: LocationData(0, RegionName.pl),
+    LocationName.jht_token: LocationData(0, RegionName.jht),
+    LocationName.lfabt_token: LocationData(0, RegionName.lfabt),
+    LocationName.fotb_token: LocationData(0, RegionName.fotb),
+    LocationName.itdn_token: LocationData(0, RegionName.itdn),
+    LocationName.tttot_token: LocationData(0, RegionName.tttot),
+    LocationName.trmaw_token: LocationData(0, RegionName.trmaw),
+    LocationName.otr_token: LocationData(0, RegionName.otr),
+    LocationName.gf_token: LocationData(0, RegionName.gf),
+    LocationName.aet_token: LocationData(0, RegionName.aet),
+    LocationName.bb_token: LocationData(0, RegionName.bb),
+    LocationName.rtd_token: LocationData(0, RegionName.rtd),
+    LocationName.sts_token: LocationData(0, RegionName.sts),
+    LocationName.hag_token: LocationData(0, RegionName.hag),
+    LocationName.adr_token: LocationData(0, RegionName.adr),
+    LocationName.aw_token: LocationData(0, RegionName.aw),
+    LocationName.asftc_token: LocationData(0, RegionName.asftc),
+    LocationName.bbpl_token: LocationData(0, RegionName.bbpl),
+    LocationName.tjm_token: LocationData(0, RegionName.tjm),
+    LocationName.tlotn_token: LocationData(0, RegionName.tlotn),
+    LocationName.dol_token: LocationData(0, RegionName.dol),
 }
 
 all_location_table = {
+    **character_location_table,
+    **hard_character_location_table,
+    **suit_location_table,
     **minikit_location_table,
     **hostage_location_table,
     **level_beaten_location_table,
     **true_status_location_table,
-    **red_brick_location_table,
-    **red_brick_purchase_table
+    **red_brick_purchase_table,
+}
+
+purchase_location_table = {
+    **character_location_table,
+    **red_brick_purchase_table,
+    **hard_character_location_table,
 }
 
 
@@ -865,10 +640,12 @@ def setup_locations(options: LB1Options):
     temp_location_table = {}
     if options.minikit_sanity == 1:
         temp_location_table.update({**minikit_location_table})
-    if options.true_status_sanity == 1:
-        temp_location_table.update({**true_status_location_table})
+    temp_location_table.update({**true_status_location_table})
+    temp_location_table.update({**character_location_table})
+    if options.shuffle_hush_and_ras == 1:
+        temp_location_table.update({**hard_character_location_table})
+    temp_location_table.update({**suit_location_table})
     temp_location_table.update({**hostage_location_table})
     temp_location_table.update({**level_beaten_location_table})
-    temp_location_table.update({**red_brick_location_table})
     temp_location_table.update({**red_brick_purchase_table})
     return temp_location_table

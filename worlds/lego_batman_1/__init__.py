@@ -1,13 +1,24 @@
-from typing import Dict
+from settings import FilePath, Group
 
-from BaseClasses import Item, Tutorial
+from BaseClasses import Item, Tutorial, ItemClassification
 from Options import OptionError
-from .Items import LB1Item, item_data_table, minikit_names_set, setup_items, item_group_table
-from .Locations import all_location_table, LocationData, setup_locations
-from .Options import LB1Options
+from typing import Any, Dict, ClassVar, Union
+
+from .Items import LB1Item, all_item_table, minikit_table, hostage_names_set, LB1ItemData
+from .Locations import all_location_table, LocationData, setup_locations, LB1Location
+from .Names import ItemName, RegionName
+from .Options import LB1Options, MinikitGrouping, RasPurchaseRequirements
 from .Regions import create_regions, connect_regions, create_events
 from .Rules import set_rules
 from ..AutoWorld import World, WebWorld, CollectionState
+
+
+class UTPackPath(FilePath):
+    required = False
+
+
+class LB1Settings(Group):
+    ut_pack_path: Union[UTPackPath, str] = UTPackPath()
 
 
 class LB1Web(WebWorld):
@@ -27,118 +38,218 @@ class LB1World(World):
      When all the villains in Arkham Asylum team up and break loose, only the dynamic duo is bold enough to take them on to save Gotham City.
      The fun of LEGO, the drama of Batman and the uniqueness of the combination makes for a comical and exciting adventure in LEGO Batman: The Videogame.
     """
-    game = "Lego Batman: The Video Game"
+    game = "Lego Batman The Video Game"
     options_dataclass = LB1Options
     options: LB1Options
     topology_present = True
 
-    item_name_to_id = {name: data.code for name, data in item_data_table.items() if data.code is not None}
+    item_name_to_id = {name: data.code for name, data in all_item_table.items() if data.code is not None}
     location_name_to_id = {name: data.id for name, data in all_location_table.items()}
 
-    seed_location_table: Dict[str, int]
-    seed_item_table: Dict[str, int]
+    seed_location_table: Dict[str, LB1Location]
+    seed_item_table: Dict[str, LB1ItemData]
 
     data_version = 1
-    required_client_version = (0, 5, 1)
     web = LB1Web()
 
     item_name_groups = {
-        "Minikit": item_group_table["minikit"],
-        "Hostage": item_group_table["hostage"],
-        "Level": item_group_table["level"],
-        "True Status": item_group_table["true status"],
-        "Red Brick Collected": item_group_table["red brick collected"],
-        "Red Brick Unlocked": item_group_table["red brick unlocked"],
+        "Character": {name: data for name, data in all_item_table.items() if data.type == "Character"},
+        "Hard Character": {name: data for name, data in all_item_table.items() if data.type == "Hard Character"},
+        "Suit": {name: data for name, data in all_item_table.items() if data.type == "Suit"},
+        "Minikit": {name: data for name, data in all_item_table.items() if data.type == "Minikit"},
+        "Hostage": {name: data for name, data in all_item_table.items() if data.type == "Hostage"},
+        "Level": {name: data for name, data in all_item_table.items() if data.type == "Level"},
+        "True Status": {name: data for name, data in all_item_table.items() if data.type == "True Status"},
+        "Red Brick": {name: data for name, data in all_item_table.items() if data.type == "Red Brick Unlocked"},
     }
 
     location_name_groups = {
-        "You can Bank on Batman": {name for name, data in all_location_table.items()
-                                   if data.region == "You can Bank on Batman"},
-        "An Icy Reception": {name for name, data in all_location_table.items() if data.region == "An Icy Reception"},
-        "Two-Face Chase": {name for name, data in all_location_table.items() if data.region == "Two-Face Chase"},
-        "A Poisonous Appointment": {name for name, data in all_location_table.items()
-                                    if data.region == "A Poisonous Appointment"},
-        "The Face-Off": {name for name, data in all_location_table.items() if data.region == "The Face-Off"},
-        "There She Goes Again": {name for name, data in all_location_table.items()
-                                 if data.region == "There She Goes Again"},
-        "Batboat Battle": {name for name, data in all_location_table.items() if data.region == "Batboat Battle"},
-        "Under the City": {name for name, data in all_location_table.items() if data.region == "Under the City"},
-        "Zoo's Company": {name for name, data in all_location_table.items() if data.region == "Zoo's Company"},
-        "Penguin's Lair": {name for name, data in all_location_table.items() if data.region == "Penguin's Lair"},
-        "Joker's Home Turf": {name for name, data in all_location_table.items() if data.region == "Joker's Home Turf"},
-        "Little Fun at the Big Top": {name for name, data in all_location_table.items()
-                                      if data.region == "Little Fun at the Big Top"},
-        "Flight of the Bat": {name for name, data in all_location_table.items() if data.region == "Flight of the Bat"},
-        "In the Dark Night": {name for name, data in all_location_table.items() if data.region == "In the Dark Night"},
-        "To the Top of the Tower": {name for name, data in all_location_table.items()
-                                    if data.region == "To the Top of the Tower"},
-        "The Riddler Makes a Withdrawal": {name for name, data in all_location_table.items()
-                                           if data.region == "The Riddler Makes a Withdrawal"},
-        "On the Rocks": {name for name, data in all_location_table.items() if data.region == "On the Rocks"},
-        "Green Fingers": {name for name, data in all_location_table.items() if data.region == "Green Fingers"},
-        "An Enterprising Theft": {name for name, data in all_location_table.items()
-                                  if data.region == "An Enterprising Theft"},
-        "Breaking Blocks": {name for name, data in all_location_table.items() if data.region == "Breaking Blocks"},
-        "Rockin' the Docks": {name for name, data in all_location_table.items() if data.region == "Rockin' the Docks"},
-        "Stealing the Show": {name for name, data in all_location_table.items() if data.region == "Stealing the Show"},
-        "Harbouring a Grudge": {name for name, data in all_location_table.items()
-                                if data.region == "Harbouring a Grudge"},
-        "A Daring Rescue": {name for name, data in all_location_table.items() if data.region == "A Daring Rescue"},
-        "Arctic World": {name for name, data in all_location_table.items() if data.region == "Arctic World"},
-        "A Surprise for the Commissioner": {name for name, data in all_location_table.items()
-                                            if data.region == "A Surprise for the Commissioner"},
-        "Biplane Blast": {name for name, data in all_location_table.items() if data.region == "Biplane Blast"},
-        "The Joker's Masterpiece": {name for name, data in all_location_table.items()
-                                    if data.region == "The Joker's Masterpiece"},
-        "The Lure of the Night": {name for name, data in all_location_table.items()
-                                  if data.region == "The Lure of the Night"},
-        "Dying of Laughter": {name for name, data in all_location_table.items() if data.region == "Dying of Laughter"},
+        RegionName.ycbob: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.ycbob or data.region == RegionName.ycbobf},
+        RegionName.air: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.air or data.region == RegionName.airf},
+        RegionName.tfc: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.tfc or data.region == RegionName.tfcf},
+        RegionName.apa: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.apa or data.region == RegionName.apaf},
+        RegionName.tfo: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.tfo or data.region == RegionName.tfof},
+        RegionName.tsga: {name for name, data in all_location_table.items()
+                          if data.region == RegionName.tsga or data.region == RegionName.tsgaf},
+        RegionName.bbb: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.bbb or data.region == RegionName.bbbf},
+        RegionName.utc: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.utc or data.region == RegionName.utcf},
+        RegionName.zc: {name for name, data in all_location_table.items()
+                        if data.region == RegionName.zc or data.region == RegionName.zcf},
+        RegionName.pl: {name for name, data in all_location_table.items()
+                        if data.region == RegionName.pl or data.region == RegionName.plf},
+        RegionName.jht: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.jht or data.region == RegionName.jhtf},
+        RegionName.lfabt: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.lfabt or data.region == RegionName.lfabtf},
+        RegionName.fotb: {name for name, data in all_location_table.items()
+                          if data.region == RegionName.fotb or data.region == RegionName.fotbf},
+        RegionName.itdn: {name for name, data in all_location_table.items()
+                          if data.region == RegionName.itdn or data.region == RegionName.itdnf},
+        RegionName.tttot: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.tttot or data.region == RegionName.tttotf},
+        RegionName.trmaw: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.trmaw or data.region == RegionName.trmawf},
+        RegionName.otr: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.otr or data.region == RegionName.otrf},
+        RegionName.gf: {name for name, data in all_location_table.items()
+                        if data.region == RegionName.gf or data.region == RegionName.gff},
+        RegionName.aet: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.aet or data.region == RegionName.aetf},
+        RegionName.bb: {name for name, data in all_location_table.items()
+                        if data.region == RegionName.bb or data.region == RegionName.bbf},
+        RegionName.rtd: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.rtd or data.region == RegionName.rtdf},
+        RegionName.sts: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.sts or data.region == RegionName.stsf},
+        RegionName.hag: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.hag or data.region == RegionName.hagf},
+        RegionName.adr: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.adr or data.region == RegionName.adrf},
+        RegionName.aw: {name for name, data in all_location_table.items()
+                        if data.region == RegionName.aw or data.region == RegionName.awf},
+        RegionName.asftc: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.asftc or data.region == RegionName.asftcf},
+        RegionName.bbpl: {name for name, data in all_location_table.items()
+                          if data.region == RegionName.bbpl or data.region == RegionName.bbplf},
+        RegionName.tjm: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.tjm or data.region == RegionName.tjmf},
+        RegionName.tlotn: {name for name, data in all_location_table.items()
+                           if data.region == RegionName.tlotn or data.region == RegionName.tlotnf},
+        RegionName.dol: {name for name, data in all_location_table.items()
+                         if data.region == RegionName.dol or data.region == RegionName.dolf},
+        RegionName.sh: {name for name, data in all_location_table.items() if data.region == RegionName.sh},
+        RegionName.bc: {name for name, data in all_location_table.items() if data.region == RegionName.bc},
+        RegionName.aa: {name for name, data in all_location_table.items() if data.region == RegionName.aa},
+    }
+
+    @staticmethod
+    def interpret_slot_data(slot_data: Dict[str, Any]) -> Dict[str, Any]:
+        return slot_data
+
+    ut_can_gen_without_yaml = True
+
+    settings_key = "lb1_settings"
+    settings: ClassVar[LB1Settings]
+
+    tracker_world: ClassVar = {
+        "external_pack_key": "ut_pack_path",
+        "map_page_maps": ["maps/maps.json"],
+        "map_page_locations": ["locations/characters.json", "locations/levels.json", "locations/suits.json",
+                               "locations/minikits.json", "locations/red_bricks.json"],
+        "map_page_layouts": ["layouts/tabs.json"]
     }
 
     def generate_early(self):
         self.validate_yaml()
-        self.multiworld.push_precollected(self.create_item("You can Bank on Batman: Level Unlocked"))
-        self.multiworld.push_precollected(self.create_item("The Riddler Makes a Withdrawal: Level Unlocked"))
+
+        if hasattr(self.multiworld, "generation_is_fake"):
+            if hasattr(self.multiworld, "re_gen_passthrough"):
+                if "Lego Batman The Video Game" in self.multiworld.re_gen_passthrough:
+                    slot_data = self.multiworld.re_gen_passthrough["Lego Batman The Video Game"]
+                    self.options.EndGoal.value = slot_data["EndGoal"]
+                    self.options.minikit_sanity.value = slot_data["MinikitSanity"]
+                    self.options.minikits_to_win.value = slot_data["MinikitsToWin"]
+                    self.options.minikit_grouping.value = slot_data["MinikitGrouping"]
+                    self.options.levels_to_win.value = slot_data["LevelsToWin"]
+                    self.options.cheaper_shops.value = slot_data["cheaper_shops"]
+                    self.options.hard_purchases.value = slot_data["hard_purchases"]
+                    self.options.low_multiplier_price_minimum.value = slot_data["low_multiplier_price_minimum"]
+                    self.options.high_multiplier_price_minimum.value = slot_data["high_multiplier_price_minimum"]
+                    self.options.shuffle_hush_and_ras.value = slot_data["ShuffleHushAndRas"]
+                    self.options.hush_purchase_requirements.value = slot_data["HushUnlockCondition"]
+                    self.options.ras_purchase_requirements.value = slot_data["RasUnlockCondition"]
+                    self.options.simple_episode_characters.value = slot_data["SimpleEpisodeCharacters"]
+
+        self.create_item_table()
+        self.choose_starting_levels()
 
     def validate_yaml(self):
         if self.options.EndGoal.value == 0 and self.options.minikit_sanity.value == 0:
             raise OptionError("Minikit Win Con Requires Minikit Sanity to be enabled.")
+        if self.options.high_multiplier_price_minimum.value < self.options.low_multiplier_price_minimum.value:
+            raise OptionError("High Multiplier Minimum must be greater than Low Multiplier Minimum.")
+        if self.options.starting_hero_level_count.value > len(self.options.starting_hero_level_options.value):
+            raise OptionError("You want to start with more hero levels than are in the starting pool")
+        if self.options.starting_villain_level_count.value > len(self.options.starting_villain_level_options.value):
+            raise OptionError("You want to start with more villain levels than are in the starting pool")
+        if self.options.shuffle_hush_and_ras.value == 1 and self.options.minikit_sanity.value == 0:
+            raise OptionError("Shuffling Hush & Ras requires Minikit Sanity to be enabled.")
+
+        hero_vehicle_levels = {
+            "Two-Face Chase",
+            "Batboat Battle",
+            "Flight of the Bat",
+        }
+
+        villain_vehicle_levels = {
+            "Harbouring a Grudge",
+            "Biplane Blast",
+        }
+
+        selected_hero_options = set(self.options.starting_hero_level_options.value)
+        selected_villain_options = set(self.options.starting_villain_level_options.value)
+        if (selected_hero_options.issubset(hero_vehicle_levels) and
+                selected_villain_options.issubset(villain_vehicle_levels)):
+            raise OptionError(
+                "Starting Level Options cannot consist only of vehicle levels. "
+                "Please include at least one non‑vehicle level."
+            )
 
     def create_regions(self):
         self.seed_location_table = setup_locations(self.options)
-        create_regions(self.multiworld, self.player, self.seed_location_table)
-        create_events(self.multiworld, self.player)
+        create_regions(self.multiworld, self.options, self.player, self.seed_location_table)
+        create_events(self.multiworld, self.options, self.player)
 
     def create_item(self, name: str) -> Item:
-        data = item_data_table[name]
-        item = LB1Item(name, data.classification, data.code, self.player)
+        item = LB1Item(name, all_item_table[name].classification, all_item_table[name].code, self.player)
         return item
 
     def create_items(self):
-        self.seed_item_table = setup_items(self.options)
-        self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
+        for item_name, data in self.seed_item_table.items():
+            for _ in range(data.count):
+                self.multiworld.itempool.append(self.create_item(item_name))
+
+        filler = []
+        total_items = sum(data.count for data in self.seed_item_table.values())
+        extra_locations = len(self.seed_location_table) - total_items
+        while extra_locations > 0:
+            filler += [self.create_item(ItemName.purp)]
+            extra_locations -= 1
+        self.multiworld.itempool.extend(filler)
 
     def set_rules(self):
-        set_rules(self.multiworld, self.options, self.player)
+        set_rules(self)
+        # set_event_rules(self.multiworld, self.player)
 
     def collect(self, state: CollectionState, item: Item) -> bool:
         changed = super().collect(state, item)
         if changed:
             name = item.name
-            if name in minikit_names_set and state.count(name, self.player) == 1 and self.options.EndGoal.value == 0:
+            if name in minikit_table and state.count(name, self.player) > 0:
                 # Count was 0 before super().collect().
                 # Increase unique minikit count.
-                state.prog_items[self.player]["UNIQUE_MINIKITS"] += 1
+                state.prog_items[self.player]["UNIQUE_MINIKITS"] += (1 * self.options.minikit_grouping.value)
+            if name in hostage_names_set and state.count(name, self.player) == 1:
+                state.prog_items[self.player]["UNIQUE_HOSTAGES"] += 1
         return changed
 
     def remove(self, state: CollectionState, item: Item) -> bool:
         changed = super().remove(state, item)
         if changed:
             name = item.name
-            if name in minikit_names_set and state.count(name, self.player) == 0 and self.options.EndGoal.value == 0:
+            if name in minikit_table and state.count(name, self.player) == 0:
                 # Count was 1 before super().remove().
                 # Decrease unique minikit count.
                 state.prog_items[self.player]["UNIQUE_MINIKITS"] -= 1
+            if name in hostage_names_set and state.count(name, self.player) == 0:
+                state.prog_items[self.player]["UNIQUE_HOSTAGES"] -= 1
         return changed
 
     def fill_slot_data(self):
@@ -146,7 +257,91 @@ class LB1World(World):
             "EndGoal": self.options.EndGoal.value,
             "MinikitSanity": self.options.minikit_sanity.value,
             "MinikitsToWin": self.options.minikits_to_win.value,
+            "MinikitGrouping": self.options.minikit_grouping.value,
             "LevelsToWin": self.options.levels_to_win.value,
-            "TrueStatusSanity": self.options.true_status_sanity.value,
-            "FreeplayOrStory": self.options.freeplay_or_story.value,
+            "cheaper_shops": self.options.cheaper_shops.value,
+            "hard_purchases": self.options.hard_purchases.value,
+            "low_multiplier_price_minimum": self.options.low_multiplier_price_minimum.value,
+            "high_multiplier_price_minimum": self.options.high_multiplier_price_minimum.value,
+            "ShuffleHushAndRas": self.options.shuffle_hush_and_ras.value,
+            "HushUnlockCondition": self.options.hush_purchase_requirements.value,
+            "RasUnlockCondition": self.options.ras_purchase_requirements.value,
+            "SimpleEpisodeCharacters": self.options.simple_episode_characters.value,
         }
+
+    def choose_starting_levels(self):
+        hero_levels_pushed: int = 0
+        hero_levels_selected = []
+        hero_vehicle_levels = {ItemName.tfc_lvl, ItemName.bbb_lvl, ItemName.fotb_lvl}
+        villain_vehicle_levels = {ItemName.hag_lvl, ItemName.bbpl_lvl}
+
+        while hero_levels_pushed < self.options.starting_hero_level_count.value:
+            starting_hero = self.random.choice(self.options.starting_hero_level_options.value)
+            self.options.starting_hero_level_options.value.remove(starting_hero)
+            unlocked_name = starting_hero + ": Level Unlocked"
+            self.multiworld.push_precollected(self.create_item(unlocked_name))
+            hero_levels_pushed += 1
+            hero_levels_selected.append(starting_hero)
+            del self.seed_item_table[unlocked_name]
+
+        # This code is to make it so the player can't have only vehicle levels to start
+        hero_selected_set = set(hero_levels_selected)
+        if hero_selected_set.issubset(hero_vehicle_levels) and self.options.starting_villain_level_count <= 2:
+            self.options.starting_villain_level_options.value = [
+                lvl for lvl in self.options.starting_villain_level_options.value
+                if lvl not in villain_vehicle_levels
+            ]
+
+        villain_levels_pushed: int = 0
+        while villain_levels_pushed < self.options.starting_villain_level_count.value:
+            starting_villain = self.random.choice(self.options.starting_villain_level_options.value)
+            self.options.starting_villain_level_options.value.remove(starting_villain)
+            unlocked_name = starting_villain + ": Level Unlocked"
+            self.multiworld.push_precollected(self.create_item(unlocked_name))
+            villain_levels_pushed += 1
+            del self.seed_item_table[unlocked_name]
+
+    def create_item_table(self):
+        self.seed_item_table = {}
+        # required_minikits = self.options.minikits_to_win.value
+        ras_minikits = self.options.ras_purchase_requirements.value
+        hush_hostages = self.options.hush_purchase_requirements.value
+        minikit_grouping = self.options.minikit_grouping.value
+        # higher_minikit_value = required_minikits if required_minikits > ras_minikits else ras_minikits
+        # required_count_mini = higher_minikit_value // minikit_grouping
+        # if higher_minikit_value % minikit_grouping > 0:
+        #     required_count_mini += 1
+
+        for name, data in all_item_table.items():
+            match data.type:
+                case "Character" | "Suit" | "True Status" | "Level" | "Red Brick Collected" | "Red Brick Unlocked":
+                    self.seed_item_table[name] = data
+                case "Hard Character":
+                    if self.options.shuffle_hush_and_ras == 1:
+                        self.seed_item_table[name] = data
+                case "Minikit":
+                    if self.options.minikit_sanity.value == 1:
+                        value = 10 // minikit_table[name].count
+                        if value != minikit_grouping:
+                            continue
+
+                        multiplier = 10 // value
+                        for _ in range(multiplier):
+                            # if required_count_mini > 0:
+                            all_item_table[name].classification = (
+                                ItemClassification.progression_deprioritized_skip_balancing
+                            )
+                            # required_count_mini -= value
+                        self.seed_item_table[name] = data
+                case "Hostage":
+                    if self.options.shuffle_hush_and_ras == 1 and hush_hostages > 0:
+                        all_item_table[name].classification \
+                            = ItemClassification.progression_deprioritized_skip_balancing
+                        hush_hostages -= 1
+                    self.seed_item_table[name] = data
+
+        if self.options.start_with_detectors. value == 1:
+            self.multiworld.push_precollected(self.create_item(ItemName.minidetect))
+            self.multiworld.push_precollected(self.create_item(ItemName.powerdetect))
+            del self.seed_item_table[ItemName.minidetect]
+            del self.seed_item_table[ItemName.powerdetect]
