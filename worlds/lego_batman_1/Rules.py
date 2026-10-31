@@ -408,6 +408,7 @@ can_get_adr_min6 = char_can_hypno & HasAll(itm.mrfreeze_unlocked) & can_get_out_
 can_get_adr_min7 = Has(itm.sonicsuit)
 can_get_adr_min8 = can_get_out_of_sewer
 can_get_adr_min9 = Has(itm.magsuit) & can_get_out_of_sewer
+can_get_adr_min10 = can_get_out_of_sewer
 can_get_adr_host = char_is_joker
 can_get_adr_rb = char_can_techno & Has(itm.sonicsuit) & can_get_out_of_sewer
 
@@ -1110,6 +1111,7 @@ def set_minikit_rules(world):
     world.set_rule(world.get_location(locn.adr_min7), can_get_adr_min7)
     world.set_rule(world.get_location(locn.adr_min8), can_get_adr_min8)
     world.set_rule(world.get_location(locn.adr_min9), can_get_adr_min9)
+    world.set_rule(world.get_location(locn.adr_min10), can_get_adr_min10)
     # Arctic World Logic
     world.set_rule(world.get_location(locn.aw_min1), can_get_aw_min1)
     world.set_rule(world.get_location(locn.aw_min2), can_get_aw_min2)
