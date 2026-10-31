@@ -218,7 +218,7 @@ class HardPurchases(Toggle):
 
 class LowMultiplierPriceMinimum(Range):
     """
-    Determines the starting price for a low multiplier. Does nothing if Shop Purchases Require Multiplier is disabled.
+    Determines the starting price for a low multiplier. Does nothing if Hard Purchases are on.
     A low multiplier is defined as any multiplier.
     """
     display_name = "Low Multiplier Price Minimum"
