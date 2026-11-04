@@ -5,7 +5,7 @@ import dataclasses
 from BaseClasses import Location
 from Options import Option
 from rule_builder.options import OptionFilter, Operator
-from rule_builder.rules import Rule, Has, HasAll, HasFromListUnique, True_, Or, CanReachLocation
+from rule_builder.rules import Rule, Has, HasAll, HasFromListUnique, True_, Or, CanReachLocation, HasAny
 
 if TYPE_CHECKING:
     from . import LB1World
@@ -205,7 +205,7 @@ can_get_zc_min2 = char_is_strong & char_can_double_jump & char_can_cross_toxic
 can_get_zc_min3 = Has(itm.attractsuit) & (char_is_female | (char_can_cross_toxic & char_is_strong))
 can_get_zc_min4 = char_can_double_jump & char_can_explode
 can_get_zc_min5 = Has(itm.poisonivy_unlocked)
-can_get_zc_min6 = char_can_long_jump
+can_get_zc_min6 = char_can_long_jump & char_can_explode
 can_get_zc_min8 = char_can_glide & Has(itm.sonicsuit)
 can_get_zc_min9 = char_can_glide & HasAll(itm.sonicsuit, itm.mrfreeze_unlocked)
 can_get_zc_min10 = char_can_glide & char_is_strong & Has(itm.sonicsuit)
@@ -373,7 +373,7 @@ can_get_rtd_host = Has(itm.sonicsuit)
 can_get_rtd_rb = char_is_female & char_is_strong & Has(itm.penguin_unlocked)
 
 # Stealing The Show Logic
-can_access_sts_free = char_can_glide & char_is_female
+can_access_sts_free = char_can_glide & char_is_female & char_can_explode
 can_beat_sts = Has(itm.penguin_unlocked)
 can_get_sts_min1 = char_is_strong & Has(itm.magsuit)
 can_get_sts_min3 = char_can_glide & Has(itm.poisonivy_unlocked)
@@ -484,7 +484,7 @@ can_get_tlotn_rb = HasAll(itm.poisonivy_unlocked, itm.attractsuit) & char_can_do
 can_access_dol_free = char_is_joker & char_can_double_jump
 can_get_dol_min1 = Has(itm.poisonivy_unlocked)
 can_get_dol_min2 = char_can_double_jump & Has(itm.sonicsuit)
-can_get_dol_min3 = char_is_strong
+can_get_dol_min3 = HasAny(itm.manbat_unlocked, itm.mrfreeze_unlocked, itm.clayface_unlocked, itm.bane_unlocked)
 can_get_dol_min4 = char_can_explode
 can_get_dol_min5 = Has(itm.magsuit)
 can_get_dol_min7 = char_can_glide
