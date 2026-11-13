@@ -609,7 +609,8 @@ can_purchase_more_bat = has_needed_multi(locn.moretargets) & CanReachLocation(lo
 can_purchase_flame_bat = has_needed_multi(locn.flamingbat) & can_get_apa_rb & CanReachLocation(locn.apa_beat)
 can_purchase_slam = has_needed_multi(locn.slam) & can_get_tfo_rb & CanReachLocation(locn.tfo_beat)
 can_purchase_more_det = has_needed_multi(locn.moredet) & can_get_tsga_rb & CanReachLocation(locn.tsga_beat)
-can_purchase_armour_plat = has_needed_multi(locn.armourplating) & CanReachLocation(locn.bbb_beat)
+can_purchase_armour_plat = (has_needed_multi(locn.armourplating) & CanReachLocation(locn.bbb_beat) &
+                            Has(itm.penguinsubmarine_unlocked))
 can_purchase_sonic_pain = has_needed_multi(locn.sonicpain) & can_get_utc_rb & CanReachLocation(locn.utc_beat)
 can_purchase_area_effect = has_needed_multi(locn.areaeffect) & can_get_zc_rb & CanReachLocation(locn.zc_beat)
 can_purchase_bats = has_needed_multi(locn.bats) & can_get_pl_rb & CanReachLocation(locn.pl_beat)
