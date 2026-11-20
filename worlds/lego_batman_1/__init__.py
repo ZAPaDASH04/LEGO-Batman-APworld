@@ -158,6 +158,7 @@ class LB1World(World):
                     self.options.minikits_to_win.value = slot_data["MinikitsToWin"]
                     self.options.minikit_grouping.value = slot_data["MinikitGrouping"]
                     self.options.levels_to_win.value = slot_data["LevelsToWin"]
+                    self.options.true_status_sanity.value = slot_data["TrueStatusSanity"]
                     self.options.cheaper_shops.value = slot_data["cheaper_shops"]
                     self.options.hard_purchases.value = slot_data["hard_purchases"]
                     self.options.low_multiplier_price_minimum.value = slot_data["low_multiplier_price_minimum"]
@@ -259,6 +260,7 @@ class LB1World(World):
             "MinikitsToWin": self.options.minikits_to_win.value,
             "MinikitGrouping": self.options.minikit_grouping.value,
             "LevelsToWin": self.options.levels_to_win.value,
+            "TrueStatusSanity": self.options.true_status_sanity.value,
             "cheaper_shops": self.options.cheaper_shops.value,
             "hard_purchases": self.options.hard_purchases.value,
             "low_multiplier_price_minimum": self.options.low_multiplier_price_minimum.value,
@@ -314,7 +316,7 @@ class LB1World(World):
 
         for name, data in all_item_table.items():
             match data.type:
-                case "Character" | "Suit" | "True Status" | "Level" | "Red Brick Collected" | "Red Brick Unlocked":
+                case "Character" | "Suit" | "Level" | "Red Brick Collected" | "Red Brick Unlocked":
                     self.seed_item_table[name] = data
                 case "Hard Character":
                     if self.options.shuffle_hush_and_ras == 1:
@@ -339,6 +341,9 @@ class LB1World(World):
                             = ItemClassification.progression_deprioritized_skip_balancing
                         hush_hostages -= 1
                     self.seed_item_table[name] = data
+                case "True Status":
+                    if self.options.true_status_sanity.value == 1:
+                        self.seed_item_table[name] = data
 
         if self.options.start_with_detectors. value == 1:
             self.multiworld.push_precollected(self.create_item(ItemName.minidetect))

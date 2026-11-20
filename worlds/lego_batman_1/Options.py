@@ -55,6 +55,13 @@ class LevelsToWin(Range):
     default = 20
 
 
+class TrueStatusSanity(DefaultOnToggle):
+    """
+    Shuffles the true status of each level.
+    """
+    display_name = "True Status Sanity"
+
+
 class StartingHeroLevelCount(Range):
     """
     Determine the number of hero levels you start with.
@@ -291,6 +298,7 @@ class LB1Options(PerGameCommonOptions):
     minikits_to_win: MinikitsToWin
     minikit_grouping: MinikitGrouping
     levels_to_win: LevelsToWin
+    true_status_sanity: TrueStatusSanity
     starting_hero_level_count: StartingHeroLevelCount
     starting_hero_level_options: StartingHeroLevelOptions
     starting_villain_level_count: StartingVillainLevelCount

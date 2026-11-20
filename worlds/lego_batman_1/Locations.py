@@ -640,7 +640,8 @@ def setup_locations(options: LB1Options):
     temp_location_table = {}
     if options.minikit_sanity == 1:
         temp_location_table.update({**minikit_location_table})
-    temp_location_table.update({**true_status_location_table})
+    if options.true_status_sanity == 1:
+        temp_location_table.update({**true_status_location_table})
     temp_location_table.update({**character_location_table})
     if options.shuffle_hush_and_ras == 1:
         temp_location_table.update({**hard_character_location_table})
